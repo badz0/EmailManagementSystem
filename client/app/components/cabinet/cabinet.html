@@ -1,6 +1,6 @@
 <navbar></navbar>
   <div>
-    <h1>Found in {{ cabinet.name }}</h1>
+    <h1>Found in {{ $ctrl.name }}</h1>
   </div>
   <div class="md-padding" ng-cloak layout="column">
   <md-card>
@@ -9,14 +9,14 @@
         <md-card-title>
           <md-card-title-text class="userImage">
             <span class="md-headline">My cabinet</span>
-            <span class="md-subhead">{{cabinet.user[0].nickname}}</span>
-            <span class="md-subhead">{{cabinet.user[0].email}}</span>
+            <span class="md-subhead">{{$ctrl.user[0].nickname}}</span>
+            <span class="md-subhead">{{$ctrl.user[0].email}}</span>
             <md-button ng-click="logOut()" style="width:10%" class="imgbuttons small md-warn">Log out</md-button>
           </md-card-title-text>
           <md-card-title-text class="userImage">
-            <span class="md-subhead">Name:{{cabinet.user[0].firstname}}</span>
-            <span class="md-subhead">Surname:{{cabinet.user[0].lastname}}</span>
-            <span class="md-subhead">Adress:{{cabinet.user[0].city}},{{cabinet.user[0].country}},{{cabinet.user[0].postadress}}</span>
+            <span class="md-subhead">Name:{{$ctrl.user[0].firstname}}</span>
+            <span class="md-subhead">Surname:{{$ctrl.user[0].lastname}}</span>
+            <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country}},{{$ctrl.user[0].postadress}}</span>
             
           </md-card-title-text>
           <md-card-title-media>
@@ -32,22 +32,22 @@
         </md-card-actions>
       </md-card>
     </div>
-    <form name="personalForm" ng-submit="cabinet.submit()">
+    <form name="personalForm" ng-submit="$ctrl.submit()">
           <md-card-content>
             <div class="charts" layout="column">
               <md-input-container class="biography">
                 <label>Name</label>
-                <input type="text" name="firstname" data-ng-model="cabinet.user.firstname">
+                <input type="text" name="firstname" data-ng-model="$ctrl.user.firstname">
               </md-input-container>
               
               <md-input-container class="biography">
                 <label>*Nickname*</label>
-                <input type="text" name="nickname" data-ng-model="cabinet.user.nickname">
+                <input type="text" name="nickname" data-ng-model="$ctrl.user.nickname">
               </md-input-container>
               
               <md-input-container class="biography">
                 <label>Surname</label>
-                <input type="text" name="lastname" data-ng-model="cabinet.user.lastname">
+                <input type="text" name="lastname" data-ng-model="$ctrl.user.lastname">
               </md-input-container>
               
             </div>
@@ -55,9 +55,9 @@
             <div layout="row">
               <md-input-container class="adress">
                 <label>Country</label>
-                <md-select id="country" ng-model="cabinet.country"  ng-change="user.city = null" >
+                <md-select id="country" ng-model="$ctrl.country"  ng-change="user.city = null" >
                   <md-option value=''><em>None</em></md-option>
-                  <md-option  ng-repeat="country in cabinet.countries" ng-value="country">
+                  <md-option  ng-repeat="country in $ctrl.countries" ng-value="country">
                     {{country.country}}
                   </md-option>
                 </md-select>
@@ -65,9 +65,9 @@
               
               <md-input-container class="adress">
                 <label>City</label>
-                <md-select id="city" ng-disabled="!cabinet.country.city" ng-model="user.city">
+                <md-select id="city" ng-disabled="!$ctrl.country.city" ng-model="user.city">
                   <md-option><em>None</em></md-option>
-                  <md-option ng-repeat="city in cabinet.country.city" ng-value="city">
+                  <md-option ng-repeat="city in $ctrl.country.city" ng-value="city">
                     {{city}}
                   </md-option>
                 </md-select>
@@ -75,7 +75,7 @@
       
               <md-input-container class="adress">
                 <label>Adress</label>
-                <input type="text" name="lastname" data-ng-model="cabinet.user.postadress">
+                <input type="text" name="lastname" data-ng-model="$ctrl.user.postadress">
               </md-input-container>
             </div>
           </md-card-content>

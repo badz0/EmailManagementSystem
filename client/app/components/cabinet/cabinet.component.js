@@ -5,11 +5,8 @@ import './cabinet.data.json';
 import './cabinet.countries.json';
 
 let cabinetComponent = {
-  restrict: 'E',
-  bindings: {},
   template,
-  controller,
-  controllerAs:'cabinet'
+  controller
 };
 
 export default cabinetComponent;
