@@ -6,7 +6,6 @@ import AppComponent from './app.component';
 import amCharts from 'amcharts3';
 import amChartsSerial from 'amcharts3/amcharts/serial';
 import amChartsPie from 'amcharts3/amcharts/pie';
-import amChartsThemesPatterns from 'amcharts3/amcharts/themes/patterns';
 import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
 
 import 'normalize.css';
