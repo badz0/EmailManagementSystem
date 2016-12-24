@@ -1,0 +1,23 @@
+<navbar></navbar>
+
+<section class="amcharts3">
+	<h1>{{ $ctrl.name }}</h1>
+	
+  	<div class="input-list" ng-repeat="input in $ctrl.elemsStatus">
+  		<input type="button" ng-click="$ctrl.hideElem($index)" value="{{input.name}}"/>
+  	</div>
+	
+	<div class="chart-one">
+		<chart-one  ng-hide="$ctrl.elemsStatus[0].status"></chart-one>
+	</div>
+	
+	<div class="chart-two">
+  		<chart-two  ng-hide="$ctrl.elemsStatus[1].status"></chart-two>
+	</div>
+
+  	<div class="chart-three"> 
+	  	<chart-three ng-hide="$ctrl.elemsStatus[2].status"></chart-three>
+	</div>
+</section>
+
+	
