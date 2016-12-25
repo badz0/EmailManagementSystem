@@ -2,7 +2,7 @@ class ChartTwoController {
   constructor() {
     const vm = this;
     vm.name = 'Emails amout sorted by group';
-    vm.chart = AmCharts.makeChart( "chartdivtwo", {
+    vm.chart = AmCharts.makeChart("chartdivtwo", {
       "type": "pie",
       "theme": "light",
       "dataProvider": [ {

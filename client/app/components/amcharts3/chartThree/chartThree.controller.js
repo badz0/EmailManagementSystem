@@ -2,7 +2,7 @@ class ChartThreeController {
   constructor() {
     const vm = this;
     vm.name = 'Emails amout sorted by category';
-    vm.chart = AmCharts.makeChart( "chartdivthree", {
+    vm.chart = AmCharts.makeChart("chartdivthree", {
       "type": "serial",
       "theme": "dark",
       "dataProvider": [ {
