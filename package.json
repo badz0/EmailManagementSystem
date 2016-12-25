@@ -5,7 +5,10 @@
   "main": "index.js",
   "dependencies": {
     "angular": "^1.5.0",
+    "angular-material": "^1.1.1",
     "angular-ui-router": "^1.0.0-beta.1",
+    "angularfire": "^2.2.0",
+    "firebase": "^3.6.4",
     "normalize.css": "^3.0.3"
   },
   "devDependencies": {
