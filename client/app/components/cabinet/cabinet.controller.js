@@ -6,10 +6,11 @@ class CabinetController {
     vm.name = 'cabinet';
     vm.user = data;
     vm.countries=countries;
-    vm.submit = function() {
-      alert('submit');
-    };
-  }
+    
+    vm.submit = function(user) {
+      angular.copy(user, vm.user[0]);
+      };
+}
 }
 
 export default CabinetController;

@@ -10,13 +10,13 @@
           <md-card-title-text class="userImage">
             <span class="md-headline">My cabinet</span>
             <span class="md-subhead">{{$ctrl.user[0].nickname}}</span>
-            <span class="md-subhead">{{$ctrl.user[0].email}}</span>
+            <span class="md-subhead" ng-model="user.email">{{$ctrl.user[0].email}}</span>
             <md-button ng-click="logOut()" style="width:10%" class="imgbuttons small md-warn">Log out</md-button>
           </md-card-title-text>
           <md-card-title-text class="userImage">
             <span class="md-subhead">Name:{{$ctrl.user[0].firstname}}</span>
             <span class="md-subhead">Surname:{{$ctrl.user[0].lastname}}</span>
-            <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country}},{{$ctrl.user[0].postadress}}</span>
+            <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country.country}},{{$ctrl.user[0].postadress}}</span>
             
           </md-card-title-text>
           <md-card-title-media>
@@ -32,22 +32,22 @@
         </md-card-actions>
       </md-card>
     </div>
-    <form name="personalForm" ng-submit="$ctrl.submit()">
+    <form name="personalForm" ng-submit="$ctrl.submit(user)">
           <md-card-content>
             <div class="charts" layout="column">
               <md-input-container class="biography">
                 <label>Name</label>
-                <input type="text" name="firstname" data-ng-model="$ctrl.user.firstname">
+                <input type="text" name="firstname" data-ng-model="user.firstname">
               </md-input-container>
               
               <md-input-container class="biography">
                 <label>*Nickname*</label>
-                <input type="text" name="nickname" data-ng-model="$ctrl.user.nickname">
+                <input type="text" name="nickname" data-ng-model="user.nickname">
               </md-input-container>
               
               <md-input-container class="biography">
                 <label>Surname</label>
-                <input type="text" name="lastname" data-ng-model="$ctrl.user.lastname">
+                <input type="text" name="lastname" data-ng-model="user.lastname">
               </md-input-container>
               
             </div>
@@ -55,7 +55,7 @@
             <div layout="row">
               <md-input-container class="adress">
                 <label>Country</label>
-                <md-select id="country" ng-model="$ctrl.country"  ng-change="user.city = null" >
+                <md-select id="country" ng-model="user.country"  ng-change="user.city = null" >
                   <md-option value=''><em>None</em></md-option>
                   <md-option  ng-repeat="country in $ctrl.countries" ng-value="country">
                     {{country.country}}
@@ -65,9 +65,9 @@
               
               <md-input-container class="adress">
                 <label>City</label>
-                <md-select id="city" ng-disabled="!$ctrl.country.city" ng-model="user.city">
+                <md-select id="city" ng-disabled="!user.country.city" ng-model="user.city">
                   <md-option><em>None</em></md-option>
-                  <md-option ng-repeat="city in $ctrl.country.city" ng-value="city">
+                  <md-option ng-repeat="city in user.country.city" ng-value="city">
                     {{city}}
                   </md-option>
                 </md-select>
@@ -75,7 +75,7 @@
       
               <md-input-container class="adress">
                 <label>Adress</label>
-                <input type="text" name="lastname" data-ng-model="$ctrl.user.postadress">
+                <input type="text" name="lastname" data-ng-model="user.postadress">
               </md-input-container>
             </div>
           </md-card-content>
