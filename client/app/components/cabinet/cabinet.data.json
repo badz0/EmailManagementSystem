@@ -1,0 +1,46 @@
+[{
+    "id":"1",
+    "nickname":"BigBoss",
+    "email":"fox@gmail.com",
+    "firstname":"Oliver",
+    "lastname":"Quinn",
+    "country":"Australia",
+    "city":"Sidney",
+    "postadress":"Baker str.27/4"
+},{
+    "id":"2",
+    "email":"panda.mail.ru",
+    "nickname":"Devastator",
+    "firstname":"Olena",
+    "lastname":"Kravetz",
+    "country":"Somali",
+    "city":"Some island",
+    "postadress":"Baker str.27/4"
+},{
+    "id":"3",
+    "email":"tiger.mail.ru",
+    "nickname":"Devastator",
+    "firstname":"Volodumur",
+    "lastname":"Zelenskij",
+    "country":"Somali",
+    "city":"Some island",
+    "postadress":"Baker str.27/4"
+},{
+    "id":"4",
+    "email":"hipo.mail.ru",
+    "nickname":"Devastator",
+    "firstname":"John",
+    "lastname":"Doe",
+    "country":"Somali",
+    "city":"Some island",
+    "postadress":"Baker str.27/4"
+},{
+    "id":"5",
+    "email":"pipez.mail.ru",
+    "nickname":"Devastator",
+    "firstname":"batman",
+    "lastname":"robin",
+    "country":"Somali",
+    "city":"Some island",
+    "postadress":"Baker str.27/4"
+}]
