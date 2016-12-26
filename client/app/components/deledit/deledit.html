@@ -82,7 +82,7 @@
       <th>Action:</th>
     </tr>
   <tr ng-repeat="user in $ctrl.users | filter:test | filter:{done:true}" class="info">
-    <td><md-checkbox ng-model="user.done"></md-checkbox> </td>
+    <td><md-checkbox ng-model="user.done"></md-checkbox></td>
     <td>{{user.firstname}}</td>
     <td>{{user.lastname}}</td>
     <td>{{user.age}}</td>
