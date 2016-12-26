@@ -1,8 +1,10 @@
 import configs from './columnChart.configData.js';
 class ColumnChartController {
-  constructor($http) {'ngInject';
-    this.name = 'All received emails sorted by amound and day income';
-   	const chart = AmCharts.makeChart('columnchart', configs);
+  constructor() {
+    this.$onInit = function () {
+      this.name = 'All received emails sorted by amound and day income';
+      AmCharts.makeChart('columnchart', configs);
+    }
   }
 }
 

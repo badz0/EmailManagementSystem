@@ -1,4 +1,4 @@
-let object = {
+const object = {
   'type': 'serial',
   'theme': 'light',
   'marginRight': 40,

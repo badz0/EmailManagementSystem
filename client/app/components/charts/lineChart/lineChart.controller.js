@@ -1,8 +1,10 @@
 import configs from './lineChart.configData.js';
 class LineChartController {
   constructor() {
-    this.name = 'Emails amout sorted by group';
-    AmCharts.makeChart('linechart', configs);
+    this.$onInit = function () {
+      this.name = 'Emails amout sorted by group';
+      AmCharts.makeChart('linechart', configs);
+    }
   }
 }
 

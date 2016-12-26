@@ -1,4 +1,4 @@
-let object = {
+const object = {
   'type': 'pie',
   'theme': 'light',
   'dataProvider': [ {
