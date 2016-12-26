@@ -1,7 +1,6 @@
 import data from './cabinet.data.json';
 import countries from './cabinet.countries.json';
 class CabinetController {
-  constructor() {}
   $onInit () {
     this.name = 'cabinet';
     this.user = data;
