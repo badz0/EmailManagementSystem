@@ -1,9 +1,7 @@
 import * as firebase from 'firebase';
-
 class deleditController {
-    
-    constructor($firebaseArray) {
-        "ngInject";
+  constructor($firebaseArray) {
+    "ngInject";
         const ref = firebase.database().ref();
         this.users = $firebaseArray(ref);
     }    
