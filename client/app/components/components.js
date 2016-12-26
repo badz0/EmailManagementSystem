@@ -1,12 +1,12 @@
 import angular from 'angular';
 import Home from './home/home';
 import About from './about/about';
-import Amcharts3 from './amcharts3/amcharts3';
+import Charts from './charts/charts';
 
 let componentModule = angular.module('app.components', [
   Home,
   About,
-  Amcharts3
+  Charts
 ])
 
 .name;
