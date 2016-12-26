@@ -1,105 +1,114 @@
 import * as firebase from 'firebase';
 
-class volodController {
-  constructor($firebaseArray) {
-    "ngInject";
-    let ref = firebase.database().ref();
-    let vm = this;
-    vm.name = 'volod';
-    vm.users = $firebaseArray(ref);
-    vm.block = [];
-   
-    function clearForm () {
-        vm.firstname = '';
-        vm.lastname = '';
-        vm.age = '';
-        vm.note = '';
+class deleditController {
+    
+    constructor($firebaseArray) {
+        "ngInject";
+        const ref = firebase.database().ref();
+        this.users = $firebaseArray(ref);
+    }    
+    $onInit () {
+    this.name = 'volod';
+    this.block = []; 
+    }
+     
+    clearForm () {
+        this.firstname = '';
+        this.lastname = '';
+        this.age = '';
+        this.note = '';
         }
    
-   vm.showForm = function(){
-        vm.editFormShow = false;
-        vm.addFormShow = true;
-          
-    };
+    showForm(){
+        this.editFormShow = false;
+        this.addFormShow = true;
+    }
     
-    vm.hideForm = function(){
-        vm.addFormShow = false;
-        vm.editFormShow = false;
-        clearForm ();
-    };
+    hideForm(){
+        this.addFormShow = false;
+        this.editFormShow = false;
+        this.clearForm ();
+    }
     
-    vm.AddPerson = function(){
-        vm.users.$add({
-            "firstname" : vm.firstname,
-            "lastname" : vm.lastname,
-            "age" : vm.age
+    AddPerson(){
+        this.users.$add({
+            "firstname" : this.firstname,
+            "lastname" : this.lastname,
+            "age" : this.age,
+            "note" : this.note,
+            "done": "false"
         });
-        console.log(vm.users);
-        clearForm();
-    };
+        console.log(this.users);
+        this.clearForm();
+    }
     
-    vm.showUser = function(user){
-        vm.editFormShow = true;
-        vm.addFormShow = false;
-        vm.note = user.note;
-        vm.id = user.$id;
-        };
+    showUser(user){
+        this.editFormShow = true;
+        this.addFormShow = false;
+        this.note = user.note;
+        this.id = user.$id;
+        }
        
         
-    vm.editFormSubmit = function(){
-        let id = vm.id;
+    editFormSubmit(){
+        let id = this.id;
         console.log(id);
-        var record = vm.users.$getRecord(id);
-        record.note = vm.note;
-        vm.users.$save(record);
-        clearForm();
-        };
+        let record = this.users.$getRecord(id);
+        record.note = this.note;
+        this.users.$save(record);
+        this.clearForm();
+        }
        
-    vm.deleteUser = function(user) {
+    deleteUser(user) {
         if (confirm("Are you sure you want to delete message ?")){
-            vm.users.$remove(user)}
-        };
+            console.log(user);
+            this.users.$remove(user)}
+        }
         
-    vm.remove = function() {
+    remove(user) {
         if (confirm("Are you sure you want to delete marked messages ?")){
-            vm.users.forEach(function(user) {
+            this.users.forEach(function(user) {
+                console.log(user);
         if (user.checked) {
-            vm.users.$remove(user);
-        }})}};
+            console.log(user);
+            let idx = this.users.indexOf(user);
+            this.users.splice(idx,1);
+        }});
+    }}
         
-    vm.checkAll = function () {
-        if (vm.selectedAll) {
-            vm.selectedAll = true;
+   checkAll() {
+        if (this.selectedAll) {
+            this.selectedAll = true;
             } else {
-            vm.selectedAll = false;
+            this.selectedAll = false;
             }
-            vm.users.forEach(function (user) {
-            user.checked = vm.selectedAll;
+            this.users.forEach(function (user) {
+            user.checked = this.selectedAll;
             });
-            };
+            }
             
-    vm.copyFbRecord = function() {
-    let oldRef = vm.users;
-    let newRef = vm.block;
+    copyFbRecord() {
+    let oldRef = this.users;
+    let newRef = this.block;
         if (confirm("Are you sure you want to move marked messages to blocklist ?")){
             oldRef.forEach(function(user) {
         if (user.checked) {
-            let idx = vm.users.indexOf(user);
+            let idx = this.users.indexOf(user);
             newRef.push(user);
             oldRef.splice(idx,1);
         }})}
         console.log(newRef);
-    };
+    }
             
-    vm.deleteUserBlock = function(user) {
+    deleteUserBlock(user) {
         if (confirm("Are you sure you want to delete message ?")){
-            let idx = vm.block.indexOf(user);
-            vm.block.splice(idx,1)}
-    };
+            let idx = this.block.indexOf(user);
+            this.block.splice(idx,1)}
+    }
     
-    vm.copyBack = function() {
-    let oldRef = vm.block;
-    let newRef = vm.users;
+    copyBack() {
+    let oldRef = this.block;
+    let newRef = this.users;
         if (confirm("Are you sure you want to move marked messages back to general list ?")){
             oldRef.forEach(function(user) {
         if (user.checked) {
@@ -108,9 +117,9 @@ class volodController {
             oldRef.splice(idx,1);
         }})}
         console.log(newRef);
-    }}}
+    }}
 
-export default volodController;
+export default deleditController;
 
 
               

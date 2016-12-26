@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 
-var config = {
+let config = {
     apiKey: "AIzaSyBiWix4qE-EzlABq3j1apSBUh3Lw__8R4Y",
     authDomain: "dbase-c7dc2.firebaseapp.com",
     databaseURL: "https://dbase-c7dc2.firebaseio.com",

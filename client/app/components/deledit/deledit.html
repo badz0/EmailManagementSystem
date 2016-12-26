@@ -7,21 +7,21 @@
       <th colspan=6 class="filter"> <input placeholder="Search for..." ng-model="test"></th>
     </tr>
     <tr>
-      <th>Mark:   Check All <md-checkbox aria-label ng-model="$ctrl.selectedAll" ng-click="$ctrl.checkAll()"></md-checkbox><br>
-      Remaining {{$ctrl.users.length}} items</th> 
+      <th>Mark:   Check All <md-checkbox aria-label ng-model="$ctrl.selectedAll" ng-click="$ctrl.checkAll()"></md-checkbox></th> 
       <th>Firstname:</th>
       <th>Lastname:</th>
       <th>Age:</th>
       <th>Notice:</th>
       <th>Action:</th>
     </tr>
-    <tr ng-repeat="user in $ctrl.users | filter:test" class="info">
+    <tr ng-repeat="user in $ctrl.users | filter:test | filter:{done:false}" class="info">
       <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
       <td>{{user.firstname}}</td>
       <td>{{user.lastname}}</td>
       <td>{{user.age}}</td>
       <td>{{user.note}}</td>
       <td>
+        <md-checkbox ng-model="user.done" class="md-raised md-primary md-small">block</md-checkbox>
         <md-button class="md-raised md-primary md-small" ng-click="$ctrl.showUser(user)">note</md-button>
         <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
       </td>
@@ -81,8 +81,8 @@
       <th>Notice:</th>
       <th>Action:</th>
     </tr>
-  <tr ng-repeat="user in $ctrl.block | filter:test" class="info">
-    <td><md-checkbox ng-model="block.checked"></md-checkbox> </td>
+  <tr ng-repeat="user in $ctrl.users | filter:test | filter:{done:true}" class="info">
+    <td><md-checkbox ng-model="user.done"></md-checkbox> </td>
     <td>{{user.firstname}}</td>
     <td>{{user.lastname}}</td>
     <td>{{user.age}}</td>
