@@ -8,13 +8,9 @@ import Grid from './grid/grid';
 let componentModule = angular.module('app.components', [
   Home,
   About,
-<<<<<<< HEAD
   Cabinet,
-  Grid
-=======
-  Firedb,
-  Cabinet
->>>>>>> develop
+  Grid,
+  Firedb
 ])
 
 .name;

@@ -6,11 +6,9 @@ import 'angular-ui-grid/ui-grid.css';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
-import angularfire from 'angularfire';
 import 'normalize.css';
 
 angular.module('app', [
-    angularfire,
     uiRouter,
     'ui.grid',
     Common,
