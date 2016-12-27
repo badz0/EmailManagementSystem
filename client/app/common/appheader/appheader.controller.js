@@ -1,5 +1,5 @@
 class AppheaderController {
-  constructor() {
+  $onInit () {
     this.name = 'appheader';
   }
 }
