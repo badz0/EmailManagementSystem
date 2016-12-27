@@ -12,8 +12,7 @@ const config = {
 class firedbController {
   constructor($firebaseObject) {"ngInject";
     const ref = firebase.database().ref().child('email');
-    const vm = this;
     this.name = 'Hello from Firebase';
-    vm.data = $firebaseObject(ref);}
+    this.data = $firebaseObject(ref);}
 }
 export default firedbController;
