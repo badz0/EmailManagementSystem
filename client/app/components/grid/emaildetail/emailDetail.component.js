@@ -4,7 +4,7 @@ import './emailDetail.scss';
 
 let heroComponent = {
   bindings: {
-    email: '<' 
+    email: '<'
   },
   template,
   controller

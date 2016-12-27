@@ -1,8 +1,7 @@
 class GridController {
   constructor(EmailDetailService) {
     "ngInject";
-    let vm = this;
-    vm.name = 'grid';
+    this.name = 'grid';
   }
 }
 

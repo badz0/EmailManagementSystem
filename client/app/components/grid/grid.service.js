@@ -10,9 +10,9 @@ export class EmailDetailService {
     function emailMatch(email) {
       return email.id === id;
     }
-  
+
     return this.getAllEmails().then(function(about) {
-      return about.find(emailMatch)
+      return about.find(emailMatch);
     });
   }
 }
