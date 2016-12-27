@@ -3,6 +3,7 @@ import uiRouter from 'angular-ui-router';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
+import angularfire from 'angularfire';
 import 'normalize.css';
 import ngMaterial from 'angular-material';
 import angularAnimate from 'angular-animate';
@@ -19,7 +20,8 @@ angular.module('app', [
     angularAnimate,
     angularSanitize,
     angularAria,
-    ngMessages
+    ngMessages,
+    angularfire
   ])
   .config(($locationProvider) => {
     "ngInject";
