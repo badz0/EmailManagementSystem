@@ -1,0 +1,85 @@
+<navbar></navbar>
+  <div>
+    <h1>Found in {{ $ctrl.name }}</h1>
+  </div>
+  <div class="md-padding" ng-cloak layout="column">
+  <md-card>
+    <div layout="row">
+     <md-card class="userImage" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text class="userImage">
+            <span class="md-headline">My cabinet</span>
+            <span class="md-subhead">{{$ctrl.user[0].nickname}}</span>
+            <span class="md-subhead" ng-model="user.email">{{$ctrl.user[0].email}}</span>
+            <md-button style="width:10%" class="imgbuttons small md-warn">Log out</md-button>
+          </md-card-title-text>
+          <md-card-title-text class="userImage">
+            <span class="md-subhead">Name:{{$ctrl.user[0].firstname}}</span>
+            <span class="md-subhead">Surname:{{$ctrl.user[0].lastname}}</span>
+            <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country.country}},{{$ctrl.user[0].postadress}}</span>
+            
+          </md-card-title-text>
+          <md-card-title-media>
+            <div class="md-media-md card-media"><img src="http://vignette2.wikia.nocookie.net/metalgear/images/e/e2/FOXHOUND_Logo.png/revision/latest?cb=20091109152548"></div>
+          </md-card-title-media>
+        </md-card-title>
+        <md-card-actions class="md-media-md card-media" layout="row" layout-align="center">
+        <md-button  class="imgbuttons small">to Incoming messages</md-button>
+          <md-button  class="imgbuttons small">to Blocklist</md-button>
+          <md-button  class="imgbuttons small">to Safelist</md-button>
+          <md-button  class="imgbuttons small">Upload photo</md-button>
+          <md-button  class="imgbuttons small">Delete photo</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <form name="personalForm" ng-submit="$ctrl.submitForm(user)">
+          <md-card-content>
+            <div class="charts" layout="column">
+              <md-input-container class="biography">
+                <label>Name</label>
+                <input type="text" name="firstname" data-ng-model="user.firstname">
+              </md-input-container>
+              
+              <md-input-container class="biography">
+                <label>*Nickname*</label>
+                <input type="text" name="nickname" data-ng-model="user.nickname">
+              </md-input-container>
+              
+              <md-input-container class="biography">
+                <label>Surname</label>
+                <input type="text" name="lastname" data-ng-model="user.lastname">
+              </md-input-container>
+              
+            </div>
+            
+            <div layout="row">
+              <md-input-container class="adress">
+                <label>Country</label>
+                <md-select id="country" ng-model="user.country"  ng-change="user.city = null" >
+                  <md-option value=''><em>None</em></md-option>
+                  <md-option  ng-repeat="country in $ctrl.countries" ng-value="country">
+                    {{country.country}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+              
+              <md-input-container class="adress">
+                <label>City</label>
+                <md-select id="city" ng-disabled="!user.country.city" ng-model="user.city">
+                  <md-option><em>None</em></md-option>
+                  <md-option ng-repeat="city in user.country.city" ng-value="city">
+                    {{city}}
+                  </md-option>
+                </md-select>
+              </md-input-container>
+      
+              <md-input-container class="adress">
+                <label>Adress</label>
+                <input type="text" name="lastname" data-ng-model="user.postadress">
+              </md-input-container>
+            </div>
+          </md-card-content>
+      <md-button class="button submit" layout-align="center"  type="submit">Save changes</md-button>
+    <form>
+  </md-card>
+  <div>
