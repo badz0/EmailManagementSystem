@@ -1,5 +1,14 @@
-<navbar></navbar>
-<h1>{{ $ctrl.name }}</h1>
-<section>
-  About us.
-</section>
+<div layout="column" layout-fill>
+	<header></header>
+	<div class="container" layout="row" flex>
+		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+			<menu></menu>
+		</md-sidenav>
+		<md-content flex class="content">
+		    <h1>{{ $ctrl.name }}</h1>
+			<section>
+			  About us.
+			</section>
+	    </md-content>
+	</div>
+</div>
