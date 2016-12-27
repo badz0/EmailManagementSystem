@@ -1,13 +1,11 @@
 class ChartsController {
-  constructor() {
-    this.$onInit = function () {
-      this.elemsStatus = [
-        {name: 'All letters by date', status: true},
-        {name: 'Sorted by Groups', status: true},
-        {name: 'Sorted by Categoty', status: false}
-      ]; 
-    };
-  }
+  $onInit () {
+    this.elemsStatus = [
+      {name: 'All letters by date', status: true},
+      {name: 'Sorted by Groups', status: true},
+      {name: 'Sorted by Categoty', status: false}
+    ]; 
+  };
   hideElem(index) {
     this.elemsStatus.forEach(val => {
       val.status = true;
