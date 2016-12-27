@@ -6,6 +6,7 @@ import 'angular-ui-grid/ui-grid.css';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
+import angularfire from 'angularfire';
 import 'normalize.css';
 
 angular.module('app', [
@@ -13,7 +14,8 @@ angular.module('app', [
     uiRouter,
     'ui.grid',
     Common,
-    Components
+    Components,
+    angularfire
   ])
   .config(($locationProvider) => {
     "ngInject";
