@@ -7,13 +7,14 @@ import amCharts from 'amcharts3';
 import amChartsSerial from 'amcharts3/amcharts/serial';
 import amChartsPie from 'amcharts3/amcharts/pie';
 import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
-
+import angularfire from 'angularfire';
 import 'normalize.css';
 
 angular.module('app', [
     uiRouter,
     Common,
-    Components
+    Components,
+    angularfire
   ])
   .config(($locationProvider) => {
     "ngInject";
