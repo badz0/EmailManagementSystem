@@ -3,7 +3,6 @@ import controller from './emailDetail.controller';
 import './emailDetail.scss';
 
 let heroComponent = {
-  restrict: 'E',
   bindings: {
     email: '<' 
   },
