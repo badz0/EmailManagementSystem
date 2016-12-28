@@ -12,7 +12,7 @@ let commonModule = angular.module('app.common', [
   AppHeader,
   AppNav
 ])
-  
+
 .name;
 
 export default commonModule;
