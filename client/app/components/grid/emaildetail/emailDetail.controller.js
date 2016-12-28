@@ -1,9 +1,7 @@
-class StudentController {
-  constructor(EmailDetailService) {
-    "ngInject";
-    let vm = this;
-    vm.name = 'Hello dynamic routes';
+class EmailController {
+  $onInit(){
+    this.name = 'Hello dynamic routes';
   }
 }
 
-export default StudentController;
+export default EmailController;

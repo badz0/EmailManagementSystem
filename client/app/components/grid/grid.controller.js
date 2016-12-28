@@ -1,8 +1,6 @@
 class GridController {
-  constructor(EmailDetailService) {
-    "ngInject";
+  $onInit(){
     this.name = 'grid';
   }
 }
-
 export default GridController;

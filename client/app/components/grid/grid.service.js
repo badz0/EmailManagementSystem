@@ -7,12 +7,8 @@ export class EmailDetailService {
     return this.$http.get('https://myapp-45978.firebaseio.com/.json').then(response => response.data);
   }
   getEmail(id) {
-    function emailMatch(email) {
-      return email.id === id;
-    }
-
-    return this.getAllEmails().then(function(about) {
-      return about.find(emailMatch);
+    return this.getAllEmails().then(function(grid) {
+      return grid.find((email) => {return email.id === id});
     });
   }
 }
