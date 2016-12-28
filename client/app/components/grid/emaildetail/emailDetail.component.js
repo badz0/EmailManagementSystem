@@ -2,7 +2,7 @@ import template from './emailDetail.html';
 import controller from './emailDetail.controller';
 import './emailDetail.scss';
 
-let heroComponent = {
+let gridComponent = {
   bindings: {
     email: '<'
   },
@@ -10,4 +10,4 @@ let heroComponent = {
   controller
 };
 
-export default heroComponent;
+export default gridComponent;
