@@ -2,33 +2,36 @@
      <h1>Hello {{ $ctrl.name }}</h1>
 <section class="$ctrl">
 <table border=1 width=100%>
-  <caption>General List</caption>
+  <caption>Safe List</caption>
     <tr>
-      <th colspan=6 class="filter"> <input placeholder="Search for..." ng-model="test"></th>
+      <th colspan=7 class="filter"> <input placeholder="Search for..." ng-model="test"></th>
     </tr>
     <tr>
-      <th>Mark:   Check All <md-checkbox aria-label ng-model="$ctrl.selectedAll" ng-click="$ctrl.checkAll()"></md-checkbox></th> 
+      <th>Remove:<br><button ng-click="$ctrl.checkAll()">check</button>
+      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th> 
+      <th>Move to blocklist:<br><button ng-click="$ctrl.checkAllBlock()">check</button>
+      <button ng-click="$ctrl.uncheckAllBlock()">uncheck</button>
+      </th>
       <th>Firstname:</th>
       <th>Lastname:</th>
       <th>Age:</th>
       <th>Notice:</th>
       <th>Action:</th>
     </tr>
-    <tr ng-repeat="user in $ctrl.users | filter:test | filter:{done:false}" class="info">
+    <tr ng-repeat="user in $ctrl.users | filter:test | filter:{isSafe:true}" class="info">
       <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
+      <td><md-checkbox ng-model="user.isSafe"> blocklist</md-checkbox></td>
       <td>{{user.firstname}}</td>
       <td>{{user.lastname}}</td>
       <td>{{user.age}}</td>
       <td>{{user.note}}</td>
       <td>
-        <md-checkbox ng-model="user.done" class="md-raised md-primary md-small">block</md-checkbox>
         <md-button class="md-raised md-primary md-small" ng-click="$ctrl.showUser(user)">note</md-button>
         <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
       </td>
     </tr>
 </table>
 
-    
 <form  ng-submit="$ctrl.AddPerson()"  ng-show="$ctrl.addFormShow">
   <md-content class="md-no-momentum">
   <md-input-container class="md-icon-float md-block">
@@ -64,35 +67,37 @@
 </form>
 
 <md-button class="md-raised md-warn" ng-click="$ctrl.remove()">Remove marked</md-button>
-<md-button class="md-raised md-warn" ng-click="$ctrl.copyFbRecord()">Move to blocklist</md-button>
 <md-button class="md-raised md-green" ng-click="$ctrl.showForm()"  ng-hide="$ctrl.addFormShow">Add</md-button>
 <md-button class="md-raised md-green" ng-click="$ctrl.hideForm()"  ng-show="$ctrl.addFormShow">Close</md-button>
     
 <table border=1 width=100%>
   <caption>Block List</caption>
     <tr>
-      <th colspan=6 class="filter"> <input placeholder="Search for..." ng-model="test"></th>
+      <th colspan=7 class="filter"> <input placeholder="Search for..." ng-model="test"></th>
     </tr>
     <tr>
-      <th>Mark:</th> 
+      <th>Remove:<br><button ng-click="$ctrl.checkAll()">check</button>
+      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th> 
+      <th>Move to safelist:<br><button ng-click="$ctrl.checkAllBlock()">check</button>
+      <button ng-click="$ctrl.uncheckAllBlock()">uncheck</button>
+      </th> 
       <th>Firstname:</th>
       <th>Lastname:</th>
       <th>Age:</th>
       <th>Notice:</th>
       <th>Action:</th>
     </tr>
-  <tr ng-repeat="user in $ctrl.users | filter:test | filter:{done:true}" class="info">
-    <td><md-checkbox ng-model="user.done"></md-checkbox></td>
+  <tr ng-repeat="user in $ctrl.users | filter:test | filter:{isSafe:false}" class="info">
+    <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
+    <td><md-checkbox ng-model="user.isSafe">Safelist</md-checkbox></td>
     <td>{{user.firstname}}</td>
     <td>{{user.lastname}}</td>
     <td>{{user.age}}</td>
     <td>{{user.note}}</td>
     <td >
-    <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUserBlock(user)"> del</md-button>
+    <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
     </td>
   </tr>
 </table>
-
-<md-button class="md-raised md-warn" ng-click="$ctrl.copyBack()">Move back to general</md-button>
-
+<md-button class="md-raised md-warn" ng-click="$ctrl.remove()">Remove marked</md-button>
 </section>
