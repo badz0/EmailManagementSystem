@@ -17,14 +17,12 @@ let cabinetModule = angular.module('cabinet', [
   ngMessages
 ])
 
-.config(($stateProvider, $urlRouterProvider) => {
+.config(($stateProvider) => {
   "ngInject";
-
-  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('cabinet', {
-      url: '/',
+      url: '/cabinet',
       component: 'cabinet'
     });
 })
