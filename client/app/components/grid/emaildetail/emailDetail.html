@@ -1,21 +1,21 @@
 <div layout="column" layout-fill>
-	<appheader></appheader>
-	<div class="container" layout="row" flex>
-		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-			<appnav></appnav>
-		</md-sidenav>
-		<md-content flex class="content">
-		    
-		<h1>{{ $ctrl.name }}</h1>
+    <appheader></appheader>
+    <div class="container" layout="row" flex>
+        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+            <appnav></appnav>
+        </md-sidenav>
+        <md-content flex class="content">
 
-		<h3>A emailDetail!</h3>
-		<div class="email-data">
-		    <div>Name: {{$ctrl.email.name}}</div>
-		    <div>Subject: {{$ctrl.email.subject}}</div>
-		    <div>Email: {{$ctrl.email.email}}</div>
-		</div>
+            <h1>{{ $ctrl.name }}</h1>
 
-		<button ui-sref="grid">Back</button>
-	    </md-content>
-	</div>
+            <h3>A emailDetail!</h3>
+            <div class="email-data">
+                <div>Name: {{$ctrl.email.name}}</div>
+                <div>Subject: {{$ctrl.email.subject}}</div>
+                <div>Email: {{$ctrl.email.email}}</div>
+            </div>
+
+            <button ui-sref="grid">Back</button>
+        </md-content>
+    </div>
 </div>
