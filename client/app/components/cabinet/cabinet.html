@@ -1,8 +1,11 @@
-<navbar></navbar>
-  <div>
-    <h1>Found in {{ $ctrl.name }}</h1>
-  </div>
-  <div class="md-padding" ng-cloak layout="column">
+<div layout="column" layout-fill>
+  <appheader></appheader>
+  <div class="container" layout="row" flex>
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+      <appnav></appnav>
+    </md-sidenav>
+    <md-content flex class="content">
+        <div class="md-padding" ng-cloak layout="column">
   <md-card>
     <div layout="row">
      <md-card class="userImage" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
@@ -83,3 +86,8 @@
     <form>
   </md-card>
   <div>
+
+      </md-content>
+  </div>
+</div>
+  
