@@ -21,10 +21,10 @@
     <tr ng-repeat="user in $ctrl.users | filter:test | filter:{isSafe:true}" class="info">
       <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
       <td><md-checkbox ng-model="user.isSafe"> blocklist</md-checkbox></td>
-      <td>{{user.firstname}}</td>
-      <td>{{user.lastname}}</td>
-      <td>{{user.age}}</td>
-      <td>{{user.note}}</td>
+      <td>{{user.recipient}}</td>
+			<td>{{user.subject}}</td>
+			<td>{{user.date}}</td>
+			<td>{{user.group}}</td>
       <td>
         <md-button class="md-raised md-primary md-small" ng-click="$ctrl.showUser(user)">note</md-button>
         <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
@@ -90,10 +90,10 @@
   <tr ng-repeat="user in $ctrl.users | filter:test | filter:{isSafe:false}" class="info">
     <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
     <td><md-checkbox ng-model="user.isSafe">Safelist</md-checkbox></td>
-    <td>{{user.firstname}}</td>
-    <td>{{user.lastname}}</td>
-    <td>{{user.age}}</td>
-    <td>{{user.note}}</td>
+    <td>{{user.recipient}}</td>
+		<td>{{user.subject}}</td>
+		<td>{{user.date}}</td>
+		<td>{{user.group}}</td>
     <td >
     <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
     </td>
