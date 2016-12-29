@@ -1,5 +1,11 @@
-<navbar></navbar>
-     <h1>Hello {{ $ctrl.name }}</h1>
+<div layout="column" layout-fill>
+	<appheader></appheader>
+	<div class="container" layout="row" flex>
+		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+			<appnav></appnav>
+		</md-sidenav>
+		  <md-content flex class="content">
+      <h1>Hello {{ $ctrl.name }}</h1>
 <section class="$ctrl">
 <table border=1 width=100%>
   <caption>Safe List</caption>
@@ -20,11 +26,11 @@
     </tr>
     <tr ng-repeat="user in $ctrl.users | filter:test | filter:{isSafe:true}" class="info">
       <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
-      <td><md-checkbox ng-model="user.isSafe"> blocklist</md-checkbox></td>
+      <td><md-checkbox ng-model="user.isSafe" ng-click="$ctrl.safeOrBlock()"> blocklist</md-checkbox></td>
       <td>{{user.recipient}}</td>
-			<td>{{user.subject}}</td>
-			<td>{{user.date}}</td>
-			<td>{{user.group}}</td>
+      <td>{{user.subject}}</td>
+      <td>{{user.date}}</td>
+      <td>{{user.group}}</td>
       <td>
         <md-button class="md-raised md-primary md-small" ng-click="$ctrl.showUser(user)">note</md-button>
         <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
@@ -91,9 +97,9 @@
     <td><md-checkbox ng-model="user.checked"></md-checkbox> </td>
     <td><md-checkbox ng-model="user.isSafe">Safelist</md-checkbox></td>
     <td>{{user.recipient}}</td>
-		<td>{{user.subject}}</td>
-		<td>{{user.date}}</td>
-		<td>{{user.group}}</td>
+    <td>{{user.subject}}</td>
+    <td>{{user.date}}</td>
+    <td>{{user.group}}</td>
     <td >
     <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
     </td>
@@ -101,3 +107,6 @@
 </table>
 <md-button class="md-raised md-warn" ng-click="$ctrl.remove()">Remove marked</md-button>
 </section>
+     </md-content>
+  </div>
+</div>

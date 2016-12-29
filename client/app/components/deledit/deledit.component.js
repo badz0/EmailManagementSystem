@@ -4,7 +4,7 @@ import './deledit.css';
 
 let deleditComponent = {
   template,
-  controller
+  controller,
 };
 
 export default deleditComponent;

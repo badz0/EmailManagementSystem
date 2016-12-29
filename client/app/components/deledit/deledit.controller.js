@@ -58,6 +58,16 @@ class deleditController {
     if (user.checked) {
       this.users.$remove(user);
   }})}}
+  
+  safeOrBlock() {
+      this.users.forEach( user => {
+    if (user.isSafe) {
+      this.users.$save(user);
+      } else { 
+      this.users.$save(user);
+      }})
+      }
+  
   checkAll () {
     this.users.forEach( user => {
       user.checked = true;
@@ -66,16 +76,18 @@ class deleditController {
   uncheckAll () {
     this.users.forEach( user => {
       user.checked = false;
-    })}
+  })}
   
   checkAllBlock () {
     this.users.forEach( user => {
       user.isSafe = true;
+      this.users.$save(user);
       });
   };
   uncheckAllBlock () {
     this.users.forEach( user => {
       user.isSafe = false;
+      this.users.$save(user);
     })}
 }
   
