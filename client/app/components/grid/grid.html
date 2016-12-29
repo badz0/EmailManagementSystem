@@ -1,11 +1,19 @@
-<navbar></navbar>
-<h1>{{ $ctrl.name }}</h1>
-
-<section>
-  <div id="grid1" ui-grid="{ data: $ctrl.grid }" class="grid"></div>
-  <ul>
-    <li ng-repeat="email in $ctrl.grid">
-      <a class="email-data" ui-sref="email({ emailId: email.id })"><span>{{email.name}}</span> - <span>{{email.email}}</span></a>
-    </li>
-  </ul>
-</section>
+<div layout="column" layout-fill>
+	<appheader></appheader>
+	<div class="container" layout="row" flex>
+		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+			<appnav></appnav>
+		</md-sidenav>
+		<md-content flex class="content">
+		    <h1>{{ $ctrl.name }}</h1>
+			<section>
+			  <div id="grid1" ui-grid="{ data: $ctrl.grid }" class="grid"></div>
+			  <ul>
+			      <li ng-repeat="email in $ctrl.grid">
+			          <a class="email-data" ui-sref="email({ emailId: email.id })"><span>{{email.name}}</span> - <span>{{email.email}}</span></a>
+			      </li>
+			  </ul>
+			</section>
+	    </md-content>
+	</div>
+</div>
