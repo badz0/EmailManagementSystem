@@ -25,9 +25,7 @@ let gridModule = angular.module('grid', [
       url: '/email/{emailId}',
       component: 'emailDetail',
       resolve: {
-        email: function(EmailDetailService, $transition$) {
-          return EmailDetailService.getEmail($transition$.params().emailId);
-        }
+        email: (EmailDetailService, $transition$) => EmailDetailService.getEmail($transition$.params().emailId)
       }
     });
 })
