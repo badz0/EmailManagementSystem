@@ -19,7 +19,7 @@ let cabinetModule = angular.module('cabinet', [
 //  angularfire
 ])
 
-.config(($stateProvider, $urlRouterProvider) => {
+.config(($stateProvider) => {
   "ngInject";
   $stateProvider
     .state('cabinet', {
