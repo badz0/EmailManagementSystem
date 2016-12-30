@@ -7,7 +7,7 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
-//import angularfire from 'angularfire';
+
 
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
@@ -16,16 +16,17 @@ let cabinetModule = angular.module('cabinet', [
   angularSanitize,
   angularAria,
   ngMessages
-//  angularfire
 ])
 
-.config(($stateProvider) => {
+.config(($stateProvider,$compileProvider) => {
   "ngInject";
   $stateProvider
     .state('cabinet', {
       url: '/cabinet',
       component: 'cabinet'
     });
+  $compileProvider
+    .preAssignBindingsEnabled(true);  
 })
 
 .component('cabinet', cabinetComponent)

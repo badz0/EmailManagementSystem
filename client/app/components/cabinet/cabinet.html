@@ -12,17 +12,18 @@
               <md-card-title>
                 <md-card-title-text class="userImage">
                   <span class="md-headline">My cabinet</span>
-                  <span class="md-subhead">{{$ctrl.user[1].nickname}}</span>
-                  <span class="md-subhead" ng-model="user.email">{{$ctrl.user[1].email}}</span>
+                  <span class="md-subhead">{{$ctrl.user[9].login}}</span>
+                  <span class="md-subhead" ng-model="user.email">{{$ctrl.user[9].email}}</span>
                   <md-button style="width:10%" class="imgbuttons small md-warn">Log out</md-button>
                 </md-card-title-text>
                 <md-card-title-text class="userImage">
-                  <span class="md-subhead">Name:{{$ctrl.user[1].firstname}}</span>
-                  <span class="md-subhead">Surname:{{$ctrl.user[1].lastname}}</span>
-                  <span class="md-subhead">Adress:{{$ctrl.user[1].city}},{{$ctrl.user[1].country.country}},{{$ctrl.user[1].postadress}}</span>
+                  <span class="md-subhead">Name:{{$ctrl.user[9].name}}</span>
+                  <span class="md-subhead">Surname:{{$ctrl.user[9].surname}}</span>
+                  <span class="md-subhead">{{$ctrl.user[9].birthDay|date:'MMMM dd,yyyy'}}</span>
+                  <span class="md-subhead">Adress:{{$ctrl.user[9].city}},{{$ctrl.user[9].country}},{{$ctrl.user[9].postadress}}</span>
                 </md-card-title-text>
                 <md-card-title-media>
-                  <div class="md-media-md card-media"><img src="http://vignette2.wikia.nocookie.net/metalgear/images/e/e2/FOXHOUND_Logo.png/revision/latest?cb=20091109152548"></div>
+                  <div class="md-media-md card-media"><img src="{{$ctrl.user[9].avatar}}"></div>
                 </md-card-title-media>
               </md-card-title>
               <md-card-actions class="md-media-md card-media" layout="row" layout-align="center">
@@ -39,17 +40,22 @@
                   <div class="bio" layout="column">
                     <md-input-container class="biography">
                       <label>Name</label>
-                      <input type="text" name="firstname" data-ng-model="user.firstname">
+                      <input type="text" name="name" ng-model="user.name">
                     </md-input-container>
                     
                     <md-input-container class="biography">
                       <label>*Nickname*</label>
-                      <input type="text" name="nickname" data-ng-model="user.nickname">
+                      <input type="text" name="login" ng-model="user.login">
                     </md-input-container>
                     
                     <md-input-container class="biography">
                       <label>Surname</label>
-                      <input type="text" name="lastname" data-ng-model="user.lastname">
+                      <input type="text" name="surname" ng-model="user.surname">
+                    </md-input-container>
+                    
+                    <md-input-container class="biography">
+                      <label>Birth date</label>
+                      <md-datepicker ng-model="user.birthDay" name="birthDay"></md-datepicker>
                     </md-input-container>
                     
                   </div>
@@ -88,4 +94,5 @@
     </md-content>
   </div>
 </div>
+
   

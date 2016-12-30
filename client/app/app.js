@@ -19,8 +19,7 @@ angular.module('app', [
     angularAnimate,
     angularSanitize,
     angularAria,
-    ngMessages,
-    angularfire
+    ngMessages
   ])
   .config(($locationProvider) => {
     "ngInject";
