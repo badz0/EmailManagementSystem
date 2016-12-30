@@ -7,7 +7,7 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
-import angularfire from 'angularfire';
+//import angularfire from 'angularfire';
 
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
@@ -15,9 +15,8 @@ let cabinetModule = angular.module('cabinet', [
   angularAnimate,
   angularSanitize,
   angularAria,
-  ngMessages,
-  angularfire
-  
+  ngMessages
+//  angularfire
 ])
 
 .config(($stateProvider, $urlRouterProvider) => {
