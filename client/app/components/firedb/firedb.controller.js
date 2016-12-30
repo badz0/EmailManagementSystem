@@ -14,7 +14,6 @@ class firedbController {
     const ref = firebase.database().ref().child('email');
     this.name = 'Hello from Firebase';
     this.data = $firebaseObject(ref);
-    console.log(this.data);
   }
 }
 export default firedbController;
