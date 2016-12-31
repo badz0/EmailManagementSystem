@@ -1,7 +1,7 @@
 <div layout="column" layout-fill>
   <appheader></appheader>
   <div class="container" layout="row" flex>
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+    <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
       <appnav></appnav>
     </md-sidenav>
     <md-content flex class="content">
@@ -20,7 +20,7 @@
             <span class="md-subhead">Name:{{$ctrl.user[0].firstname}}</span>
             <span class="md-subhead">Surname:{{$ctrl.user[0].lastname}}</span>
             <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country.country}},{{$ctrl.user[0].postadress}}</span>
-            
+
           </md-card-title-text>
           <md-card-title-media>
             <div class="md-media-md card-media"><img src="http://vignette2.wikia.nocookie.net/metalgear/images/e/e2/FOXHOUND_Logo.png/revision/latest?cb=20091109152548"></div>
@@ -42,19 +42,19 @@
                 <label>Name</label>
                 <input type="text" name="firstname" data-ng-model="user.firstname">
               </md-input-container>
-              
+
               <md-input-container class="biography">
                 <label>*Nickname*</label>
                 <input type="text" name="nickname" data-ng-model="user.nickname">
               </md-input-container>
-              
+
               <md-input-container class="biography">
                 <label>Surname</label>
                 <input type="text" name="lastname" data-ng-model="user.lastname">
               </md-input-container>
-              
+
             </div>
-            
+
             <div layout="row">
               <md-input-container class="adress">
                 <label>Country</label>
@@ -65,7 +65,7 @@
                   </md-option>
                 </md-select>
               </md-input-container>
-              
+
               <md-input-container class="adress">
                 <label>City</label>
                 <md-select id="city" ng-disabled="!user.country.city" ng-model="user.city">
@@ -75,7 +75,7 @@
                   </md-option>
                 </md-select>
               </md-input-container>
-      
+
               <md-input-container class="adress">
                 <label>Adress</label>
                 <input type="text" name="lastname" data-ng-model="user.postadress">
@@ -90,4 +90,4 @@
       </md-content>
   </div>
 </div>
-  
+

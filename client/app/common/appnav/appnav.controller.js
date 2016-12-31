@@ -1,7 +1,7 @@
 class AppnavController {
   $onInit () {
-    this.name = 'appheader';
-  }
+    this.name = 'appnav';
+  };
 }
 
 export default AppnavController;

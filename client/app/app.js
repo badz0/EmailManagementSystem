@@ -15,6 +15,7 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
+import 'material-design-icons/iconfont/material-icons.css';
 
 angular.module('app', [
     uiRouter,
@@ -27,11 +28,14 @@ angular.module('app', [
     ngMessages,
     angularfire
   ])
-  .config(($locationProvider) => {
+  .config(($locationProvider, $mdThemingProvider) => {
     "ngInject";
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
+    $mdThemingProvider.theme('default')
+    .primaryPalette('teal')
+    .accentPalette('red');
   })
 
   .component('app', AppComponent);
