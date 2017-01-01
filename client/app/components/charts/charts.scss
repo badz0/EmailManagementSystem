@@ -1,11 +1,19 @@
 .charts {
   height: 100%;
-  min-height: 700px; 
+  min-height: 700px;
   h1, h2 {
     text-align: center;
   }
-  .input-list {
-    display: inline;
-    font-size: 18px;
+  .prev {
+    background-color: #FF4081;
+  }
+  .next {
+    background-color: #3F51B5;
+  }
+  .radio-container{
+    margin-left: 43%;
+  }
+  .radio {
+    display: inline-block;
   }
 }

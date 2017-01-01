@@ -8,6 +8,8 @@ import chartsComponent from './charts.component';
 import columnChartComponent from './columnChart/columnChart.component';
 import lineChartComponent from './lineChart/lineChart.component';
 import pieChartComponent from './pieChart/pieChart.component';
+import multipleChartComponent from './multipleChart/multipleChart.component';
+import chartsFactory from './charts.factory.js';
 
 
 let ChartsModule = angular.module('charts', [
@@ -28,8 +30,10 @@ let ChartsModule = angular.module('charts', [
 .component('columnChart', columnChartComponent)
 .component('lineChart', lineChartComponent)
 .component('pieChart', pieChartComponent)
+.component('multipleChart', multipleChartComponent)
+.factory('chartsFactory', chartsFactory)
 
-  
+
 .name;
 
 export default ChartsModule;
