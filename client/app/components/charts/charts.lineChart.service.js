@@ -7,7 +7,7 @@ let arr = [];
 
   data.$loaded().then(() => {
     data.forEach((val) => {
-      arr.push({ value: val.listOfEmails.length});
+      arr.push({ provider: val.name, letters: val.listOfEmails.length });
     });
       console.log(arr);
    }).catch((e) => {
@@ -16,31 +16,7 @@ let arr = [];
       AmCharts.makeChart('linechart', {
         'type': 'serial',
         'theme': 'dark',
-        'dataProvider': [ {
-          'provider': 'Twitter',
-          'letters': 1809
-        }, {
-          'provider': 'Facebook',
-          'letters': 1322
-        }, {
-          'provider': 'Family',
-          'letters': 1122
-        }, {
-          'provider': 'Work',
-          'letters': 1114
-        }, {
-          'provider': 'Personal',
-          'letters': 984
-        }, {
-          'provider': 'Spam',
-          'letters': 711
-        }, {
-          'provider': 'Deleted',
-          'letters': 665
-        }, {
-          'provider': 'Arhived',
-          'letters': 580
-        }],
+        'dataProvider': arr,
         'valueAxes': [ {
           'gridColor': '#000000',
           'gridAlpha': 0.2,

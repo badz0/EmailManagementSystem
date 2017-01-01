@@ -1,11 +1,12 @@
 import * as firebase from "firebase";
 
 class ChartsController {
-  constructor(columnChartService, lineChartService, multipleChartService, pieChartService, chartsFactory) {'ngInject';
+  constructor(columnChartService, lineChartService, multipleChartService, pieChartService, chartsFactory, globalHardcodeConfigFactory) {'ngInject';
     this.currentNavItem = chartsFactory.currentNavItem();
     this.elemsStatus = chartsFactory.elemsStatus();
+    this.configs = globalHardcodeConfigFactory.configs();
   };
-  priviousItem() {
+  previousItem() {
     if(this.currentNavItem === 0) this.currentNavItem = this.elemsStatus.length;
     this.currentNavItem -= 1;
   };
