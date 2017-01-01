@@ -1,4 +1,4 @@
-<div layout="column" layout-fill>
+<!-- <div layout="column" layout-fill> -->
   <appheader></appheader>
   <div class="container" layout="row" flex>
     <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
@@ -6,20 +6,6 @@
     </md-sidenav>
     <md-content flex class="content">
        <section class="charts">
-          <!-- <h1>{{ $ctrl.name }}</h1>
-          <div class="input-list" ng-repeat="input in $ctrl.elemsStatus">
-            <md-button ng-click="$ctrl.hideElem($index)" class="md-raised md-primary">{{input.name}}</md-button>
-          </div>
-          <div class="column-chart">
-            <column-chart  ng-hide="$ctrl.elemsStatus[0].status"></column-chart>
-          </div>
-          <div class="line-chart">
-            <line-chart  ng-hide="$ctrl.elemsStatus[1].status"></line-chart>
-          </div>
-          <div class="pie-chart">
-            <pie-chart ng-hide="$ctrl.elemsStatus[2].status"></pie-chart>
-          </div> -->
-          <h1>{{ $ctrl.name }}</h1>
   <md-content >
     <md-tabs md-dynamic-height md-border-bottom md-selected="$ctrl.currentNavItem">
       <md-tab label="Column Chart">
@@ -32,45 +18,46 @@
                 </div>
                 <md-button class="next" ng-click="$ctrl.nextItem()">Next</md-button>
               </section>
-            <column-chart></column-chart>
+              <div id="columnchart" class="charts-view"></div>
           <md-content>
+
       </md-tab>
     <md-tab label="Pie Chart" md-selected>
         <md-content class="md-padding">
           <h1 ng-bind="$ctrl.elemsStatus[1].name"></h1>
-<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+            <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
                 <div layout="row" layout-align="start center" flex>
                   <md-button class="prev" ng-click="$ctrl.priviousItem()">Prev</md-button>
                   <span flex></span>
                 </div>
                 <md-button class="next" ng-click="$ctrl.nextItem()">Next</md-button>
               </section>
-           <line-chart ></line-chart>
+           <div id="piechart" class="charts-view"></div>
         </md-content>
       </md-tab>
       <md-tab label="Line Chart">
         <md-content class="md-padding">
           <h1 ng-bind="$ctrl.elemsStatus[2].name"></h1>
-<section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
-                <div layout="row" layout-align="start center" flex>
-                  <md-button class="prev" ng-click="$ctrl.priviousItem()">Prev</md-button>
-                  <span flex></span>
-                </div>
-                <md-button class="next" ng-click="$ctrl.nextItem()">Next</md-button>
-              </section>
-           <pie-chart></pie-chart>
+          <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+            <div layout="row" layout-align="start center" flex>
+              <md-button class="prev" ng-click="$ctrl.priviousItem()">Prev</md-button>
+              <span flex></span>
+            </div>
+            <md-button class="next" ng-click="$ctrl.nextItem()">Next</md-button>
+          </section>
+          <div id="linechart" class="charts-view"></div>
         </md-content>
       <md-tab label="Multiple Charts">
         <md-content class="md-padding">
-           <h1 ng-bind="$ctrl.elemsStatus[3].name"></h1>
-              <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
-                <div layout="row" layout-align="start center" flex>
-                  <md-button class="prev" ng-click="$ctrl.priviousItem()">Prev</md-button>
-                  <span flex></span>
-                </div>
-                <md-button class="next" ng-click="$ctrl.nextItem()">Next</md-button>
-              </section>
-           <multiple-chart></multiple-chart>
+          <h1 ng-bind="$ctrl.elemsStatus[3].name"></h1>
+          <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+            <div layout="row" layout-align="start center" flex>
+              <md-button class="prev" ng-click="$ctrl.priviousItem()">Prev</md-button>
+              <span flex></span>
+            </div>
+            <md-button class="next" ng-click="$ctrl.nextItem()">Next</md-button>
+          </section>
+          <div id="multiple" class="charts-view"></div>
         </md-content>
       </md-tab>
     </md-tabs>

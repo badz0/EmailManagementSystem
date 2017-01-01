@@ -1,4 +1,19 @@
-const object = {
+import * as firebase from "firebase";
+
+function multipleChartService(chartsFactory, $firebaseObject) {'ngInject';
+let arr = [];
+  const ref = firebase.database().ref().child('user');
+  const data = $firebaseObject(ref);
+
+  data.$loaded().then(() => {
+    data.forEach((val) => {
+      arr.push({ value: val.listOfEmails.length});
+    });
+      console.log(arr);
+   }).catch((e) => {
+      console.log(e);
+   }).then(() => {
+      AmCharts.makeChart('multiple', {
   'type': 'serial',
   'theme': 'light',
   'legend': {
@@ -132,6 +147,9 @@ const object = {
     'gridAlpha': 0,
     'position': 'top'
   }
+});
+    }).catch((e) => {
+   });
 };
-    
-export default object;
+
+export default multipleChartService;

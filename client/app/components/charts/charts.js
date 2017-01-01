@@ -5,11 +5,15 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
-import columnChartComponent from './columnChart/columnChart.component';
-import lineChartComponent from './lineChart/lineChart.component';
-import pieChartComponent from './pieChart/pieChart.component';
-import multipleChartComponent from './multipleChart/multipleChart.component';
+
+
 import chartsFactory from './charts.factory.js';
+
+import columnChartService from './charts.columnChart.service';
+import lineChartService from './charts.lineChart.service';
+import multipleChartService from './charts.multipleChart.service';
+import pieChartService from  './charts.pieChart.service';
+
 
 
 let ChartsModule = angular.module('charts', [
@@ -27,11 +31,13 @@ let ChartsModule = angular.module('charts', [
 })
 
 .component('charts', chartsComponent)
-.component('columnChart', columnChartComponent)
-.component('lineChart', lineChartComponent)
-.component('pieChart', pieChartComponent)
-.component('multipleChart', multipleChartComponent)
+
+
 .factory('chartsFactory', chartsFactory)
+.service('columnChartService', columnChartService)
+.service('lineChartService', lineChartService)
+.service('multipleChartService', multipleChartService)
+.service('pieChartService', pieChartService)
 
 
 .name;
