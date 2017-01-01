@@ -1,4 +1,4 @@
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
 
 class ChartsController {
   constructor(columnChartService, lineChartService, multipleChartService, pieChartService, chartsFactory, globalHardcodeConfigFactory) {'ngInject';
