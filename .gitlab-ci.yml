@@ -1,0 +1,15 @@
+image: node:4.6.1
+pages:
+  stage: deploy
+  cache:
+    paths:
+    - node_modules/
+  only:
+  - master
+
+  script:
+  - npm update
+  - npm run build
+  artifacts:
+    paths:
+    - public
