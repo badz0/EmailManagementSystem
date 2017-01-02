@@ -10,7 +10,7 @@ import columnChartService from './charts.columnChart.service';
 import lineChartService from './charts.lineChart.service';
 import multipleChartService from './charts.multipleChart.service';
 import pieChartService from  './charts.pieChart.service';
-import chartsFirebaseFactory from './charts.firebaseData.factory';
+import chartsFirebaseDataFactory from './charts.firebaseData.factory';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
@@ -29,13 +29,12 @@ let ChartsModule = angular.module('charts', [
 .component('charts', chartsComponent)
 
 .factory('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
-.factory('chartsFirebaseFactory', chartsFirebaseFactory)
+.factory('chartsFirebaseDataFactory', chartsFirebaseDataFactory)
 
 .service('columnChartService', columnChartService)
 .service('lineChartService', lineChartService)
 .service('multipleChartService', multipleChartService)
 .service('pieChartService', pieChartService)
-
 
 .name;
 

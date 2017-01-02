@@ -1,6 +1,5 @@
-function columnChartService($log, chartsFirebaseFactory) {'ngInject';
-
-  chartsFirebaseFactory.columnChart().then((res) => {
+function columnChartService($log, chartsFirebaseDataFactory) {'ngInject';
+  chartsFirebaseDataFactory.columnChart().then((res) => {
     AmCharts.makeChart('columnchart', {
       'type': 'serial',
       'theme': 'light',

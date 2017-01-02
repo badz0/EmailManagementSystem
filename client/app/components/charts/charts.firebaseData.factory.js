@@ -1,16 +1,16 @@
 import * as firebase from 'firebase';
 
-function chartsFirebaseFactory($firebaseObject, $log) {'ngInject';
+function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
+
   const ref = firebase.database().ref();
   const user = $firebaseObject(ref.child('user'));
   const email = $firebaseObject(ref.child('email'));
   const multy = $firebaseObject(ref.child('charts').child('Multuple'));
-  $log.warn('FireBASE', multy);
+
   return {
     lineChart() {
       return user.$loaded().then((response) => {
         let arr = [];
-        $log.log('response', response);
         user.forEach((val) => {
           arr.push({ provider: val.name, letters: val.listOfEmails.length });
         });
@@ -47,4 +47,4 @@ function chartsFirebaseFactory($firebaseObject, $log) {'ngInject';
   };
 };
 
-export default chartsFirebaseFactory;
+export default chartsFirebaseDataFactory;
