@@ -1,6 +1,6 @@
 
 function pieChartService($log, chartsFirebaseFactory) {'ngInject';
-chartsFirebaseFactory.pieChart().then((res) => {
+  chartsFirebaseFactory.pieChart().then((res) => {
     AmCharts.makeChart('piechart', {
       'type': 'pie',
       'theme': 'light',

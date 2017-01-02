@@ -1,7 +1,6 @@
 function lineChartService($log, chartsFirebaseFactory) {'ngInject';
-
   chartsFirebaseFactory.lineChart().then((res) => {
-  AmCharts.makeChart('linechart', {
+    AmCharts.makeChart('linechart', {
       'type': 'serial',
       'theme': 'dark',
       'dataProvider': res,
@@ -33,7 +32,7 @@ function lineChartService($log, chartsFirebaseFactory) {'ngInject';
       }
     });
   }).catch((e) => {
-      $log.log(e);;
+    $log.log(e);;
   });
 };
 

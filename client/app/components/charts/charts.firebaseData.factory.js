@@ -1,16 +1,16 @@
 import * as firebase from 'firebase';
 
 function chartsFirebaseFactory($firebaseObject, $log) {'ngInject';
-    const ref = firebase.database().ref();
-    const user = $firebaseObject(ref.child('user'));
-    const email = $firebaseObject(ref.child('email'));
-    const multy = $firebaseObject(ref.child('charts').child('Multuple'))
-    $log.warn("FireBASE", multy)
+  const ref = firebase.database().ref();
+  const user = $firebaseObject(ref.child('user'));
+  const email = $firebaseObject(ref.child('email'));
+  const multy = $firebaseObject(ref.child('charts').child('Multuple'));
+  $log.warn('FireBASE', multy);
   return {
     lineChart() {
-        return user.$loaded().then((response) => {
+      return user.$loaded().then((response) => {
         let arr = [];
-        $log.log("response", response);
+        $log.log('response', response);
         user.forEach((val) => {
           arr.push({ provider: val.name, letters: val.listOfEmails.length });
         });
@@ -23,7 +23,7 @@ function chartsFirebaseFactory($firebaseObject, $log) {'ngInject';
         email.forEach((val) => {
           arr.push({Group: val.group, letters: val.id});
         });
-      return arr;
+        return arr;
       });
     },
     columnChart() {
@@ -32,7 +32,7 @@ function chartsFirebaseFactory($firebaseObject, $log) {'ngInject';
         email.forEach((val) => {
           arr.push({'date': val.date, 'value': val.id});
         });
-      return arr;
+        return arr;
       });
     },
     multipleChart() {
@@ -41,7 +41,7 @@ function chartsFirebaseFactory($firebaseObject, $log) {'ngInject';
         multy.forEach((val) => {
           arr.push({'date': val.date, 'Vlad': val.Vlad, 'Styopa': val.Styopa, 'Andy': val.Andy});
         });
-      return arr;
+        return arr;
       });
     }
   };

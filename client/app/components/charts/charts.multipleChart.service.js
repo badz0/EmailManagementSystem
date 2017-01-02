@@ -1,5 +1,5 @@
 function multipleChartService($log, chartsFirebaseFactory) {'ngInject';
-chartsFirebaseFactory.multipleChart().then((res) => {
+  chartsFirebaseFactory.multipleChart().then((res) => {
     AmCharts.makeChart('multiple', {
       'type': 'serial',
       'theme': 'light',
