@@ -5,7 +5,7 @@ pages:
     paths:
     - node_modules/
   only:
-  - master
+  - lv_ems_214_configFile
 
   script:
   - npm update
