@@ -5,13 +5,12 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
-import chartsFactory from './charts.factory.js';
 import globalHardcodeConfigFactory from '../../app.globalHardcodeConfig.js';
 import columnChartService from './charts.columnChart.service';
 import lineChartService from './charts.lineChart.service';
 import multipleChartService from './charts.multipleChart.service';
 import pieChartService from  './charts.pieChart.service';
-
+import chartsFirebaseFactory from './charts.firebaseData.factory';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
@@ -29,8 +28,8 @@ let ChartsModule = angular.module('charts', [
 
 .component('charts', chartsComponent)
 
-.factory('chartsFactory', chartsFactory)
 .factory('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
+.factory('chartsFirebaseFactory', chartsFirebaseFactory)
 
 .service('columnChartService', columnChartService)
 .service('lineChartService', lineChartService)

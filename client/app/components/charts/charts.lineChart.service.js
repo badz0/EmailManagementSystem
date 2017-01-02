@@ -1,22 +1,10 @@
-import * as firebase from 'firebase';
+function lineChartService($log, chartsFirebaseFactory) {'ngInject';
 
-function lineChartService(chartsFactory, $firebaseObject, $log) {'ngInject';
-  let arr = [];
-  const ref = firebase.database().ref().child('user');
-  const data = $firebaseObject(ref);
-
-  data.$loaded().then(() => {
-    data.forEach((val) => {
-      arr.push({ provider: val.name, letters: val.listOfEmails.length });
-    });
-    $log.log('linechart', arr);
-  }).catch((e) => {
-    $log.log(e);
-  }).then(() => {
-    AmCharts.makeChart('linechart', {
+  chartsFirebaseFactory.lineChart().then((res) => {
+  AmCharts.makeChart('linechart', {
       'type': 'serial',
       'theme': 'dark',
-      'dataProvider': arr,
+      'dataProvider': res,
       'valueAxes': [ {
         'gridColor': '#000000',
         'gridAlpha': 0.2,
@@ -45,7 +33,7 @@ function lineChartService(chartsFactory, $firebaseObject, $log) {'ngInject';
       }
     });
   }).catch((e) => {
-    $log.log(e);
+      $log.log(e);;
   });
 };
 

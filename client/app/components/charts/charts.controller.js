@@ -1,10 +1,11 @@
 import * as firebase from 'firebase';
 
 class ChartsController {
-  constructor(columnChartService, lineChartService, multipleChartService, pieChartService, chartsFactory, globalHardcodeConfigFactory) {'ngInject';
-    this.currentNavItem = chartsFactory.currentNavItem();
-    this.elemsStatus = chartsFactory.elemsStatus();
-    this.configs = globalHardcodeConfigFactory.configs();
+  constructor(columnChartService, lineChartService, multipleChartService, pieChartService, globalHardcodeConfigFactory) {'ngInject';
+    const configData = globalHardcodeConfigFactory.chartConfigs();
+    this.currentNavItem = configData.currentNavItem;
+    this.elemsStatus = configData.tags;
+    this.btnConfigs = configData;
   };
   previousItem() {
     if(this.currentNavItem === 0) this.currentNavItem = this.elemsStatus.length;

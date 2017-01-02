@@ -1,15 +1,6 @@
-import * as firebase from 'firebase';
+function columnChartService($log, chartsFirebaseFactory) {'ngInject';
 
-function columnChartService(chartsFactory, $firebaseObject, $log) {'ngInject';
-  let arr = [];
-  const ref = firebase.database().ref().child('email');
-  const data = $firebaseObject(ref);
-
-  data.$loaded().then(() => {
-    data.forEach((val) => {
-      arr.push({'date': val.date, 'value': val.id});
-    });
-    $log.log('Date', arr);
+chartsFirebaseFactory.columnChart().then((res) => {
     AmCharts.makeChart('columnchart', {
       'type': 'serial',
       'theme': 'light',
@@ -85,14 +76,8 @@ function columnChartService(chartsFactory, $firebaseObject, $log) {'ngInject';
       'export': {
         'enabled': true
       },
-      'dataProvider': arr
+      'dataProvider': res
     });
-
-  }).catch((e) => {
-    $log.log(e);
-  }).then(() => {
-    $log.log('here', arr);
-
   }).catch((e) => {
     $log.log(e);
   });
