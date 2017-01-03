@@ -15,6 +15,15 @@ class CabinetController {
       user.country=user.country.country||'';
       angular.extend(this.user[9],user);
       firebase.database().ref().child('user/9').update(this.user[9]);
+      user.name="";
+      user.surname="";
+      user.login="";
+      user.city="";
+      user.postadress="";
+      user.birthDay="";
+  }
+  deleteAvatar(){
+     firebase.storage().ref().child('user9/9.jpg').delete();
   }
 }
 
