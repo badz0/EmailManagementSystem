@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 
-function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
+function chartsFirebaseDataFactory($firebaseObject, $log) {'ngInject';
 
   const ref = firebase.database().ref();
   const user = $firebaseObject(ref.child('user'));
@@ -8,6 +8,13 @@ function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
   const multy = $firebaseObject(ref.child('charts').child('Multuple'));
 
   return {
+    allUser() {
+      return user.$loaded().then((response) => {
+        return user
+      }).catch((e) =>  {
+        $log.log(e)
+      })
+    },
     lineChart() {
       return user.$loaded().then((response) => {
         let arr = [];

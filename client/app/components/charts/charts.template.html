@@ -8,7 +8,15 @@
   </md-sidenav>
   <md-content flex class="content">
     <section class="charts">
-      <md-content>
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Global Data Statistics</span>
+        </h2>
+        <span flex></span>
+      </div>
+    </md-toolbar>
+    <section class="global-chart">
         <md-tabs  md-dynamic-height
                   md-border-bottom
                   md-selected="$ctrl.currentNavItem">
@@ -47,7 +55,78 @@
             </md-radio-button>
           </md-radio-group>
         </section>
+        </section>
+
+  <md-content>
+  <md-toolbar>
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>User Data Statistics</span>
+        </h2>
+      </div>
+    </md-toolbar>
+    <md-list class="containerVertical" flex>
+   <md-list-item  class="md-3-line md-list-item"
+                  ng-repeat="item in $ctrl.usersList"
+                  ng-click="null"><h1>{{$index}}</h1>
+          <img  ng-src="{{item.avatar}}?{{$index}}"
+                class="md-avatar"
+                alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }} {{item.surname}}</h3>
+            <h4>{{ item.email }}</h4>
+            <h4>{{ item.birthDate }}</h4>
+            <p> <span>{{ item.city}} </span> <span>{{ item.country}} </span></p>
+          </div>
+           <md-button class="md-primary md-raised"
+                      ng-click="$ctrl.al($index)">
+            User Emails
+          </md-button>
+          <md-button  class="md-primary md-raised"
+                      ng-click="$ctrl.showPrerenderedDialog($index)">
+            User Charts
+          </md-button>
+        </md-list-item>
+  </md-list>
+  <div  class="dialog"
+        ng-repeat="item in $ctrl.usersList">
+    <div  class="md-dialog-container"
+          id="di{{$index}}">
+      <md-dialog layout-padding>
+        <h2>Pre-Rendered Dialog {{$index + 1}}</h2>
+        <p>
+          This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
+          template on each opening.
+          <br/><br/>
+          The Dialog Element is a static element in the DOM, which is just visually hidden.<br/>
+          Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
+          we restore the element back into its old DOM position.
+        </p>
+      </md-dialog>
       </md-content>
+      </div>
+      </div>
+      <div class="dialog">
+    <div  class="md-dialog-container"
+          id="usersList">
+      <md-dialog layout-padding>
+        <h2><span>{{$ctrl.user}}</span> {{$ctrl.listOfEmails.length}}</h2>
+        <md-list >
+          <md-list-item class="containerVertical"
+                        ng-repeat="item in $ctrl.listOfEmails"
+                        ng-click="null">
+          <p><span ng-bind="{{$index + 1}}"></span>
+          Date:  <span ng-bind="item.date"></span>
+          Group:  <span ng-bind="item.group"></span>
+          Sender:  <span ng-bind="item.recipient"></span>
+          Subject:  <span ng-bind="item.subject"></span>
+          </p>
+          </md-list-item>
+        </md-list>
+      </md-dialog>
+      </md-content>
+      </div>
+      </div>
     </section>
   </md-content>
 </div>

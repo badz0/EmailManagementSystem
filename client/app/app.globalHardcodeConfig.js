@@ -1,5 +1,5 @@
 function globalHardcodeConfigFactory() {
-  const chartConfig = {
+    return {
     buttons: {
       next: `Next`,
       prev: `Prev`
@@ -16,11 +16,7 @@ function globalHardcodeConfigFactory() {
     ],
     currentNavItem: 0,
   };
-  return {
-    chartConfigs() {
-      return chartConfig;
-    }
-  };
-}
+
+};
 
 export default globalHardcodeConfigFactory;

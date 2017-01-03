@@ -11,20 +11,29 @@ import lineChartService from './charts.lineChart.service';
 import multipleChartService from './charts.multipleChart.service';
 import pieChartService from  './charts.pieChart.service';
 import chartsFirebaseDataFactory from './charts.firebaseData.factory';
+import dragularModule from 'dragular/src/dragularModule';
+import dragularCss from 'dragular/src/dragularSource.css';
+import dragularService from 'dragular/src/dragularService';
+
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
-  ngMaterial
+  ngMaterial,
+  dragularModule
 ])
 
-.config(($stateProvider) => {
+.config(($stateProvider, $mdIconProvider) => {
   'ngInject';
   $stateProvider
     .state('charts', {
       url: '/charts',
       component: 'charts'
     });
+    $mdIconProvider
+       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 })
+
 
 .component('charts', chartsComponent)
 
