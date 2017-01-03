@@ -3,7 +3,7 @@ import * as firebase from "firebase";
 
 
 class CabinetController {
-    constructor($firebaseObject) {"ngInject";
+    constructor($firebaseObject,Firedbservice) {"ngInject";
     const ref = firebase.database().ref().child('user');
     this.user = $firebaseObject(ref);
   }
