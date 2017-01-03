@@ -4,6 +4,7 @@ import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
 import angularfire from 'angularfire';
+import Firedbservice from './firedb.service';
 import 'normalize.css';
 
 angular.module('app', [
@@ -19,4 +20,5 @@ angular.module('app', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 
-  .component('app', AppComponent);
+  .component('app', AppComponent)
+  .service('Firedbservice',Firedbservice);
