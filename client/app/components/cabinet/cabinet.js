@@ -8,8 +8,6 @@ import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
 
-
-
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
   ngMaterial,
