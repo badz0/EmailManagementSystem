@@ -1,22 +1,32 @@
-<navbar></navbar>
-  <h1>{{ $ctrl.name }}</h1>
-<section class="firedb">
-  <table>
-    <thead>
-      <tr>
-        <th>Recipient</th>
-        <th>Subject</th>
-        <th>Date</th>
-        <th>Group</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="email in $ctrl.data">
-        <td ng-bind="email.recipient"></td>
-        <td ng-bind="email.subject"></td>
-        <td ng-bind="email.date"></td>
-        <td ng-bind="email.group"></td>
-      </tr>
-    </tbody>
-  </table>
-</section>
+<div layout="column" layout-fill>
+    <appheader></appheader>
+    <div class="container" layout="row" flex>
+        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+            <appnav></appnav>
+        </md-sidenav>
+        <md-content flex class="content">
+            <h1>{{ $ctrl.name }}</h1>
+            <section class="firedb">
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Recipient</th>
+                            <th>Subject</th>
+                            <th>Date</th>
+                            <th>Group</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="email in $ctrl.data">
+                            <td ng-bind="email.recipient"></td>
+                            <td ng-bind="email.subject"></td>
+                            <td ng-bind="email.date"></td>
+                            <td ng-bind="email.group"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </md-content>
+    </div>
+</div>

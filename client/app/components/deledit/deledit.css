@@ -1,0 +1,14 @@
+.md-button.md-small {
+    min-width: 1%;
+  }
+.md-button.md-green {
+    background-color: green;
+  }
+.md-icon-float {
+    font-size: 15px;
+    width: 20% ;
+    float: left;
+}
+table {
+    font-size: 15px;
+}
