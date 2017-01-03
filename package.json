@@ -37,16 +37,9 @@
     "css-loader": "0.19.0",
     "csv": "1.1.0",
     "del": "2.2.0",
-<<<<<<< HEAD
-    "eslint": "^3.12.2",
-    "eslint-config-angular": "^0.5.0",
-    "eslint-loader": "^1.6.1",
-    "eslint-plugin-angular": "^1.6.1",
-=======
     "eslint": "3.12.2",
     "eslint-config-angular": "0.5.0",
     "eslint-plugin-angular": "1.6.1",
->>>>>>> d3776512539e606588e3867e326d4091a21e286b
     "fs-walk": "0.0.1",
     "gulp": "3.9.1",
     "gulp-rename": "1.2.2",
