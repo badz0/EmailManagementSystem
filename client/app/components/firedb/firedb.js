@@ -18,7 +18,6 @@ let firedbModule = angular.module('firedb', [
 })
 
 .component('firedb', firedbComponent)
-  
 .name;
 
 export default firedbModule;
