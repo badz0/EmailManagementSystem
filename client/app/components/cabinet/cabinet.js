@@ -18,7 +18,7 @@ let cabinetModule = angular.module('cabinet', [
 ])
 
 .config(($stateProvider,$compileProvider) => {
-  "ngInject";
+  'ngInject';
   $stateProvider
     .state('cabinet', {
       url: '/cabinet',
