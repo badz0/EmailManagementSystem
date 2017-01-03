@@ -6,7 +6,6 @@ function columnChartService($log, chartsFirebaseDataFactory) {'ngInject';
       'marginRight': 40,
       'marginLeft': 40,
       'autoMarginOffset': 20,
-      'mouseWheelZoomEnabled':true,
       'dataDateFormat': 'YYYY-MM-DD',
       'valueAxes': [{
         'id': 'v1',
@@ -36,21 +35,6 @@ function columnChartService($log, chartsFirebaseDataFactory) {'ngInject';
         'valueField': 'value',
         'balloonText': '<span style=\'font-size:18px;\'>[[value]]</span>'
       }],
-      'chartScrollbar': {
-        'graph': 'g1',
-        'oppositeAxis':false,
-        'offset':30,
-        'scrollbarHeight': 80,
-        'backgroundAlpha': 0,
-        'selectedBackgroundAlpha': 0.1,
-        'selectedBackgroundColor': '#888888',
-        'graphFillAlpha': 0,
-        'graphLineAlpha': 0.5,
-        'selectedGraphFillAlpha': 0,
-        'selectedGraphLineAlpha': 1,
-        'autoGridCount':true,
-        'color':'#AAAAAA'
-      },
       'chartCursor': {
         'pan': true,
         'valueLineEnabled': true,
@@ -60,11 +44,6 @@ function columnChartService($log, chartsFirebaseDataFactory) {'ngInject';
         'limitToGraph':'g1',
         'valueLineAlpha':0.2,
         'valueZoomable':true
-      },
-      'valueScrollbar':{
-        'oppositeAxis':false,
-        'offset':50,
-        'scrollbarHeight':10
       },
       'categoryField': 'date',
       'categoryAxis': {

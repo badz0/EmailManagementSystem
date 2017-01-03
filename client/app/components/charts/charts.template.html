@@ -8,7 +8,22 @@
   </md-sidenav>
   <md-content flex class="content">
     <section class="charts">
-      <md-content>
+    <md-toolbar class="md-hue-2">
+      <div class="md-toolbar-tools">
+        <h2>
+          <span>Global Data Statistics</span>
+        </h2>
+        <span flex></span>
+        <md-button class="md-primary md-raised" ng-click="$ctrl.changeView('global')">
+     Global Data
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="$ctrl.changeView('user')">
+      User Data
+      </md-button>
+      </div>
+    </md-toolbar>
+    <section class="global-chart"
+              ng-if="$ctrl.data">
         <md-tabs  md-dynamic-height
                   md-border-bottom
                   md-selected="$ctrl.currentNavItem">
@@ -47,7 +62,80 @@
             </md-radio-button>
           </md-radio-group>
         </section>
+        </section>
+
+  <md-content ng-show="$ctrl.data2">
+      <div class="dialog-demo-content containerVertical" layout="row" layout-wrap layout-margin layout-align="center">
+    <md-button class="md-primary md-raised" ng-click="$ctrl.showAlert($event)"   >
+      Alert Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="$ctrl.showConfirm($event)" >
+      Confirm Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="$ctrl.showPrompt($event)"  >
+      Prompt Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="$ctrl.showAdvanced($event)">
+      Custom Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="$ctrl.showTabDialog($event)" >
+      Tab Dialog
+    </md-button>
+    <md-button class="md-primary md-raised" ng-click="$ctrl.showPrerenderedDialog('myDialog')">
+      Pre-Rendered Dialog
+    </md-button>
+  </div>
+  <md-list class="containerVertical" flex>
+   <md-list-item class="md-3-line " ng-repeat="item in $ctrl.usersList" ng-click="null">
+          <img ng-src="{{item.avatar}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
+          <div class="md-list-item-text" layout="column">
+            <h3>{{ item.name }} {{item.surname}}</h3>
+            <h4>{{ item.email }}</h4>
+            <h4>{{ item.birthDate }}</h4>
+            <p> <span>{{ item.city}} </span> <span>{{ item.country}} </span></p>
+          </div>
+           <md-button class="md-primary md-raised" ng-click="$ctrl.al($index)">
+      User Emails
+    </md-button>
+          <md-button class="md-primary md-raised" ng-click="$ctrl.showPrerenderedDialog($index)">
+      User Charts
+    </md-button>
+        </md-list-item>
+  </md-list>
+  <div style="visibility: hidden" ng-repeat="item in $ctrl.usersList">
+    <div class="md-dialog-container" id="di{{$index}}">
+      <md-dialog layout-padding>
+        <h2>Pre-Rendered Dialog {{$index + 1}}</h2>
+        <p>
+          This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
+          template on each opening.
+          <br/><br/>
+          The Dialog Element is a static element in the DOM, which is just visually hidden.<br/>
+          Once the dialog opens, we just fetch the element from the DOM into our dialog and upon close
+          we restore the element back into its old DOM position.
+        </p>
+      </md-dialog>
       </md-content>
+      </div>
+      </div>
+      <div style="visibility: hidden">
+    <div class="md-dialog-container" id="usersList">
+      <md-dialog layout-padding>
+        <h2><span>{{$ctrl.user}}</span> {{$ctrl.listOfEmails.length}}</h2>
+        <md-list >
+          <md-list-item ng-repeat="item in $ctrl.listOfEmails" ng-click="null">
+          <p><span ng-bind="{{$index + 1}}"></span>
+          Date:  <span ng-bind="item.date"></span>
+          Group:  <span ng-bind="item.group"></span>
+          Sender:  <span ng-bind="item.recipient"></span>
+          Subject:  <span ng-bind="item.subject"></span>
+          </p>
+          </md-list-item>
+        </md-list>
+      </md-dialog>
+      </md-content>
+      </div>
+      </div>
     </section>
   </md-content>
 </div>
