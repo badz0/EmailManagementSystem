@@ -16,6 +16,7 @@ import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
 
+
 angular.module('app', [
     uiRouter,
     Common,
