@@ -1,18 +1,15 @@
 class AppheaderController {
   constructor($translate) {
     "ngInject";
-    this.lan = $translate.use();
-    this.changeLanguage = changeLanguage;
-
-    function changeLanguage(key) {
-      $translate.use(key);
-      this.lan = key;
-    };
-  };
-
-  $onInit () {
-    this.name = 'appheader';
-  };
+    this.translate = $translate;
+  }
+  $onInit() {
+    this.lan = this.translate.use();
+  }
+  changeLanguage(key) {
+    this.translate.use(key);
+    this.lan = key;
+  }
 }
 
 export default AppheaderController;
