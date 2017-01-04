@@ -1,11 +1,9 @@
-<div layout="column" layout-fill>
-	<appheader></appheader>
-	<div class="container" layout="row" flex>
-		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-			<appnav></appnav>
-		</md-sidenav>
-		<md-content flex class="content">
-	      <h1>Welcome at {{ $ctrl.name }}</h1>
-	    </md-content>
-	</div>
-</div>
+<navbar></navbar>
+<header>
+  <hero></hero>
+</header>
+<main>
+  <div>
+    <h1>Found in {{ $ctrl.name }}.html</h1>
+  </div>
+</main>
