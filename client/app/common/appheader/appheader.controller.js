@@ -1,14 +1,10 @@
 class AppheaderController {
   constructor($mdSidenav) {
-    "ngInject";
-    this.toggleMenu = toggleAppMenu;
-
-    function toggleAppMenu() {
-      $mdSidenav('menu').toggle();
-    };
-  };
-  $onInit () {
-    this.name = 'appheader';
+    'ngInject';
+    this.mdSidenav = $mdSidenav;
+  }
+  toggleMenu() {
+    this.mdSidenav('menu').toggle();
   }
 }
 

@@ -20,25 +20,24 @@ import 'material-design-icons/iconfont/material-icons.css';
 
 
 angular.module('app', [
-    uiRouter,
-    Common,
-    Components,
-    ngMaterial,
-    angularAnimate,
-    angularSanitize,
-    angularAria,
-    ngMessages,
-    angularfire
-  ])
-  .config(($locationProvider, $mdThemingProvider) => {
-    "ngInject";
-    // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
-    // #how-to-configure-your-server-to-work-with-html5mode
-    $locationProvider.html5Mode(true).hashPrefix('!');
-    $mdThemingProvider.theme('default')
-    .primaryPalette('teal')
-    .accentPalette('red');
-  })
-
-  .component('app', AppComponent)
-  .service('Firedbservice',Firedbservice);
+  uiRouter,
+  Common,
+  Components,
+  ngMaterial,
+  angularAnimate,
+  angularSanitize,
+  angularAria,
+  ngMessages,
+  angularfire
+])
+.config(($locationProvider, $mdThemingProvider) => {
+  'ngInject';
+  // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
+  // #how-to-configure-your-server-to-work-with-html5mode
+  $locationProvider.html5Mode(true).hashPrefix('!');
+  $mdThemingProvider.theme('default')
+  .primaryPalette('teal')
+  .accentPalette('red');
+})
+.component('app', AppComponent)
+.service('Firedbservice',Firedbservice);
