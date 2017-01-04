@@ -1,8 +1,11 @@
-<navbar></navbar>
-  <div>
-    <h1>Found in {{ $ctrl.name }}</h1>
-  </div>
-  <div class="md-padding" ng-cloak layout="column">
+<div layout="column" layout-fill>
+  <appheader></appheader>
+  <div class="container" layout="row" flex>
+    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+      <appnav></appnav>
+    </md-sidenav>
+    <md-content flex class="content">
+        <div class="md-padding" ng-cloak layout="column">
   <md-card>
     <div layout="row">
      <md-card class="userImage" md-theme="{{ showDarkTheme ? 'dark-blue' : 'default' }}" md-theme-watch>
@@ -10,13 +13,13 @@
           <md-card-title-text class="userImage">
             <span class="md-headline">My cabinet</span>
             <span class="md-subhead">{{$ctrl.user[0].nickname}}</span>
-            <span class="md-subhead">{{$ctrl.user[0].email}}</span>
-            <md-button ng-click="logOut()" style="width:10%" class="imgbuttons small md-warn">Log out</md-button>
+            <span class="md-subhead" ng-model="user.email">{{$ctrl.user[0].email}}</span>
+            <md-button style="width:10%" class="imgbuttons small md-warn">Log out</md-button>
           </md-card-title-text>
           <md-card-title-text class="userImage">
             <span class="md-subhead">Name:{{$ctrl.user[0].firstname}}</span>
             <span class="md-subhead">Surname:{{$ctrl.user[0].lastname}}</span>
-            <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country}},{{$ctrl.user[0].postadress}}</span>
+            <span class="md-subhead">Adress:{{$ctrl.user[0].city}},{{$ctrl.user[0].country.country}},{{$ctrl.user[0].postadress}}</span>
             
           </md-card-title-text>
           <md-card-title-media>
@@ -24,30 +27,30 @@
           </md-card-title-media>
         </md-card-title>
         <md-card-actions class="md-media-md card-media" layout="row" layout-align="center">
-        <md-button ng-click="toIncoming()" class="imgbuttons small">to Incoming messages</md-button>
-          <md-button ng-click="toBlock()" class="imgbuttons small">to Blocklist</md-button>
-          <md-button ng-click="toSafelist()" class="imgbuttons small">to Safelist</md-button>
-          <md-button ng-click="uploadPhoto()" class="imgbuttons small">Upload photo</md-button>
-          <md-button ng-click="removePhoto()" class="imgbuttons small">Delete photo</md-button>
+        <md-button  class="imgbuttons small">to Incoming messages</md-button>
+          <md-button  class="imgbuttons small">to Blocklist</md-button>
+          <md-button  class="imgbuttons small">to Safelist</md-button>
+          <md-button  class="imgbuttons small">Upload photo</md-button>
+          <md-button  class="imgbuttons small">Delete photo</md-button>
         </md-card-actions>
       </md-card>
     </div>
-    <form name="personalForm" ng-submit="$ctrl.submit()">
+    <form name="personalForm" ng-submit="$ctrl.submitForm(user)">
           <md-card-content>
             <div class="charts" layout="column">
               <md-input-container class="biography">
                 <label>Name</label>
-                <input type="text" name="firstname" data-ng-model="$ctrl.user.firstname">
+                <input type="text" name="firstname" data-ng-model="user.firstname">
               </md-input-container>
               
               <md-input-container class="biography">
                 <label>*Nickname*</label>
-                <input type="text" name="nickname" data-ng-model="$ctrl.user.nickname">
+                <input type="text" name="nickname" data-ng-model="user.nickname">
               </md-input-container>
               
               <md-input-container class="biography">
                 <label>Surname</label>
-                <input type="text" name="lastname" data-ng-model="$ctrl.user.lastname">
+                <input type="text" name="lastname" data-ng-model="user.lastname">
               </md-input-container>
               
             </div>
@@ -55,7 +58,7 @@
             <div layout="row">
               <md-input-container class="adress">
                 <label>Country</label>
-                <md-select id="country" ng-model="$ctrl.country"  ng-change="user.city = null" >
+                <md-select id="country" ng-model="user.country"  ng-change="user.city = null" >
                   <md-option value=''><em>None</em></md-option>
                   <md-option  ng-repeat="country in $ctrl.countries" ng-value="country">
                     {{country.country}}
@@ -65,9 +68,9 @@
               
               <md-input-container class="adress">
                 <label>City</label>
-                <md-select id="city" ng-disabled="!$ctrl.country.city" ng-model="user.city">
+                <md-select id="city" ng-disabled="!user.country.city" ng-model="user.city">
                   <md-option><em>None</em></md-option>
-                  <md-option ng-repeat="city in $ctrl.country.city" ng-value="city">
+                  <md-option ng-repeat="city in user.country.city" ng-value="city">
                     {{city}}
                   </md-option>
                 </md-select>
@@ -75,7 +78,7 @@
       
               <md-input-container class="adress">
                 <label>Adress</label>
-                <input type="text" name="lastname" data-ng-model="$ctrl.user.postadress">
+                <input type="text" name="lastname" data-ng-model="user.postadress">
               </md-input-container>
             </div>
           </md-card-content>
@@ -83,3 +86,8 @@
     <form>
   </md-card>
   <div>
+
+      </md-content>
+  </div>
+</div>
+  

@@ -12,19 +12,17 @@ let cabinetModule = angular.module('cabinet', [
   uiRouter,
   ngMaterial,
   angularAnimate,
-    angularSanitize,
-    angularAria,
-    ngMessages
+  angularSanitize,
+  angularAria,
+  ngMessages
 ])
 
-.config(($stateProvider, $urlRouterProvider) => {
+.config(($stateProvider) => {
   "ngInject";
-
-  $urlRouterProvider.otherwise('/');
 
   $stateProvider
     .state('cabinet', {
-      url: '/',
+      url: '/cabinet',
       component: 'cabinet'
     });
 })

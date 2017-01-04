@@ -1,4 +1,4 @@
-[   {
+[{
     "id":"1",
     "nickname":"BigBoss",
     "email":"fox@gmail.com",
@@ -43,5 +43,4 @@
     "country":"Somali",
     "city":"Some island",
     "postadress":"Baker str.27/4"
-}
-]
+}]
