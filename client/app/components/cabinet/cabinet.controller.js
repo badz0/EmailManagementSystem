@@ -1,13 +1,14 @@
 import data from './cabinet.data.json';
 import countries from './cabinet.countries.json';
 class CabinetController {
-  $onInit () {
-    this.name = 'cabinet';
-    this.user = data;
-    this.countries=countries;
-  }
-  submitForm(user) {
-      angular.copy(user, this.user[0]);
+  constructor() {
+    const vm = this;
+    vm.name = 'cabinet';
+    vm.user = data;
+    vm.countries=countries;
+    vm.submit = function() {
+      alert('submit');
+    };
   }
 }
 
