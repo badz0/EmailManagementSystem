@@ -5,16 +5,13 @@
             <appnav></appnav>
         </md-sidenav>
         <md-content flex class="content">
-
-            <h1>{{ $ctrl.name }}</h1>
-
             <h3>A emailDetail!</h3>
             <div class="email-data">
-                <div>Name: {{$ctrl.email.name}}</div>
-                <div>Subject: {{$ctrl.email.subject}}</div>
-                <div>Email: {{$ctrl.email.email}}</div>
+                <div> Id: {{$ctrl.param.id}} </div>
+                <div>Name: <span ng-bind="$ctrl.currentData.recipient"><span></div>
+                <div>Subject:<span ng-bind="$ctrl.currentData.subject"><span></div>
+                <div>Date: <span ng-bind="$ctrl.currentData.date"><span></div>
             </div>
-
             <button ui-sref="grid">Back</button>
         </md-content>
     </div>

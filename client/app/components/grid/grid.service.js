@@ -1,14 +1,16 @@
+import * as firebase from "firebase";
+
 export class EmailDetailService {
-  constructor($http) {
-    'ngInject';
-    this.$http = $http;
-  }
-  getAllEmails() {
-    return this.$http.get('https://myapp-45978.firebaseio.com/.json').then(response => response.data);
-  }
-  getEmail(id) {
-    return this.getAllEmails().then(function(grid) {
-      return grid.find((email) => {return email.id === id});
-    });
-  }
+    constructor($firebaseArray) {
+        'ngInject';
+        const ref = firebase.database().ref().child('email');
+        var list = $firebaseArray(ref);
+        return list.$loaded(
+            function(list) {
+                return list;
+            },
+            function(error) {
+                console.error("Error:", error);
+            });
+    }
 }

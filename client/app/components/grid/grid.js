@@ -16,17 +16,11 @@ let gridModule = angular.module('grid', [
   $stateProvider
     .state('grid', {
       url: '/grid',
-      component: 'grid',
-      resolve: {
-        grid: EmailDetailService => EmailDetailService.getAllEmails()
-      }
+      component: 'grid'
     })
     .state('email', {
-      url: '/email/{emailId}',
-      component: 'emailDetail',
-      resolve: {
-        email: (EmailDetailService, $transition$) => EmailDetailService.getEmail($transition$.params().emailId)
-      }
+      url: '/email/{id}',
+      component: 'emailDetail'
     });
 })
 
