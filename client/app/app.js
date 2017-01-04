@@ -8,6 +8,7 @@ import amChartsSerial from 'amcharts3/amcharts/serial';
 import amChartsPie from 'amcharts3/amcharts/pie';
 import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
 import angularfire from 'angularfire';
+import Firedbservice from './firedb.service';
 import 'normalize.css';
 import ngMaterial from 'angular-material';
 import angularAnimate from 'angular-animate';
@@ -22,6 +23,7 @@ import angTransHandlerLog from 'angular-translate-handler-log';
 import ngCookies from 'angular-cookies';
 import translationEn from './locale-en.json';
 import translationUa from './locale-ua.json';
+
 
 
 angular.module('app', [
@@ -49,4 +51,5 @@ angular.module('app', [
     .useSanitizeValueStrategy('sanitize')
     .useLocalStorage();
   })
-  .component('app', AppComponent);
+  .component('app', AppComponent)
+  .service('Firedbservice',Firedbservice);
