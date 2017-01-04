@@ -22,8 +22,7 @@
       </md-button>
       </div>
     </md-toolbar>
-    <section class="global-chart"
-              ng-if="$ctrl.data">
+    <section class="global-chart">
         <md-tabs  md-dynamic-height
                   md-border-bottom
                   md-selected="$ctrl.currentNavItem">
@@ -64,27 +63,7 @@
         </section>
         </section>
 
-  <md-content ng-show="$ctrl.data2">
-      <div class="dialog-demo-content containerVertical" layout="row" layout-wrap layout-margin layout-align="center">
-    <md-button class="md-primary md-raised" ng-click="$ctrl.showAlert($event)"   >
-      Alert Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="$ctrl.showConfirm($event)" >
-      Confirm Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="$ctrl.showPrompt($event)"  >
-      Prompt Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="$ctrl.showAdvanced($event)">
-      Custom Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="$ctrl.showTabDialog($event)" >
-      Tab Dialog
-    </md-button>
-    <md-button class="md-primary md-raised" ng-click="$ctrl.showPrerenderedDialog('myDialog')">
-      Pre-Rendered Dialog
-    </md-button>
-  </div>
+  <md-content>
   <md-list class="containerVertical" flex>
    <md-list-item class="md-3-line " ng-repeat="item in $ctrl.usersList" ng-click="null">
           <img ng-src="{{item.avatar}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
@@ -102,11 +81,15 @@
     </md-button>
         </md-list-item>
   </md-list>
+
   <div style="visibility: hidden" ng-repeat="item in $ctrl.usersList">
     <div class="md-dialog-container" id="di{{$index}}">
-      <md-dialog layout-padding>
+      <md-dialog class="chartsD">
         <h2>Pre-Rendered Dialog {{$index + 1}}</h2>
-        <p>
+        <div id="chartsData{{$index}}" class="chartsD">
+        </div>
+        <p class="chartsD">
+
           This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
           template on each opening.
           <br/><br/>

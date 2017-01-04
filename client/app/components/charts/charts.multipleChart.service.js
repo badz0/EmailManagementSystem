@@ -49,10 +49,9 @@ function multipleChartService($log, chartsFirebaseDataFactory) {'ngInject';
         'gridAlpha': 0,
         'position': 'top'
       }
-    });
-  }).catch((e) => {
-    $log.log(e);
-  });
+    })
+  })
 };
+
 
 export default multipleChartService;
