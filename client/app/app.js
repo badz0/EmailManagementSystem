@@ -10,8 +10,13 @@ import amCharts from 'amcharts3';
 import amChartsSerial from 'amcharts3/amcharts/serial';
 import amChartsPie from 'amcharts3/amcharts/pie';
 import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
+<<<<<<< HEAD
 
 
+=======
+import angularfire from 'angularfire';
+import Firedbservice from './firedb.service';
+>>>>>>> develop
 import 'normalize.css';
 import ngMaterial from 'angular-material';
 import angularAnimate from 'angular-animate';
@@ -19,6 +24,7 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
+
 
 angular.module('app', [
     uiRouter,
@@ -37,4 +43,9 @@ angular.module('app', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 
+<<<<<<< HEAD
 .component('app', AppComponent);
+=======
+  .component('app', AppComponent)
+  .service('Firedbservice',Firedbservice);
+>>>>>>> develop

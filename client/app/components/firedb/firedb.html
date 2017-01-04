@@ -18,11 +18,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr ng-repeat="email in $ctrl.data" ">
-                            <td>{{email.recipient}}</td>
-                            <td>{{email.subject}}</td>
-                            <td>{{email.date}}</td>
-                            <td>{{email.group}}</td>
+                        <tr ng-repeat="email in $ctrl.data">
+                            <td ng-bind="email.recipient"></td>
+                            <td ng-bind="email.subject"></td>
+                            <td ng-bind="email.date"></td>
+                            <td ng-bind="email.group"></td>
                         </tr>
                     </tbody>
                 </table>
