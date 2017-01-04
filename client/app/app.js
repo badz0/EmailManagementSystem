@@ -19,18 +19,18 @@ import 'angular-material/angular-material.css';
 
 
 angular.module('app', [
-    uiRouter,
-    Common,
-    Components,
-    ngMaterial,
-    angularAnimate,
-    angularSanitize,
-    angularAria,
-    ngMessages,
-    angularfire
-  ])
+  uiRouter,
+  Common,
+  Components,
+  ngMaterial,
+  angularAnimate,
+  angularSanitize,
+  angularAria,
+  ngMessages,
+  angularfire
+])
   .config(($locationProvider) => {
-    "ngInject";
+    'ngInject';
     // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
     // #how-to-configure-your-server-to-work-with-html5mode
     $locationProvider.html5Mode(true).hashPrefix('!');
