@@ -14,6 +14,15 @@
           <span>Global Data Statistics</span>
         </h2>
         <span flex></span>
+<<<<<<< HEAD
+=======
+        <md-button class="md-primary md-raised" ng-click="$ctrl.changeView('global')">
+     Global Data
+      </md-button>
+      <md-button class="md-primary md-raised" ng-click="$ctrl.changeView('user')">
+      User Data
+      </md-button>
+>>>>>>> 403a80702fd2d1aa2d9d4e419900f91df25d5a8e
       </div>
     </md-toolbar>
     <section class="global-chart">
@@ -72,6 +81,9 @@
           <img  ng-src="{{item.avatar}}?{{$index}}"
                 class="md-avatar"
                 alt="{{item.who}}" />
+  <md-list class="containerVertical" flex>
+   <md-list-item class="md-3-line " ng-repeat="item in $ctrl.usersList" ng-click="null">
+          <img ng-src="{{item.avatar}}?{{$index}}" class="md-avatar" alt="{{item.who}}" />
           <div class="md-list-item-text" layout="column">
             <h3>{{ item.name }} {{item.surname}}</h3>
             <h4>{{ item.email }}</h4>
@@ -95,6 +107,22 @@
       <md-dialog layout-padding>
         <h2>Pre-Rendered Dialog {{$index + 1}}</h2>
         <p>
+           <md-button class="md-primary md-raised" ng-click="$ctrl.al($index)">
+      User Emails
+    </md-button>
+          <md-button class="md-primary md-raised" ng-click="$ctrl.showPrerenderedDialog($index)">
+      User Charts
+    </md-button>
+        </md-list-item>
+  </md-list>
+
+  <div style="visibility: hidden" ng-repeat="item in $ctrl.usersList">
+    <div class="md-dialog-container" id="di{{$index}}">
+      <md-dialog class="chartsD">
+        <h2>Pre-Rendered Dialog {{$index + 1}}</h2>
+        <div id="chartsData{{$index}}" class="chartsD">
+        </div>
+        <p class="chartsD">
           This is a pre-rendered dialog, which means that <code>$mdDialog</code> doesn't compile its
           template on each opening.
           <br/><br/>
@@ -106,6 +134,7 @@
       </md-content>
       </div>
       </div>
+
       <div class="dialog">
     <div  class="md-dialog-container"
           id="usersList">
@@ -115,6 +144,12 @@
           <md-list-item class="containerVertical"
                         ng-repeat="item in $ctrl.listOfEmails"
                         ng-click="null">
+      <div style="visibility: hidden">
+    <div class="md-dialog-container" id="usersList">
+      <md-dialog layout-padding>
+        <h2><span>{{$ctrl.user}}</span> {{$ctrl.listOfEmails.length}}</h2>
+        <md-list >
+          <md-list-item ng-repeat="item in $ctrl.listOfEmails" ng-click="null">
           <p><span ng-bind="{{$index + 1}}"></span>
           Date:  <span ng-bind="item.date"></span>
           Group:  <span ng-bind="item.group"></span>
