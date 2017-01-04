@@ -1,9 +1,11 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import firedbComponent from './firedb.component';
+import angularfire from 'angularfire';
 
 let firedbModule = angular.module('firedb', [
-  uiRouter
+  uiRouter,
+  angularfire
 ])
 
 .config(($stateProvider) => {

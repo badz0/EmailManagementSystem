@@ -16,9 +16,13 @@
     "angular-ui-grid": "4.0.1",
     "angular-ui-router": "1.0.0-beta.1",
     "angularfire": "2.2.0",
+    "eslint": "3.12.2",
+    "eslint-loader": "1.6.1",
+    "eslint-plugin-angular": "1.6.1",
     "express": "4.14.0",
     "firebase": "3.6.3",
     "material-design-icons": "^3.0.1",
+    "json-loader": "0.5.4",
     "normalize.css": "3.0.3"
   },
   "devDependencies": {
@@ -49,7 +53,6 @@
     "gulp-template": "3.0.0",
     "gulp-util": "3.0.7",
     "html-webpack-plugin": "1.7.0",
-    "json-loader": "0.5.4",
     "karma": "0.13.22",
     "karma-chai": "0.1.0",
     "karma-chrome-launcher": "0.2.0",
