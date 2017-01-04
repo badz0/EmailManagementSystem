@@ -12,7 +12,7 @@ let gridModule = angular.module('grid', [
 ])
 
 .config(($stateProvider) => {
-  "ngInject";
+  'ngInject';
   $stateProvider
     .state('grid', {
       url: '/grid',

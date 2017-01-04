@@ -1,5 +1,4 @@
 import angular from 'angular';
-import angularfire from 'angularfire';
 import uiRouter from 'angular-ui-router';
 import angulargrid from 'angular-ui-grid';
 import 'angular-ui-grid/ui-grid.css';
@@ -10,13 +9,8 @@ import amCharts from 'amcharts3';
 import amChartsSerial from 'amcharts3/amcharts/serial';
 import amChartsPie from 'amcharts3/amcharts/pie';
 import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
-<<<<<<< HEAD
-
-
-=======
 import angularfire from 'angularfire';
 import Firedbservice from './firedb.service';
->>>>>>> develop
 import 'normalize.css';
 import ngMaterial from 'angular-material';
 import angularAnimate from 'angular-animate';
@@ -43,9 +37,6 @@ angular.module('app', [
     $locationProvider.html5Mode(true).hashPrefix('!');
   })
 
-<<<<<<< HEAD
-.component('app', AppComponent);
-=======
-  .component('app', AppComponent)
-  .service('Firedbservice',Firedbservice);
->>>>>>> develop
+
+.component('app', AppComponent)
+.service('Firedbservice',Firedbservice);

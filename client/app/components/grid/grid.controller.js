@@ -1,12 +1,12 @@
-import * as firebase from "firebase";
+import * as firebase from 'firebase';
 
 class GridController {
-  	constructor($firebaseObject) {
-    "ngInject";
+  	constructor(Firedbservice, $firebaseObject) {
+    'ngInject';
     const ref = firebase.database().ref().child('email');
     this.name = 'Hello from Firebase';
     this.data = $firebaseObject(ref);
-    this.gridOptions = {
+    this.gridOptions = { 
     	enableSorting: true,
     	columnDefs: [
           { name: 'ui-route', cellTemplate: '<a class="cell-template-ref" ui-sref="email({ id: row.entity.id })">{{row.entity.recipient}}</a>' },

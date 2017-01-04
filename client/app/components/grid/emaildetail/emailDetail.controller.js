@@ -1,6 +1,6 @@
 class EmailController {
     constructor(EmailDetailService, $stateParams) {
-        "ngInject";
+        'ngInject';
         this.param = $stateParams;
         let idParam = parseInt(this.param.id);
         this.data = EmailDetailService;

@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 class deleditController {
   constructor($firebaseArray) {
-    "ngInject";
+    'ngInject';
       const ref = firebase.database().ref().child('email');
       this.users = $firebaseArray(ref);
   }    
@@ -26,11 +26,11 @@ class deleditController {
   }
   AddPerson(){
     this.users.$add({
-      "firstname" : this.firstname,
-      "lastname" : this.lastname,
-      "age" : this.age,
-      "note" : this.note,
-      "isSafe": "true"
+      'firstname' : this.firstname,
+      'lastname' : this.lastname,
+      'age' : this.age,
+      'note' : this.note,
+      'isSafe': 'true'
   });
   this.clearForm();
   }
@@ -49,11 +49,11 @@ class deleditController {
     this.clearForm();
   }
   deleteUser(user) {
-    if (confirm("Are you sure you want to delete letter ?")){
+    if (confirm('Are you sure you want to delete letter ?')){
       this.users.$remove(user)
   }}
   remove () {
-    if (confirm("Are you sure you want to delete marked messages ?")){
+    if (confirm('Are you sure you want to delete marked messages ?')){
       this.users.forEach( user => {
     if (user.checked) {
       this.users.$remove(user);
