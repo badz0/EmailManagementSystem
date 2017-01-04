@@ -27,6 +27,7 @@ import translationUa from './locale-ua.json';
 
 
 angular.module('app', [
+<<<<<<< HEAD
     uiRouter,
     Common,
     Components,
