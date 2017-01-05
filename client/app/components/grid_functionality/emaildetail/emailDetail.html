@@ -1,0 +1,18 @@
+<div layout="column" layout-fill>
+    <appheader></appheader>
+    <div class="container" layout="row" flex>
+        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+            <appnav></appnav>
+        </md-sidenav>
+        <md-content flex class="content">
+            <h3>A emailDetail!</h3>
+            <div class="email-data">
+                <div> Id: {{$ctrl.param.id}} </div>
+                <div>Name: <span ng-bind="$ctrl.currentData.recipient"><span></div>
+                <div>Subject:<span ng-bind="$ctrl.currentData.subject"><span></div>
+                <div>Date: <span ng-bind="$ctrl.currentData.date"><span></div>
+            </div>
+            <button ui-sref="grid">Back</button>
+        </md-content>
+    </div>
+</div>
