@@ -17,14 +17,15 @@ let cabinetModule = angular.module('cabinet', [
   ngMessages
 ])
 
-.config(($stateProvider) => {
-  "ngInject";
-
+.config(($stateProvider,$compileProvider) => {
+  'ngInject';
   $stateProvider
     .state('cabinet', {
       url: '/cabinet',
       component: 'cabinet'
     });
+  $compileProvider
+    .preAssignBindingsEnabled(true);  
 })
 
 .component('cabinet', cabinetComponent)
