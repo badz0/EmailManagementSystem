@@ -1,6 +1,8 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import Common from './common/common';
+import angulargrid from 'angular-ui-grid';
+import 'angular-ui-grid/ui-grid.css';
 import Components from './components/components';
 import AppComponent from './app.component';
 import amCharts from 'amcharts3';
@@ -24,11 +26,10 @@ import ngCookies from 'angular-cookies';
 import translationEn from './locale-en.json';
 import translationUa from './locale-ua.json';
 
-
-
 angular.module('app', [
     uiRouter,
     Common,
+    'ui.grid',
     Components,
     ngMaterial,
     angularAnimate,
