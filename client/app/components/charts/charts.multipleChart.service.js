@@ -1,7 +1,7 @@
 function multipleChartService(chartsFirebaseDataFactory) {'ngInject';
   chartsFirebaseDataFactory.then((res) => {
     let arr = res.charts.Multuple.map((val) => {
-      return ({'date': val.date, 'Vlad': val.Vlad, 'Styopa': val.Styopa, 'Andy': val.Andy})
+      return ({'date': val.date, 'Vlad': val.Vlad, 'Styopa': val.Styopa, 'Andy': val.Andy});
     });
     AmCharts.makeChart('multiple', {
       'type': 'serial',

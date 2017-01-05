@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 class ChartsController {
-  constructor(columnChartService, lineChartService, multipleChartService, pieChartService, globalHardcodeConfigFactory) {'ngInject';
+  constructor(firebaseData, columnChartService, lineChartService, multipleChartService, pieChartService, globalHardcodeConfigFactory) {'ngInject';
     const configData = globalHardcodeConfigFactory;
     this.currentNavItem = configData.currentNavItem;
     this.elemsStatus = configData.tags;

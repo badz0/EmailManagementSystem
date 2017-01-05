@@ -15,7 +15,7 @@ function globalHardcodeConfigFactory() {
           status: true, value: 3}
       ],
       currentNavItem: 0,
-    }
-}
+    };
+};
 
 export default globalHardcodeConfigFactory;
