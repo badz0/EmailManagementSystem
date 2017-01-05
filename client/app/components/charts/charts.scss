@@ -1,23 +1,33 @@
 @import '../../app';
 .charts {
-  .chartsD {
-      height: 1000px;
-      width: 1200px;
+
+    #piechart {
+       height: 500px;
+       width: 100%;
     }
-  height: 100%;
-  min-height: 700px;
+    #columnchart {
+       height: 500px;
+       width: 100%;
+    }
+    .charts-dialog-view {
+      min-height: 320px;
+      width: 1800px;
+    }
   h1, h2 {
     text-align: center;
-    color: $textColor;
+    color:#999999;
   }
   .charts-view {
     min-height: 600px;
+    min-width: 1000px;
   }
   .prev {
     background-color: $navPrev;
+     color:#FAFAFA
   }
   .next {
     background-color: $navNext;
+    color:#FAFAFA
   }
   .radio {
     display: inline-block;
@@ -25,9 +35,13 @@
   .dialog {
     visibility: hidden;
   }
-  .md-list-item {
-        min-width: 45%;
-        display: inline-block;
-        float: left;
+  .list {
+    border: 2px solid black;
+  }
+  .backgr {
+    background-color: silver !important;
+  }
+  md-pagination-wrapper {
+        width: auto!important; // bug where the tabs arent rendered properly.
     }
 }

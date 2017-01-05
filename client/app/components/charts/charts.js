@@ -5,16 +5,18 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
+import amCharts from 'amcharts3';
+import amChartsSerial from 'amcharts3/amcharts/serial';
+import amChartsPie from 'amcharts3/amcharts/pie';
+import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
+import amChartsThemesLight from 'amcharts3/amcharts/themes/light';
 import globalHardcodeConfigFactory from '../../app.globalHardcodeConfig.js';
-import columnChartService from './charts.columnChart.service';
-import lineChartService from './charts.lineChart.service';
-import multipleChartService from './charts.multipleChart.service';
-import pieChartService from  './charts.pieChart.service';
+import chartService from  './charts.chart.service';
 import chartsFirebaseDataFactory from './charts.firebaseData.factory';
 import dragularModule from 'dragular/src/dragularModule';
 import dragularCss from 'dragular/src/dragularSource.css';
 import dragularService from 'dragular/src/dragularService';
-
+//import lineChart from './lineChart/linechart.component';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
@@ -36,14 +38,18 @@ let ChartsModule = angular.module('charts', [
 
 
 .component('charts', chartsComponent)
+//.component('lineChart', lineChart)
 
 .factory('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
 .factory('chartsFirebaseDataFactory', chartsFirebaseDataFactory)
 
-.service('columnChartService', columnChartService)
-.service('lineChartService', lineChartService)
-.service('multipleChartService', multipleChartService)
-.service('pieChartService', pieChartService)
+
+.service('chartService', chartService)
+// .directive('someDirective', function() {
+//   return {
+//     template: '<div class="charts-view" id="columnchart"></div>'
+//   }
+// })
 
 .name;
 

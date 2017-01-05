@@ -1,56 +1,56 @@
 import * as firebase from 'firebase';
 
-function chartsFirebaseDataFactory($firebaseObject, $log) {'ngInject';
-
+function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
   const ref = firebase.database().ref();
-  const user = $firebaseObject(ref.child('user'));
-  const email = $firebaseObject(ref.child('email'));
-  const multy = $firebaseObject(ref.child('charts').child('Multuple'));
+  const data = $firebaseObject(ref);
 
-  return {
-    allUser() {
-      return user.$loaded().then((response) => {
-        return user
-      }).catch((e) =>  {
-        $log.log(e)
-      })
-    },
-    lineChart() {
-      return user.$loaded().then((response) => {
-        let arr = [];
-        user.forEach((val) => {
-          arr.push({ provider: val.name, letters: val.listOfEmails.length });
-        });
+  const firebData = {
+    firebChartData : firebChartData,
+    columnFireData : columnFireData,
+    lineFireData   : lineFireData,
+    pieFireData    : pieFireData,
+    multyFireData  : multyFireData
+  };
+  return firebData;
+
+  function firebChartData() {
+    return data.$loaded().then((response) => {
+      return response;
+    });
+  };
+  function columnFireData() {
+    return data.$loaded().then((response) => {
+      let arr = [];
+        for(let keys in response.email) {
+          arr.push({'date': response.email[keys].date, 'value': response.email[keys].id});
+        };
         return arr;
-      });
-    },
-    pieChart() {
-      return email.$loaded().then((response) => {
-        let arr = [];
-        email.forEach((val) => {
-          arr.push({Group: val.group, letters: val.id});
-        });
+    });
+  };
+  function lineFireData() {
+    return data.$loaded().then((response) => {
+      let arr = response.user.map((val) => {
+      return { provider: val.name, letters: val.listOfEmails.length };
+    });
+      return arr;
+    });
+  };
+  function pieFireData() {
+    return data.$loaded().then((response) => {
+      let arr = [];
+      for(let keys in response.email) {
+        arr.push({Group: response.email[keys].group, letters: response.email[keys].id});
+      }
         return arr;
+    });
+  };
+  function multyFireData() {
+    return data.$loaded().then((response) => {
+      let arr = response.charts.Multuple.map((val) => {
+        return ({'date': val.date, 'Vlad': val.Vlad, 'Styopa': val.Styopa, 'Andy': val.Andy});
       });
-    },
-    columnChart() {
-      return email.$loaded().then((response) => {
-        let arr = [];
-        email.forEach((val) => {
-          arr.push({'date': val.date, 'value': val.id});
-        });
-        return arr;
-      });
-    },
-    multipleChart() {
-      return multy.$loaded().then((response) => {
-        let arr = [];
-        multy.forEach((val) => {
-          arr.push({'date': val.date, 'Vlad': val.Vlad, 'Styopa': val.Styopa, 'Andy': val.Andy});
-        });
-        return arr;
-      });
-    }
+      return arr;
+    });
   };
 };
 
