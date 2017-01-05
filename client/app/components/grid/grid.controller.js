@@ -4,8 +4,10 @@ class GridController {
   	constructor(Firedbservice, $firebaseObject) {
     'ngInject';
     const ref = firebase.database().ref().child('email');
-    this.name = 'Hello from Firebase';
     this.data = $firebaseObject(ref);
+  	}
+  $onInit(){
+    this.name = 'grid';
     this.gridOptions = { 
     	enableSorting: true,
     	columnDefs: [
@@ -15,9 +17,6 @@ class GridController {
         ],
     	data: this.data
     };
-  	}
-  $onInit(){
-    this.name = 'grid';
   }
 }
 export default GridController;
