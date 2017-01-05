@@ -11,7 +11,7 @@ import lineChartService from './charts.lineChart.service';
 import multipleChartService from './charts.multipleChart.service';
 import pieChartService from  './charts.pieChart.service';
 import chartsFirebaseDataFactory from './charts.firebaseData.factory';
-import firebaseData from './../../firedb.service.js';
+
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
@@ -38,7 +38,7 @@ let ChartsModule = angular.module('charts', [
 .service('lineChartService', lineChartService)
 .service('multipleChartService', multipleChartService)
 .service('pieChartService', pieChartService)
-.service('firebaseData', firebaseData)
+
 
 .name;
 
