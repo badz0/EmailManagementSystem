@@ -8,20 +8,12 @@
   </md-sidenav>
   <md-content flex class="content">
     <section class="charts">
-
        <md-toolbar class="md-hue-2">
-        <div class="md-toolbar-tools">
-          <md-checkbox ng-model="check"></md-checkbox>
+        <div>
           <h2>
-            <span>Global Data Statistics</span>
+            <span><md-checkbox ng-model="check"></md-checkbox> Global Data Statistics</span>
           </h2>
           <span flex></span>
-          <md-button class="md-primary md-raised" ng-click="$ctrl.changeView('global')">
-       Global Data
-        </md-button>
-        <md-button class="md-primary md-raised" ng-click="$ctrl.changeView('user')">
-        User Data
-        </md-button>
         </div>
       </md-toolbar>
       <section class="global-chart">
@@ -71,6 +63,14 @@
       </section>
 <!--        <div id="piechart"></div>
         <div id="columnchart"></div> -->
+      <md-toolbar>
+        <div>
+          <h2>
+            <span>User Data Statistics</span>
+          </h2>
+          <span flex></span>
+        </div>
+      </md-toolbar>
       <div>
         <md-list class="containerVertical" flex>
           <md-list-item class="md-3-line "
@@ -99,6 +99,7 @@
           </md-list-item>
         </md-list>
       </div>
+
       <div class="dialog"
            ng-repeat="item in $ctrl.usersList">
         <div class="md-dialog-container"
@@ -121,9 +122,9 @@
             <md-list >
               <md-list-item  ng-repeat="item in $ctrl.listOfEmails" ng-click="null">
                 <p class="list"><span ng-bind="($index + 1)"></span>
-                  Date: <span ng-bind="item.date"></span>
-                  Group: <span ng-bind="item.group"></span>
-                  Sender: <span ng-bind="item.recipient"></span>
+                  Date:    <span ng-bind="item.date"></span>
+                  Group:   <span ng-bind="item.group"></span>
+                  Sender:  <span ng-bind="item.recipient"></span>
                   Subject: <span ng-bind="item.subject"></span>
                   <br>
                   Content:

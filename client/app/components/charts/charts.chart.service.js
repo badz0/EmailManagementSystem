@@ -1,11 +1,11 @@
-function pieChartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-  const pie = {
-    pieChart : pieChart,
+function chartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
+  const chart = {
+    pieChart      : pieChart,
     multipleChart : multipleChart,
-    columnChart: columnChart,
-    lineChart : lineChart
+    columnChart   : columnChart,
+    lineChart     : lineChart
   };
-  return pie;
+  return chart;
 
   function pieChart() {
     chartsFirebaseDataFactory.pieFireData().then((res) => {
@@ -14,21 +14,21 @@ function pieChartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFa
       AmCharts.makeChart('piechart', pieConfig);
     });
   };
-    function multipleChart() {
+  function multipleChart() {
     chartsFirebaseDataFactory.multyFireData().then((res) => {
       let multipleConfig = globalHardcodeConfigFactory.multiple;
       multipleConfig.dataProvider = res;
       AmCharts.makeChart('multiple', multipleConfig)
     });
   };
-    function columnChart() {
+  function columnChart() {
     chartsFirebaseDataFactory.columnFireData().then((res) => {
       let columnConfig = globalHardcodeConfigFactory.columnChart;
       columnConfig.dataProvider = res;
       AmCharts.makeChart('columnchart', columnConfig);
     });
   };
-      function lineChart() {
+  function lineChart() {
     chartsFirebaseDataFactory.lineFireData().then((res) => {
         let lineData = globalHardcodeConfigFactory.lineChart;
         lineData.dataProvider = res;
@@ -37,4 +37,4 @@ function pieChartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFa
   };
  };
 
-export default pieChartService;
+export default chartService;

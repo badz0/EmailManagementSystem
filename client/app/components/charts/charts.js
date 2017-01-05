@@ -16,6 +16,7 @@ import chartsFirebaseDataFactory from './charts.firebaseData.factory';
 import dragularModule from 'dragular/src/dragularModule';
 import dragularCss from 'dragular/src/dragularSource.css';
 import dragularService from 'dragular/src/dragularService';
+import dialogDataService from './charts.dialog.service';
 //import lineChart from './lineChart/linechart.component';
 
 let ChartsModule = angular.module('charts', [
@@ -45,6 +46,7 @@ let ChartsModule = angular.module('charts', [
 
 
 .service('chartService', chartService)
+.service('dialogDataService', dialogDataService)
 // .directive('someDirective', function() {
 //   return {
 //     template: '<div class="charts-view" id="columnchart"></div>'
