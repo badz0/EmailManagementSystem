@@ -1,6 +1,16 @@
 class AppnavController {
-  $onInit () {
-    this.name = 'appheader';
+  constructor($translate) {
+    'ngInject';
+    this.translate = $translate;
+  }
+
+  $onInit() {
+    this.lan = this.translate.use();
+  }
+
+  changeLanguage(key) {
+    this.translate.use(key);
+    this.lan = key;
   }
 }
 
