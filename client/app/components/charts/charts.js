@@ -12,7 +12,9 @@ import pieChartComponent from './pieChart/pieChart.component';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
-  ngMaterial
+  ngMaterial,
+  angularAria,
+  angularAnimate
 ])
 
 .config(($stateProvider) => {
