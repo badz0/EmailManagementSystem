@@ -4,7 +4,7 @@ import './emailDetail.scss';
 
 let gridComponent = {
   bindings: {
-    email: '<'
+    currentData: '<'
   },
   template,
   controller

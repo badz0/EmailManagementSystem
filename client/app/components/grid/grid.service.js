@@ -1,7 +1,6 @@
-import * as firebase from 'firebase';
+import * as firebase from "firebase";
 
-export class EmailDetailService {
-    constructor($firebaseArray, $log) {
+function EmailDetailService(Firedbservice, $firebaseArray) {
         'ngInject';
         const ref = firebase.database().ref().child('email');
         var list = $firebaseArray(ref);
@@ -10,7 +9,9 @@ export class EmailDetailService {
                 return list;
             },
             function(error) {
-                $log.error('Error:', error);
+                console.error("Error:", error);
             });
     }
-}
+
+export default EmailDetailService;
+

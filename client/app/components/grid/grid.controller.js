@@ -11,7 +11,7 @@ class GridController {
     	columnDefs: [
           { name: 'ui-route', cellTemplate: '<a class="cell-template-ref" ui-sref="email({ id: row.entity.id })">{{row.entity.recipient}}</a>' },
           { name:'subject', field: 'subject' },
-          { name:'date', field: 'date'},
+          { name:'date', field: 'date'}
         ],
     	data: this.data
     };

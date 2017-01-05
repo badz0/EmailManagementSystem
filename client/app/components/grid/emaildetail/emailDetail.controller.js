@@ -1,15 +1,18 @@
 class EmailController {
     constructor(EmailDetailService, $stateParams) {
-        'ngInject';
+        "ngInject";
         this.param = $stateParams;
-        let idParam = parseInt(this.param.id);
+        this.idParam = parseInt(this.param.id);
         this.data = EmailDetailService;
-        let data = this.data;
-        function matchById(value) {
-            return value.id === idParam;
-        }
-        data.then((res) => {
-            this.currentData = res.find(matchById);
+    }
+    $onInit() {
+        this.name = 'Hello dynamic routes';
+        this.data.then((res) => {
+        	this.currentData = res.find((value) => {
+            	return value.id === this.idParam;
+            });
+        }).catch((e) => {
+        	console.log(e);
         });
     }
 }

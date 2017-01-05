@@ -1,7 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import gridComponent from './grid.component';
-import { EmailDetailService } from './grid.service';
+import EmailDetailService from './grid.service';
 
 import emailDetailComponent from './emaildetail/emailDetail.component.js';
 import emailDetailController from './emaildetail/emailDetail.controller.js';
@@ -27,6 +27,7 @@ let gridModule = angular.module('grid', [
 .component('grid', gridComponent)
 .service('EmailDetailService', EmailDetailService)
 .component('emailDetail', emailDetailComponent)
+
 .name;
 
 export default gridModule;
