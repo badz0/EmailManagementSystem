@@ -1,6 +1,6 @@
 import * as firebase from "firebase";
 
-function EmailDetailService(Firedbservice, $firebaseArray) {
+function EmailDetailService(Firedbservice, $firebaseArray, $log) {
         'ngInject';
         const ref = firebase.database().ref().child('email');
         var list = $firebaseArray(ref);
@@ -9,7 +9,7 @@ function EmailDetailService(Firedbservice, $firebaseArray) {
                 return list;
             },
             function(error) {
-                console.error("Error:", error);
+                $log.error("Error:", error);
             });
     }
 
