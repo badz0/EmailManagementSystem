@@ -29,6 +29,9 @@ class CabinetController {
   deleteAvatar(){
     firebase.storage().ref().child('user9/9.jpg').delete();
   }
+  clearCity(){
+     this.user.city = null;
+  }
 }
   
 export default CabinetController;

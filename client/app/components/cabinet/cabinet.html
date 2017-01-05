@@ -31,10 +31,10 @@
                 <md-button  class="imgbuttons small">to Blocklist</md-button>
                 <md-button  class="imgbuttons small">to Safelist</md-button>
                 
-                <input class="ng-hide" id="input-file-id" multiple type="file"/>
-            <label for="input-file-id" class="md-button imgbuttons small">Upload photo</label>
-                <!--<md-button   class="imgbuttons small">Upload photo</md-button>-->
-                
+                <label class="md-button imgbuttons small">Upload photo
+                  <input cabinet-uploader class="ng-hide" type="file"/>
+                </label>
+               
                 <md-button ng-click="$ctrl.deleteAvatar()"  class="imgbuttons small">Delete photo</md-button>
               </md-card-actions>
             </md-card>
@@ -67,7 +67,7 @@
                   <div layout="row">
                     <md-input-container class="adress">
                       <label>Country</label>
-                      <md-select id="country" ng-model="$ctrl.user.country"  ng-change="$ctrl.user.city = null" >
+                      <md-select id="country" ng-model="$ctrl.user.country"  ng-change="$ctrl.clearCity()" >
                         <md-option value=''><em>None</em></md-option>
                         <md-option  ng-repeat="country in $ctrl.countries" ng-value="country">
                           {{country.country}}

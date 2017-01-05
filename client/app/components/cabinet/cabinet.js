@@ -7,6 +7,7 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
+import {CabinetUploader} from './cabinet.uploader.directive';
 
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
@@ -29,7 +30,9 @@ let cabinetModule = angular.module('cabinet', [
 })
 
 .component('cabinet', cabinetComponent)
-  
+
+.directive('cabinetUploader',CabinetUploader)
+
 .name;
 
 export default cabinetModule;
