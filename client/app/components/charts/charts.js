@@ -14,7 +14,9 @@ import chartsFirebaseDataFactory from './charts.firebaseData.factory';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
-  ngMaterial
+  ngMaterial,
+  angularAria,
+  angularAnimate
 ])
 
 .config(($stateProvider) => {

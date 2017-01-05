@@ -16,7 +16,7 @@ let deleditModule = angular.module('deledit', [
 ])
 
 .config(($stateProvider) => {
-  "ngInject";
+  'ngInject';
   $stateProvider
     .state('deledit', {
       url: '/deledit',
