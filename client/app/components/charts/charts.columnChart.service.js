@@ -1,5 +1,9 @@
-function columnChartService($log, chartsFirebaseDataFactory) {'ngInject';
-  chartsFirebaseDataFactory.columnChart().then((res) => {
+function columnChartService(chartsFirebaseDataFactory) {'ngInject';
+  chartsFirebaseDataFactory.then((res) => {
+    let arr = [];
+    for(let keys in res.email) {
+      arr.push({'date': res.email[keys].date, 'value': res.email[keys].id})
+    };
     AmCharts.makeChart('columnchart', {
       'type': 'serial',
       'theme': 'light',
@@ -75,10 +79,8 @@ function columnChartService($log, chartsFirebaseDataFactory) {'ngInject';
       'export': {
         'enabled': true
       },
-      'dataProvider': res
+      'dataProvider': arr
     });
-  }).catch((e) => {
-    $log.log(e);
   });
 };
 

@@ -1,12 +1,15 @@
-function multipleChartService($log, chartsFirebaseDataFactory) {'ngInject';
-  chartsFirebaseDataFactory.multipleChart().then((res) => {
+function multipleChartService(chartsFirebaseDataFactory) {'ngInject';
+  chartsFirebaseDataFactory.then((res) => {
+    let arr = res.charts.Multuple.map((val) => {
+      return ({'date': val.date, 'Vlad': val.Vlad, 'Styopa': val.Styopa, 'Andy': val.Andy})
+    });
     AmCharts.makeChart('multiple', {
       'type': 'serial',
       'theme': 'light',
       'legend': {
         'useGraphSettings': true
       },
-      'dataProvider': res,
+      'dataProvider': arr,
       'valueAxes': [{
         'integersOnly': true,
         'axisAlpha': 0,
@@ -50,8 +53,6 @@ function multipleChartService($log, chartsFirebaseDataFactory) {'ngInject';
         'position': 'top'
       }
     });
-  }).catch((e) => {
-    $log.log(e);
   });
 };
 

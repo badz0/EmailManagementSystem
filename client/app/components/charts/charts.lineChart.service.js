@@ -1,9 +1,12 @@
-function lineChartService($log, chartsFirebaseDataFactory) {'ngInject';
-  chartsFirebaseDataFactory.lineChart().then((res) => {
+function lineChartService(chartsFirebaseDataFactory) {'ngInject';
+  chartsFirebaseDataFactory.then((res) => {
+    let arr = res.user.map((val) => {
+      return { provider: val.name, letters: val.listOfEmails.length };
+    });
     AmCharts.makeChart('linechart', {
       'type': 'serial',
       'theme': 'dark',
-      'dataProvider': res,
+      'dataProvider': arr,
       'valueAxes': [ {
         'gridColor': '#000000',
         'gridAlpha': 0.2,
@@ -31,8 +34,6 @@ function lineChartService($log, chartsFirebaseDataFactory) {'ngInject';
         'tickLength': 20
       }
     });
-  }).catch((e) => {
-    $log.log(e);;
   });
 };
 
