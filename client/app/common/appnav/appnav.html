@@ -1,12 +1,20 @@
+<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center">
+  <h1 translate="menu"></h1>
+</md-toolbar>
 <md-list layout-align="center center" layout="column">
+  <div hide-gt-xs>
+    <md-button ng-class="{'md-accent':$ctrl.lan === 'en'}" ng-click="$ctrl.changeLanguage('en');" class="md-icon-button">EN</md-button>
+    <span>|</span>
+    <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
+  </div>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="home" >home</md-button>
+		<md-button class="md-raised" ui-sref="home" translate="homeButton"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="about" >about</md-button>
+		<md-button class="md-raised" ui-sref="about" translate="aboutButton"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="cabinet">cabinet</md-button>
+		<md-button class="md-raised" ui-sref="cabinet" translate="cabinetButton"></md-button>
 	</md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
@@ -17,4 +25,9 @@
   <md-list-item>
     <md-button class="md-raised" ui-sref="deledit">delEdit</md-button>
   </md-list-item>
+    <div hide-gt-sm layout="column">
+    <md-button class="md-raised">Sign In</md-button>
+    <md-button class="md-raised md-primary">Sign Up</md-button>
+    <md-button class="md-raised md-warn" ng-if="false">Log Out</md-button>
+  </div>
 </md-list>

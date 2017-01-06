@@ -11,5 +11,4 @@ class Firedb {
     firebase.initializeApp(config);
   }
 };
-
 export default Firedb;
