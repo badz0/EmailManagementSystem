@@ -17,6 +17,12 @@
     text-align: center;
     color:#999999;
   }
+  h2 {
+    color: #FAFAFA;
+  }
+  md-toolbar:first-child {
+    border-top: 2px dotted #999999;
+  }
   .charts-view {
     min-height: 600px;
     min-width: 1000px;
@@ -38,10 +44,8 @@
   .list {
     border: 2px solid black;
   }
-  .backgr {
-    background-color: silver !important;
+  .dis {
+    position: absolute;
+    display: scroll;
   }
-  md-pagination-wrapper {
-        width: auto!important; // bug where the tabs arent rendered properly.
-    }
 }
