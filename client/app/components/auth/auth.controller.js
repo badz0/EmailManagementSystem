@@ -2,7 +2,7 @@ class AuthController {
   constructor(AuthService) {
   	"ngInject";
     this.name = 'auth';
-    console.log(AuthService.login())
+    AuthService.login()
   }
 }
 

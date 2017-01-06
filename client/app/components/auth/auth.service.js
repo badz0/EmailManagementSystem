@@ -1,20 +1,17 @@
 class AuthService {
   constructor(lock, authManager){
   "ngInject"
-    function login() {
-      lock.show();
-    }
-    function registerAuthenticationListener() {
-      lock.on('authenticated', authResult => {
-        localStorage.setItem('id_token', authResult.idToken);
-        authManager.authenticate();
-      });
-    }
-
-    return {
-      login,
-      registerAuthenticationListener
-    }
+  this.lock=lock;
+  this.authManager=authManager;
+  }
+  login() {
+    this.lock.show();
+  }
+  registerAuthenticationListener() {
+    this.lock.on('authenticated', authResult => {
+      localStorage.setItem('id_token', authResult.idToken);
+      this.authManager.authenticate();
+    });
   }
 }
 export default AuthService;

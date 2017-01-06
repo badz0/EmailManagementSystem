@@ -3,8 +3,6 @@ import controller from './auth.controller';
 import './auth.scss';
 
 let authComponent = {
-  restrict: 'E',
-  bindings: {},
   template,
   controller
 };
