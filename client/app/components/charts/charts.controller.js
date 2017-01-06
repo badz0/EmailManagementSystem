@@ -1,18 +1,18 @@
 class ChartsController {
-  constructor($log, chartsFirebaseDataFactory, dragularService, $element, $mdDialog, chartService, dialogDataService, globalHardcodeConfigFactory) {'ngInject';
+  constructor($log, Firedbservice, chartsFirebaseDataFactory, dragularService, $element, $mdDialog, chartService, dialogDataService, globalHardcodeConfigFactory) {'ngInject';
 
-  dragularService('.containerVertical', { removeOnSpill: true });
-  chartService.pieChart();
-  chartService.columnChart();
-  chartService.multipleChart();
-  chartService.lineChart();
+    dragularService('.containerVertical', { removeOnSpill: true });
+    chartService.pieChart();
+    chartService.columnChart();
+    chartService.multipleChart();
+    chartService.lineChart();
 
-  this.dialog = $mdDialog;
-  this.dialogDataService = dialogDataService;
-  chartsFirebaseDataFactory.firebChartData().then((res) => {
-       this.usersList = res.user;
-  });
-  this.configData = globalHardcodeConfigFactory;
+    this.dialog = $mdDialog;
+    this.dialogDataService = dialogDataService;
+    chartsFirebaseDataFactory.firebChartData().then((res) => {
+      this.usersList = res.user;
+    });
+    this.configData = globalHardcodeConfigFactory;
 
   };
   previousItem() {
@@ -33,7 +33,7 @@ class ChartsController {
     this.user =  this.usersList[user].login;
     this.listOfEmails = this.usersList[user].listOfEmails;
     this.dialog.show({
-      contentElement: `#usersList`,
+      contentElement: '#usersList',
       clickOutsideToClose: true
     });
   };

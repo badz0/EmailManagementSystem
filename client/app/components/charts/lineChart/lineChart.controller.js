@@ -1,6 +1,6 @@
 class LineChartController {
   constructor (pieChartService) {'ngInject';
-   pieChartService.pieChart();
+    pieChartService.pieChart();
   };
 };
 

@@ -18,7 +18,7 @@ function chartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFacto
     chartsFirebaseDataFactory.multyFireData().then((res) => {
       let multipleConfig = globalHardcodeConfigFactory.multiple;
       multipleConfig.dataProvider = res;
-      AmCharts.makeChart('multiple', multipleConfig)
+      AmCharts.makeChart('multiple', multipleConfig);
     });
   };
   function columnChart() {
@@ -30,11 +30,11 @@ function chartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFacto
   };
   function lineChart() {
     chartsFirebaseDataFactory.lineFireData().then((res) => {
-        let lineData = globalHardcodeConfigFactory.lineChart;
-        lineData.dataProvider = res;
+      let lineData = globalHardcodeConfigFactory.lineChart;
+      lineData.dataProvider = res;
       AmCharts.makeChart('linechart', lineData);
     });
   };
- };
+};
 
 export default chartService;

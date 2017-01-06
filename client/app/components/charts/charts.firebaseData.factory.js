@@ -21,17 +21,17 @@ function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
   function columnFireData() {
     return data.$loaded().then((response) => {
       let arr = [];
-        for(let keys in response.email) {
-          arr.push({'date': response.email[keys].date, 'value': response.email[keys].id});
-        };
-        return arr;
+      for(let keys in response.email) {
+        arr.push({'date': response.email[keys].date, 'value': response.email[keys].id});
+      };
+      return arr;
     });
   };
   function lineFireData() {
     return data.$loaded().then((response) => {
       let arr = response.user.map((val) => {
-      return { provider: val.name, letters: val.listOfEmails.length };
-    });
+        return { provider: val.name, letters: val.listOfEmails.length };
+      });
       return arr;
     });
   };
@@ -41,7 +41,7 @@ function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
       for(let keys in response.email) {
         arr.push({Group: response.email[keys].group, letters: response.email[keys].id});
       }
-        return arr;
+      return arr;
     });
   };
   function multyFireData() {

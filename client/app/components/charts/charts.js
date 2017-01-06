@@ -22,7 +22,9 @@ import dialogDataService from './charts.dialog.service';
 let ChartsModule = angular.module('charts', [
   uiRouter,
   ngMaterial,
-  dragularModule
+  dragularModule,
+  angularAria,
+  angularAnimate
 ])
 
 .config(($stateProvider, $mdIconProvider) => {
@@ -32,7 +34,7 @@ let ChartsModule = angular.module('charts', [
       url: '/charts',
       component: 'charts'
     });
-    $mdIconProvider
+  $mdIconProvider
        .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
        .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 })

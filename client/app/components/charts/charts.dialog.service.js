@@ -3,19 +3,19 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
     dialogGroupCharts : dialogGroupCharts,
     dialogDateCharts  : dialogDateCharts,
     userListBuild     : userListBuild
-  }
+  };
   return dialog;
 
   function dialogGroupCharts(index) {
     chartsFirebaseDataFactory.firebChartData().then((res) => {
       let pie = [];
       res.user.forEach((val) => {
-          pie.push({'letters': val.listOfEmails});
+        pie.push({'letters': val.listOfEmails});
       });
-       let arr = [];
-        pie[index].letters.map((val, i) => {
+      let arr = [];
+      pie[index].letters.map((val, i) => {
         if (arr.indexOf(val.group) == -1) {
-          arr.push(val.group)
+          arr.push(val.group);
         }
       });
       let array = arr.map((val, i) => {
@@ -25,24 +25,24 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
             a += 1;
           }
         });
-        return {group: val, value: a}
+        return {group: val, value: a};
       });
 
       let dialogGroup = globalHardcodeConfigFactory.anotherChart;
-      dialogGroup.dataProvider = array
+      dialogGroup.dataProvider = array;
       AmCharts.makeChart(`chartsData${index}`, dialogGroup);
-   });
+    });
   };
   function dialogDateCharts(index) {
     chartsFirebaseDataFactory.firebChartData().then((res) => {
       let pie = [];
       res.user.forEach((val) => {
-          pie.push({'letters': val.listOfEmails});
+        pie.push({'letters': val.listOfEmails});
       });
       let arr = [];
       pie[index].letters.map((val, i) => {
         if (arr.indexOf(val.date) == -1) {
-          arr.push(val.date)
+          arr.push(val.date);
         }
       });
       let array = arr.map((val, i) => {
@@ -52,8 +52,8 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
             a += 1;
           }
         });
-        return {date: val, value: a}
-      })
+        return {date: val, value: a};
+      });
       let dialogDate = globalHardcodeConfigFactory.someChart;
       dialogDate.dataProvider = array;
       AmCharts.makeChart(`charts${index}`, dialogDate);
