@@ -7,7 +7,7 @@ let firedbModule = angular.module('firedb', [
 ])
 
 .config(($stateProvider) => {
-  "ngInject";
+  'ngInject';
   $stateProvider
     .state('firedb', {
       url: '/firedb',
