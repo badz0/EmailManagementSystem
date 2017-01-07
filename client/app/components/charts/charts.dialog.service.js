@@ -1,10 +1,9 @@
 function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-  const dialog = {
+  return {
     dialogGroupCharts : dialogGroupCharts,
     dialogDateCharts  : dialogDateCharts,
     userListBuild     : userListBuild
   };
-  return dialog;
 
   function dialogGroupCharts(index) {
     chartsFirebaseDataFactory.firebChartData().then((res) => {
@@ -27,7 +26,6 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
         });
         return {group: val, value: a};
       });
-
       let dialogGroup = globalHardcodeConfigFactory.anotherChart;
       dialogGroup.dataProvider = array;
       AmCharts.makeChart(`chartsData${index}`, dialogGroup);
@@ -35,6 +33,7 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
   };
   function dialogDateCharts(index) {
     chartsFirebaseDataFactory.firebChartData().then((res) => {
+       console.log(res);
       let pie = [];
       res.user.forEach((val) => {
         pie.push({'letters': val.listOfEmails});
@@ -56,6 +55,7 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
       });
       let dialogDate = globalHardcodeConfigFactory.someChart;
       dialogDate.dataProvider = array;
+
       AmCharts.makeChart(`charts${index}`, dialogDate);
     });
   };

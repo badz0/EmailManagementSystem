@@ -1,74 +1,74 @@
 function globalHardcodeConfigFactory() {
-    return {
+  return {
     buttons: {
-      next: `Next`,
-      prev: `Prev`
+      next: 'Next',
+      prev: 'Prev'
     },
     tags: [
-      {name: `Number of letters sorted by date`, id: `columnchart`, label: `Column Chart`,
+      {name: 'Number of letters sorted by date', id: 'columnchart', label: 'Column Chart',
         status: true, value: 0},
-      {name: `Sorted by Groups`, id: `piechart`, label: `Pie Chart`,
+      {name: 'Sorted by Groups', id: 'piechart', label: 'Pie Chart',
         status: true, value: 1},
-      {name: `Sorted by Categoty`, id: `linechart`, label: `Line Chart`,
+      {name: 'Sorted by Categoty', id: 'linechart', label: 'Line Chart',
         status: true, value: 2},
-      {name: `Muliple Charts example`, id: `multiple`, label: `Multiple Chart`,
+      {name: 'Muliple Charts example', id: 'multiple', label: 'Multiple Chart',
         status: true, value: 3}
     ],
-    currentNavItem: 1,
+    currentNavItem: 0,
     someChart: {
-      "type": "serial",
-        "theme": "light",
-        "marginRight": 40,
-        "marginLeft": 40,
-        "autoMarginOffset": 20,
-        "dataDateFormat": "YYYY-MM-DD",
-        "valueAxes": [ {
-          "id": "v1",
-          "axisAlpha": 0,
-          "position": "left",
-          "ignoreAxisWidth": true
-        } ],
-        "balloon": {
-          "borderThickness": 1,
-          "shadowAlpha": 0
+      'type': 'serial',
+      'theme': 'light',
+      'marginRight': 40,
+      'marginLeft': 40,
+      'autoMarginOffset': 20,
+      'dataDateFormat': 'YYYY-MM-DD',
+      'valueAxes': [ {
+        'id': 'v1',
+        'axisAlpha': 0,
+        'position': 'left',
+        'ignoreAxisWidth': true
+      } ],
+      'balloon': {
+        'borderThickness': 1,
+        'shadowAlpha': 0
+      },
+      'graphs': [ {
+        'id': 'g1',
+        'balloon': {
+          'drop': true,
+          'adjustBorderColor': false,
+          'color': '#ffffff',
+          'type': 'smoothedLine'
         },
-        "graphs": [ {
-          "id": "g1",
-          "balloon": {
-            "drop": true,
-            "adjustBorderColor": false,
-            "color": "#ffffff",
-            "type": "smoothedLine"
-          },
-          "fillAlphas": 0.2,
-          "bullet": "round",
-          "bulletBorderAlpha": 1,
-          "bulletColor": "#FFFFFF",
-          "bulletSize": 5,
-          "hideBulletsCount": 50,
-          "lineThickness": 2,
-          "title": "red line",
-          "useLineColorForBulletBorder": true,
-          "valueField": "value",
-          "balloonText": "<span style='font-size:18px;'>[[value]]</span>"
-        } ],
-        "chartCursor": {
-          "valueLineEnabled": true,
-          "valueLineBalloonEnabled": true,
-          "cursorAlpha": 0,
-          "zoomable": false,
-          "valueZoomable": true,
-          "valueLineAlpha": 0.5
-        },
-        "categoryField": "date",
-        "categoryAxis": {
-          "parseDates": true,
-          "dashLength": 1,
-          "minorGridEnabled": true
-        },
-        "export": {
-          "enabled": true
-        },
+        'fillAlphas': 0.2,
+        'bullet': 'round',
+        'bulletBorderAlpha': 1,
+        'bulletColor': '#FFFFFF',
+        'bulletSize': 5,
+        'hideBulletsCount': 50,
+        'lineThickness': 2,
+        'title': 'red line',
+        'useLineColorForBulletBorder': true,
+        'valueField': 'value',
+        'balloonText': '<span style=\'font-size:18px;\'>[[value]]</span>'
+      } ],
+      'chartCursor': {
+        'valueLineEnabled': true,
+        'valueLineBalloonEnabled': true,
+        'cursorAlpha': 0,
+        'zoomable': false,
+        'valueZoomable': true,
+        'valueLineAlpha': 0.5
+      },
+      'categoryField': 'date',
+      'categoryAxis': {
+        'parseDates': true,
+        'dashLength': 1,
+        'minorGridEnabled': true
+      },
+      'export': {
+        'enabled': true
+      },
       'dataProvider':  []
     },
     anotherChart: {

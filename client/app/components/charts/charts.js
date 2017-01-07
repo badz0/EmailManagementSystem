@@ -17,7 +17,7 @@ import dragularModule from 'dragular/src/dragularModule';
 import dragularCss from 'dragular/src/dragularSource.css';
 import dragularService from 'dragular/src/dragularService';
 import dialogDataService from './charts.dialog.service';
-//import lineChart from './lineChart/linechart.component';
+import lineChart from './lineChart/linechart.component';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
@@ -41,7 +41,7 @@ let ChartsModule = angular.module('charts', [
 
 
 .component('charts', chartsComponent)
-//.component('lineChart', lineChart)
+.component('lineChart', lineChart)
 
 .factory('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
 .factory('chartsFirebaseDataFactory', chartsFirebaseDataFactory)
@@ -49,11 +49,11 @@ let ChartsModule = angular.module('charts', [
 
 .service('chartService', chartService)
 .service('dialogDataService', dialogDataService)
-// .directive('someDirective', function() {
-//   return {
-//     template: '<div class="charts-view" id="columnchart"></div>'
-//   }
-// })
+.directive('someDirective', function() {
+  return {
+    template: '<div class="charts-view" id="linechart"></div>'
+  }
+})
 
 .name;
 

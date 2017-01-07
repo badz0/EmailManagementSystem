@@ -11,12 +11,24 @@
        <md-toolbar class="md-hue-2">
         <div>
           <h2>
-            <span><md-checkbox ng-model="check"></md-checkbox> Global Data Statistics</span>
+            <span></md-checkbox> Global Data Statistics</span>
           </h2>
           <span flex></span>
+                    <md-button class="next"
+                               ng-click="$ctrl.activate()"
+
+                               aria-label="activate">
+                               ShowChart
+                   </md-button>
+                    <md-button class="next"
+                               ng-click="$ctrl.hideChart()"
+
+                               aria-label="activate">
+                               hide
+                   </md-button>
         </div>
       </md-toolbar>
-      <section class="global-chart">
+      <section class="global-chart" ng-show="$ctrl.viewerChanger">
         <md-tabs  md-dynamic-height
                   md-border-bottom
                   md-selected="$ctrl.configData.currentNavItem">
@@ -25,32 +37,34 @@
                   aria-label="tab">
             <md-content class="md-padding">
               <h1 ng-bind="chart.name"></h1>
-              <section  layout="row"
-                        layout-sm="column"
-                        layout-align="end center"
-                        layout-wrap>
-                  <div  layout="row"
-                        layout-align="start center"
-                        flex>
-                    <md-button  class="prev"
-                                ng-click="$ctrl.previousItem()"
-                                ng-bind="$ctrl.configData.buttons.prev"
-                                aria-label="buttonPrev"></md-button>
+              <section layout="row"
+                       layout-sm="column"
+                       layout-align="end center"
+                       layout-wrap>
+                  <div layout="row"
+                       layout-align="start center"
+                       flex>
+                    <md-button class="prev"
+                               ng-click="$ctrl.previousItem()"
+                               ng-bind="$ctrl.configData.buttons.prev"
+                               aria-label="buttonPrev"></md-button>
                     <span flex></span>
                   </div>
-                    <md-button  class="next"
-                                ng-click="$ctrl.nextItem()"
-                                ng-bind="$ctrl.configData.buttons.next"
-                                aria-label="buttonNext"></md-button>
+                    <md-button class="next"
+                               ng-click="$ctrl.nextItem()"
+                               ng-bind="$ctrl.configData.buttons.next"
+                               aria-label="buttonNext"></md-button>
+
               </section>
-                 <div id="{{chart.id}}"
+                  <div id="{{chart.id}}"
                      class="charts-view">
                 </div>
+                <!-- <line-chart></line-chart> -->
               <md-content>
             </md-tab>
           </md-tabs>
-        <section  layout="row"
-                  layout-align="center center">
+        <section layout="row"
+                 layout-align="center center">
           <md-radio-group ng-model="$ctrl.configData.currentNavItem"
                           class="md-primary radio-container">
             <md-radio-button  class="radio"
@@ -141,9 +155,9 @@
       <div class="dialog">
         <div class="md-dialog-container" id="usersList">
           <md-dialog layout-padding>
-            <h2 ng-bind="($ctrl.listOfEmails.length) + ' ' + ($ctrl.user)"></h2>
+            <h2 ng-bind="($ctrl.user.listOfEmails.length) + ' ' + ($ctrl.user.login)"></h2>
             <md-list >
-              <md-list-item  ng-repeat="item in $ctrl.listOfEmails" ng-click="null">
+              <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails" ng-click="null">
                 <p class="list"><span ng-bind="($index + 1)"></span>
                   Date:    <span ng-bind="item.date"></span>
                   Group:   <span ng-bind="item.group"></span>

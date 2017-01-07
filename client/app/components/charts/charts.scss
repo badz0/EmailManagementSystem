@@ -10,8 +10,8 @@
        width: 100%;
     }
     .charts-dialog-view {
-      min-height: 320px;
-      width: 1800px;
+      height: 300px;
+      width: 1000px;
     }
   h1, h2 {
     text-align: center;
@@ -41,7 +41,4 @@
   .backgr {
     background-color: silver !important;
   }
-  md-pagination-wrapper {
-        width: auto!important; // bug where the tabs arent rendered properly.
-    }
 }

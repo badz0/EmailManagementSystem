@@ -4,14 +4,13 @@ function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
   const ref = firebase.database().ref();
   const data = $firebaseObject(ref);
 
-  const firebData = {
+  return {
     firebChartData : firebChartData,
     columnFireData : columnFireData,
     lineFireData   : lineFireData,
     pieFireData    : pieFireData,
     multyFireData  : multyFireData
   };
-  return firebData;
 
   function firebChartData() {
     return data.$loaded().then((response) => {
@@ -29,10 +28,9 @@ function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
   };
   function lineFireData() {
     return data.$loaded().then((response) => {
-      let arr = response.user.map((val) => {
+      return response.user.map((val) => {
         return { provider: val.name, letters: val.listOfEmails.length };
       });
-      return arr;
     });
   };
   function pieFireData() {
