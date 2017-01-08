@@ -5,7 +5,6 @@ import appheaderComponent from './appheader.component';
 let appheaderModule = angular.module('appheader', [
   uiRouter
 ])
-
 .component('appheader', appheaderComponent)
 
 .name;

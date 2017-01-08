@@ -1,22 +1,72 @@
 @import '../../app';
-.charts {
-  height: 100%;
-  min-height: 700px;
 
+
+.charts {
+    #view-changer {
+      top: 0;
+      position: fixed !important;
+      z-index: 5;
+    }
+    .charts-view-global {
+      width: 75%;
+      margin: 0 auto;
+
+    }
+    .user-list {
+      width: 75%;
+      margin: 0 auto;
+    }
+
+    .charts-dialog-view {
+      height: 290px;
+      width: 1000px;
+    }
+    .top {
+      margin-top: -550px;
+    }
   h1, h2 {
     text-align: center;
-    color: $textColor;
+    color:#999999;
   }
-  .charts-view {
+  h2 {
+    color: #FAFAFA;
+  }
+  .charts-view, .charts-view-global {
     min-height: 600px;
+    min-width: 1200px;
   }
   .prev {
-    background-color: $navPrev;
+    height: 500px;
+    width: 200px;
+    color:#009688;
+    &:hover {
+      background-color: #DDDDDD;
+    }
+  }
+  .button {
+
   }
   .next {
-    background-color: $navNext;
+    color:#009688;
+    height: 500px;
+    width: 200px;
+    &:hover {
+      background-color: #DDDDDD;
+
+    }
   }
   .radio {
     display: inline-block;
+  }
+  .dialog {
+    visibility: hidden;
+
+  }
+  .list {
+    border: 2px solid black;
+  }
+  .dis {
+    position: absolute;
+    display: scroll;
   }
 }

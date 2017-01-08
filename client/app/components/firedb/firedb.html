@@ -1,7 +1,7 @@
 <div layout="column" layout-fill>
     <appheader></appheader>
     <div class="container" layout="row" flex>
-        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+        <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
             <appnav></appnav>
         </md-sidenav>
         <md-content flex class="content">
@@ -19,10 +19,10 @@
                     </thead>
                     <tbody>
                         <tr ng-repeat="email in $ctrl.data">
-                            <td>{{email.recipient}}</td>
-                            <td>{{email.subject}}</td>
-                            <td>{{email.date}}</td>
-                            <td>{{email.group}}</td>
+                            <td ng-bind="email.recipient"></td>
+                            <td ng-bind="email.subject"></td>
+                            <td ng-bind="email.date"></td>
+                            <td ng-bind="email.group"></td>
                         </tr>
                     </tbody>
                 </table>
@@ -30,4 +30,3 @@
         </md-content>
     </div>
 </div>
-

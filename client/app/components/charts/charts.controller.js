@@ -1,20 +1,70 @@
-import * as firebase from 'firebase';
-
 class ChartsController {
-  constructor(columnChartService, lineChartService, multipleChartService, pieChartService, globalHardcodeConfigFactory) {'ngInject';
-    const configData = globalHardcodeConfigFactory.chartConfigs();
-    this.currentNavItem = configData.currentNavItem;
-    this.elemsStatus = configData.tags;
-    this.btnConfigs = configData;
+  constructor($location, $window, $log, Firedbservice, chartsFirebaseDataFactory, dragularService, $element, $mdDialog, chartService, dialogDataService, globalHardcodeConfigFactory) {'ngInject';
+
+    dragularService('.containerVertical', { removeOnSpill: true });
+    this.dialog = $mdDialog;
+    this.chartService = chartService;
+    this.dialogDataService = dialogDataService;
+    this.viewerChanger = false;
+    this.defaultPageShow = false;
+    this.usersLists = false;
+    chartsFirebaseDataFactory.firedbChartData().then((res) => {
+      this.usersList = res.user;
+    });
+    this.configData = globalHardcodeConfigFactory;
+    this.hideChart = function() {
+    this.viewerChanger = false;
+
+      AmCharts.clear();
+
+  };
+  // window.location = "http://localhost:3000/"
+    this.activate();
+    this.reloadRoute = function() {
+     $window.location.reload();
+}
+
   };
   previousItem() {
-    if(this.currentNavItem === 0) this.currentNavItem = this.elemsStatus.length;
-    this.currentNavItem -= 1;
+    this.configData.currentNavItem === 0 ? this.configData.currentNavItem = this.configData.tags.length : this.configData.currentNavItem -= 1;
   };
   nextItem() {
-    if(this.currentNavItem >= this.elemsStatus.length - 1) this.currentNavItem = 0;
-    else this.currentNavItem += 1;
+    this.configData.currentNavItem >= this.configData.tags.length - 1 ? this.configData.currentNavItem = 0 : this.configData.currentNavItem += 1;
   };
+  showCharts(index) {
+    this.dialogDataService.dialogGroupCharts(index);
+    this.dialogDataService.dialogDateCharts(index);
+    this.dialogDataService.dialogActivityCharts(index)
+    this.dialog.show({
+      contentElement: `#chart${index}`,
+      clickOutsideToClose: true
+    });
+  };
+
+  showUserEmails(user) {
+    this.user =  this.usersList[user];
+    this.dialog.show({
+      contentElement: '#usersList',
+      clickOutsideToClose: true
+    });
+  };
+  activate() {
+    this.viewerChanger = true;
+    this.chartService.pieChart();
+    this.chartService.columnChart();
+    this.chartService.multipleChart();
+    this.chartService.lineChart();
+  };
+  winLocation() {
+    window.location = "http://localhost:3000/"
+  };
+  defShow() {
+    this.defaultPageShow ? this.defaultPageShow = false : this.defaultPageShow = true;
+  };
+  useListShow() {
+    this.usersLists ? this.usersLists = false : this.usersLists = true;
+  };
+
 }
 
 export default ChartsController;

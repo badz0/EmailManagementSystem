@@ -5,37 +5,51 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
+
 import globalHardcodeConfigFactory from '../../app.globalHardcodeConfig.js';
-import columnChartService from './charts.columnChart.service';
-import lineChartService from './charts.lineChart.service';
-import multipleChartService from './charts.multipleChart.service';
-import pieChartService from  './charts.pieChart.service';
-import chartsFirebaseFactory from './charts.firebaseData.factory';
+import chartService from  './charts.chart.service';
+import chartsFirebaseDataFactory from './charts.firebaseData.factory';
+import dragularModule from 'dragular/src/dragularModule';
+import dragularCss from 'dragular/src/dragularSource.css';
+import dragularService from 'dragular/src/dragularService';
+import dialogDataService from './charts.dialog.service';
+import lineChart from './lineChart/linechart.component';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
-  ngMaterial
+  ngMaterial,
+  dragularModule,
+  angularAria,
+  angularAnimate
 ])
 
-.config(($stateProvider) => {
+.config(($stateProvider, $mdIconProvider) => {
   'ngInject';
   $stateProvider
     .state('charts', {
       url: '/charts',
       component: 'charts'
     });
+  $mdIconProvider
+       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 })
 
+
 .component('charts', chartsComponent)
+.component('lineChart', lineChart)
 
 .factory('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
-.factory('chartsFirebaseFactory', chartsFirebaseFactory)
+.factory('chartsFirebaseDataFactory', chartsFirebaseDataFactory)
 
-.service('columnChartService', columnChartService)
-.service('lineChartService', lineChartService)
-.service('multipleChartService', multipleChartService)
-.service('pieChartService', pieChartService)
 
+.service('chartService', chartService)
+.service('dialogDataService', dialogDataService)
+.directive('someDirective', function() {
+  return {
+    template: '<div class="charts-view" id="linechart"></div>'
+  }
+})
 
 .name;
 

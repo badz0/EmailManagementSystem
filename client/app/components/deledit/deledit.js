@@ -9,14 +9,14 @@ import 'angular-material/angular-material.css';
 
 let deleditModule = angular.module('deledit', [
   uiRouter,
-    angularmaterial,
-    angularAnimate,
-    angularSanitize,
-    angularAria
+  angularmaterial,
+  angularAnimate,
+  angularSanitize,
+  angularAria
 ])
 
 .config(($stateProvider) => {
-  "ngInject";
+  'ngInject';
   $stateProvider
     .state('deledit', {
       url: '/deledit',
