@@ -112,7 +112,8 @@ function globalHardcodeConfigFactory() {
     },
     columnChart: {
       'type': 'serial',
-      'theme': 'dark',
+      'theme': 'light',
+      'color': 'green',
       'marginRight': 40,
       'marginLeft': 40,
       'autoMarginOffset': 20,
@@ -129,10 +130,12 @@ function globalHardcodeConfigFactory() {
       },
       'graphs': [{
         'id': 'g1',
+        'color': '#000000',
+        'colorField': '#000000',
         'balloon':{
           'drop':true,
           'adjustBorderColor':false,
-          'color':'#ffffff'
+          'color':'#000000'
         },
         'bullet': 'round',
         'bulletBorderAlpha': 1,
@@ -218,7 +221,7 @@ function globalHardcodeConfigFactory() {
     },
     lineChart: {
       'type': 'serial',
-      'theme': 'dark',
+      'theme': 'light',
       'dataProvider': [],
       'valueAxes': [ {
         'gridColor': '#000000',
@@ -248,53 +251,53 @@ function globalHardcodeConfigFactory() {
       }
     },
     chartsActive: {
-        "theme": "light",
-        "type": "serial",
-        "dataProvider": [],
-        "categoryField": "Login",
-        "depth3D": 20,
-        "angle": 30,
+      'theme': 'light',
+      'type': 'serial',
+      'dataProvider': [],
+      'categoryField': 'Login',
+      'depth3D': 20,
+      'angle': 30,
 
-        "categoryAxis": {
-          "labelRotation": 90,
-          "gridPosition": "start"
-        },
-
-        "valueAxes": [ {
-          "title": "Visitors"
-        } ],
-
-        "graphs": [ {
-          "valueField": "Activity",
-          "type": "column",
-          "lineAlpha": 0.1,
-          "fillAlphas": 1
-        } ],
-
-        "chartCursor": {
-          "cursorAlpha": 0,
-          "zoomable": false,
-          "categoryBalloonEnabled": false
-        }
+      'categoryAxis': {
+        'labelRotation': 90,
+        'gridPosition': 'start'
       },
-      chartsActive2: {
-            "type": "serial",
-            "theme": "light",
-            "dataProvider": [],
-            "valueAxes": [{
-                "position": "left",
-                "title": "List of emails"
-            }],
-            "graphs": [{
-                "id": "g1",
-                "fillAlphas": 0.4,
-                "valueField": "value"
-            }],
-            "chartCursor": {
-                "cursorPosition": "mouse"
-            },
-            "categoryField": "recipient"
-          }
+
+      'valueAxes': [ {
+        'title': 'Visitors'
+      } ],
+
+      'graphs': [ {
+        'valueField': 'Activity',
+        'type': 'column',
+        'lineAlpha': 0.1,
+        'fillAlphas': 1
+      } ],
+
+      'chartCursor': {
+        'cursorAlpha': 0,
+        'zoomable': false,
+        'categoryBalloonEnabled': false
+      }
+    },
+    chartsActive2: {
+      'type': 'serial',
+      'theme': 'light',
+      'dataProvider': [],
+      'valueAxes': [{
+        'position': 'left',
+        'title': 'List of emails'
+      }],
+      'graphs': [{
+        'id': 'g1',
+        'fillAlphas': 0.4,
+        'valueField': 'value'
+      }],
+      'chartCursor': {
+        'cursorPosition': 'mouse'
+      },
+      'categoryField': 'recipient'
+    }
   };
 };
 

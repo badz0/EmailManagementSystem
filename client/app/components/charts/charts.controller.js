@@ -13,16 +13,16 @@ class ChartsController {
     });
     this.configData = globalHardcodeConfigFactory;
     this.hideChart = function() {
-    this.viewerChanger = false;
+      this.viewerChanger = false;
 
       AmCharts.clear();
 
-  };
+    };
   // window.location = "http://localhost:3000/"
     this.activate();
     this.reloadRoute = function() {
-     $window.location.reload();
-}
+      $window.location.reload();
+    };
 
   };
   previousItem() {
@@ -34,7 +34,7 @@ class ChartsController {
   showCharts(index) {
     this.dialogDataService.dialogGroupCharts(index);
     this.dialogDataService.dialogDateCharts(index);
-    this.dialogDataService.dialogActivityCharts(index)
+    this.dialogDataService.dialogActivityCharts(index);
     this.dialog.show({
       contentElement: `#chart${index}`,
       clickOutsideToClose: true
@@ -50,19 +50,26 @@ class ChartsController {
   };
   activate() {
     this.viewerChanger = true;
+    this.usersLists = false;
+    this.defaultPageShow = false;
     this.chartService.pieChart();
     this.chartService.columnChart();
     this.chartService.multipleChart();
     this.chartService.lineChart();
   };
   winLocation() {
-    window.location = "http://localhost:3000/"
+    window.location = 'http://localhost:3000/';
   };
   defShow() {
     this.defaultPageShow ? this.defaultPageShow = false : this.defaultPageShow = true;
+    this.hideChart();
+    this.usersLists = false;
+
   };
   useListShow() {
     this.usersLists ? this.usersLists = false : this.usersLists = true;
+    this.hideChart();
+    this.defaultPageShow = false;
   };
 
 }

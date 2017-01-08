@@ -1,14 +1,14 @@
 class chartService {
   constructor($log, chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-  this.firedata = chartsFirebaseDataFactory;
-  this.codeConig = globalHardcodeConfigFactory;
+    this.firedata = chartsFirebaseDataFactory;
+    this.codeConig = globalHardcodeConfigFactory;
   };
   pieChart() {
     this.firedata.pieFireData().then((res) => {
       let pieConfig = this.codeConig.pie;
       pieConfig.dataProvider = res;
-     AmCharts.makeChart('piechart', pieConfig);
-   });
+      AmCharts.makeChart('piechart', pieConfig);
+    });
   };
   multipleChart() {
     this.firedata.multyFireData().then((res) => {

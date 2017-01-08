@@ -60,15 +60,15 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
     });
   };
   function dialogActivityCharts(index) {
-     return chartsFirebaseDataFactory.firedbChartData().then((res) => {
-       console.log("RESPONSE", res);
+    return chartsFirebaseDataFactory.firedbChartData().then((res) => {
+      console.log('RESPONSE', res);
        // let arr = res.user.map((val) => {
        //    return { Login: val.login,  Activity: val.logInCount};
        //  });
        //  let array = arr.sort((a, b) => {
        //  return b.Activity - a.Activity;
        // });
-    let pie = [];
+      let pie = [];
       res.user.forEach((val) => {
         pie.push({'letters': val.listOfEmails});
       });
@@ -87,21 +87,21 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
         });
         return {recipient: val, value: a};
       });
-       console.log("RESPONSE", array);
+      console.log('RESPONSE', array);
 
-       let arrays = array.filter((val) => {
+      let arrays = array.filter((val) => {
         if(val.value > 1) {
-         return ({recipient: val.recipient, value: val.value})
+          return ({recipient: val.recipient, value: val.value});
         }
-       })
+      });
        //  let arrays = array.sort((a, b) => {
        //  return b.value - a.value;
        // });
-        let chartsActive = globalHardcodeConfigFactory.chartsActive2;
-        chartsActive.dataProvider = arrays;
+      let chartsActive = globalHardcodeConfigFactory.chartsActive2;
+      chartsActive.dataProvider = arrays;
        //AmCharts.makeChart( `chartsActive`, chartsActive);
-       AmCharts.makeChart(`chartsActive${index}`, chartsActive);
-      });
+      AmCharts.makeChart(`chartsActive${index}`, chartsActive);
+    });
   };
   function userListBuild() {
     chartsFirebaseDataFactory.firedbChartData().then((res) => {

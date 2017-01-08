@@ -17,27 +17,27 @@
           <md-button
                     ng-click="$ctrl.activate()"
                     aria-label="activate">
-                     ShowChart
+          Global Chart
           </md-button>
           <md-button
                      ng-click="$ctrl.hideChart()"
                      aria-label="activate">
-          hide
+          Hide
           </md-button>
           <md-button
                      ng-click="$ctrl.winLocation()"
                      aria-label="activate">
-          loc
+          Home
           </md-button>
           <md-button
                     ng-click="$ctrl.defShow()"
                     aria-label="activate">
-                     show default
+          Charts Home
           </md-button>
           <md-button
                     ng-click="$ctrl.useListShow()"
                     aria-label="activate">
-                     usersLists
+          Users Lists
           </md-button>
         </div>
       </md-toolbar>
@@ -132,7 +132,7 @@
            ng-repeat="item in $ctrl.usersList">
         <div class="md-dialog-container"
              id="chart{{$index}}">
-          <md-dialog  style="max-height: none; height:980px; background-color: #30303d; color: #fff !important">
+          <md-dialog  style="max-height: none; height:980px; background-color: #30303d;>
             <h2 ng-bind="(item.name) + ' ' + ($index + 1)"></h2>
               <md-list-item>
                 <div   id="chartsData{{$index}}"
