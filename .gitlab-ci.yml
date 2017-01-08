@@ -1,4 +1,5 @@
 image: node:4.6.1
+output_limit: 10000
 pages:
   stage: deploy
   cache:
