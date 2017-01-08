@@ -1,17 +1,28 @@
 @import '../../app';
-.charts {
 
-    #piechart {
-       height: 500px;
-       width: 100%;
+
+.charts {
+    #view-changer {
+      top: 0;
+      position: fixed !important;
+      z-index: 5;
     }
-    #columnchart {
-       height: 500px;
-       width: 100%;
+    .charts-view-global {
+      width: 75%;
+      margin: 0 auto;
+
     }
+    .user-list {
+      width: 75%;
+      margin: 0 auto;
+    }
+
     .charts-dialog-view {
-      height: 300px;
+      height: 290px;
       width: 1000px;
+    }
+    .top {
+      margin-top: -550px;
     }
   h1, h2 {
     text-align: center;
@@ -20,26 +31,36 @@
   h2 {
     color: #FAFAFA;
   }
-  md-toolbar:first-child {
-    border-top: 2px dotted #999999;
-  }
-  .charts-view {
+  .charts-view, .charts-view-global {
     min-height: 600px;
-    min-width: 1000px;
+    min-width: 1200px;
   }
   .prev {
-    background-color: $navPrev;
-     color:#FAFAFA
+    height: 500px;
+    width: 200px;
+    color:#009688;
+    &:hover {
+      background-color: #DDDDDD;
+    }
+  }
+  .button {
+
   }
   .next {
-    background-color: $navNext;
-    color:#FAFAFA
+    color:#009688;
+    height: 500px;
+    width: 200px;
+    &:hover {
+      background-color: #DDDDDD;
+
+    }
   }
   .radio {
     display: inline-block;
   }
   .dialog {
     visibility: hidden;
+
   }
   .list {
     border: 2px solid black;

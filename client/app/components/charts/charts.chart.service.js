@@ -5,7 +5,6 @@ class chartService {
   };
   pieChart() {
     this.firedata.pieFireData().then((res) => {
-      console.log(res);
       let pieConfig = this.codeConig.pie;
       pieConfig.dataProvider = res;
      AmCharts.makeChart('piechart', pieConfig);

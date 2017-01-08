@@ -5,11 +5,7 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
-import amCharts from 'amcharts3';
-import amChartsSerial from 'amcharts3/amcharts/serial';
-import amChartsPie from 'amcharts3/amcharts/pie';
-import amChartsThemesDark from 'amcharts3/amcharts/themes/black';
-import amChartsThemesLight from 'amcharts3/amcharts/themes/light';
+
 import globalHardcodeConfigFactory from '../../app.globalHardcodeConfig.js';
 import chartService from  './charts.chart.service';
 import chartsFirebaseDataFactory from './charts.firebaseData.factory';

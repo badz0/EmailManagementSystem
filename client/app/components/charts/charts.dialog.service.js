@@ -2,11 +2,12 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
   return {
     dialogGroupCharts : dialogGroupCharts,
     dialogDateCharts  : dialogDateCharts,
+    dialogActivityCharts: dialogActivityCharts,
     userListBuild     : userListBuild
   };
 
   function dialogGroupCharts(index) {
-    chartsFirebaseDataFactory.firebChartData().then((res) => {
+    chartsFirebaseDataFactory.firedbChartData().then((res) => {
       let pie = [];
       res.user.forEach((val) => {
         pie.push({'letters': val.listOfEmails});
@@ -32,8 +33,7 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
     });
   };
   function dialogDateCharts(index) {
-    chartsFirebaseDataFactory.firebChartData().then((res) => {
-       console.log(res);
+    chartsFirebaseDataFactory.firedbChartData().then((res) => {
       let pie = [];
       res.user.forEach((val) => {
         pie.push({'letters': val.listOfEmails});
@@ -59,8 +59,52 @@ function dialogDataService(chartsFirebaseDataFactory, globalHardcodeConfigFactor
       AmCharts.makeChart(`charts${index}`, dialogDate);
     });
   };
+  function dialogActivityCharts(index) {
+     return chartsFirebaseDataFactory.firedbChartData().then((res) => {
+       console.log("RESPONSE", res);
+       // let arr = res.user.map((val) => {
+       //    return { Login: val.login,  Activity: val.logInCount};
+       //  });
+       //  let array = arr.sort((a, b) => {
+       //  return b.Activity - a.Activity;
+       // });
+    let pie = [];
+      res.user.forEach((val) => {
+        pie.push({'letters': val.listOfEmails});
+      });
+      let arr = [];
+      pie[index].letters.map((val, i) => {
+        if (arr.indexOf(val.recipient) == -1) {
+          arr.push(val.recipient);
+        }
+      });
+      let array = arr.map((val, i) => {
+        let a = 0;
+        let total = pie[index].letters.reduce((count, vallue, i) => {
+          if(val == vallue.recipient) {
+            a += 1;
+          }
+        });
+        return {recipient: val, value: a};
+      });
+       console.log("RESPONSE", array);
+
+       let arrays = array.filter((val) => {
+        if(val.value > 1) {
+         return ({recipient: val.recipient, value: val.value})
+        }
+       })
+       //  let arrays = array.sort((a, b) => {
+       //  return b.value - a.value;
+       // });
+        let chartsActive = globalHardcodeConfigFactory.chartsActive2;
+        chartsActive.dataProvider = arrays;
+       //AmCharts.makeChart( `chartsActive`, chartsActive);
+       AmCharts.makeChart(`chartsActive${index}`, chartsActive);
+      });
+  };
   function userListBuild() {
-    chartsFirebaseDataFactory.firebChartData().then((res) => {
+    chartsFirebaseDataFactory.firedbChartData().then((res) => {
       return res.user;
     });
   };

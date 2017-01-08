@@ -5,14 +5,14 @@ function chartsFirebaseDataFactory($firebaseObject) {'ngInject';
   const data = $firebaseObject(ref);
 
   return {
-    firebChartData : firebChartData,
+    firedbChartData : firedbChartData,
     columnFireData : columnFireData,
     lineFireData   : lineFireData,
     pieFireData    : pieFireData,
     multyFireData  : multyFireData
   };
 
-  function firebChartData() {
+  function firedbChartData() {
     return data.$loaded().then((response) => {
       return response;
     });

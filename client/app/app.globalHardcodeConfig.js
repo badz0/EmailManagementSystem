@@ -112,7 +112,7 @@ function globalHardcodeConfigFactory() {
     },
     columnChart: {
       'type': 'serial',
-      'theme': 'light',
+      'theme': 'dark',
       'marginRight': 40,
       'marginLeft': 40,
       'autoMarginOffset': 20,
@@ -246,7 +246,55 @@ function globalHardcodeConfigFactory() {
         'tickPosition': 'start',
         'tickLength': 20
       }
-    }
+    },
+    chartsActive: {
+        "theme": "light",
+        "type": "serial",
+        "dataProvider": [],
+        "categoryField": "Login",
+        "depth3D": 20,
+        "angle": 30,
+
+        "categoryAxis": {
+          "labelRotation": 90,
+          "gridPosition": "start"
+        },
+
+        "valueAxes": [ {
+          "title": "Visitors"
+        } ],
+
+        "graphs": [ {
+          "valueField": "Activity",
+          "type": "column",
+          "lineAlpha": 0.1,
+          "fillAlphas": 1
+        } ],
+
+        "chartCursor": {
+          "cursorAlpha": 0,
+          "zoomable": false,
+          "categoryBalloonEnabled": false
+        }
+      },
+      chartsActive2: {
+            "type": "serial",
+            "theme": "light",
+            "dataProvider": [],
+            "valueAxes": [{
+                "position": "left",
+                "title": "List of emails"
+            }],
+            "graphs": [{
+                "id": "g1",
+                "fillAlphas": 0.4,
+                "valueField": "value"
+            }],
+            "chartCursor": {
+                "cursorPosition": "mouse"
+            },
+            "categoryField": "recipient"
+          }
   };
 };
 
