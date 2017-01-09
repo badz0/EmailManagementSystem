@@ -1,7 +1,6 @@
 import * as firebase from 'firebase';
-
-class Firedb{
-  constructor(){
+class Firedb {
+  constructor() {
     const config = {
       apiKey: 'AIzaSyCMAlozS1b77OGLgo7nSSELNApp5UmaPiw',
       authDomain: 'emailmanagementsystem-d4f11.firebaseapp.com',
@@ -11,8 +10,5 @@ class Firedb{
     };
     firebase.initializeApp(config);
   }
-}
+};
 export default Firedb;
-	
-
-	
