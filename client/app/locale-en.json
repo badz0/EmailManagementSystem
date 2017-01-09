@@ -8,5 +8,22 @@
   "cabinetButton": "Cabinet",
   "homeTitle": "Home page",
   "aboutTitle": "About us",
-  "menu": "Menu"
+  "menu": "Menu",
+  "cabinet":{
+    "title":"My cabinet",
+    "name":"Name:&nbsp;",
+    "surname":"Surname:&nbsp;",
+    "adress":"Post:&nbsp;",
+    "incoming":"Incoming messages",
+    "blocklist":"Blacklist",
+    "safelist":"Safelist",
+    "upload":"Upload photo",
+    "delete":"Delete photo",
+    "login":"*nickname*",
+    "city":"City",
+    "country":"Country",
+    "birthdate":"Birth Date",
+    "submit":"Save changes"
+  }
+  
 }
