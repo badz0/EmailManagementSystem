@@ -2,19 +2,17 @@
   <h1 translate="menu"></h1>
 </md-toolbar>
 <md-list layout-align="center center" layout="column">
-  <div hide-gt-xs>
-    <md-button ng-class="{'md-accent':$ctrl.lan === 'en'}" ng-click="$ctrl.changeLanguage('en');" class="md-icon-button">EN</md-button>
-    <span>|</span>
-    <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
-  </div>
+  <md-list-item hide-gt-xs>
+    <language-change></language-change>
+  </md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="home" translate="homeButton"></md-button>
+		<md-button class="md-raised" ui-sref="home" aria-label="Home button" translate="homeButton"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="about" translate="aboutButton"></md-button>
+		<md-button class="md-raised" ui-sref="about" aria-label="About button" translate="aboutButton"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="cabinet" translate="cabinetButton"></md-button>
+		<md-button class="md-raised" ui-sref="cabinet" aria-label="Cabinet button" translate="cabinetButton"></md-button>
 	</md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
