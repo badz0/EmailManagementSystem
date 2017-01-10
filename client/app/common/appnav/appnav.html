@@ -1,4 +1,4 @@
-<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center">
+<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center" md-colors="{background: '{{$ctrl.users.themeColor}}'}">
   <h1 translate="menu"></h1>
 </md-toolbar>
 <md-list layout-align="center center" layout="column">
@@ -8,13 +8,13 @@
     <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
   </div>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="home" translate="homeButton"></md-button>
+		<md-button aria-label="homeButton" class="md-raised" ui-sref="home" translate="homeButton"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="about" translate="aboutButton"></md-button>
+		<md-button aria-label="aboutButton" class="md-raised" ui-sref="about" translate="aboutButton"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="cabinet" translate="cabinetButton"></md-button>
+		<md-button aria-label="cabinetButton" class="md-raised" ui-sref="cabinet" translate="cabinetButton"></md-button>
 	</md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
@@ -27,7 +27,7 @@
   </md-list-item>
     <div hide-gt-sm layout="column">
     <md-button class="md-raised">Sign In</md-button>
-    <md-button class="md-raised md-primary">Sign Up</md-button>
+    <md-button class="md-raised md-primary" md-colors="{background: '{{$ctrl.users.themeColor}}'}">Sign Up</md-button>
     <md-button class="md-raised md-warn" ng-if="false">Log Out</md-button>
   </div>
 </md-list>

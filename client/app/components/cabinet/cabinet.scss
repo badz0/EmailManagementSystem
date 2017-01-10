@@ -27,7 +27,7 @@
 .userImage.md-subhead{
   display:inline;
 }
-.dod{
+.info{
   float:left;
 }
 .nowrap{
@@ -35,4 +35,22 @@
 }
 .md-datepicker-input.md-input{
   min-width: 160px;
+}
+.option{
+  float:left;
+  width:50%;
+}
+.option.adress{
+  clear:both;
+  width:100%;
+}
+.colors{
+  
+}
+.dod{
+  font-size:10px;
+  line-height:18px;
+  height:20px;
+  min-height: 10px;
+  min-width: 10px;
 }

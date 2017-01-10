@@ -23,7 +23,8 @@
     "city":"City",
     "country":"Country",
     "birthdate":"Birth Date",
-    "submit":"Save changes"
+    "submit":"Save changes",
+    "colorPicker":"Select theme color:"
   }
   
 }

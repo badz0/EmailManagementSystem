@@ -14,17 +14,17 @@
                   <span class="md-headline" translate="cabinet.title"></span>
                   <span class="md-subhead">{{$ctrl.users.login}}</span>
                   <span class="md-subhead" ng-model="user.email">{{$ctrl.users.email}}</span>
-                  <md-button style="width:10%" class="imgbuttons small md-warn" translate="logOut"></md-button>
+                  <md-button aria-label="logOut" style="width:10%" class="imgbuttons small md-warn" translate="logOut"></md-button>
                 </md-card-title-text>
                 <md-card-title-text class="userImage">
-                  <div class="dod">
+                  <div class="info">
                     <span class="md-subhead nowrap" translate="cabinet.name"></span><span class="md-subhead nowrap">{{$ctrl.users.name}}</span>
                   </div>
-                  <div class="dod">
+                  <div class="info">
                     <span class="md-subhead" translate="cabinet.surname"></span><span class="md-subhead nowrap">{{$ctrl.users.surname}}</span>
                   </div>
                   <span class="md-subhead">{{$ctrl.users.birthDay|date:'MMMM dd,yyyy'}}</span>
-                  <div class="dod">
+                  <div class="info">
                     <span class="md-subhead" translate="cabinet.adress"></span><span class="md-subhead nowrap">{{$ctrl.users.city}},{{$ctrl.users.country}},{{$ctrl.users.postadress}}</span>
                   </div>
                 </md-card-title-text>
@@ -33,19 +33,19 @@
                 </md-card-title-media>
               </md-card-title>
               <md-card-actions class="md-media-md card-media" layout="row" layout-align="center">
-                <md-button  class="imgbuttons small" translate="cabinet.incoming"></md-button>
-                <md-button  class="imgbuttons small" translate="cabinet.blocklist"></md-button>
-                <md-button  class="imgbuttons small" translate="cabinet.safelist"></md-button>
+                <md-button aria-label="incoming" class="imgbuttons small" translate="cabinet.incoming"></md-button>
+                <md-button aria-label="blocklist"  class="imgbuttons small" translate="cabinet.blocklist"></md-button>
+                <md-button aria-label="safelist" class="imgbuttons small" translate="cabinet.safelist"></md-button>
                 <label class="md-button imgbuttons small"><span translate="cabinet.upload"></span>
                   <input cabinet-uploader class="ng-hide" type="file"/>
                 </label>
-                <md-button ng-click="$ctrl.deleteAvatar()"  class="imgbuttons small" translate="cabinet.delete"></md-button>
+                <md-button aria-label="delete" ng-click="$ctrl.deleteAvatar()"  class="imgbuttons small" translate="cabinet.delete"></md-button>
               </md-card-actions>
             </md-card>
           </div>
           <form name="personalForm" ng-submit="$ctrl.submitForm()">
             <md-card-content>
-              <div class="bio" layout="column">
+              <div class="option bio" layout="column">
                 <md-input-container class="biography">
                   <label translate="cabinet.name"></label>
                   <input type="text" name="name" ng-model="$ctrl.user.name">
@@ -63,10 +63,17 @@
                   <md-datepicker ng-model="$ctrl.user.birthDay" name="birthDay"></md-datepicker>
                 </md-input-container>
               </div>
-              <div layout="row">
+              <div>
+                <p translate="cabinet.colorPicker"></p>
+                <div class="colors" layout="row" layout-wrap>
+                  <md-button class="dod" ng-repeat="color in $ctrl.colors" md-colors="{background: '{{color}}'}" flex="18" ng-click="$ctrl.selectTheme(color)">
+                    {{color}}
+                  </md-button>
+                </div>
+              </div>
+              <div class="option adress" layout="row">
                 <md-input-container class="adress">
-                  <label translate="cabinet.country"></label>
-                  <md-select id="country" ng-model="$ctrl.user.country"  ng-change="$ctrl.clearCity()" >
+                  <md-select placeholder="{{'cabinet.country'|translate}}" id="country"  ng-model="$ctrl.user.country"  ng-change="$ctrl.clearCity()" >
                     <md-option value=''><em>None</em></md-option>
                     <md-option  ng-repeat="country in $ctrl.countries" ng-value="country">
                       {{country.country}}
@@ -74,8 +81,7 @@
                   </md-select>
                 </md-input-container>
                 <md-input-container class="adress">
-                  <label translate="cabinet.city"></label>
-                  <md-select id="city" ng-disabled="!$ctrl.user.country.city" ng-model="$ctrl.user.city">
+                  <md-select placeholder="{{'cabinet.city'|translate}}" id="city" ng-disabled="!$ctrl.user.country.city" ng-model="$ctrl.user.city">
                     <md-option><em>None</em></md-option>
                     <md-option ng-repeat="city in $ctrl.user.country.city" ng-value="city">
                       {{city}}
@@ -88,7 +94,7 @@
                 </md-input-container>
               </div>
             </md-card-content>
-            <md-button class="button submit" layout-align="center"  type="submit" translate="cabinet.submit"></md-button>
+            <md-button aria-label="submit" class="button submit" layout-align="center"  type="submit" translate="cabinet.submit"></md-button>
           <form>
         </md-card>
       </div>

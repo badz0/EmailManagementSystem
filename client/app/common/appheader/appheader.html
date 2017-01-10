@@ -1,12 +1,12 @@
-<md-toolbar layout="row" class="md-toolbar-tools md-whiteframe-2dp" layout-align="space-around center" layout-align-xs="center center">
+<md-toolbar layout="row" class="md-toolbar-tools md-whiteframe-2dp" layout-align="space-around center" layout-align-xs="center center" md-colors="{background: '{{$ctrl.users.themeColor}}'}">
   <md-button class="md-icon-button" ng-click="$ctrl.toggleMenu()">
     <md-icon class="material-icons">menu</md-icon>
   </md-button>
   <h1><a ui-sref="home" translate="title"></a></h1>
   <div layout="row">
-    <md-button hide-xs hide-sm class="md-raised" translate="signIn"></md-button>
-    <md-button hide-xs hide-sm class="md-raised md-primary" translate="signOut"></md-button>
-    <md-button class="md-raised md-warn" ng-if="false" translate="logOut"></md-button>
+    <md-button aria-label="signIn" hide-xs hide-sm class="md-raised" translate="signIn"></md-button>
+    <md-button aria-label="signOut" hide-xs hide-sm class="md-raised md-primary" translate="signOut" md-colors="{background: '{{$ctrl.users.themeColor}}'}"></md-button>
+    <md-button aria-label="logOut" class="md-raised md-warn" ng-if="false" translate="logOut"></md-button>
     <div hide-xs>
       <md-button ng-class="{'md-accent':$ctrl.lan === 'en'}" ng-click="$ctrl.changeLanguage('en');" class="md-icon-button">EN</md-button>
       <span>|</span>
