@@ -4,7 +4,7 @@
 		<md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
 			<appnav></appnav>
 		</md-sidenav>
-		  <md-content flex class="content">
+		  <md-content flex flex-offset="5">
       <h1>Hello {{ $ctrl.name }}</h1>
 <section class="$ctrl">
   <table border=1 width=100%>
@@ -79,10 +79,10 @@
     </tr>
     <tr>
       <th>Remove:<br><button ng-click="$ctrl.checkAll()">check</button>
-      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th> 
+      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th>
       <th>Move to safelist:<br><button ng-click="$ctrl.checkAllBlock()">check</button>
       <button ng-click="$ctrl.uncheckAllBlock()">uncheck</button>
-      </th> 
+      </th>
       <th>Firstname:</th>
       <th>Lastname:</th>
       <th>Age:</th>
