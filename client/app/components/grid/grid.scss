@@ -6,11 +6,17 @@ $gridColor: #607D8B;
 }
 .email-data{
     padding: 5px;
-    color: $gridColor;;
+    color: $gridColor;
     font-size: 15px;
     text-decoration: none;
 }
 .cell-template-ref {
     text-decoration: none;
     color: #607d8b;
+}
+.ui-grid-menu-button {
+  height: 31px;
+}
+.ui-grid-filter-container{
+	width: 60%;
 }

@@ -1,13 +1,13 @@
 <div layout="column" layout-fill>
 	<appheader></appheader>
 	<div class="container" layout="row" flex>
-		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+		<md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
 			<appnav></appnav>
 		</md-sidenav>
 		<md-content flex class="content">
-		    <h1>{{ $ctrl.name }}</h1>
+		   <h1 ng-bidn="$ctrl.name"></h1>
 			<section>
-			  <div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-cellnav></div>
+			  <div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
 			</section>
 	    </md-content>
 	</div>
