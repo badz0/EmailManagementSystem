@@ -8,6 +8,7 @@ pages:
   - lv_ems_214_configFile
 
   script:
+  - npm update
   - npm run build
   artifacts:
     paths:
