@@ -29,6 +29,7 @@ import translationUa from './locale-ua.json';
 
 angular.module('app', [
   uiRouter,
+  'ui.grid',
   Common,
   Components,
   ngMaterial,
