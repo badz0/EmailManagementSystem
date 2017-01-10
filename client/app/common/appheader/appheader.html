@@ -1,11 +1,12 @@
-<md-toolbar layout="row" class="md-toolbar-tools" layout-align="space-around center">
-	<h1><a ui-sref="home" translate="title"></a></h1>
-	<div>
-	<md-button class="md-raised" translate="signIn"></md-button>
-	<md-button class="md-raised md-primary" translate="signOut"></md-button>
-	<md-button class="md-raised md-warn" translate="logOut"></md-button>
-  <md-button ng-class="{'md-accent':$ctrl.lan === 'en'}" ng-click="$ctrl.changeLanguage('en');" class="md-icon-button">EN</md-button>
-  |
-  <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
-	</div>
+<md-toolbar layout="row" class="md-toolbar-tools md-whiteframe-2dp" layout-align="space-around center" layout-align-xs="center center">
+  <md-button class="md-icon-button" ng-click="$ctrl.toggleMenu()">
+    <md-icon class="material-icons">menu</md-icon>
+  </md-button>
+  <h1><a ui-sref="home" translate="header.title"></a></h1>
+  <div layout="row">
+    <md-button hide-xs hide-sm class="md-raised" aria-label="Sign In" translate="header.signIn" ></md-button>
+    <md-button hide-xs hide-sm class="md-raised md-primary" aria-label="Sign Up" translate="header.signUp"></md-button>
+    <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
+    <language-change hide-xs></language-change>
+  </div>
 </md-toolbar>
