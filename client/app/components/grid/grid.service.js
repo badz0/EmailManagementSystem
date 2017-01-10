@@ -3,7 +3,7 @@ import * as firebase from "firebase";
 export class EmailDetailService {
     constructor(Firedbservice, $firebaseArray, $log) {
         'ngInject';
-        const ref = firebase.database().ref().child('user');
+        const ref = firebase.database().ref().child('user/8').child('listOfEmails');
         this.list = $firebaseArray(ref);
     }
     getList() {
