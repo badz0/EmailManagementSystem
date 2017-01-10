@@ -48,7 +48,7 @@ let ChartsModule = angular.module('charts', [
 .directive('someDirective', function() {
   return {
     template: '<div class="charts-view" id="linechart"></div>'
-  }
+  };
 })
 
 .name;

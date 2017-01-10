@@ -1,14 +1,16 @@
 class chartService {
   constructor($log, chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-  this.firedata = chartsFirebaseDataFactory;
-  this.codeConig = globalHardcodeConfigFactory;
+    this.firedata = chartsFirebaseDataFactory;
+    this.codeConig = globalHardcodeConfigFactory;
+
+
   };
   pieChart() {
     this.firedata.pieFireData().then((res) => {
       let pieConfig = this.codeConig.pie;
       pieConfig.dataProvider = res;
-     AmCharts.makeChart('piechart', pieConfig);
-   });
+      AmCharts.makeChart('piechart', pieConfig);
+    });
   };
   multipleChart() {
     this.firedata.multyFireData().then((res) => {
@@ -31,46 +33,21 @@ class chartService {
       AmCharts.makeChart('linechart', lineData);
     });
   };
+  signUpChart() {
+    this.firedata.singnUpTimes().then((res) => {
+      let chartsActive = this.codeConig.chartsActive;
+      chartsActive.dataProvider = res;
+      AmCharts.makeChart('chartsActive', chartsActive);
+    });
+  };
+  dateEmailStat() {
+    this.firedata.dateEmailStat().then((res) => {
+      console.log(res);
+      let dateEmailStat = this.codeConig.emailDateSat;
+      dateEmailStat.dataProvider = res;
+      AmCharts.makeChart('dateEmailStat', dateEmailStat);
+    });
+  };
 };
 
 export default chartService;
-
-
-// function chartService($log, chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-//   return  {
-//     pieChart      : pieChart,
-//     multipleChart : multipleChart,
-//     columnChart   : columnChart,
-//     lineChart     : lineChart
-//   };
-//   function pieChart() {
-//     chartsFirebaseDataFactory.pieFireData().then((res) => {
-//       let pieConfig = globalHardcodeConfigFactory.pie;
-//       pieConfig.dataProvider = res;
-//       AmCharts.makeChart('piechart', pieConfig);
-//     });
-//   };
-//   function multipleChart() {
-//     chartsFirebaseDataFactory.multyFireData().then((res) => {
-//       let multipleConfig = globalHardcodeConfigFactory.multiple;
-//       multipleConfig.dataProvider = res;
-//       AmCharts.makeChart('multiple', multipleConfig);
-//     });
-//   };
-//   function columnChart() {
-//     chartsFirebaseDataFactory.columnFireData().then((res) => {
-//       let columnConfig = globalHardcodeConfigFactory.columnChart;
-//       columnConfig.dataProvider = res;
-//       AmCharts.makeChart('columnchart', columnConfig);
-//     });
-//   };
-//   function lineChart() {
-//     chartsFirebaseDataFactory.lineFireData().then((res) => {
-//       let lineData = globalHardcodeConfigFactory.lineChart;
-//       lineData.dataProvider = res;
-//       AmCharts.makeChart('linechart', lineData);
-//     });
-//   };
-// };
-
-// export default chartService;

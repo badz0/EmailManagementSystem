@@ -15,20 +15,20 @@
           </h2>
         <div layout="row">
           <md-button
+                     ng-click="$ctrl.winLocation()"
+                     aria-label="activate">
+          Home
+          </md-button>
+          <md-button
                     ng-click="$ctrl.activate()"
                     aria-label="activate">
                      ShowChart
           </md-button>
-          <md-button
+          <!-- <md-button
                      ng-click="$ctrl.hideChart()"
                      aria-label="activate">
           hide
-          </md-button>
-          <md-button
-                     ng-click="$ctrl.winLocation()"
-                     aria-label="activate">
-          loc
-          </md-button>
+          </md-button> -->
           <md-button
                     ng-click="$ctrl.defShow()"
                     aria-label="activate">

@@ -5,19 +5,23 @@ function globalHardcodeConfigFactory() {
       prev: 'Prev'
     },
     tags: [
-      {name: 'Number of letters sorted by date', id: 'columnchart', label: 'Column Chart',
+      {name: 'Users SignUp statistics', id: 'columnchart', label: 'Column Chart',
         status: true, value: 0},
-      {name: 'Sorted by Groups', id: 'piechart', label: 'Pie Chart',
+      {name: 'Sorted by Groups', id: 'piechart', label: 'Groups',
         status: true, value: 1},
-      {name: 'Sorted by Categoty', id: 'linechart', label: 'Line Chart',
+      {name: 'Sorted by received emails amout', id: 'linechart', label: 'Users',
         status: true, value: 2},
-      {name: 'Muliple Charts example', id: 'multiple', label: 'Multiple Chart',
-        status: true, value: 3}
+      {name: 'Muliple Charts example', id: 'multiple', label: 'Compare Statistics',
+        status: true, value: 3},
+      {name: 'Most Active Users', id: 'chartsActive', label: 'Activity',
+        status: true, value: 4},
+      {name: 'Most Active Users', id: 'dateEmailStat', label: 'Activity',
+        status: true, value: 5}
     ],
     currentNavItem: 0,
     someChart: {
       'type': 'serial',
-      'theme': 'light',
+      'theme': 'dark',
       'marginRight': 40,
       'marginLeft': 40,
       'autoMarginOffset': 20,
@@ -73,7 +77,7 @@ function globalHardcodeConfigFactory() {
     },
     anotherChart: {
       'type': 'serial',
-      'theme': 'light',
+      'theme': 'dark',
       'dataProvider': [],
       'valueAxes': [ {
         'gridColor': '#000000',
@@ -104,7 +108,7 @@ function globalHardcodeConfigFactory() {
       'type': 'pie',
       'theme': 'light',
       'dataProvider': [],
-      'valueField': 'letters',
+      'valueField': 'value',
       'titleField': 'Group',
       'balloon':{
         'fixedPosition':true
@@ -112,9 +116,7 @@ function globalHardcodeConfigFactory() {
     },
     columnChart: {
       'type': 'serial',
-      'theme': 'dark',
-      'marginRight': 40,
-      'marginLeft': 40,
+      'theme': 'light',
       'autoMarginOffset': 20,
       'dataDateFormat': 'YYYY-MM-DD',
       'valueAxes': [{
@@ -137,20 +139,20 @@ function globalHardcodeConfigFactory() {
         'bullet': 'round',
         'bulletBorderAlpha': 1,
         'bulletColor': '#FFFFFF',
-        'bulletSize': 5,
+        'bulletSize': 2,
         'hideBulletsCount': 50,
-        'lineThickness': 2,
+        'lineThickness': 1,
         'title': 'red line',
         'useLineColorForBulletBorder': true,
         'valueField': 'value',
-        'balloonText': '<span style=\'font-size:18px;\'>[[value]]</span>'
+        'balloonText': '<span style=\'font-size:12px;\'>[[name]]</span>'
       }],
       'chartCursor': {
         'pan': true,
         'valueLineEnabled': true,
         'valueLineBalloonEnabled': true,
         'cursorAlpha':1,
-        'cursorColor':'#258cbb',
+        'cursorColor':'#009688',
         'limitToGraph':'g1',
         'valueLineAlpha':0.2,
         'valueZoomable':true
@@ -182,24 +184,23 @@ function globalHardcodeConfigFactory() {
         'title': 'Users statistic'
       }],
       'startDuration': 0.5,
-      'graphs': [{
+      'graphs': [ {
         'balloonText': '[[title]]: [[value]]',
         'bullet': 'round',
-        'hidden': true,
-        'title': 'Vlad',
-        'valueField': 'Vlad',
+        'title': 'Ivanna',
+        'valueField': 'Ivanna',
         'fillAlphas': 0
       }, {
         'balloonText': '[[title]]: [[value]]',
         'bullet': 'round',
-        'title': 'Styopa',
-        'valueField': 'Styopa',
+        'title': 'Svitlana',
+        'valueField': 'Svitlana',
         'fillAlphas': 0
       }, {
         'balloonText': '[[title]]: [[value]]',
         'bullet': 'round',
-        'title': 'Andy',
-        'valueField': 'Andy',
+        'title': 'Dennis',
+        'valueField': 'Dennis',
         'fillAlphas': 0
       }],
       'chartCursor': {
@@ -218,7 +219,7 @@ function globalHardcodeConfigFactory() {
     },
     lineChart: {
       'type': 'serial',
-      'theme': 'dark',
+      'theme': 'light',
       'dataProvider': [],
       'valueAxes': [ {
         'gridColor': '#000000',
@@ -248,53 +249,81 @@ function globalHardcodeConfigFactory() {
       }
     },
     chartsActive: {
-        "theme": "light",
-        "type": "serial",
-        "dataProvider": [],
-        "categoryField": "Login",
-        "depth3D": 20,
-        "angle": 30,
+      'theme': 'light',
+      'type': 'serial',
+      'dataProvider': [],
+      'categoryField': 'Login',
+      'depth3D': 20,
+      'angle': 30,
 
-        "categoryAxis": {
-          "labelRotation": 90,
-          "gridPosition": "start"
-        },
-
-        "valueAxes": [ {
-          "title": "Visitors"
-        } ],
-
-        "graphs": [ {
-          "valueField": "Activity",
-          "type": "column",
-          "lineAlpha": 0.1,
-          "fillAlphas": 1
-        } ],
-
-        "chartCursor": {
-          "cursorAlpha": 0,
-          "zoomable": false,
-          "categoryBalloonEnabled": false
-        }
+      'categoryAxis': {
+        'labelRotation': 90,
+        'gridPosition': 'start'
       },
-      chartsActive2: {
-            "type": "serial",
-            "theme": "light",
-            "dataProvider": [],
-            "valueAxes": [{
-                "position": "left",
-                "title": "List of emails"
-            }],
-            "graphs": [{
-                "id": "g1",
-                "fillAlphas": 0.4,
-                "valueField": "value"
-            }],
-            "chartCursor": {
-                "cursorPosition": "mouse"
-            },
-            "categoryField": "recipient"
-          }
+
+      'valueAxes': [ {
+        'title': 'Visitors'
+      } ],
+
+      'graphs': [ {
+        'valueField': 'Activity',
+        'type': 'column',
+        'lineAlpha': 0.1,
+        'fillAlphas': 1
+      } ],
+
+      'chartCursor': {
+        'cursorAlpha': 0,
+        'zoomable': false,
+        'categoryBalloonEnabled': false
+      }
+    },
+    chartsActive2: {
+      'type': 'serial',
+      'theme': 'dark',
+      'dataProvider': [],
+      'valueAxes': [{
+        'position': 'left',
+        'title': 'List of emails'
+      }],
+      'graphs': [{
+        'id': 'g1',
+        'fillAlphas': 0.4,
+        'valueField': 'value'
+      }],
+      'chartCursor': {
+        'cursorPosition': 'mouse'
+      },
+      'categoryField': 'recipient'
+    },
+    emailDateSat: {
+      'type': 'serial',
+      'theme': 'light',
+      'dataProvider': [],
+      'valueAxes': [{
+        'position': 'left',
+        'title': 'Emails by day'
+      }],
+      'graphs': [{
+        'id': 'g1',
+        'fillAlphas': 0.4,
+        'valueField': 'value',
+        'balloonText': '<div style=\'margin:5px; font-size:19px;\'>Emails:<b>[[value]]</b></div>'
+      }],
+      'chartCursor': {
+        'categoryBalloonDateFormat': 'DD MMMM',
+        'cursorPosition': 'mouse'
+      },
+      'categoryField': 'date',
+      'categoryAxis': {
+        'minPeriod': 'mm',
+        'parseDates': true
+      },
+      'export': {
+        'enabled': true,
+        'dateFormat': 'YYYY-MM-DD'
+      }
+    }
   };
 };
 
