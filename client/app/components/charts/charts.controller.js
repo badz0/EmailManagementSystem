@@ -1,40 +1,28 @@
 class ChartsController {
-  constructor($location, $window, $log, Firedbservice, chartsFirebaseDataFactory, dragularService, $element, $mdDialog, chartService, dialogDataService, globalHardcodeConfigFactory) {'ngInject';
+  constructor(Firedbservice, chartsFirebaseDataFactory, dragularService, $element, $mdDialog, chartService, dialogDataService, globalHardcodeConfigFactory) {'ngInject';
 
     dragularService('.containerVertical', { removeOnSpill: true });
     this.dialog = $mdDialog;
     this.chartService = chartService;
     this.dialogDataService = dialogDataService;
-    this.viewerChanger = false;
-    this.defaultPageShow = false;
-    this.usersLists = true;
-    chartsFirebaseDataFactory.firedbChartData().then((res) => {
-      this.usersList = res.user;
+
+    chartsFirebaseDataFactory.chartsDataBuild().then((res) => {
+      this.usersList = res.firedbChartData.user;
     });
-    this.configData = globalHardcodeConfigFactory;
-    this.hideChart = function() {
-      this.viewerChanger = false;
 
-      AmCharts.clear();
-
-    };
-  // window.location = "http://localhost:3000/"
-    //this.activate();
-    this.reloadRoute = function() {
-      $window.location.reload();
-    };
-
+    this.configData = globalHardcodeConfigFactory.configData();
   };
+
   previousItem() {
     this.configData.currentNavItem === 0 ? this.configData.currentNavItem = this.configData.tags.length : this.configData.currentNavItem -= 1;
   };
+
   nextItem() {
     this.configData.currentNavItem >= this.configData.tags.length - 1 ? this.configData.currentNavItem = 0 : this.configData.currentNavItem += 1;
   };
-  showCharts(index) {
-    this.dialogDataService.dialogGroupCharts(index);
-    this.dialogDataService.dialogDateCharts(index);
-    this.dialogDataService.dialogActivityCharts(index);
+
+  showDialogCharts(index) {
+    this.dialogDataService.dialogDataServiceData(index);
     this.dialog.show({
       contentElement: `#chart${index}`,
       clickOutsideToClose: true
@@ -48,32 +36,26 @@ class ChartsController {
       clickOutsideToClose: true
     });
   };
-  activate() {
-    this.viewerChanger = true;
-    this.defaultPageShow = false;
-    this.usersLists = false;
-    this.chartService.pieChart();
-    this.chartService.columnChart();
-    this.chartService.multipleChart();
-    this.chartService.lineChart();
-    this.chartService.signUpChart();
-    this.chartService.dateEmailStat();
-  };
-  winLocation() {
-    window.location = 'http://localhost:3000/';
-    this.hideChart();
-  };
-  defShow() {
-    this.defaultPageShow ? this.defaultPageShow = false : this.defaultPageShow = true;
-    this.hideChart();
-    this.usersLists = false;
-  };
-  useListShow() {
-    this.usersLists ? this.usersLists = false : this.usersLists = true;
-    this.hideChart();
-    this.defaultPageShow = false;
+
+  showChartsGlobalStatistics() {
+    this.configData.navBarDisplay.globalChartsStats = true;
+    this.chartService.chartServiceData();
   };
 
+  showDefaultChartsPage() {
+    this.configData.navBarDisplay.defaultPageShow ? this.configData.navBarDisplay.defaultPageShow = false : this.configData.navBarDisplay.defaultPageShow = true;
+    this.hideGlobalChartsPage();
+  };
+
+  showUserListPage() {
+    this.configData.navBarDisplay.usersLists ? this.configData.navBarDisplay.usersLists = false : this.configData.navBarDisplay.usersLists = true;
+    this.hideGlobalChartsPage();
+  };
+
+  hideGlobalChartsPage() {
+    this.configData.navBarDisplay.globalChartsStats = false;
+    AmCharts.clear();
+  };
 }
 
 export default ChartsController;

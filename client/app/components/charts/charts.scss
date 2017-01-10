@@ -1,58 +1,37 @@
 @import '../../app';
+$h2Color: #FAFAFA;
+$h1Color: #999999;
 
 
 .charts {
-    #view-changer {
-      top: 0;
-      position: fixed !important;
-      z-index: 5;
-    }
-    .charts-view-global {
-      width: 75%;
-      margin: 0 auto;
-
-    }
-    .user-list {
-      width: 75%;
-      margin: 0 auto;
-    }
-
-    .charts-dialog-view {
-      height: 290px;
-      width: 1000px;
-    }
-    .top {
-      margin-top: -550px;
-    }
+  .charts-view-global, .user-list {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .charts-dialog-view {
+    height: 390px;
+    width: 1500px;
+  }
+  .top {
+    margin-top: -530px;
+  }
   h1, h2 {
     text-align: center;
-    color:#999999;
-  }
+    color: $h1Color;
+   }
   h2 {
-    color: #FAFAFA;
+    color: $h2Color;
   }
   .charts-view, .charts-view-global {
-    min-height: 600px;
+    height: 550px;
     min-width: 1200px;
   }
-  .prev {
+  .switchButtons {
     height: 500px;
     width: 200px;
     color:#009688;
     &:hover {
       background-color: #DDDDDD;
-    }
-  }
-  .button {
-
-  }
-  .next {
-    color:#009688;
-    height: 500px;
-    width: 200px;
-    &:hover {
-      background-color: #DDDDDD;
-
     }
   }
   .radio {
@@ -64,9 +43,6 @@
   }
   .list {
     border: 2px solid black;
-  }
-  .dis {
-    position: absolute;
-    display: scroll;
+    color: red;
   }
 }
