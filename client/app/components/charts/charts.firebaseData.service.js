@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
-class chartsFirebaseDataFactory {
-  constructor($firebaseObject) {'ngInject';
+class GlobalHardcodeConfigService {
+  constructor($firebaseObject, $log) {'ngInject';
     const ref = firebase.database().ref();
     this.data = $firebaseObject(ref);
   };
@@ -9,13 +9,13 @@ class chartsFirebaseDataFactory {
   chartsDataBuild() {
     return this.data.$loaded().then((res) => {
       return {
-        columnFireData: this.sortChartData('Column', res),
-        lineFireData: this.sortChartData('Line', res),
-        singnUpTimes: this.sortChartData('SignUp', res).splice(0,7),
-        pieFireData: this.chartsDataProvider('Pie', res, 'Group', 'name', 'name', 'Group', 'group'),
-        dateEmailStat: this.sortChartData('Date', res),
         firedbChartData: this.firedbChartData(res),
-        multyFireData: this.multyFireData(res)
+        signUpDay: this.sortChartData('signUpDay', res),
+        emailsMaxLine: this.sortChartData('emailsMaxLine', res),
+        singnUpTimes: this.sortChartData('SignUp', res).splice(0,7),
+        groupData: this.chartsDataProvider('groupData', res, 'Group'),
+        dateEmailStat: this.sortChartData('Date', res),
+        multipleDataComapare: this.multipleDataComapare(res)
       };
     });
   };
@@ -24,16 +24,8 @@ class chartsFirebaseDataFactory {
     return res;
   };
 
-  readResponseData(type, res, key1, val1, key2, val2, key3, val3) {
-    if(type === 'Column') {
-      return res.user.map((val) => {
-        return {[key1]: val[val1], [key2]: val[val2], [key3]: val[val3]};
-      });
-    } else if(type === 'Line') {
-      return res.user.map((val) => {
-        return {[key1]: val[val1], [key2]: val[val2].length};
-      });
-    } else if (type === 'Pie') {
+  readResponseData(type, res) {
+    if (type === 'groupData') {
       let arr = [];
       res.user.map((val) => {
         val.listOfEmails.map((value) => {
@@ -41,15 +33,11 @@ class chartsFirebaseDataFactory {
         });
       });
       return arr;
-    } else if (type === 'SignUp') {
-      return res.user.map((val) => {
-        return {[key1]: val[val1], [key2]: val[val2]};
-      });
     } else if (type === 'Date') {
       let arr = [];
       res.user.map((val) => {
         val.listOfEmails.map((value) => {
-          arr.push({[key1]: value[val1], [key2]: val[val2]});
+          arr.push({date: value.date, name: val.name});
         });
       });
       return arr;
@@ -57,38 +45,71 @@ class chartsFirebaseDataFactory {
       let arr = [];
       res.user.map((val) => {
         val.listOfEmails.map((value) => {
-          arr.push({[key1]: value[val1], [key2]: val[val2]});
+          arr.push({date: value.date, name: val.name});
         });
       });
       return arr;
     }
+    return {
+      signUpDay(res) {
+        return res.user.map((val) => {
+          return {date: val.signUpDate, value: val.id, name: val.name};
+        });
+      },
+      emailsMaxLine(res) {
+        return res.user.map((val) => {
+          return {provider: val.name, letters: val.listOfEmails.length};
+        });
+      },
+      groupData(res) {
+        let arr = [];
+        res.user.forEach((val) => {
+          val.listOfEmails.forEach((value) => {
+            arr.push({'name': val.name, 'Group': value.group});
+          });
+        });
+        return arr;
+      },
+      date(res) {
+        let arr = [];
+        res.user.map((val) => {
+          val.listOfEmails.map((value) => {
+            arr.push({date: value.date, name: val.name});
+          });
+        });
+        return arr;
+      },
+      signUp(res) {
+        return res.user.map((val) => {
+          return { Login: val.login, Activity: val.logInCount };
+        });
+      }
+    };
   };
 
   sortChartData(type, res) {
-    if(type === 'Column') {
-      return this.readResponseData(type, res, 'date', 'signUpDate', 'value', 'id', 'name', 'name').sort((a, b) => {
-        // return a.date > b.date;
+    if(type === 'signUpDay') {
+      return this.readResponseData().signUpDay(res).sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
-
       });
-    } else if(type === 'Line') {
-      return this.readResponseData(type, res, 'provider', 'name', 'letters', 'listOfEmails').sort((a, b) => {
+    } else if(type === 'emailsMaxLine') {
+      return this.readResponseData().emailsMaxLine(res).sort((a, b) => {
         return b.letters - a.letters;
       });
     } else if(type === 'SignUp') {
-      return this.readResponseData(type, res, 'Login', 'login', 'Activity', 'logInCount').sort((a, b) => {
+      return this.readResponseData().signUp(res).sort((a, b) => {
         return b.Activity - a.Activity;
       });
     } else if(type === 'Date') {
-      return this.chartsDataProvider('Date', res, 'date', 'date', 'date', 'name', 'name').sort((a, b) => {
+      return this.chartsDataProvider('Date', res, 'date').sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
       });
     }
   };
 
-  searchUnicData(type, res, key, key1, val1, key2, val2) {
+  searchUnicData(type, res, key) {
     let arr = [];
-    this.readResponseData(type, res, key1, val1, key2, val2).forEach((val, i) => {
+    this.readResponseData(type, res).forEach((val, i) => {
       if (arr.indexOf(val[key]) === -1) {
         arr.push(val[key]);
       };
@@ -96,11 +117,10 @@ class chartsFirebaseDataFactory {
     return arr;
   };
 
-  chartsDataProvider(type, res, key, key1, val1, key2, val2) {
-    //console.log('UNICUE', this.searchUnicData(type, res, key, key1, val1, key2, val2));
-    return this.searchUnicData(type, res, key, key1, val1, key2, val2).map((val) => {
+  chartsDataProvider(type, res, key) {
+    return this.searchUnicData(type, res, key).map((val) => {
       let integer = 0;
-      this.readResponseData(type, res, key1, val1, key2, val2).map((inElemVal) => {
+      this.readResponseData(type, res).map((inElemVal) => {
         if(val === inElemVal[key]) {
           integer += 1;
         };
@@ -109,28 +129,17 @@ class chartsFirebaseDataFactory {
     });
   };
 
-  multyFireData(res) {
-
-    console.log('asdaasd',  this.searchUnicData('Multy',  res, 'date', 'date', 'date', 'name', 'name').sort((a, b) => {
-      return new Date(a) - new Date(b);
-    }));
-    console.log('asdaasd', this.searchUnicData('Multy',  res, 'name', 'date', 'date', 'name', 'name'));
-    let arr1 = this.searchUnicData('Multy',  res, 'date', 'date', 'date', 'name', 'name').sort((a, b) => {
-      return new Date(a) - new Date(b);
-    });
-    this.readResponseData('Multy',  res, 'name', 'date', 'date', 'name', 'name');
-    let arr2 = this.searchUnicData('Multy',  res, 'name', 'date', 'date', 'name', 'name');
-    let arr3 = this.readResponseData('Multy',  res, 'date', 'date', 'name', 'name');
-    console.log('NAME', arr2[2]);
+  multipleDataComapare(res) {
+    let user = this.searchUnicData('Multy',  res, 'name');
     let finalData = [];
-    this.searchUnicData('Multy',  res, 'date', 'date', 'date', 'name', 'name').sort((a, b) => {
+    this.searchUnicData('Multy',  res, 'date').sort((a, b) => {
       return new Date(a) - new Date(b);
     }).map((val) => {
-      let [a, b, c] = [arr2[0], arr2[1], arr2[3]];
+      let [a, b, c] = [user[0], user[1], user[3]];
       let countA = 0;
       let countB = 0;
       let countC = 0;
-      this.readResponseData('Multy',  res, 'date', 'date', 'name', 'name').map((value) => {
+      this.readResponseData('Multy',  res).map((value) => {
         if (val === value.date) {
           if(value.name === a) {
             countA++;
@@ -143,12 +152,14 @@ class chartsFirebaseDataFactory {
           }
         }
       });
-      finalData.push({ 'date': val, [arr2[0]]: countA, [arr2[1]]: countB, [arr2[3]]: countC});
+      finalData.push({ 'date': val, [user[0]]: countA, [user[1]]: countB, [user[3]]: countC});
     });
-    console.log('FINAL DATA', finalData);
     return finalData;
-
   };
 };
 
-export default chartsFirebaseDataFactory;
+export default GlobalHardcodeConfigService;
+
+
+
+

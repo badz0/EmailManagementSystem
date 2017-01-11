@@ -1,11 +1,11 @@
-class dialogDataService {
-  constructor(chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-    this.chartsFirebaseDataFactory = chartsFirebaseDataFactory;
-    this.globalHardcodeConfigFactory = globalHardcodeConfigFactory.configData();
+class DialogDataService {
+  constructor(ChartsFirebaseDataService, GlobalHardcodeConfigService) {'ngInject';
+    this.ChartsFirebaseDataService = ChartsFirebaseDataService;
+    this.GlobalHardcodeConfigService = GlobalHardcodeConfigService.configData();
   };
 
   dialogDataServiceData(index) {
-    this.chartsFirebaseDataFactory.chartsDataBuild().then((res) => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
       this.dialogGroupCharts(index, res.firedbChartData);
       this.dialogDateCharts(index, res.firedbChartData);
       this.dialogActivityCharts(index, res.firedbChartData);
@@ -13,19 +13,19 @@ class dialogDataService {
   };
 
   dialogGroupCharts(index, res) {
-    let dialogGroup = this.globalHardcodeConfigFactory.dialogGroupStat;
+    let dialogGroup = this.GlobalHardcodeConfigService.dialogGroupStat;
     dialogGroup.dataProvider = this.chartsDataProvider(res, index, 'group');
     AmCharts.makeChart(`chartsData${index}`, dialogGroup);
   };
 
   dialogDateCharts(index, res) {
-    let dialogDate = this.globalHardcodeConfigFactory.dialogEmailDayStat;
+    let dialogDate = this.GlobalHardcodeConfigService.dialogEmailDayStat;
     dialogDate.dataProvider = this.chartsDataProvider(res, index, 'date');
     AmCharts.makeChart(`charts${index}`, dialogDate);
   };
 
   dialogActivityCharts(index, res) {
-    let chartsActive = this.globalHardcodeConfigFactory.dialogRecepientChart;
+    let chartsActive = this.GlobalHardcodeConfigService.dialogRecepientChart;
     chartsActive.dataProvider = this.chartSortMaxDataProvider(res, index, 'recipient');;
     AmCharts.makeChart(`chartsActive${index}`, chartsActive);
   };
@@ -71,4 +71,4 @@ class dialogDataService {
   }
 };
 
-export default dialogDataService;
+export default DialogDataService;

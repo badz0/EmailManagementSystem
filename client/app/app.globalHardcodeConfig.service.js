@@ -1,4 +1,4 @@
-class globalHardcodeConfigFactory {
+class GlobalHardcodeConfigFactory {
   constructor() {
 
   };
@@ -28,11 +28,11 @@ class globalHardcodeConfigFactory {
         usersLists: true
       },
       tags: [
-        {name: 'Users SignUp statistics', id: 'columnchart', label: 'SignUp Day & ID',
+        {name: 'Users SignUp statistics', id: 'signUpDayChart', label: 'SignUp Day & ID',
           status: true, value: 0},
-        {name: 'All received Emails sorted by Groups', id: 'piechart', label: 'avaliable Groups ',
+        {name: 'All received Emails sorted by Groups', id: 'groupDataChart', label: 'avaliable Groups ',
           status: true, value: 1},
-        {name: 'Sorted by received emails amout', id: 'linechart', label: 'Emails per user',
+        {name: 'Sorted by received emails amout', id: 'emailsMaxChart', label: 'Emails per user',
           status: true, value: 2},
         {name: 'Compare statistics for most active users', id: 'multiple', label: 'Compare Statistics',
           status: true, value: 3},
@@ -138,7 +138,7 @@ class globalHardcodeConfigFactory {
           'tickLength': 20
         }
       },
-      pie: {
+      groupData: {
         'type': 'pie',
         'theme': 'light',
         'dataProvider': [],
@@ -148,7 +148,7 @@ class globalHardcodeConfigFactory {
           'fixedPosition':true
         }
       },
-      columnChart: {
+      signUpDay: {
         'type': 'serial',
         'theme': 'light',
         'autoMarginOffset': 20,
@@ -202,7 +202,7 @@ class globalHardcodeConfigFactory {
         },
         'dataProvider': []
       },
-      multiple: {
+      multipleDataComapare: {
         'type': 'serial',
         'theme': 'light',
         'legend': {
@@ -251,7 +251,7 @@ class globalHardcodeConfigFactory {
           'position': 'top'
         }
       },
-      lineChart: {
+      emailsMaxLine: {
         'type': 'serial',
         'theme': 'light',
         'dataProvider': [],
@@ -362,4 +362,4 @@ class globalHardcodeConfigFactory {
   }
 };
 
-export default globalHardcodeConfigFactory;
+export default GlobalHardcodeConfigFactory;

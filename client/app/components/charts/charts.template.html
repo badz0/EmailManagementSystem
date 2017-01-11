@@ -1,174 +1,41 @@
 <appheader></appheader>
-<div  class="container"
-      layout="row"
-      flex>
+<div class="container"
+     layout="row"
+    flex>
   <md-sidenav md-component-id="menu"
               class="md-whiteframe-4dp">
     <appnav></appnav >
   </md-sidenav>
   <md-content flex class="content">
     <section class="charts">
-       <md-toolbar layout="row" class="md-toolbar-tools md-whiteframe-2dp" layout-align="space-around center" layout-align-xs="center center" id='view-changer'>
+       <md-toolbar layout="row"
+                   class="md-toolbar-tools md-whiteframe-2dp"
+                   layout-align="space-around center"
+                   layout-align-xs="center center"
+                   id='view-changer'>
           <h2>
-            <span ng-bind="$ctrl.configData.navBarTitles.global" ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
-            <span ng-bind="$ctrl.configData.navBarTitles.perUser" ng-if="!$ctrl.configData.navBarDisplay.globalChartsStats"></span>
+            <span ng-bind="$ctrl.configData.navBarTitles.global"
+                  ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
+            <span ng-bind="$ctrl.configData.navBarTitles.perUser"
+                  ng-if="!$ctrl.configData.navBarDisplay.globalChartsStats"></span>
           </h2>
         <div layout="row">
-          <md-button
-                    ng-click="$ctrl.showDefaultChartsPage()"
-                    aria-label="showDefaultChartsPage">
+          <md-button ng-click="$ctrl.showDefaultChartsPage()"
+                     aria-label="showDefaultChartsPage">
             <span ng-bind="$ctrl.configData.navBarButtons.defaultPageStats"></span>
           </md-button>
-          <md-button
-                    ng-click="$ctrl.showChartsGlobalStatistics()"
-                    aria-label="showChartsGlobalStatistics">
+          <md-button ng-click="$ctrl.showChartsGlobalStatistics()"
+                     aria-label="showChartsGlobalStatistics">
             <span ng-bind="$ctrl.configData.navBarButtons.globalChartsStats"></span>
           </md-button>
-          <md-button
-                    ng-click="$ctrl.showUserListPage()"
-                    aria-label="showUserListPage">
+          <md-button ng-click="$ctrl.showUserListPage()"
+                     aria-label="showUserListPage">
             <span ng-bind="$ctrl.configData.navBarButtons.perUserStats"></span>
           </md-button>
         </div>
       </md-toolbar>
-      <section class="global-chart" ng-show="$ctrl.configData.navBarDisplay.globalChartsStats" >
-        <md-tabs  md-dynamic-height
-                  md-border-bottom
-                  md-selected="$ctrl.configData.currentNavItem">
-          <md-tab label="{{chart.label}}"
-                  ng-repeat="chart in $ctrl.configData.tags"
-                  aria-label="tab" >
-            <md-content class="md-padding">
-              <h1 ng-bind="chart.name"></h1>
-              <section layout="row"
-                       layout-sm="column"
-                       layout-align="end center"
-                       layout-wrap>
-                  <div layout="row"
-                       layout-align="start center"
-                       flex>
-                    <md-button class="switchButtons"
-                               ng-click="$ctrl.previousItem()"
-                               ng-bind="$ctrl.configData.buttons.prev"
-                               aria-label="buttonPrev"></md-button>
-                    <span flex></span>
-                      <div id="{{chart.id}}"
-                     class="charts-view-global">
-                </div>
-                    <span flex></span>
-
-                  </div>
-                    <md-button class="switchButtons"
-                               ng-click="$ctrl.nextItem()"
-                               ng-bind="$ctrl.configData.buttons.next"
-                               aria-label="buttonNext"></md-button>
-              </section>
-                  <div id="{{chart.id}}"
-                     class="charts-view-global" >
-                </div>
-              <md-content>
-            </md-tab>
-          </md-tabs>
-        <section layout="row"
-                 layout-align="center center"
-                 class="top">
-          <md-radio-group ng-model="$ctrl.configData.currentNavItem"
-                          class="md-primary radio-container">
-            <md-radio-button  class="radio"
-                              ng-repeat="radio in $ctrl.configData.tags"
-                              ng-value="radio.value"
-                              aria-label="radio">
-            </md-radio-button>
-          </md-radio-group>
-      </section>
-    </section>
-      <div
-      class="user-list"
-      ng-show="$ctrl.configData.navBarDisplay.usersLists">
-        <md-list
-        class="containerVertical"
-        flex>
-          <md-list-item class="md-3-line"
-                        ng-repeat="item in $ctrl.usersList"
-                        ng-click="null"
-                        class="charts-dialog-view">
-            <img ng-src="{{item.avatar}}?{{$index}}"
-                 class="md-avatar"
-                 alt="{{item.name}}"
-                 title="{{item.name}}"/>
-            <div class="md-list-item-text "
-                 layout="column">
-              <h3 ng-bind="(item.name) + ' ' + ( item.surname)"></h3>
-              <h4 ng-bind="item.email"></h4>
-              <h4 ng-bind="item.birthDate"></h4>
-              <p ng-bind="(item.city) + ' ' + (item.country)"></p>
-            </div>
-            <md-button class="md-primary md-raised"
-                       ng-click="$ctrl.showUserEmails($index)">
-              <span ng-bind="$ctrl.configData.userListButtons.userEmails"></span>
-            </md-button>
-            <md-button class="md-primary md-raised"
-                       ng-click="$ctrl.showDialogCharts($index)">
-              <span ng-bind="$ctrl.configData.userListButtons.userCharts"></span>
-            </md-button>
-          </md-list-item>
-        </md-list>
-      </div>
-      <div class="dialog"
-           ng-repeat="item in $ctrl.usersList">
-        <div class="md-dialog-container"
-             id="chart{{$index}}">
-          <md-dialog>
-            <h2 ng-bind="(item.name) + ' ' + ($index + 1)"></h2>
-            <md-dialog-content class="md-dialog-content">
-            <span>BLABLALB</span>
-              <md-list-item>
-                <div   id="chartsData{{$index}}"
-                     class="charts-dialog-view">
-                </div>
-              </md-list-item>
-            <span>BLABLALB</span>
-
-              <md-list-item>
-                <div   id="charts{{$index}}"
-                     class="charts-dialog-view">
-                </div>
-              </md-list-item>
-            <span>BLABLALB</span>
-
-              <md-list-item>
-                <div  id="chartsActive{{$index}}"
-                     class="charts-dialog-view">
-                </div>
-            </md-dialog-content>
-            </md-list-item>
-          </md-dialog>
-        </div>
-      </div>
-      <div class="dialog">
-        <div class="md-dialog-container" id="usersList">
-          <md-dialog aria-label="List dialog">
-            <h2 ng-bind="($ctrl.user.listOfEmails.length) + ' ' + ($ctrl.user.login)"></h2>
-            <md-dialog-content class="md-dialog-content">
-            <md-list class="containerVertical">
-              <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"  ng-click="null">
-                <p class="list"><span ng-bind="($index + 1)"></span>
-                  <span ng-bind="$ctrl.configData.dialogListOfEmails.date"></span><span ng-bind="item.date"></span>
-                  <span ng-bind="$ctrl.configData.dialogListOfEmails.group"></span><span ng-bind="item.group"></span>
-                  <span ng-bind="$ctrl.configData.dialogListOfEmails.sender"></span><span ng-bind="item.recipient"></span>
-                  <span ng-bind="$ctrl.configData.dialogListOfEmails.subject"></span><span ng-bind="item.subject"></span>
-                  <br>
-                  <span ng-bind="$ctrl.configData.dialogListOfEmails.content"></span>
-                  <br>
-                  <span md-colors="{color:'green'}" ng-bind="item.content"></span>
-                </p>
-              </md-list-item>
-            </md-list>
-            </md-dialog-content>
-          </md-dialog>
-        </div>
-      </div>
-    <line-chart ng-if="$ctrl.configData.navBarDisplay.defaultPageShow"></line-chart>
+    <global-chart ng-show="$ctrl.configData.navBarDisplay.globalChartsStats"></global-chart>
+    <user-charts ng-if="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
     </section>
   </md-content>
 </div>

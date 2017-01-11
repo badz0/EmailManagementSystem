@@ -1,0 +1,51 @@
+<section class="global-chart" >
+        <md-tabs  md-dynamic-height
+                  md-border-bottom
+                  md-selected="$ctrl.configData.currentNavItem">
+          <md-tab label="{{chart.label}}"
+                  ng-repeat="chart in $ctrl.configData.tags"
+                  aria-label="tab" >
+            <md-content class="md-padding">
+              <h1 ng-bind="chart.name"></h1>
+              <section layout="row"
+                       layout-sm="column"
+                       layout-align="end center"
+                       layout-wrap>
+                  <div layout="row"
+                       layout-align="start center"
+                       flex>
+                    <md-button class="switchButtons"
+                               ng-click="$ctrl.previousItem()"
+                               ng-bind="$ctrl.configData.buttons.prev"
+                               aria-label="buttonPrev"></md-button>
+                    <span flex></span>
+                      <div id="{{chart.id}}"
+                     class="charts-view-global">
+                </div>
+                    <span flex></span>
+
+                  </div>
+                    <md-button class="switchButtons"
+                               ng-click="$ctrl.nextItem()"
+                               ng-bind="$ctrl.configData.buttons.next"
+                               aria-label="buttonNext"></md-button>
+              </section>
+                  <div id="{{chart.id}}"
+                     class="charts-view-global" >
+                </div>
+              <md-content>
+            </md-tab>
+          </md-tabs>
+        <section layout="row"
+                 layout-align="center center"
+                 class="top">
+          <md-radio-group ng-model="$ctrl.configData.currentNavItem"
+                          class="md-primary radio-container">
+            <md-radio-button  class="radio"
+                              ng-repeat="radio in $ctrl.configData.tags"
+                              ng-value="radio.value"
+                              aria-label="radio">
+            </md-radio-button>
+          </md-radio-group>
+      </section>
+    </section>

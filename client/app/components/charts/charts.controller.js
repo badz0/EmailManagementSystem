@@ -1,40 +1,7 @@
 class ChartsController {
-  constructor(Firedbservice, chartsFirebaseDataFactory, dragularService, $element, $mdDialog, chartService, dialogDataService, globalHardcodeConfigFactory) {'ngInject';
-
-    dragularService('.containerVertical', { removeOnSpill: true });
-    this.dialog = $mdDialog;
-    this.chartService = chartService;
-    this.dialogDataService = dialogDataService;
-
-    chartsFirebaseDataFactory.chartsDataBuild().then((res) => {
-      this.usersList = res.firedbChartData.user;
-    });
-
-    this.configData = globalHardcodeConfigFactory.configData();
-  };
-
-  previousItem() {
-    this.configData.currentNavItem === 0 ? this.configData.currentNavItem = this.configData.tags.length : this.configData.currentNavItem -= 1;
-  };
-
-  nextItem() {
-    this.configData.currentNavItem >= this.configData.tags.length - 1 ? this.configData.currentNavItem = 0 : this.configData.currentNavItem += 1;
-  };
-
-  showDialogCharts(index) {
-    this.dialogDataService.dialogDataServiceData(index);
-    this.dialog.show({
-      contentElement: `#chart${index}`,
-      clickOutsideToClose: true
-    });
-  };
-
-  showUserEmails(user) {
-    this.user =  this.usersList[user];
-    this.dialog.show({
-      contentElement: '#usersList',
-      clickOutsideToClose: true
-    });
+  constructor(Firedbservice, ChartsFirebaseDataService, dragularService, $element, $mdDialog, ChartService, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
+    this.chartService = ChartService;
+    this.configData = GlobalHardcodeConfigService.configData();
   };
 
   showChartsGlobalStatistics() {

@@ -6,15 +6,16 @@ import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
 
-import globalHardcodeConfigFactory from '../../app.globalHardcodeConfig.service';
-import chartService from  './charts.chartBuild.service';
-import dialogDataService from './charts.dialogBuild.service';
-import chartsFirebaseDataFactory from './charts.firebaseData.service';
+import GlobalHardcodeConfigService from '../../app.globalHardcodeConfig.service';
+import ChartService from  './charts.chartBuild.service';
+import DialogDataService from './charts.dialogBuild.service';
+import ChartsFirebaseDataService from './charts.firebaseData.service';
 
 import dragularModule from 'dragular/src/dragularModule';
 import dragularCss from 'dragular/src/dragularSource.css';
 import dragularService from 'dragular/src/dragularService';
-import lineChart from './lineChart/linechart.component';
+import userCharts from './userCharts/userCharts.component';
+import globalChart from './globalCharts/globalChart.component';
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
@@ -38,12 +39,13 @@ let ChartsModule = angular.module('charts', [
 
 
 .component('charts', chartsComponent)
-.component('lineChart', lineChart)
+.component('userCharts', userCharts)
+.component('globalChart', globalChart)
 
-.service('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
-.service('chartsFirebaseDataFactory', chartsFirebaseDataFactory)
-.service('chartService', chartService)
-.service('dialogDataService', dialogDataService)
+.service('GlobalHardcodeConfigService', GlobalHardcodeConfigService)
+.service('ChartsFirebaseDataService', ChartsFirebaseDataService)
+.service('ChartService', ChartService)
+.service('DialogDataService', DialogDataService)
 
 .name;
 

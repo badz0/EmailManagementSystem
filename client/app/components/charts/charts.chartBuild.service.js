@@ -1,42 +1,42 @@
-class chartService {
-  constructor($log, chartsFirebaseDataFactory, globalHardcodeConfigFactory) {'ngInject';
-    this.firedata = chartsFirebaseDataFactory;
-    this.codeConig = globalHardcodeConfigFactory.configData();
+class ChartService {
+  constructor($log, ChartsFirebaseDataService, GlobalHardcodeConfigService) {'ngInject';
+    this.firedata = ChartsFirebaseDataService;
+    this.codeConig = GlobalHardcodeConfigService.configData();
   };
 
   chartServiceData() {
     this.firedata.chartsDataBuild().then((res) => {
-      this.pieChart(res.pieFireData);
-      this.columnChart(res.columnFireData);
-      this.lineChart(res.lineFireData);
+      this.groupData(res.groupData);
+      this.signUpDay(res.signUpDay);
+      this.emailsMaxLine(res.emailsMaxLine);
       this.signUpChart(res.singnUpTimes);
       this.dateEmailStat(res.dateEmailStat);
-      this.multipleChart(res.multyFireData);
+      this.multipleDataComapare(res.multipleDataComapare);
     });
   };
 
-  pieChart(res) {
-    let pieConfig = this.codeConig.pie;
-    pieConfig.dataProvider = res;
-    AmCharts.makeChart('piechart', pieConfig);
+  groupData(res) {
+    let groupDataConfig = this.codeConig.groupData;
+    groupDataConfig.dataProvider = res;
+    AmCharts.makeChart('groupDataChart', groupDataConfig);
   };
 
-  multipleChart(res) {
-    let multipleConfig = this.codeConig.multiple;
+  multipleDataComapare(res) {
+    let multipleConfig = this.codeConig.multipleDataComapare;
     multipleConfig.dataProvider = res;
     AmCharts.makeChart('multiple', multipleConfig);
   };
 
-  columnChart(res) {
-    let columnConfig = this.codeConig.columnChart;
-    columnConfig.dataProvider = res;
-    AmCharts.makeChart('columnchart', columnConfig);
+  signUpDay(res) {
+    let signUpDayConfig = this.codeConig.signUpDay;
+    signUpDayConfig.dataProvider = res;
+    AmCharts.makeChart('signUpDayChart', signUpDayConfig);
   };
 
-  lineChart(res) {
-    let lineData = this.codeConig.lineChart;
-    lineData.dataProvider = res;
-    AmCharts.makeChart('linechart', lineData);
+  emailsMaxLine(res) {
+    let emailsMaxLineData = this.codeConig.emailsMaxLine;
+    emailsMaxLineData.dataProvider = res;
+    AmCharts.makeChart('emailsMaxChart', emailsMaxLineData);
   };
 
   signUpChart(res) {
@@ -52,4 +52,4 @@ class chartService {
   };
 };
 
-export default chartService;
+export default ChartService;
