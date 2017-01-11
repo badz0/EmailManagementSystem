@@ -1,17 +1,4 @@
 class ChartsController {
-<<<<<<< HEAD
-  constructor(Firedbservice, columnChartService, lineChartService, multipleChartService, pieChartService, globalHardcodeConfigFactory) {'ngInject';
-    const configData = globalHardcodeConfigFactory;
-    this.currentNavItem = configData.currentNavItem;
-    this.elemsStatus = configData.tags;
-    this.btnConfigs = configData;
-  };
-  previousItem() {
-    this.currentNavItem === 0 ? this.currentNavItem = this.elemsStatus.length : this.currentNavItem -= 1;
-  };
-  nextItem() {
-    this.currentNavItem >= this.elemsStatus.length - 1 ? this.currentNavItem = 0 : this.currentNavItem += 1;
-=======
   constructor(Firedbservice, ChartsFirebaseDataService, dragularService, $element, $mdDialog, ChartService, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
     this.chartService = ChartService;
     this.configData = GlobalHardcodeConfigService.configData();
@@ -35,7 +22,6 @@ class ChartsController {
   hideGlobalChartsPage() {
     this.configData.navBarDisplay.globalChartsStats = false;
     AmCharts.clear();
->>>>>>> lv_ems_214_dragable
   };
 }
 
