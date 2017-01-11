@@ -1,20 +1,20 @@
 <div layout="column" layout-fill>
 	<appheader></appheader>
 	<div class="container" layout="row" flex>
-		<md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+		<md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
 			<appnav></appnav>
 		</md-sidenav>
-		  <md-content flex class="content">
+		  <md-content flex flex-offset="5">
       <h1>Hello {{ $ctrl.name }}</h1>
 <section class="$ctrl">
-<table border=1 width=100%>
+  <table border=1 width=100%>
   <caption>Safe List</caption>
     <tr>
       <th colspan=7 class="filter"> <input placeholder="Search for..." ng-model="test"></th>
     </tr>
     <tr>
       <th>Remove:<br><button ng-click="$ctrl.checkAll()">check</button>
-      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th> 
+      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th>
       <th>Move to blocklist:<br><button ng-click="$ctrl.checkAllBlock()">check</button>
       <button ng-click="$ctrl.uncheckAllBlock()">uncheck</button>
       </th>
@@ -32,50 +32,46 @@
       <td>{{user.date}}</td>
       <td>{{user.group}}</td>
       <td>
-        <md-button class="md-raised md-primary md-small" ng-click="$ctrl.showUser(user)">note</md-button>
-        <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
+      <md-button class="md-raised md-primary md-small" ng-click="$ctrl.showUser(user)">note</md-button>
+      <md-button class="md-raised md-warn md-small" ng-click="$ctrl.deleteUser(user)"> del</md-button>
       </td>
     </tr>
-</table>
-
-<form  ng-submit="$ctrl.AddPerson()"  ng-show="$ctrl.addFormShow">
-  <md-content class="md-no-momentum">
-  <md-input-container class="md-icon-float md-block">
-    <label>First Name</label>
-    <input type="text" ng-model="$ctrl.firstname" name="name">
-  </md-input-container>
-  <md-input-container class="md-icon-float md-block">
-    <label>Last Name</label>
-    <input type="text" ng-model="$ctrl.lastname" name="quote" required>
-  </md-input-container>    
-  <md-input-container class="md-icon-float md-block">
-    <label>Age</label>     
-    <input type="text" ng-model="$ctrl.age" name="age">
-  </md-input-container>
-  <md-input-container class="md-icon-float md-block">
-    <label>Notice</label>     
-    <input type="text" ng-model="$ctrl.note" >
-  </md-input-container>
-    <md-button class="md-raised md-green" type="submit">Submit</md-button>
-    <md-button class="md-raised md-green" ng-click="$ctrl.hideForm()"  ng-show="$ctrl.addFormShow">Close</md-button>
-  </md-content>
-</form>
- 
+  </table>
+<md-button class="md-raised md-warn" ng-click="$ctrl.remove()">Remove marked</md-button>
+<md-button class="md-raised md-green" ng-click="$ctrl.showForm()"  ng-hide="$ctrl.addFormShow">Add</md-button>
+<md-button class="md-raised md-green" ng-click="$ctrl.hideForm()"  ng-show="$ctrl.addFormShow">Close</md-button>
 <form ng-submit="$ctrl.editFormSubmit()"  ng-show="$ctrl.editFormShow">
   <md-content class="md-no-momentum">
   <md-input-container class="md-icon-float md-block">
-    <label>Notice</label>     
+    <label>Notice</label>
     <input type="text" ng-model="$ctrl.note" >
   </md-input-container>
     <md-button class="md-raised md-primary" type="submit">note</md-button>
     <md-button class="md-raised md-green" ng-click="$ctrl.hideForm()">Cancel note</md-button>
   </md-content>
 </form>
-
-<md-button class="md-raised md-warn" ng-click="$ctrl.remove()">Remove marked</md-button>
-<md-button class="md-raised md-green" ng-click="$ctrl.showForm()"  ng-hide="$ctrl.addFormShow">Add</md-button>
-<md-button class="md-raised md-green" ng-click="$ctrl.hideForm()"  ng-show="$ctrl.addFormShow">Close</md-button>
-    
+<form  ng-submit="$ctrl.AddPerson()"  ng-show="$ctrl.addFormShow">
+    <md-content class="md-no-momentum">
+    <md-input-container class="md-icon-float md-block">
+      <label>First Name</label>
+      <input type="text" ng-model="$ctrl.firstname" name="name">
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block">
+      <label>Last Name</label>
+      <input type="text" ng-model="$ctrl.lastname" name="quote" required>
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block">
+      <label>Age</label>
+      <input type="text" ng-model="$ctrl.age" name="age">
+    </md-input-container>
+    <md-input-container class="md-icon-float md-block">
+      <label>Notice</label>
+      <input type="text" ng-model="$ctrl.note" >
+    </md-input-container>
+      <md-button class="md-raised md-green" type="submit">Submit</md-button>
+      <md-button class="md-raised md-green" ng-click="$ctrl.hideForm()"  ng-show="$ctrl.addFormShow">Close</md-button>
+    </md-content>
+</form>
 <table border=1 width=100%>
   <caption>Block List</caption>
     <tr>
@@ -83,10 +79,10 @@
     </tr>
     <tr>
       <th>Remove:<br><button ng-click="$ctrl.checkAll()">check</button>
-      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th> 
+      <button ng-click="$ctrl.uncheckAll()">uncheck</button></th>
       <th>Move to safelist:<br><button ng-click="$ctrl.checkAllBlock()">check</button>
       <button ng-click="$ctrl.uncheckAllBlock()">uncheck</button>
-      </th> 
+      </th>
       <th>Firstname:</th>
       <th>Lastname:</th>
       <th>Age:</th>
@@ -107,6 +103,7 @@
 </table>
 <md-button class="md-raised md-warn" ng-click="$ctrl.remove()">Remove marked</md-button>
 </section>
-     </md-content>
+    </section>
+    </md-content>
   </div>
 </div>

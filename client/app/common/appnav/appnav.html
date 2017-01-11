@@ -1,20 +1,34 @@
 <md-list layout-align="center center" layout-gt-sm="column">
+<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center">
+  <h1 translate="menu.title"></h1>
+</md-toolbar>
+<md-list layout-align="center center" layout="column">
+  <md-list-item hide-gt-xs>
+    <language-change></language-change>
+  </md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="home" translate="homeButton"></md-button>
+		<md-button class="md-raised" ui-sref="home" aria-label="Home button" translate="menu.home"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="about" translate="aboutButton"></md-button>
+		<md-button class="md-raised" ui-sref="about" aria-label="About button" translate="menu.about"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button class="md-raised" ui-sref="cabinet" translate="cabinetButton"></md-button>
+		<md-button class="md-raised" ui-sref="cabinet" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
 	</md-list-item>
-  <md-list-item>
-    <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
+    <div hide-gt-sm layout="column">
+      <md-button class="md-raised" aria-label="Sign In" translate="header.signIn" ></md-button>
+      <md-button class="md-raised md-primary" aria-label="Sign Up" translate="header.signUp"></md-button>
+      <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
+  </div>
+  <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
   </md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="charts">charts</md-button>
   </md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="deledit">delEdit</md-button>
+  </md-list-item>
+  <md-list-item>
+    <md-button class="md-raised" ui-sref="grid">ui-grid</md-button>
   </md-list-item>
 </md-list>

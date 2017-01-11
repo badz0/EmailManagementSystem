@@ -1,6 +1,6 @@
 class AppnavController {
-  $onInit () {
-    this.name = 'appheader';
+  $onInit() {
+    this.name = 'appnav';
   }
 }
 

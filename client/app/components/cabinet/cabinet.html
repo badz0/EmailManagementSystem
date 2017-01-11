@@ -1,10 +1,10 @@
 <div layout="column" layout-fill>
   <appheader></appheader>
   <div class="container" layout="row" flex>
-    <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
+    <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
       <appnav></appnav>
     </md-sidenav>
-    <md-content flex class="content">
+    <md-content flex flex-offset="5">
       <div class="md-padding" ng-cloak layout="column">
         <md-card>
           <div layout="row">
@@ -30,11 +30,11 @@
               <md-button  class="imgbuttons small">to Incoming messages</md-button>
                 <md-button  class="imgbuttons small">to Blocklist</md-button>
                 <md-button  class="imgbuttons small">to Safelist</md-button>
-                
+
                 <input class="ng-hide" id="input-file-id" multiple type="file"/>
             <label for="input-file-id" class="md-button imgbuttons small">Upload photo</label>
                 <!--<md-button   class="imgbuttons small">Upload photo</md-button>-->
-                
+
                 <md-button ng-click="$ctrl.deleteAvatar()"  class="imgbuttons small">Delete photo</md-button>
               </md-card-actions>
             </md-card>
@@ -46,24 +46,24 @@
                       <label>Name</label>
                       <input type="text" name="name" ng-model="$ctrl.user.name">
                     </md-input-container>
-                    
+
                     <md-input-container class="biography">
                       <label>*Nickname*</label>
                       <input type="text" name="login" ng-model="$ctrl.user.login">
                     </md-input-container>
-                    
+
                     <md-input-container class="biography">
                       <label>Surname</label>
                       <input type="text" name="surname" ng-model="$ctrl.user.surname">
                     </md-input-container>
-                    
+
                     <md-input-container class="biography">
                       <label>Birth date</label>
                       <md-datepicker ng-model="$ctrl.user.birthDay" name="birthDay"></md-datepicker>
                     </md-input-container>
-                    
+
                   </div>
-                  
+
                   <div layout="row">
                     <md-input-container class="adress">
                       <label>Country</label>
@@ -74,7 +74,7 @@
                         </md-option>
                       </md-select>
                     </md-input-container>
-                    
+
                     <md-input-container class="adress">
                       <label>City</label>
                       <md-select id="city" ng-disabled="!$ctrl.user.country.city" ng-model="$ctrl.user.city">
@@ -84,7 +84,7 @@
                         </md-option>
                       </md-select>
                     </md-input-container>
-            
+
                     <md-input-container class="adress">
                       <label>Adress</label>
                       <input type="text" name="lastname" ng-model="$ctrl.user.postadress">
@@ -98,5 +98,3 @@
     </md-content>
   </div>
 </div>
-
-  
