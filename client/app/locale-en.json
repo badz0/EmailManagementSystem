@@ -1,14 +1,4 @@
 {
-  "title": "Email Management System",
-  "signIn": "Sign In",
-  "signOut": "Sign Out",
-  "logOut": "Log Out",
-  "homeButton": "Home",
-  "aboutButton": "About",
-  "cabinetButton": "Cabinet",
-  "homeTitle": "Home page",
-  "aboutTitle": "About us",
-  "menu": "Menu",
   "cabinet":{
     "title":"My cabinet",
     "name":"Name:&nbsp;",
@@ -25,6 +15,23 @@
     "birthdate":"Birth Date",
     "submit":"Save changes",
     "colorPicker":"Select theme color:"
+  },
+  "header": {
+    "title": "Email Management System",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logOut": "Log Out"
+  },
+  "menu": {
+    "title": "Menu",
+    "home": "Home",
+    "about": "About",
+    "cabinet": "Cabinet"
+  },
+  "home": {
+    "title": "Home page"
+  },
+  "about": {
+    "title": "About us"
   }
-  
 }

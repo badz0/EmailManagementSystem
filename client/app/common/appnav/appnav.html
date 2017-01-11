@@ -2,19 +2,17 @@
   <h1 translate="menu"></h1>
 </md-toolbar>
 <md-list layout-align="center center" layout="column">
-  <div hide-gt-xs>
-    <md-button ng-class="{'md-accent':$ctrl.lan === 'en'}" ng-click="$ctrl.changeLanguage('en');" class="md-icon-button">EN</md-button>
-    <span>|</span>
-    <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
-  </div>
+  <md-list-item hide-gt-xs>
+    <language-change></language-change>
+  </md-list-item>
 	<md-list-item>
-		<md-button aria-label="homeButton" class="md-raised" ui-sref="home" translate="homeButton"></md-button>
+		<md-button class="md-raised" ui-sref="home" aria-label="Home button" translate="menu.home"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button aria-label="aboutButton" class="md-raised" ui-sref="about" translate="aboutButton"></md-button>
+		<md-button class="md-raised" ui-sref="about" aria-label="About button" translate="menu.about"></md-button>
 	</md-list-item>
 	<md-list-item>
-		<md-button aria-label="cabinetButton" class="md-raised" ui-sref="cabinet" translate="cabinetButton"></md-button>
+		<md-button class="md-raised" ui-sref="cabinet" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
 	</md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
@@ -26,8 +24,8 @@
     <md-button class="md-raised" ui-sref="deledit">delEdit</md-button>
   </md-list-item>
     <div hide-gt-sm layout="column">
-    <md-button class="md-raised">Sign In</md-button>
-    <md-button class="md-raised md-primary" md-colors="{background: '{{$ctrl.users.themeColor}}'}">Sign Up</md-button>
-    <md-button class="md-raised md-warn" ng-if="false">Log Out</md-button>
+      <md-button class="md-raised" aria-label="Sign In" translate="header.signIn" ></md-button>
+      <md-button class="md-raised md-primary" aria-label="Sign Up" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="header.signUp"></md-button>
+      <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
   </div>
 </md-list>

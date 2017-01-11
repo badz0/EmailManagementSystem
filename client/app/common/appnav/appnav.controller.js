@@ -7,14 +7,8 @@ class AppnavController {
     this.users = $firebaseObject(ref);
     this.translate = $translate;
   }
-
   $onInit() {
-    this.lan = this.translate.use();
-  }
-
-  changeLanguage(key) {
-    this.translate.use(key);
-    this.lan = key;
+    this.name = 'appnav';
   }
 }
 
