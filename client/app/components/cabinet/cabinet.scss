@@ -15,7 +15,9 @@
   margin:0;
 }
 .imgbuttons.small{
- font-size:8px;
+ font-size:12px;
+ font-family: 'Exo 2', sans-serif;
+ color:black;
 }
 .button.submit{
   width:98%;
@@ -53,4 +55,11 @@
   height:20px;
   min-height: 10px;
   min-width: 10px;
+}
+.nowrap.md-subhead{
+  font-family: 'Marck Script', cursive;
+  font-size:18px;
+}
+.md-headline{
+  font-family: 'Exo 2', sans-serif;
 }
