@@ -1,0 +1,83 @@
+<div class="user-list"
+     ng-show="$ctrl.configData.navBarDisplay.usersLists">
+  <md-list class="containerVertical"
+           flex>
+    <md-list-item class="md-3-line"
+                  ng-repeat="item in $ctrl.usersList"
+                  ng-click="null"
+                  class="charts-dialog-view">
+      <img ng-src="{{item.avatar}}?{{$index}}"
+           class="md-avatar"
+           alt="{{item.name}}"
+           title="{{item.name}}"/>
+      <div class="md-list-item-text "
+           layout="column">
+        <h3 ng-bind="(item.name) + ' ' + ( item.surname)"></h3>
+        <h4 ng-bind="item.email"></h4>
+        <h4 ng-bind="item.birthDate"></h4>
+        <p ng-bind="(item.city) + ' ' + (item.country)"></p>
+      </div>
+      <md-button class="md-primary md-raised"
+                 ng-click="$ctrl.showUserEmails($index)">
+        <span ng-bind="$ctrl.configData.userListButtons.userEmails"></span>
+      </md-button>
+      <md-button class="md-primary md-raised"
+                 ng-click="$ctrl.showDialogCharts($index)">
+        <span ng-bind="$ctrl.configData.userListButtons.userCharts"></span>
+      </md-button>
+    </md-list-item>
+  </md-list>
+</div>
+  <div class="dialog"
+       ng-repeat="item in $ctrl.usersList">
+    <div class="md-dialog-container"
+         id="chart{{$index}}">
+      <md-dialog>
+        <h2 ng-bind="(item.name) + ' ' + ($index + 1)"></h2>
+        <md-dialog-content class="md-dialog-content">
+        <span></span>
+        <md-list-item>
+          <div id="chartsData{{$index}}"
+               class="charts-dialog-view">
+          </div>
+        </md-list-item>
+        <span></span>
+        <md-list-item>
+          <div id="charts{{$index}}"
+               class="charts-dialog-view">
+          </div>
+        </md-list-item>
+        <span></span>
+        <md-list-item>
+          <div id="chartsActive{{$index}}"
+               class="charts-dialog-view">
+          </div>
+        </md-dialog-content>
+        </md-list-item>
+      </md-dialog>
+    </div>
+  </div>
+  <div class="dialog">
+    <div class="md-dialog-container"
+         id="usersList">
+      <md-dialog aria-label="List dialog">
+        <h2 ng-bind="($ctrl.user.listOfEmails.length) + ' ' + ($ctrl.user.login)"></h2>
+        <md-dialog-content class="md-dialog-content">
+          <md-list class="containerVertical">
+            <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"  ng-click="null">
+              <p class="list"><span ng-bind="($index + 1)"></span>
+                <span ng-bind="$ctrl.configData.dialogListOfEmails.date"></span><span ng-bind="item.date"></span>
+                <span ng-bind="$ctrl.configData.dialogListOfEmails.group"></span><span ng-bind="item.group"></span>
+                <span ng-bind="$ctrl.configData.dialogListOfEmails.sender"></span><span ng-bind="item.recipient"></span>
+                <span ng-bind="$ctrl.configData.dialogListOfEmails.subject"></span><span ng-bind="item.subject"></span>
+                <br>
+                <span ng-bind="$ctrl.configData.dialogListOfEmails.content"></span>
+                <br>
+                <span md-colors="{color:'green'}" ng-bind="item.content"></span>
+              </p>
+            </md-list-item>
+          </md-list>
+        </md-dialog-content>
+      </md-dialog>
+    </div>
+  </div>

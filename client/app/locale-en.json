@@ -19,5 +19,16 @@
   },
   "cabinet": {
     "title": "Cabinet"
-  }
+  },
+  "title": "Email Management System",
+  "signIn": "Sign In",
+  "signOut": "Sign Out",
+  "logOut": "Log Out",
+  "homeButton": "Home",
+  "aboutButton": "About",
+  "cabinetButton": "Cabinet",
+  "homeTitle": "Home page",
+  "aboutTitle": "About us",
+  "menu": "Menu",
+  "statisticsButton": "Statistics"
 }

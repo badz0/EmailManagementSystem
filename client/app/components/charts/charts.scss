@@ -1,21 +1,48 @@
 @import '../../app';
+$h2Color: #FAFAFA;
+$h1Color: #999999;
+
+
 .charts {
-  height: 100%;
-  min-height: 700px;
+  .charts-view-global, .user-list {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .charts-dialog-view {
+    height: 390px;
+    width: 1500px;
+  }
+  .top {
+    margin-top: -530px;
+  }
   h1, h2 {
     text-align: center;
-    color: $textColor;
+    color: $h1Color;
+   }
+  h2 {
+    color: $h2Color;
   }
-  .charts-view {
-    min-height: 600px;
+  .charts-view, .charts-view-global {
+    height: 550px;
+    min-width: 1200px;
   }
-  .prev {
-    background-color: $navPrev;
-  }
-  .next {
-    background-color: $navNext;
+  .switchButtons {
+    height: 500px;
+    width: 200px;
+    color:#009688;
+    &:hover {
+      background-color: #DDDDDD;
+    }
   }
   .radio {
     display: inline-block;
+  }
+  .dialog {
+    visibility: hidden;
+
+  }
+  .list {
+    border: 2px solid black;
+    color: red;
   }
 }

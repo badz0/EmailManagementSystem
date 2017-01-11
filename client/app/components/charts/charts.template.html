@@ -1,51 +1,41 @@
 <appheader></appheader>
-<div  class="container"
-      layout="row"
-      flex>
-  <md-sidenav md-is-locked-open="true"
+<div class="container"
+     layout="row"
+    flex>
+  <md-sidenav md-component-id="menu"
               class="md-whiteframe-4dp">
-    <appnav></appnav>
+    <appnav></appnav >
   </md-sidenav>
   <md-content flex class="content">
     <section class="charts">
-      <md-content>
-        <md-tabs  md-dynamic-height
-                  md-border-bottom
-                  md-selected="$ctrl.currentNavItem">
-          <md-tab label="{{chart.label}}"
-                  ng-repeat="chart in $ctrl.elemsStatus">
-            <md-content class="md-padding">
-              <h1 ng-bind="chart.name"></h1>
-              <section  layout="row"
-                        layout-sm="column"
-                        layout-align="end center"
-                        layout-wrap>
-                <div  layout="row"
-                      layout-align="start center"
-                      flex>
-                  <md-button  class="prev"
-                              ng-click="$ctrl.previousItem()"
-                              ng-bind="$ctrl.btnConfigs.buttons.prev"></md-button>
-                  <span flex></span>
-                </div>
-                  <md-button  class="next"
-                              ng-click="$ctrl.nextItem()"
-                              ng-bind="$ctrl.btnConfigs.buttons.next"></md-button>
-                </section>
-                <div  id="{{chart.id}}"
-                      class="charts-view"></div>
-            <md-content>
-          </md-tab>
-        </md-tabs>
-        <section  layout="row"
-                  layout-align="center center">
-          <md-radio-group ng-model="$ctrl.currentNavItem"
-                          class="md-primary radio-container">
-            <md-radio-button  class="radio"
-                              ng-repeat="radio in $ctrl.elemsStatus"
-                              ng-value="radio.value">
-            </md-radio-button>
-          </md-radio-group>
+       <md-toolbar layout="row"
+                   class="md-toolbar-tools md-whiteframe-2dp"
+                   layout-align="space-around center"
+                   layout-align-xs="center center"
+                   id='view-changer'>
+          <h2>
+            <span ng-bind="$ctrl.configData.navBarTitles.global"
+                  ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
+            <span ng-bind="$ctrl.configData.navBarTitles.perUser"
+                  ng-if="!$ctrl.configData.navBarDisplay.globalChartsStats"></span>
+          </h2>
+        <div layout="row">
+          <md-button ng-click="$ctrl.showDefaultChartsPage()"
+                     aria-label="showDefaultChartsPage">
+            <span ng-bind="$ctrl.configData.navBarButtons.defaultPageStats"></span>
+          </md-button>
+          <md-button ng-click="$ctrl.showChartsGlobalStatistics()"
+                     aria-label="showChartsGlobalStatistics">
+            <span ng-bind="$ctrl.configData.navBarButtons.globalChartsStats"></span>
+          </md-button>
+          <md-button ng-click="$ctrl.showUserListPage()"
+                     aria-label="showUserListPage">
+            <span ng-bind="$ctrl.configData.navBarButtons.perUserStats"></span>
+          </md-button>
+        </div>
+      </md-toolbar>
+    <global-chart ng-show="$ctrl.configData.navBarDisplay.globalChartsStats"></global-chart>
+    <user-charts ng-if="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
     </section>
   </md-content>
 </div>

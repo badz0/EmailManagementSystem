@@ -5,39 +5,48 @@ import angularAnimate from 'angular-animate';
 import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
-import globalHardcodeConfigFactory from '../../app.globalHardcodeConfig.js';
-import columnChartService from './charts.columnChart.service';
-import lineChartService from './charts.lineChart.service';
-import multipleChartService from './charts.multipleChart.service';
-import pieChartService from  './charts.pieChart.service';
-import chartsFirebaseDataFactory from './charts.firebaseData.factory';
+
+import GlobalHardcodeConfigService from '../../app.globalHardcodeConfig.service';
+import ChartService from  './charts.chartBuild.service';
+import DialogDataService from './charts.dialogBuild.service';
+import ChartsFirebaseDataService from './charts.firebaseData.service';
+
+import dragularModule from 'dragular/src/dragularModule';
+import dragularCss from 'dragular/src/dragularSource.css';
+import dragularService from 'dragular/src/dragularService';
+import userCharts from './userCharts/userCharts.component';
+import globalChart from './globalCharts/globalChart.component';
 
 
 let ChartsModule = angular.module('charts', [
   uiRouter,
   ngMaterial,
+  dragularModule,
   angularAria,
   angularAnimate
 ])
 
-.config(($stateProvider) => {
+.config(($stateProvider, $mdIconProvider) => {
   'ngInject';
   $stateProvider
     .state('charts', {
       url: '/charts',
       component: 'charts'
     });
+  $mdIconProvider
+       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 })
 
+
 .component('charts', chartsComponent)
+.component('userCharts', userCharts)
+.component('globalChart', globalChart)
 
-.factory('globalHardcodeConfigFactory', globalHardcodeConfigFactory)
-.factory('chartsFirebaseDataFactory', chartsFirebaseDataFactory)
-
-.service('columnChartService', columnChartService)
-.service('lineChartService', lineChartService)
-.service('multipleChartService', multipleChartService)
-.service('pieChartService', pieChartService)
+.service('GlobalHardcodeConfigService', GlobalHardcodeConfigService)
+.service('ChartsFirebaseDataService', ChartsFirebaseDataService)
+.service('ChartService', ChartService)
+.service('DialogDataService', DialogDataService)
 
 
 .name;
