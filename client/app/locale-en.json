@@ -14,7 +14,8 @@
     "country":"Country",
     "birthdate":"Birth Date",
     "submit":"Save changes",
-    "colorPicker":"Select theme color:"
+    "colorPicker":"Select theme color:",
+    "logOut":"Log Out"
   },
   "header": {
     "title": "Email Management System",
