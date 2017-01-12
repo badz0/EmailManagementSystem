@@ -2,13 +2,13 @@ import countries from './cabinet.countries.json';
 import * as firebase from 'firebase';
 
 class CabinetController {
-  constructor($firebaseObject,Firedbservice,$mdColorPalette) {'ngInject';
+  constructor($firebaseObject,Firedbservice,$mdColorPalette,cabConst) {'ngInject';
     const ref = firebase.database().ref().child('user/9');
     this.users = $firebaseObject(ref);
     this.colors = Object.keys($mdColorPalette);
+    this.avatar=cabConst.defaultAvatar;
   }
   $onInit () {
-    this.avatar='https://firebasestorage.googleapis.com/v0/b/emailmanagementsystem-d4f11.appspot.com/o/user_avatar_default.gif?alt=media&token=188186f9-52fb-4557-a00e-7dd517e4e2d5';
     this.countries=countries;
     this.user={};
   }

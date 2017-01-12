@@ -8,6 +8,7 @@ import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
 import cabinetUploader from './cabinet.uploader.directive';
+import {constants} from './cabinet.constant';
 
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
@@ -32,6 +33,8 @@ let cabinetModule = angular.module('cabinet', [
 .component('cabinet', cabinetComponent)
 
 .directive({cabinetUploader})
+
+.constant('cabConst',constants)
 
 .name;
 
