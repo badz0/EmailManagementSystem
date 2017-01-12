@@ -34,8 +34,8 @@ let ChartsModule = angular.module('charts', [
       component: 'charts'
     });
   $mdIconProvider
-       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 })
 
 
@@ -48,18 +48,6 @@ let ChartsModule = angular.module('charts', [
 .service('ChartService', ChartService)
 .service('DialogDataService', DialogDataService)
 
-
-<<<<<<< HEAD
-=======
-.service('chartService', chartService)
-.service('dialogDataService', dialogDataService)
-.directive('someDirective', function() {
-  return {
-    template: '<div class="charts-view" id="linechart"></div>'
-  };
-})
-
->>>>>>> d7612ae9a59598615aa9b14a6c062a31a07fdc07
 .name;
 
 export default ChartsModule;

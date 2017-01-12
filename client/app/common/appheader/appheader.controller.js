@@ -2,7 +2,7 @@ class AppheaderController {
   constructor($mdSidenav) {
     'ngInject';
     this.mdSidenav = $mdSidenav;
-   //this.translate = $translate;
+  //  this.translate = $translate;
   }
 
   $onInit() {
@@ -14,7 +14,7 @@ class AppheaderController {
   }
 
   changeLanguage(key) {
-    this.translate.use(key);
+   // this.translate.use(key);
     this.lan = key;
   }
 }

@@ -1,15 +1,15 @@
 class LanguageChangeController {
-  constructor($translate) {
+  constructor() {
     'ngInject';
-    this.translate = $translate;
+   // this.translate = $translate;
   }
 
   $onInit() {
-    this.lan = this.translate.use();
+    //this.lan = this.translate.use();
   }
 
   changeLanguage(key) {
-    this.translate.use(key);
+    //this.translate.use(key);
     this.lan = key;
   }
 }

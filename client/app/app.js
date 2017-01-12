@@ -20,14 +20,14 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
-//import 'material-design-icons/iconfont/material-icons.css';
+import 'material-design-icons/iconfont/material-icons.css';
 // import angularTranslate from 'angular-translate';
 // import angTransLocalSrotage from 'angular-translate-storage-local';
 // import angTransCookieStorage from 'angular-translate-storage-cookie';
 // import angTransHandlerLog from 'angular-translate-handler-log';
-// import ngCookies from 'angular-cookies';
-// import translationEn from './locale-en.json';
-// import translationUa from './locale-ua.json';
+import ngCookies from 'angular-cookies';
+import translationEn from './locale-en.json';
+import translationUa from './locale-ua.json';
 
 angular.module('app', [
   uiRouter,
@@ -41,15 +41,15 @@ angular.module('app', [
   ngMessages,
   angularfire
 ])
-.config(($locationProvider) => {
+.config(($locationProvider, $mdThemingProvider) => {
   'ngInject';
   // @see: https://github.com/angular-ui/ui-router/wiki/Frequently-Asked-Questions
   // #how-to-configure-your-server-to-work-with-html5mode
   $locationProvider.html5Mode(true).hashPrefix('!');
 
-  // $mdThemingProvider.theme('default')
-  // .primaryPalette('teal')
-  // .accentPalette('red');
+  $mdThemingProvider.theme('default')
+  .primaryPalette('teal')
+  .accentPalette('red');
 
   // $translateProvider.translations('en', translationEn)
   // .translations('ua', translationUa)
