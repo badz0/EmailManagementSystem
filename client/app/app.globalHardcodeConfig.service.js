@@ -279,7 +279,7 @@ class GlobalHardcodeConfigFactory {
           'gridPosition': 'start',
           'gridAlpha': 0,
           'tickPosition': 'start',
-          'tickLength': 20
+          'tickLength': 5
         }
       },
       chartsActive: {
