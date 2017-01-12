@@ -1,0 +1,48 @@
+<md-dialog aria-label="Add Email Dialog">
+
+  <md-toolbar>
+    <div class="md-toolbar-tools">
+      <h2>Add Email</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+        <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content ng-cloak>
+    <div class="md-dialog-content">
+      <form name="addEmailForm" ng-submit="$event.preventDefault()">
+
+        <md-input-container>
+          <label>Email</label>
+          <input required type="email" name="email" ng-model="$ctrl.formData.email">
+          <div ng-messages="$ctrl.formData.email.$error">
+            <div ng-message="required">This is required</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container flex="33">
+          <label>Group</label>
+          <input type="text" required name="group" ng-model="$ctrl.formData.group" ng-maxlength="20">
+          <div ng-messages="$ctrl.formData.group.$error">
+            <div ng-message="required">This is required</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container flex="33">
+          <label>Subject</label>
+          <input name="subject" ng-model="$ctrl.formData.subject" maxlength="20">
+          <div ng-messages="$ctrl.formData.subject.$error">
+            <div ng-message="maxlength">Max length 20</div>
+          </div>
+        </md-input-container>
+
+      </form>
+    </div>
+  </md-dialog-content>
+
+  <md-dialog-actions>
+    <md-button class="md-raised md-primary" aria-label="Add" ng-click="$ctrl.finish()">Add</md-button>
+  </md-dialog-actions>
+</md-dialog>

@@ -1,6 +1,6 @@
 class HomeController {
-  constructor() {
-    this.name = 'home';
+  addData(data){
+    this.data = data;
   }
 }
 
