@@ -1,5 +1,7 @@
 import angular from 'angular';
 import uiRouter from 'angular-ui-router';
+import angulargrid from 'angular-ui-grid';
+import 'angular-ui-grid/ui-grid.css';
 import Common from './common/common';
 import Components from './components/components';
 import AppComponent from './app.component';
@@ -26,6 +28,7 @@ import translationUa from './locale-ua.json';
 
 angular.module('app', [
   uiRouter,
+  'ui.grid',
   Common,
   Components,
   ngMaterial,
