@@ -1,0 +1,14 @@
+image: node:4.6.1
+pages:
+  stage: deploy
+  cache:
+    paths:
+    - node_modules/
+  only:
+  - lv_ems_214_amcharts
+  script:
+  - npm install -s
+  - npm run build
+  artifacts:
+    paths:
+    - public
