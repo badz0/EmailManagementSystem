@@ -4,8 +4,11 @@
 		<md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
 			<appnav></appnav>
 		</md-sidenav>
-		<md-content flex flex-offset="5">
-	      <h1 translate="home.title"></h1>
-	  </md-content>
+		<md-content flex class="content">
+		   <h1 ng-bind="$ctrl.name"></h1>
+			<section>
+			  <div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
+			</section>
+	    </md-content>
 	</div>
 </div>

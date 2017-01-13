@@ -2,11 +2,19 @@ import angular from 'angular';
 import Home from './home/home';
 import About from './about/about';
 import Cabinet from './cabinet/cabinet';
+import Grid from './grid/grid';
+import deledit from './deledit/deledit';
+import Charts from './charts/charts';
+import Firedb from './firedb/firedb';
 
 let componentModule = angular.module('app.components', [
   Home,
   About,
-  Cabinet
+  deledit,
+  Charts,
+  Cabinet,
+  Grid,
+  Firedb
 ])
 
 .name;

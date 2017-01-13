@@ -1,0 +1,23 @@
+{
+  "header": {
+    "title": "Email Management System",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logOut": "Log Out"
+  },
+  "menu": {
+    "title": "Menu",
+    "home": "Home",
+    "about": "About",
+    "cabinet": "Cabinet"
+  },
+  "home": {
+    "title": "Home page"
+  },
+  "about": {
+    "title": "About us"
+  },
+  "cabinet": {
+    "title": "Cabinet"
+  }
+}
