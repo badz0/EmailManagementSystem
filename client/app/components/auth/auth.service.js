@@ -1,6 +1,6 @@
 class AuthService {
   constructor(lock, authManager){
-  "ngInject"
+  "ngInject";
   this.lock=lock;
   this.authManager=authManager;
   }

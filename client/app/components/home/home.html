@@ -6,6 +6,16 @@
 		</md-sidenav>
 		<md-content flex flex-offset="5">
 	      <h1 translate="home.title"></h1>
+	      <div class="jumbotron">
+			  <h2 class="text-center"><img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg"></h2>
+			  <h2 class="text-center">Home</h2>
+			  <div class="text-center" ng-if="!isAuthenticated">
+			    <p>You are not yet authenticated. <button class="btn btn-primary" ng-click="vm.appService.login()">Log In</button></p>
+			  </div>
+			  <div class="text-center" ng-if="isAuthenticated">
+			    <p>Thank you for logging in! <a href="javascript:;" ng-click="vm.appService.logout()">Log out.</a></p>
+			  </div>
+		  </div>
 	  </md-content>
 	</div>
 </div>
