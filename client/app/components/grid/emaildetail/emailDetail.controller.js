@@ -1,5 +1,5 @@
 class EmailController {
-    constructor(EmailDetailService, $stateParams) {
+    constructor(EmailDetailService, $stateParams, $log) {
         'ngInject';
         this.idParam = parseInt($stateParams.id);
         this.EmailDetailService = EmailDetailService.getList();
@@ -11,7 +11,7 @@ class EmailController {
             	return value.id === this.idParam;
             });
         }, (e) => {
-            console.error(e);
+            $log.error(e);
         });
     }
 }
