@@ -4,7 +4,7 @@ class deleditController {
     'ngInject';
     const ref = firebase.database().ref().child('email');
     this.users = $firebaseArray(ref);
-  }    
+  }   
   $onInit () {
     this.name = 'volod';
     this.block = []; 
@@ -30,8 +30,8 @@ class deleditController {
       'lastname' : this.lastname,
       'age' : this.age,
       'note' : this.note,
-      'sSafe': 'true'
-    });
+      'isSafe': 'true'
+  });
     this.clearForm();
   }
   showUser(user){
