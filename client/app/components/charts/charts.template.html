@@ -8,35 +8,8 @@
   </md-sidenav>
   <md-content flex class="content">
     <section class="charts">
-       <md-toolbar layout="row"
-                   class="md-toolbar-tools md-whiteframe-2dp"
-                   layout-align="space-around center"
-                   layout-align-xs="center center"
-                   id='view-changer'>
-          <h2>
-            <span ng-bind="$ctrl.configData.navBarTitles.global"
-                  ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
-            <span ng-bind="$ctrl.configData.navBarTitles.perUser"
-                  ng-if="!$ctrl.configData.navBarDisplay.globalChartsStats"></span>
-          </h2>
-        <div layout="row">
-
-          <md-button ng-click="$ctrl.showDefaultChartsPage()"
-                     aria-label="showDefaultChartsPage">
-            <span ng-bind="$ctrl.configData.navBarButtons.defaultPageStats"></span>
-          </md-button>
-          <md-button ng-click="$ctrl.showChartsGlobalStatistics()"
-                     aria-label="showChartsGlobalStatistics">
-            <span ng-bind="$ctrl.configData.navBarButtons.globalChartsStats"></span>
-          </md-button>
-          <md-button ng-click="$ctrl.showUserListPage()"
-                     aria-label="showUserListPage">
-            <span ng-bind="$ctrl.configData.navBarButtons.perUserStats"></span>
-          </md-button>
-        </div>
-      </md-toolbar>
-    <global-chart ng-show="$ctrl.configData.navBarDisplay.globalChartsStats"></global-chart>
-    <user-charts ng-if="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
+      <global-chart></global-chart>
+      <user-charts ng-show="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
     </section>
   </md-content>
 </div>

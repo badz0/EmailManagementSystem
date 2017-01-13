@@ -18,10 +18,12 @@
         <p ng-bind="(item.city) + ' ' + (item.country)"></p>
       </div>
       <md-button class="md-primary md-raised"
+                 aria-label="userList"
                  ng-click="$ctrl.showUserEmails($index)">
         <span ng-bind="$ctrl.configData.userListButtons.userEmails"></span>
       </md-button>
       <md-button class="md-primary md-raised"
+                 aria-label="userListCharts"
                  ng-click="$ctrl.showDialogCharts($index)">
         <span ng-bind="$ctrl.configData.userListButtons.userCharts"></span>
       </md-button>

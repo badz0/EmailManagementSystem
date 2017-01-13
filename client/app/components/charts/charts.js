@@ -7,7 +7,6 @@ import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
 
 import GlobalHardcodeConfigService from '../../app.globalHardcodeConfig.service';
-import ChartService from  './charts.chartBuild.service';
 import DialogDataService from './charts.dialogBuild.service';
 import ChartsFirebaseDataService from './charts.firebaseData.service';
 
@@ -45,7 +44,6 @@ let ChartsModule = angular.module('charts', [
 
 .service('GlobalHardcodeConfigService', GlobalHardcodeConfigService)
 .service('ChartsFirebaseDataService', ChartsFirebaseDataService)
-.service('ChartService', ChartService)
 .service('DialogDataService', DialogDataService)
 
 .name;
