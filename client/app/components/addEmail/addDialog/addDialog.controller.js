@@ -13,10 +13,10 @@ class AddDialogController {
   cancel() {
     this.mdDialog.cancel();
   }
-  finish() {
-
+  submit(valid) {
+    if(valid) {
       this.mdDialog.hide(this.formData);
-
+    }
   }
 }
 

@@ -12,37 +12,40 @@
 
   <md-dialog-content ng-cloak>
     <div class="md-dialog-content">
-      <form name="addEmailForm" ng-submit="$event.preventDefault()">
+      <form name="addEmailForm" ng-submit="$ctrl.submit(addEmailForm.$valid)" novalidate>
 
         <md-input-container>
           <label>Email</label>
-          <input required type="email" name="email" ng-model="$ctrl.formData.email">
-          <div ng-messages="$ctrl.formData.email.$error">
+          <input required type="email" name="email" ng-model="$ctrl.formData.email" ng-pattern="/^.+@.+\..+$/">
+          <div ng-messages="addEmailForm.email.$error" ng-show="addEmailForm.$submitted">
             <div ng-message="required">This is required</div>
+            <div ng-message="pattern">Invalid email</div>
           </div>
         </md-input-container>
 
-        <md-input-container flex="33">
+        <md-input-container>
           <label>Group</label>
-          <input type="text" required name="group" ng-model="$ctrl.formData.group" ng-maxlength="20">
-          <div ng-messages="$ctrl.formData.group.$error">
+          <input type="text" required name="group" ng-model="$ctrl.formData.group" md-maxlength="20">
+          <div ng-messages="addEmailForm.group.$error" ng-show="addEmailForm.$submitted">
             <div ng-message="required">This is required</div>
+            <div ng-message="md-maxlength">Max length 20</div>
           </div>
         </md-input-container>
 
-        <md-input-container flex="33">
+        <md-input-container>
           <label>Subject</label>
-          <input name="subject" ng-model="$ctrl.formData.subject" maxlength="20">
-          <div ng-messages="$ctrl.formData.subject.$error">
-            <div ng-message="maxlength">Max length 20</div>
+          <input required name="subject" ng-model="$ctrl.formData.subject" md-maxlength="20">
+          <div ng-messages="addEmailForm.subject.$error" ng-show="addEmailForm.$submitted">
+            <div ng-message="required">This is required</div>
+            <div ng-message="md-maxlength">Max length 20</div>
           </div>
         </md-input-container>
+
+        <md-dialog-actions>
+          <md-button class="md-raised md-primary" type="submit" aria-label="Add">Add</md-button>
+        </md-dialog-actions>
 
       </form>
     </div>
   </md-dialog-content>
-
-  <md-dialog-actions>
-    <md-button class="md-raised md-primary" aria-label="Add" ng-click="$ctrl.finish()">Add</md-button>
-  </md-dialog-actions>
 </md-dialog>
