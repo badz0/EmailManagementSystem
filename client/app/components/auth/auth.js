@@ -13,18 +13,19 @@ let authModule = angular.module('auth', [
   'angular-jwt'
 ])
 
-.config(($stateProvider, lockProvider) => {
+.config(($stateProvider, lockProvider,$urlRouterProvider) => {
   "ngInject";
   $stateProvider
     .state('auth', {
       url: '/auth',
       component: 'auth'
     });
+
     lockProvider.init({
       clientID: 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm',
       domain: 'nerosman.eu.auth0.com'
     });
-
+    $urlRouterProvider.otherwise('/auth');
 })
 
 .component('auth', authComponent)

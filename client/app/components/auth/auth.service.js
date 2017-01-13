@@ -4,7 +4,7 @@ class AuthService {
   this.lock=lock;
   this.authManager=authManager;
   }
-  login() {
+   login() {
     this.lock.show();
   }
   registerAuthenticationListener() {
