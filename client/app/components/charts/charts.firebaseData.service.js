@@ -9,19 +9,15 @@ class GlobalHardcodeConfigService {
   chartsDataBuild() {
     return this.data.$loaded().then((res) => {
       return {
-        firedbChartData: this.firedbChartData(res),
+        firedbChartData: res,
         signUpDay: this.sortChartData('signUpDay', res),
         emailsMaxLine: this.sortChartData('emailsMaxLine', res),
         singnUpTimes: this.sortChartData('SignUp', res).splice(0,7),
         groupData: this.chartsDataProvider('groupData', res, 'Group'),
-        dateEmailStat: this.sortChartData('Date', res),
+        emailDateStat: this.sortChartData('Date', res),
         multipleDataComapare: this.multipleDataComapare(res)
       };
     });
-  };
-
-  firedbChartData(res) {
-    return res;
   };
 
   readResponseData(type, res) {

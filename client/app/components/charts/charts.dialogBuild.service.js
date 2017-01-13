@@ -5,30 +5,14 @@ class DialogDataService {
   };
 
   dialogDataServiceData(index) {
-    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
-      this.dialogGroupCharts(index, res.firedbChartData);
-      this.dialogDateCharts(index, res.firedbChartData);
-      this.dialogActivityCharts(index, res.firedbChartData);
+    return this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+      return {
+        dialogGroupStat: this.chartsDataProvider(res.firedbChartData, index, 'group'),
+        dialogEmailDayStat: this.chartsDataProvider(res.firedbChartData, index, 'date'),
+        dialogRecepientChart: this.chartSortMaxDataProvider(res.firedbChartData, index, 'recipient')
+      };
     });
-  };
-
-  dialogGroupCharts(index, res) {
-    let dialogGroup = this.GlobalHardcodeConfigService.dialogGroupStat;
-    dialogGroup.dataProvider = this.chartsDataProvider(res, index, 'group');
-    AmCharts.makeChart(`chartsData${index}`, dialogGroup);
-  };
-
-  dialogDateCharts(index, res) {
-    let dialogDate = this.GlobalHardcodeConfigService.dialogEmailDayStat;
-    dialogDate.dataProvider = this.chartsDataProvider(res, index, 'date');
-    AmCharts.makeChart(`charts${index}`, dialogDate);
-  };
-
-  dialogActivityCharts(index, res) {
-    let chartsActive = this.GlobalHardcodeConfigService.dialogRecepientChart;
-    chartsActive.dataProvider = this.chartSortMaxDataProvider(res, index, 'recipient');;
-    AmCharts.makeChart(`chartsActive${index}`, chartsActive);
-  };
+  }
 
   searchEmailsData(res) {
     return res.user.map((val) => {
@@ -48,13 +32,13 @@ class DialogDataService {
 
   chartsDataProvider(res, index, searchElem) {
     return this.searchUnicData(res, index , searchElem).map((val) => {
-      let integer = 0;
-      this.searchEmailsData(res)[index].letters.map((inElemVal) => {
+      let count = 0;
+      this.searchEmailsData(res)[index].letters.forEach((inElemVal) => {
         if(val === inElemVal[searchElem]) {
-          integer += 1;
+          count += 1;
         };
       });
-      return {[searchElem]: val, value: integer};
+      return {[searchElem]: val, value: count};
     });
   };
 

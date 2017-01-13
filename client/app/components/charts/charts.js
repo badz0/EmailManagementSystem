@@ -7,7 +7,6 @@ import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
 
 import GlobalHardcodeConfigService from '../../app.globalHardcodeConfig.service';
-import ChartService from  './charts.chartBuild.service';
 import DialogDataService from './charts.dialogBuild.service';
 import ChartsFirebaseDataService from './charts.firebaseData.service';
 
@@ -34,8 +33,8 @@ let ChartsModule = angular.module('charts', [
       component: 'charts'
     });
   $mdIconProvider
-       .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
-       .defaultIconSet('img/icons/sets/core-icons.svg', 24);
+    .iconSet('social', 'img/icons/sets/social-icons.svg', 24)
+    .defaultIconSet('img/icons/sets/core-icons.svg', 24);
 })
 
 
@@ -45,9 +44,7 @@ let ChartsModule = angular.module('charts', [
 
 .service('GlobalHardcodeConfigService', GlobalHardcodeConfigService)
 .service('ChartsFirebaseDataService', ChartsFirebaseDataService)
-.service('ChartService', ChartService)
 .service('DialogDataService', DialogDataService)
-
 
 .name;
 

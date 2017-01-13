@@ -4,6 +4,10 @@ $h1Color: #999999;
 
 
 .charts {
+  .user-charts {
+    padding-top: 50px;
+    margin-top: 50px;
+  }
   .charts-view-global, .user-list {
     width: 75%;
     margin: 0 auto;
@@ -39,7 +43,9 @@ $h1Color: #999999;
   }
   .dialog {
     visibility: hidden;
-
+  }
+  .user-list {
+     margin-top: 54px;
   }
   .list {
     border: 2px solid black;
