@@ -23,6 +23,7 @@ import translationUa from './locale-ua.json';
 import Firedbservice from './firedb.service';
 import angularfire from 'angularfire';
 
+
 angular.module('app', [
   uiRouter,
   'ui.grid',

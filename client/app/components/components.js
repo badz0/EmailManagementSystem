@@ -4,6 +4,7 @@ import About from './about/about';
 import Cabinet from './cabinet/cabinet';
 import Grid from './grid/grid';
 import deledit from './deledit/deledit';
+import auth from './auth/auth';
 import Charts from './charts/charts';
 import Firedb from './firedb/firedb';
 
@@ -12,9 +13,10 @@ let componentModule = angular.module('app.components', [
   About,
   deledit,
   Charts,
+  Firedb,
   Cabinet,
-  Grid,
-  Firedb
+  auth,
+  Grid
 ])
 
 .name;
