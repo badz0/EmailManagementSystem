@@ -14,7 +14,7 @@
                   <span class="md-headline" translate="cabinet.title"></span>
                   <span class="md-subhead">{{$ctrl.users.login}}</span>
                   <span class="md-subhead" ng-model="user.email">{{$ctrl.users.email}}</span>
-                  <md-button aria-label="logOut" style="width:10%" class="imgbuttons small md-warn" translate="cabinet.logOut"></md-button>
+                  <md-button aria-label="logOut" class="imgbuttons small md-warn" translate="cabinet.logOut"></md-button>
                 </md-card-title-text>
                 <md-card-title-text class="userImage">
                   <div class="info">
@@ -37,7 +37,7 @@
                 <md-button aria-label="blocklist"  class="imgbuttons small" translate="cabinet.blocklist"></md-button>
                 <md-button aria-label="safelist" class="imgbuttons small" translate="cabinet.safelist"></md-button>
                 <label class="md-button imgbuttons small"><span translate="cabinet.upload"></span>
-                  <input cabinet-uploader class="ng-hide" type="file" accept="image/*" size="1MB"/>
+                  <input cabinet-uploader class="ng-hide" type="file" accept="image/*"/>
                 </label>
                 <md-button aria-label="delete" ng-click="$ctrl.deleteAvatar()"  class="imgbuttons small" translate="cabinet.delete"></md-button>
               </md-card-actions>
