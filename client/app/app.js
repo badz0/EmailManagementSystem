@@ -12,7 +12,7 @@ import angularSanitize from 'angular-sanitize';
 import angularAria from 'angular-aria';
 import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
-import 'material-design-icons/iconfont/material-icons.css';
+//import 'material-design-icons/iconfont/material-icons.css';
 import angularTranslate from 'angular-translate';
 import angTransLocalSrotage from 'angular-translate-storage-local';
 import angTransCookieStorage from 'angular-translate-storage-cookie';
