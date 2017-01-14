@@ -29,15 +29,19 @@ class GlobalHardcodeConfigService {
       gridData: {
         enableFiltering: true,
         exporterMenuCsv: false,
+        paginationPageSizes: [25, 50, 75],
+        paginationPageSize: 30,
         enableGridMenu: true,
         columnDefs: [
           { name: 'recipient', field: 'recipient', width:200},
-          { name:'subject', field: 'subject', width:200},
-          { name:'date', field: 'date', width:100},
-          { name: 'group', enableCellEdit: true, field: 'group', width:100},
+          { name:'subject', field: 'subject', width:200, enableFiltering: false},
+          { name:'date', field: 'date', width:100, enableFiltering: false},
+          { name: 'group', enableCellEdit: true, field: 'group', width:100, enableFiltering: false},
           { name: 'content', field: 'content'}
-        ],enableGridMenu: true,
+        ],
+        enableGridMenu: true,
         enableSelectAll: true,
+        exporterOlderExcelCompatibility: true,
         exporterCsvFilename: 'myFile.csv',
         exporterPdfDefaultStyle: {fontSize: 9},
         exporterPdfTableStyle: {margin: [30, 30, 30, 30]},

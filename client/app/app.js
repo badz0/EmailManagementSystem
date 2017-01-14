@@ -28,6 +28,9 @@ import angTransHandlerLog from 'angular-translate-handler-log';
 import ngCookies from 'angular-cookies';
 import translationEn from './locale-en.json';
 import translationUa from './locale-ua.json';
+import pdfMaker from 'pdfmake/build/pdfmake.min.js';
+import vfs_fonts from 'pdfmake/build/vfs_fonts.js';
+import csv from 'csv';
 
 angular.module('app', [
   uiRouter,
@@ -44,7 +47,8 @@ angular.module('app', [
   ngCookies,
   'ui.grid.selection',
   'ui.grid.exporter',
-  'ui.grid.edit'
+  'ui.grid.edit',
+  'ui.grid.pagination'
 ])
 .config(($locationProvider, $mdThemingProvider, $translateProvider) => {
   'ngInject';

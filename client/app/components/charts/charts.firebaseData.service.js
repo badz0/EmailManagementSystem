@@ -125,13 +125,13 @@ class GlobalHardcodeConfigService {
 
   chartsDataProvider(type, res, key) {
     return this.searchUnicData(type, res, key).map((val) => {
-      let integer = 0;
-      this.readResponseData(type, res).map((inElemVal) => {
+      let count = 0;
+      this.readResponseData(type, res).forEach((inElemVal) => {
         if(val === inElemVal[key]) {
-          integer += 1;
+          count += 1;
         };
       });
-      return {[key]: val, value: integer};
+      return {[key]: val, value: count};
     });
   };
 
@@ -145,7 +145,7 @@ class GlobalHardcodeConfigService {
       let countA = 0;
       let countB = 0;
       let countC = 0;
-      this.readResponseData('Multy',  res).map((value) => {
+      this.readResponseData('Multy',  res).forEach((value) => {
         if (val === value.date) {
           if(value.name === a) {
             countA++;

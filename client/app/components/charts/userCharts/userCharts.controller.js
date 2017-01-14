@@ -18,7 +18,7 @@ class LineChartController {
     this.dialogDataService.dialogDataServiceData(index).then((res) => {
       for (let key in this.configData.dialogChart) {
         this.configData.dialogChart[key].dataProvider = res[key];
-      }
+      };
       AmCharts.makeChart(`charts${index}`, this.configData.dialogChart.dialogEmailDayStat);
       AmCharts.makeChart(`chartsData${index}`, this.configData.dialogChart.dialogGroupStat);
       AmCharts.makeChart(`chartsActive${index}`, this.configData.dialogChart.dialogRecepientChart);

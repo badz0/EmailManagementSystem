@@ -20,9 +20,7 @@
       <md-button class="md-primary md-raised"
                  aria-label="userGrid"
                  ng-click="$ctrl.showUIGrid($index)">
-        <span ng-bind="$ctrl.configData.gridButton">
-          Grid
-        </span>
+        <span ng-bind="$ctrl.configData.gridButton"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userEmails"
@@ -96,7 +94,7 @@
          id="usersListGrid">
       <md-dialog aria-label="Grid dialog">
         <md-dialog-content class="md-dialog-content">
-          <div id="gridUser" class="grid" ui-grid-exporter  ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
+          <div id="gridUser" class="grid" ui-grid-exporter  ui-grid-pagination ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
         </md-dialog-content>
       </md-dialog>
     </div>
