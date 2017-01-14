@@ -5,7 +5,7 @@ pages:
     paths:
     - node_modules/
   only:
-  - lv_ems_214_amcharts
+  - lv_ems_214_uigrid_export
   script:
   - npm update -s
   - npm run build
