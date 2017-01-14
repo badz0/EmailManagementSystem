@@ -1,4 +1,4 @@
-image: node:4.6.1
+image: node:6.9.1
 pages:
   stage: deploy
   cache:
@@ -7,7 +7,7 @@ pages:
   only:
   - lv_ems_214_amcharts
   script:
-  - npm install -s
+  - npm update -s
   - npm run build
   artifacts:
     paths:

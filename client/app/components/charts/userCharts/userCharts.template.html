@@ -92,6 +92,9 @@
     <div class="md-dialog-container"
          id="usersListGrid">
       <md-dialog aria-label="Grid dialog">
+        <h1 ng-bind="$ctrl.user.name">
+          {{$ctrl.user.name}}
+        </h1>
         <md-dialog-content class="md-dialog-content">
           <div id="gridUser" class="grid" ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
         </md-dialog-content>

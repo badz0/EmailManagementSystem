@@ -10,59 +10,35 @@ class GlobalHardcodeConfigService {
     return this.data.$loaded().then((res) => {
       return {
         firedbChartData: res,
-        signUpDay: this.sortChartData('signUpDay', res),
+        signUpDay: this.sortChartData('signUpDay', res, 'signUpDay'),
         emailsMaxLine: this.sortChartData('emailsMaxLine', res),
-        singnUpTimes: this.sortChartData('SignUp', res).splice(0,7),
+        singnUpTimes: this.sortChartData('signUp', res).splice(0,5),
         groupData: this.chartsDataProvider('groupData', res, 'Group'),
-        emailDateStat: this.sortChartData('Date', res),
+        emailDateStat: this.sortChartData('date', res),
         multipleDataComapare: this.multipleDataComapare(res)
       };
+    }).catch((e) => {
+      console.log(e);
     });
   };
 
   readResponseData(type, res) {
-    if (type === 'groupData') {
-      let arr = [];
-      res.user.forEach((val) => {
-        val.listOfEmails.forEach((value) => {
-          arr.push({'name': val.name, 'Group': value.group});
-        });
-      });
-      return arr;
-    } else if (type === 'Date') {
-      let arr = [];
-      res.user.forEach((val) => {
-        val.listOfEmails.forEach((value) => {
-          arr.push({date: value.date, name: val.name});
-        });
-      });
-      return arr;
-    } else if (type === 'Multy') {
-      let arr = [];
-      res.user.forEach((val) => {
-        val.listOfEmails.forEach((value) => {
-          arr.push({date: value.date, name: val.name});
-        });
-      });
-      return arr;
-    }
-
     return {
       signUpDay(res) {
         return res.user.map((val) => {
-          return {date: val.signUpDate, value: val.id, name: val.name};
+          return {'date': val.signUpDate, 'value': val.id, 'name': val.name};
         });
       },
       emailsMaxLine(res) {
         return res.user.map((val) => {
-          return {provider: val.name, letters: val.listOfEmails.length};
+          return {'provider': val.name, 'letters': val.listOfEmails.length};
         });
       },
       groupData(res) {
         let arr = [];
         res.user.forEach((val) => {
           val.listOfEmails.forEach((value) => {
-            arr.push({name: val.name, Group: value.group});
+            arr.push({'name': val.name, 'Group': value.group});
           });
         });
         return arr;
@@ -71,21 +47,21 @@ class GlobalHardcodeConfigService {
         let arr = [];
         res.user.forEach((val) => {
           val.listOfEmails.forEach((value) => {
-            arr.push({date: value.date, name: val.name});
+            arr.push({'date': value.date, 'name': val.name});
           });
         });
         return arr;
       },
       signUp(res) {
         return res.user.map((val) => {
-          return { Login: val.login, Activity: val.logInCount };
+          return { 'Login': val.login, 'Activity': val.logInCount };
         });
       },
       multy(res) {
         let arr = [];
         res.user.forEach((val) => {
           val.listOfEmails.forEach((value) => {
-            arr.push({date: value.date, name: val.name});
+            arr.push({'date': value.date, 'name': val.name});
           });
         });
         return arr;
@@ -95,19 +71,19 @@ class GlobalHardcodeConfigService {
 
   sortChartData(type, res, key) {
     if(type === 'signUpDay') {
-      return this.readResponseData().signUpDay(res).sort((a, b) => {
+      return this.readResponseData()[type](res).sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
       });
     } else if(type === 'emailsMaxLine') {
-      return this.readResponseData().emailsMaxLine(res).sort((a, b) => {
+      return this.readResponseData()[type](res).sort((a, b) => {
         return b.letters - a.letters;
       });
-    } else if(type === 'SignUp') {
-      return this.readResponseData().signUp(res).sort((a, b) => {
+    } else if(type === 'signUp') {
+      return this.readResponseData()[type](res).sort((a, b) => {
         return b.Activity - a.Activity;
       });
-    } else if(type === 'Date') {
-      return this.chartsDataProvider('Date', res, 'date').sort((a, b) => {
+    } else if(type === 'date') {
+      return this.chartsDataProvider('date', res, 'date').sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
       });
     }
@@ -115,7 +91,7 @@ class GlobalHardcodeConfigService {
 
   searchUnicData(type, res, key) {
     let arr = [];
-    this.readResponseData(type, res).forEach((val, i) => {
+    this.readResponseData()[type](res).forEach((val, i) => {
       if (arr.indexOf(val[key]) === -1) {
         arr.push(val[key]);
       };
@@ -126,7 +102,7 @@ class GlobalHardcodeConfigService {
   chartsDataProvider(type, res, key) {
     return this.searchUnicData(type, res, key).map((val) => {
       let count = 0;
-      this.readResponseData(type, res).forEach((inElemVal) => {
+      this.readResponseData()[type](res).forEach((inElemVal) => {
         if(val === inElemVal[key]) {
           count += 1;
         };
@@ -136,16 +112,16 @@ class GlobalHardcodeConfigService {
   };
 
   multipleDataComapare(res) {
-    let user = this.searchUnicData('Multy',  res, 'name');
+    const user = this.searchUnicData('multy',  res, 'name');
     let finalData = [];
-    this.searchUnicData('Multy',  res, 'date').sort((a, b) => {
+    this.searchUnicData('multy',  res, 'date').sort((a, b) => {
       return new Date(a) - new Date(b);
     }).map((val) => {
       let [a, b, c] = [user[0], user[1], user[3]];
       let countA = 0;
       let countB = 0;
       let countC = 0;
-      this.readResponseData('Multy',  res).forEach((value) => {
+      this.readResponseData().multy(res).forEach((value) => {
         if (val === value.date) {
           if(value.name === a) {
             countA++;

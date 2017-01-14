@@ -30,8 +30,9 @@ class LineChartController {
   };
 
   showUIGrid(user) {
+    this.user =  this.usersList[user];
     this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
-      this.gridOptions.data = this.usersList[user].listOfEmails;
+      this.gridOptions.data = this.user.listOfEmails;
     });
     this.dialog.show({
       contentElement: '#usersListGrid',
