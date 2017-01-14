@@ -1,11 +1,11 @@
-  .charts-view, .charts-view-global {
-    height: 550px;
-    min-width: 1200px;
-  }
-  .charts-dialog-view {
-    height: 390px;
-    width: 1500px;
-  }
+.charts-view, .charts-view-global {
+  height: 550px;
+  min-width: 1200px;
+}
+.charts-dialog-view {
+  height: 390px;
+  width: 1500px;
+}
 .ui-grid-menu-button {
   height: 31px;
 }
@@ -14,12 +14,11 @@
 }
 .grid {
   width: 1200px;
-  height: 1000px;
+  height: 730px;
 }
 .ui-grid {
   color: rgb(0, 63, 89);
 }
-
 .ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
   background-color: #c6e2ee;
 }

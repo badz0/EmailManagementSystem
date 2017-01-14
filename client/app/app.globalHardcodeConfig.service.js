@@ -29,8 +29,8 @@ class GlobalHardcodeConfigService {
       gridData: {
         enableFiltering: true,
         exporterMenuCsv: false,
-        paginationPageSizes: [25, 50, 75],
-        paginationPageSize: 30,
+        paginationPageSizes: [10, 25, 50],
+        paginationPageSize: 20,
         enableGridMenu: true,
         columnDefs: [
           { name: 'recipient', field: 'recipient', width:200},

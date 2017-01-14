@@ -70,7 +70,6 @@
       <md-dialog aria-label="List dialog">
         <h2 ng-bind="($ctrl.user.listOfEmails.length) + ' ' + ($ctrl.user.login)"></h2>
         <md-dialog-content class="md-dialog-content">
-          <!-- <div id="gridUser" class="grid" ui-grid="$ctrl.gridOptions"></div> -->
           <md-list class="containerVertical">
             <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"  ng-click="null">
               <p class="list"><span ng-bind="($index + 1)"></span>
@@ -94,7 +93,7 @@
          id="usersListGrid">
       <md-dialog aria-label="Grid dialog">
         <md-dialog-content class="md-dialog-content">
-          <div id="gridUser" class="grid" ui-grid-exporter  ui-grid-pagination ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
+          <div id="gridUser" class="grid" ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
         </md-dialog-content>
       </md-dialog>
     </div>
