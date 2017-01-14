@@ -1,5 +1,6 @@
 .md-button.md-small {
     min-width: 1%;
+    height: 15px;
   }
 .md-button.md-green {
     background-color: green;

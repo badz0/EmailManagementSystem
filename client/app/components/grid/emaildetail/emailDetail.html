@@ -1,18 +1,19 @@
 <div layout="column" layout-fill>
-    <appheader></appheader>
-    <div class="container" layout="row" flex>
-        <md-sidenav md-is-locked-open="true" class="md-whiteframe-4dp">
-            <appnav></appnav>
-        </md-sidenav>
-        <md-content flex class="content">
+	<appheader></appheader>
+	<div class="container" layout="row" flex>
+		<md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
+			<appnav></appnav>
+		</md-sidenav>
+		  <md-content flex flex-offset="5">
             <h3>A emailDetail!</h3>
             <div class="email-data">
-                <div> Id: {{$ctrl.param.id}} </div>
-                <div>Name: <span ng-bind="$ctrl.currentData.recipient"><span></div>
-                <div>Subject:<span ng-bind="$ctrl.currentData.subject"><span></div>
-                <div>Date: <span ng-bind="$ctrl.currentData.date"><span></div>
+                <div> Id: <span ng-bind="$ctrl.idParam"></span> </div>
+                <div>Email: <span ng-bind="$ctrl.currentData.email"><span></div>
+                <div>Name:<span ng-bind="$ctrl.currentData.name"><span></div>
+                <div>City: <span ng-bind="$ctrl.currentData.city"><span></div>
             </div>
-            <button ui-sref="grid">Back</button>
+            <md-button class="md-raised md-green"  ui-sref="grid">Back</md-button>
+            <md-button class="md-raised md-warn" ng-click="$ctrl.deleteUser()" ui-sref="grid"> delete</md-button>
         </md-content>
     </div>
 </div>

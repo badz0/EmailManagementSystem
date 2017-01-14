@@ -1,14 +1,19 @@
 <div layout="column" layout-fill>
-  <appheader></appheader>
-  <div class="container" layout="row" flex>
-    <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
-      <appnav></appnav>
-    </md-sidenav>
-    <md-content flex flex-offset="5">
-		    <h1>{{ $ctrl.name }}</h1>
+	<appheader></appheader>
+	<div class="container" layout="row" flex>
+		<md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
+			<appnav></appnav>
+		</md-sidenav>
+		<md-content flex flex-offset="5">
+			<h1 ng-bind="$ctrl.name"></h1>
 			<section>
-			  <div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-cellnav></div>
+				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.mainPost()">All</md-button>
+				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.email()">Email</md-button>
+				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.social()">Social</md-button>
+				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.spam()">Spam</md-button>
+				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.block()">Blocklist</md-button>
+				<div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
 			</section>
-	    </md-content>
+		</md-content>
 	</div>
 </div>

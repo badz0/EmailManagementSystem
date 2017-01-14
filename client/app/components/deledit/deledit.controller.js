@@ -5,10 +5,6 @@ class deleditController {
     const ref = firebase.database().ref().child('email');
     this.users = $firebaseArray(ref);
   }    
-  $onInit () {
-    this.name = 'volod';
-    this.block = []; 
-  }
   clearForm () {
     this.firstname = '';
     this.lastname = '';

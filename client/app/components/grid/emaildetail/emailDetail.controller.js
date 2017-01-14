@@ -1,17 +1,23 @@
+import * as firebase from 'firebase';
 class EmailController {
-    constructor(EmailDetailService, $stateParams) {
-        'ngInject';
-        this.param = $stateParams;
-        let idParam = parseInt(this.param.id);
-        this.data = EmailDetailService;
-        let data = this.data;
-        function matchById(value) {
-            return value.id === idParam;
-        }
-        data.then((res) => {
-            this.currentData = res.find(matchById);
-        });
-    }
+  constructor(EmailDetailService, $stateParams, $log) {
+    'ngInject';
+    this.idParam = parseInt($stateParams.id);
+    this.EmailDetailService = EmailDetailService.getList();
+  }
+  $onInit() {
+    this.name = 'Hello dynamic routes';
+    this.EmailDetailService.then((res) => {
+  	this.currentData = res.find((value) => {
+    	return value.id === this.idParam;
+  });
+    }, (e) => {
+      angular.$log(e);
+    });
+  };
+  deleteUser() {
+    if (confirm('Are you sure you want to delete letter ?')){
+      firebase.database().ref().child(`user/${this.idParam}`).remove();
+    }};
 }
-
 export default EmailController;
