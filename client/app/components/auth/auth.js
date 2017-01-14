@@ -13,7 +13,7 @@ let authModule = angular.module('auth', [
   'angular-jwt'
 ])
 
-.config(($stateProvider, lockProvider,$urlRouterProvider) => {
+.config(($stateProvider, lockProvider,$urlRouterProvider,jwtOptionsProvider) => {
   "ngInject";
   $stateProvider
     .state('auth', {
@@ -25,12 +25,18 @@ let authModule = angular.module('auth', [
       clientID: 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm',
       domain: 'nerosman.eu.auth0.com'
     });
+    
+    jwtOptionsProvider.config({
+      tokenGetter: function () {
+        return localStorage.getItem('id_token');
+      }
+    });
     $urlRouterProvider.otherwise('/auth');
 })
 
 .component('auth', authComponent)
 .service('AuthService', AuthService)
-
+.run(()=>AuthRun)
 .name;
 
 export default authModule;

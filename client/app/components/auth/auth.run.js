@@ -1,12 +1,10 @@
 class AuthRun {
-  constructor($rootScope, AuthService, lock){
+  constructor(AuthService, lock,authManager){
      "ngInject";
-	$rootScope.AuthService = AuthService;
-
-    authService.registerAuthenticationListener();
-
+    
+    AuthService.registerAuthenticationListener();
+    authManager.checkAuthOnRefresh();
     lock.interceptHash();
-
   }
 }
 
