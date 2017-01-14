@@ -41,7 +41,10 @@ angular.module('app', [
   ngMessages,
   angularfire,
   angularTranslate,
-  ngCookies
+  ngCookies,
+  'ui.grid.selection',
+  'ui.grid.exporter',
+  'ui.grid.edit'
 ])
 .config(($locationProvider, $mdThemingProvider, $translateProvider) => {
   'ngInject';

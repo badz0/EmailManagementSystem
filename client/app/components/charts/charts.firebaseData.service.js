@@ -23,29 +23,30 @@ class GlobalHardcodeConfigService {
   readResponseData(type, res) {
     if (type === 'groupData') {
       let arr = [];
-      res.user.map((val) => {
-        val.listOfEmails.map((value) => {
+      res.user.forEach((val) => {
+        val.listOfEmails.forEach((value) => {
           arr.push({'name': val.name, 'Group': value.group});
         });
       });
       return arr;
     } else if (type === 'Date') {
       let arr = [];
-      res.user.map((val) => {
-        val.listOfEmails.map((value) => {
+      res.user.forEach((val) => {
+        val.listOfEmails.forEach((value) => {
           arr.push({date: value.date, name: val.name});
         });
       });
       return arr;
     } else if (type === 'Multy') {
       let arr = [];
-      res.user.map((val) => {
-        val.listOfEmails.map((value) => {
+      res.user.forEach((val) => {
+        val.listOfEmails.forEach((value) => {
           arr.push({date: value.date, name: val.name});
         });
       });
       return arr;
     }
+
     return {
       signUpDay(res) {
         return res.user.map((val) => {
@@ -61,15 +62,15 @@ class GlobalHardcodeConfigService {
         let arr = [];
         res.user.forEach((val) => {
           val.listOfEmails.forEach((value) => {
-            arr.push({'name': val.name, 'Group': value.group});
+            arr.push({name: val.name, Group: value.group});
           });
         });
         return arr;
       },
       date(res) {
         let arr = [];
-        res.user.map((val) => {
-          val.listOfEmails.map((value) => {
+        res.user.forEach((val) => {
+          val.listOfEmails.forEach((value) => {
             arr.push({date: value.date, name: val.name});
           });
         });
@@ -79,11 +80,20 @@ class GlobalHardcodeConfigService {
         return res.user.map((val) => {
           return { Login: val.login, Activity: val.logInCount };
         });
+      },
+      multy(res) {
+        let arr = [];
+        res.user.forEach((val) => {
+          val.listOfEmails.forEach((value) => {
+            arr.push({date: value.date, name: val.name});
+          });
+        });
+        return arr;
       }
     };
   };
 
-  sortChartData(type, res) {
+  sortChartData(type, res, key) {
     if(type === 'signUpDay') {
       return this.readResponseData().signUpDay(res).sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
