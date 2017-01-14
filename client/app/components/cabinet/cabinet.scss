@@ -15,8 +15,54 @@
   margin:0;
 }
 .imgbuttons.small{
- font-size:8px;
+ font-size:12px;
+ font-family: 'Exo 2', sans-serif;
+ color:black;
 }
 .button.submit{
   width:98%;
+}
+.avatar{
+  width:125px;
+  height:125px;
+}
+.userImage.md-subhead{
+  display:inline;
+}
+.info{
+  float:left;
+}
+.nowrap{
+  display:inline;
+}
+.md-datepicker-input.md-input{
+  min-width: 160px;
+}
+.option{
+  float:left;
+  width:50%;
+}
+.option.adress{
+  clear:both;
+  width:100%;
+}
+.colors{
+  
+}
+.dod{
+  font-size:10px;
+  line-height:18px;
+  height:20px;
+  min-height: 10px;
+  min-width: 10px;
+}
+.nowrap.md-subhead{
+  font-family: 'Marck Script', cursive;
+  font-size:18px;
+}
+.md-headline{
+  font-family: 'Exo 2', sans-serif;
+}
+.imgbuttons.small.md-warn{
+  width:10%;
 }
