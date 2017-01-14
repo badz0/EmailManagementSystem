@@ -6,15 +6,17 @@ import Firedb from './firedb/firedb';
 import Cabinet from './cabinet/cabinet';
 import Grid from './grid/grid';
 import deledit from './deledit/deledit';
+import AddEmail from './addEmail/addEmail';
 
 let componentModule = angular.module('app.components', [
   Home,
   About,
   deledit,
   Charts,
+  Firedb,
   Cabinet,
-  Grid,
-  Firedb
+  AddEmail,
+  Grid
 ])
 
 .name;
