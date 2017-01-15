@@ -113,7 +113,7 @@ class GlobalHardcodeConfigService {
   multipleDataComapare(res) {
     let finalData = [];
     const users = this.compileMultyData(res);
-    this.multySortData(res).map((val) => {
+    this.multySortData(res).forEach((val) => {
       let [countA, countB, countC] = [0, 0, 0];
       this.readResponseData(res).multy.forEach((value) => {
         if (val === value.date) {
