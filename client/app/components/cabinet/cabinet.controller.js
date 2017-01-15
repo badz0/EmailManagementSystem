@@ -6,7 +6,7 @@ class CabinetController {
     const ref = firebase.database().ref().child('user/9');
     this.users = $firebaseObject(ref);
     this.colors = Object.keys($mdColorPalette);
-    this.avatar=Сonstants.constant1;
+    this.avatar=Сonstants.avatarDefault.IMAGE_LINK;
   }
   $onInit () {
     this.countries=countries;
