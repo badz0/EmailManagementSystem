@@ -1,5 +1,5 @@
 <md-list layout-align="center center" layout-gt-sm="column">
-<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center">
+<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center" md-colors="{background: '{{$ctrl.users.themeColor}}'}">
   <h1 translate="menu.title"></h1>
 </md-toolbar>
 <md-list layout-align="center center" layout="column">
@@ -25,7 +25,7 @@
   <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
   </md-list-item>
   <md-list-item>
-    <md-button class="md-raised" ui-sref="charts" translate="statisticsButton"></md-button>
+    <md-button class="md-raised" ui-sref="charts" translate="menu.statistics"></md-button>
   </md-list-item>
   <md-list-item>
     <md-button class="md-raised" ui-sref="deledit">delEdit</md-button>
@@ -33,4 +33,9 @@
   <md-list-item>
     <md-button class="md-raised" ui-sref="grid">ui-grid</md-button>
   </md-list-item>
+    <div hide-gt-sm layout="column">
+      <md-button class="md-raised" aria-label="Sign In" translate="header.signIn" ></md-button>
+      <md-button class="md-raised md-primary" aria-label="Sign Up" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="header.signUp"></md-button>
+      <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
+  </div>
 </md-list>

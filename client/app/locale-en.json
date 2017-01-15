@@ -1,4 +1,22 @@
 {
+  "cabinet":{
+    "title":"My cabinet",
+    "name":"Name:&nbsp;",
+    "surname":"Surname:&nbsp;",
+    "adress":"Post:&nbsp;",
+    "incoming":"Incoming messages",
+    "blocklist":"Blacklist",
+    "safelist":"Safelist",
+    "upload":"Upload photo",
+    "delete":"Delete photo",
+    "login":"*nickname*",
+    "city":"City",
+    "country":"Country",
+    "birthdate":"Birth Date",
+    "submit":"Save changes",
+    "colorPicker":"Select theme color:",
+    "logOut":"Log Out"
+  },
   "header": {
     "title": "Email Management System",
     "signIn": "Sign In",
@@ -8,27 +26,13 @@
   "menu": {
     "title": "Menu",
     "home": "Home",
-    "about": "About",
-    "cabinet": "Cabinet"
+    "cabinet": "Cabinet",
+    "statistics": "Statistic"
   },
   "home": {
     "title": "Home page"
   },
   "about": {
     "title": "About us"
-  },
-  "cabinet": {
-    "title": "Cabinet"
-  },
-  "title": "Email Management System",
-  "signIn": "Sign In",
-  "signOut": "Sign Out",
-  "logOut": "Log Out",
-  "homeButton": "Home",
-  "aboutButton": "About",
-  "cabinetButton": "Cabinet",
-  "homeTitle": "Home page",
-  "aboutTitle": "About us",
-  "menu": "Menu",
-  "statisticsButton": "Statistics"
+  }
 }
