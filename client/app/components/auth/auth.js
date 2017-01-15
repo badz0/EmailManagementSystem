@@ -28,7 +28,7 @@ let authModule = angular.module('auth', [
     
     jwtOptionsProvider.config({
       tokenGetter: function () {
-        return localStorage.getItem('id_token');
+        return window.localStorage.getItem('id_token');
       }
     });
     $urlRouterProvider.otherwise('/auth');
