@@ -1,9 +1,9 @@
-import template from './auth.html';
+//import template from './auth.html';
 import controller from './auth.controller';
-import './auth.scss';
+//import './auth.scss';
 
 let authComponent = {
-  template,
+ // template,
   controller
 };
 
