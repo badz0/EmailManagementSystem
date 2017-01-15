@@ -6,6 +6,7 @@ import Firedb from './firedb/firedb';
 import Cabinet from './cabinet/cabinet';
 import deledit from './deledit/deledit';
 import Grid from './grid/grid';
+import AddEmail from './addEmail/addEmail';
 
 let componentModule = angular.module('app.components', [
   Home,
@@ -14,7 +15,8 @@ let componentModule = angular.module('app.components', [
   Charts,
   Firedb,
   Cabinet,
-  Grid
+  Grid,
+  AddEmail
 ])
 
 .name;

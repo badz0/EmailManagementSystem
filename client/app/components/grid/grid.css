@@ -13,11 +13,6 @@
   text-decoration: none;
   color: #607d8b; }
 
-#btn-small {
-  margin: 2px auto;
-  padding-top: -2px;
-  min-height: 25px;
-  min-width: 46px;
-  font-size: 13px; }
-
-/*# sourceMappingURL=grid.css.map */
+.delete {
+  margin: 2px;
+}
