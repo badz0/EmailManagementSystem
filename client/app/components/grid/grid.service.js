@@ -1,13 +1,21 @@
 import * as firebase from 'firebase';
 
+<<<<<<< HEAD
 class EmailDetailService {
   constructor(Firedbservice, $firebaseArray, $log) {
     'ngInject';
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
+=======
+export class EmailDetailService {
+  constructor(Firedbservice, $firebaseArray, $log) {
+    'ngInject';
+    const ref = firebase.database().ref().child('user/8').child('listOfEmails');
+>>>>>>> develop
     this.list = $firebaseArray(ref);
   }
   getList() {
     return this.list.$loaded(
+<<<<<<< HEAD
       (list) => {
         return list;
       },
@@ -34,6 +42,14 @@ class EmailDetailService {
       (socialWords.test(snapshot.val().recipient) === true) ? social.push(snapshot.val()): 'error';
     });
     return this.socialEmails;
+=======
+    (list) => {
+      return list;
+    },
+    (error) => {
+      console.error('Error:', error);
+    });
+>>>>>>> develop
   }
 }
 export default EmailDetailService;
