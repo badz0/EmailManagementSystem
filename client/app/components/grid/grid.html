@@ -5,13 +5,12 @@
 			<appnav></appnav>
 		</md-sidenav>
 		<md-content flex class="content">
-		   <h1 ng-bind="$ctrl.name"></h1>
 			<section>
 				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.mainPost()">All</md-button>
 				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.social()">Social</md-button>
-				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.spam()">Spam</md-button>
-			  <div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
+				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.advertising()">Advertising</md-button>
+				<div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
 			</section>
-	    </md-content>
+		</md-content>
 	</div>
 </div>
