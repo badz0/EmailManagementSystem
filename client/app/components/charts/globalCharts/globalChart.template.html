@@ -5,14 +5,16 @@
             id='view-changer'
             md-colors="{background: '{{$ctrl.color}}'}">
   <h2>
-    <span ng-bind="$ctrl.configData.navBarTitles.global"
+    <span translate="{{$ctrl.configData.navBarTitles.global}}"
           ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
-    <span ng-bind="$ctrl.configData.navBarTitles.perUser"
+    <span translate="{{$ctrl.configData.navBarTitles.perUser}}"
           ng-if="!$ctrl.configData.navBarDisplay.globalChartsStats"></span>
   </h2>
   <div layout="row">
-    <md-button ng-click="$ctrl.chartServiceData()">
-      <span ng-bind="$ctrl.configData.navBarButtons.globalChartsStats"></span>
+    <md-button class="md-raised md-primary"
+               ng-click="$ctrl.chartServiceData()"
+               md-colors="{background: '{{$ctrl.color}}'}">
+      <span translate="{{$ctrl.configData.navBarButtons.globalChartsStats}}"></span>
     </md-button>
   </div>
 </md-toolbar>
@@ -21,42 +23,46 @@
             md-border-bottom
             md-selected="$ctrl.configData.currentNavItem"
             ng-show="$ctrl.configData.navBarDisplay.globalChartsStats">
-    <md-tab label="{{chart.label}}"
-            ng-repeat="chart in $ctrl.configData.tags"
-            aria-label="tab"
-            md-colors="{color: '{{$ctrl.color}}'}">
-      <md-content class="md-padding">
-        <h1 ng-bind="chart.name"></h1>
-        <section layout="row"
-                 layout-sm="column"
-                 layout-align="end center"
-                 layout-wrap>
-          <div layout="row"
-               layout-align="start center"
-               flex>
+    <md-tab ng-repeat="chart in $ctrl.configData.tags"
+            aria-label="tab">
+      <md-tab-label>
+        <span md-colors="{color: '{{$ctrl.color}}'}"
+              translate="{{chart.label}}"></span>
+      </md-tab-label>
+      <md-tab-body>
+        <md-content class="md-padding">
+          <h1 translate="{{chart.name}}"></h1>
+          <section layout="row"
+                   layout-sm="column"
+                   layout-align="end center"
+                   layout-wrap>
+            <div layout="row"
+                 layout-align="start center"
+                 flex>
+              <md-button class="switchButtons"
+                         ng-click="$ctrl.previousItem()"
+                         translate="{{$ctrl.configData.buttons.prev}}"
+                         aria-label="buttonPrev"
+                         md-colors="{color: '{{$ctrl.color}}'}">
+              </md-button>
+              <span flex></span>
+              <div id="{{chart.id}}"
+                   class="charts-view-global">
+              </div>
+              <span flex></span>
+            </div>
             <md-button class="switchButtons"
-                       ng-click="$ctrl.previousItem()"
-                       ng-bind="$ctrl.configData.buttons.prev"
-                       aria-label="buttonPrev"
+                       ng-click="$ctrl.nextItem()"
+                       translate="{{$ctrl.configData.buttons.next}}"
+                       aria-label="buttonNext"
                        md-colors="{color: '{{$ctrl.color}}'}">
             </md-button>
-            <span flex></span>
-            <div id="{{chart.id}}"
-                 class="charts-view-global">
-            </div>
-            <span flex></span>
+          </section>
+          <div id="{{chart.id}}"
+               class="charts-view-global" >
           </div>
-          <md-button class="switchButtons"
-                     ng-click="$ctrl.nextItem()"
-                     ng-bind="$ctrl.configData.buttons.next"
-                     aria-label="buttonNext"
-                     md-colors="{color: '{{$ctrl.color}}'}">
-          </md-button>
-        </section>
-        <div id="{{chart.id}}"
-             class="charts-view-global" >
-        </div>
-      </md-content>
+        </md-content>
+      </md-tab-body>
     </md-tab>
   </md-tabs>
   <section layout="row"

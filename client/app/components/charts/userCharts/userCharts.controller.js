@@ -1,7 +1,8 @@
 class LineChartController {
-  constructor (Firedbservice, ChartsFirebaseDataService, dragularService, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
+  constructor (Firedbservice, ChartsFirebaseDataService, dragularService, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
     dragularService('.containerVertical', { removeOnSpill: true });
     this.dialog = $mdDialog;
+    this.translate = $translate;
     this.dialogDataService = DialogDataService;
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     ChartsFirebaseDataService.chartsDataBuild().then((res) => {

@@ -1,28 +1,55 @@
 class GlobalHardcodeConfigService {
   constructor() {
     this.configs = {
-      translate: {
-        header: 'menu.statistics'
-      },
       buttons: {
-        next: 'Next',
-        prev: 'Prev'
+        next: 'statistics.buttons.next',
+        prev: 'statistics.buttons.prev'
       },
-      gridButton: 'Emails UIGrid',
       userListButtons: {
         userGrid: 'Email Grid',
         userEmails: 'User Emails',
         userCharts: 'User Charts'
       },
       navBarButtons: {
-        globalChartsStats: 'Global Statistics',
+        globalChartsStats: 'statistics.buttons.globalStat',
         defaultPageStats: 'Home Charts',
         perUserStats: 'User List Statistic'
       },
       navBarTitles: {
-        global: 'Global Data Statistics',
+        global: 'statistics.header.headerGlob',
         home: 'Home Charts',
-        perUser: 'User Data Statistics'
+        perUser: 'statistics.header.headerUser'
+      },
+      tags: [
+        {name: 'statistics.tags.tagThird', id: 'emailsMaxChart', label: 'statistics.tags.labelThree',
+          status: true, value: 0},
+        {name: 'statistics.tags.tagSecond', id: 'groupDataChart', label: 'statistics.tags.labelTwo',
+          status: true, value: 1},
+        {name: 'statistics.tags.tagFourth', id: 'multiple', label: 'statistics.tags.labelFour',
+          status: true, value: 2},
+        {name: 'statistics.tags.tagFifth', id: 'chartsActive', label: 'statistics.tags.labelFive',
+          status: true, value: 3},
+        {name: 'statistics.tags.tagSix', id: 'dateEmailStat', label: 'statistics.tags.labelSix',
+          status: true, value: 4},
+        {name: 'statistics.tags.tagFirst', id: 'signUpDayChart', label: 'statistics.tags.labelOne',
+          status: true, value: 5}
+      ],
+      userListButtons: {
+        gridButton: 'statistics.buttons.emailGrid',
+        userEmails: 'statistics.buttons.emailsList',
+        userCharts: 'statistics.buttons.userCharts'
+      },
+      dialogChartTitles: {
+        group: 'statistics.dialog.group',
+        emailActivity: 'statistics.dialog.emailActivity',
+        recipient: 'statistics.dialog.recipient'
+      },
+      dialogListOfEmails: {
+        date: 'Date: ',
+        group: 'Group: ',
+        sender: 'Sender: ',
+        subject: 'Subject: ',
+        content: 'Content: '
       },
       navBarDisplay: {
         globalChartsStats: false,
@@ -269,31 +296,6 @@ class GlobalHardcodeConfigService {
             'dateFormat': 'YYYY-MM-DD'
           }
         }
-      },
-      tags: [
-        {name: 'Users SignUp statistics', id: 'signUpDayChart', label: 'SignUp Day & ID',
-          status: true, value: 0},
-        {name: 'All received Emails sorted by Groups', id: 'groupDataChart', label: 'avaliable Groups ',
-          status: true, value: 1},
-        {name: 'Sorted by received emails amout', id: 'emailsMaxChart', label: 'Emails per user',
-          status: true, value: 2},
-        {name: 'Compare statistics for most active users', id: 'multiple', label: 'Compare Statistics',
-          status: true, value: 3},
-        {name: 'Most Active Users', id: 'chartsActive', label: 'Log In Activity',
-          status: true, value: 4},
-        {name: 'Amount of received Emails sorted by day income', id: 'dateEmailStat', label: 'Emails By Day',
-          status: true, value: 5}
-      ],
-      userListButtons: {
-        userEmails: 'User Emails',
-        userCharts: 'User Charts'
-      },
-      dialogListOfEmails: {
-        date: 'Date: ',
-        group: 'Group: ',
-        sender: 'Sender: ',
-        subject: 'Subject: ',
-        content: 'Content: '
       },
       currentNavItem: 0,
       dialogChart: {

@@ -21,19 +21,19 @@
                  aria-label="userGrid"
                  ng-click="$ctrl.showUIGrid($index)"
                  md-colors="{background: '{{$ctrl.color}}'}">
-        <span ng-bind="$ctrl.configData.gridButton"></span>
+        <span translate="{{$ctrl.configData.userListButtons.gridButton}}"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userEmails"
                  ng-click="$ctrl.showUserEmails($index)"
                  md-colors="{background: '{{$ctrl.color}}'}">
-        <span ng-bind="$ctrl.configData.userListButtons.userEmails"></span>
+        <span translate="{{$ctrl.configData.userListButtons.userEmails}}"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userCharts"
                  ng-click="$ctrl.showDialogCharts($index)"
                  md-colors="{background: '{{$ctrl.color}}'}">
-        <span ng-bind="$ctrl.configData.userListButtons.userCharts"></span>
+        <span translate="{{$ctrl.configData.userListButtons.userCharts}}"></span>
       </md-button>
     </md-list-item>
   </md-list>
@@ -42,22 +42,22 @@
        ng-repeat="item in $ctrl.usersList">
     <div class="md-dialog-container"
          id="chart{{$index}}">
-      <md-dialog >
+      <md-dialog>
         <h1 ng-bind="'№' + ($index + 1) + ' ' + (item.name)"></h1>
         <md-dialog-content class="md-dialog-content">
-        <span></span>
+        <h2 translate="{{$ctrl.configData.dialogChartTitles.group}}"></h2>
         <md-list-item>
           <div id="chartsData{{$index}}"
                class="charts-dialog-view">
           </div>
         </md-list-item>
-        <span></span>
+        <h2 translate="{{$ctrl.configData.dialogChartTitles.emailActivity}}"></h2>
         <md-list-item>
           <div id="charts{{$index}}"
                class="charts-dialog-view">
           </div>
         </md-list-item>
-        <span></span>
+        <h2 translate="{{$ctrl.configData.dialogChartTitles.recipient}}"></h2>
         <md-list-item>
           <div id="chartsActive{{$index}}"
                class="charts-dialog-view">
@@ -71,7 +71,10 @@
     <div class="md-dialog-container"
          id="usersList">
       <md-dialog aria-label="List dialog">
-        <h1 ng-bind="'Emails: ' + ($ctrl.user.listOfEmails.length) + ' Login: ' + ($ctrl.user.login)"></h1>
+        <h1>
+          <span ng-bind="'Emails: '"></span>
+          <span ng-bind="($ctrl.user.listOfEmails.length) + ' ' + ($ctrl.user.login)"></span>
+        </h1>
         <md-dialog-content class="md-dialog-content">
           <md-list class="containerVertical">
             <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"  ng-click="null">

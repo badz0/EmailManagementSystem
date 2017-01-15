@@ -22,7 +22,7 @@ class DialogDataService {
 
   searchUnicData(res, index , key) {
     let arr = [];
-    this.searchEmailsData(res)[index].letters.map((val, i) => {
+    this.searchEmailsData(res)[index].letters.forEach((val, i) => {
       if (arr.indexOf(val[key]) === -1) {
         arr.push(val[key]);
       };
