@@ -1,14 +1,15 @@
 class AuthService {
-  constructor(lock, authManager){
+  constructor($q, lock, authManager){
   "ngInject";
+  this.q = $q;
   this.lock=lock;
   this.authManager=authManager;
+  this.deferredProfile = $q.defer();
   }
    login() {
     this.lock.show();
   }
    logout() {
-     console.log('logout');
       window.localStorage.removeItem('id_token');
       this.authManager.unauthenticate();
     }
@@ -16,11 +17,20 @@ class AuthService {
     this.lock.on('authenticated', authResult => {
       window.localStorage.setItem('id_token', authResult.idToken);
       this.authManager.authenticate();
-      console.log(this.authManager);
+        this.lock.getUserInfo(authResult.accessToken ,(error, profile)=> {
+          if (error) {
+            return console.log(error);
+          }
+          localStorage.setItem('profile', JSON.stringify(profile));
+          this.deferredProfile.resolve(profile);
+        });
     });
   }
-  isAuthenticated(){
-      return this.authManager.isAuthenticated();
+  isAuthenticated() {
+    return this.authManager.isAuthenticated();
+  }
+  getProfileDeferred() {
+    return this.deferredProfile.promise;
   }
 }
 export default AuthService;

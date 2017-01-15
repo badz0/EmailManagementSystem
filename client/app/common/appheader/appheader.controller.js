@@ -9,6 +9,9 @@ class AppheaderController {
     this.translate = $translate;
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
+    AuthService.getProfileDeferred().then((profile)=> {
+      this.profile = profile;
+    });
   }
 
   $onInit() {
