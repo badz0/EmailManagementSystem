@@ -7,10 +7,9 @@
 		  <md-content flex flex-offset="5">
             <h3>A emailDetail!</h3>
             <div class="email-data">
-                <div> Id: <span ng-bind="$ctrl.idParam"></span> </div>
-                <div>Email: <span ng-bind="$ctrl.currentData.email"><span></div>
-                <div>Name:<span ng-bind="$ctrl.currentData.name"><span></div>
-                <div>City: <span ng-bind="$ctrl.currentData.city"><span></div>
+                <div> Email: <span ng-bind="$ctrl.currentData.recipient"></span> </div>
+                <div>Subject: <span ng-bind="$ctrl.currentData.subject"><span></div>
+                <div>Content:<span ng-bind="$ctrl.currentData.content"><span></div>
             </div>
             <md-button class="md-raised md-green"  ui-sref="grid">Back</md-button>
             <md-button class="md-raised md-warn" ng-click="$ctrl.deleteUser()" ui-sref="grid"> delete</md-button>

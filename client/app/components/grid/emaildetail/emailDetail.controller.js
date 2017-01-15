@@ -17,7 +17,7 @@ class EmailController {
   };
   deleteUser() {
     if (confirm('Are you sure you want to delete letter ?')){
-      firebase.database().ref().child(`user/${this.idParam}`).remove();
+      firebase.database().ref().child('user/0').child(`listOfEmails/${this.idParam}`).remove();
     }};
-}
+  }
 export default EmailController;
