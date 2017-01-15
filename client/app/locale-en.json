@@ -1,4 +1,21 @@
 {
+  "header": {
+    "title": "Email Management System",
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "logOut": "Log Out"
+  },
+  "menu": {
+    "title": "Menu",
+    "home": "Home",
+    "cabinet": "Cabinet",
+    "statistic": "Statistic",
+    "emails": "Emails"
+  },
+  "home": {
+    "title": "Email Management System",
+    "getStarted": "Get started"
+  },
   "cabinet":{
     "title":"My cabinet",
     "name":"Name:&nbsp;",
@@ -17,22 +34,7 @@
     "colorPicker":"Select theme color:",
     "logOut":"Log Out"
   },
-  "header": {
-    "title": "Email Management System",
-    "signIn": "Sign In",
-    "signUp": "Sign Up",
-    "logOut": "Log Out"
-  },
-  "menu": {
-    "title": "Menu",
-    "home": "Home",
-    "about": "About",
-    "cabinet": "Cabinet"
-  },
-  "home": {
-    "title": "Home page"
-  },
-  "about": {
-    "title": "About us"
+  "emails": {
+    "title": "Emails"
   }
 }
