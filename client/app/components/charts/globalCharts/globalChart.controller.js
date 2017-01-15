@@ -1,7 +1,11 @@
 class GlobalChartController {
-  constructor (Firedbservice, ChartsFirebaseDataService, GlobalHardcodeConfigService) {'ngInject';
+  constructor (Firedbservice, ChartsFirebaseDataService, GlobalHardcodeConfigService, $translate) {'ngInject';
     this.firedata = ChartsFirebaseDataService;
+    this.translate = $translate;
     this.configData = GlobalHardcodeConfigService.configData();
+    this.firedata.chartsDataBuild().then((res) => {
+      this.color = res.userCabinetColor;
+    });
   };
   previousItem() {
     this.configData.currentNavItem === 0 ? this.configData.currentNavItem = this.configData.tags.length : this.configData.currentNavItem -= 1;

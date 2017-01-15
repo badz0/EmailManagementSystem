@@ -10,6 +10,7 @@ class GlobalHardcodeConfigService {
     return this.data.$loaded().then((res) => {
       return {
         firedbChartData: res,
+        userCabinetColor: res.user[9].themeColor,
         signUpDay: this.sortChartData('signUpDay', res, 'signUpDay'),
         emailsMaxLine: this.sortChartData('emailsMaxLine', res),
         singnUpTimes: this.sortChartData('signUp', res).splice(0,5),

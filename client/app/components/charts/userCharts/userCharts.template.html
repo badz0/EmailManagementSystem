@@ -19,17 +19,20 @@
       </div>
       <md-button class="md-primary md-raised"
                  aria-label="userGrid"
-                 ng-click="$ctrl.showUIGrid($index)">
+                 ng-click="$ctrl.showUIGrid($index)"
+                 md-colors="{background: '{{$ctrl.color}}'}">
         <span ng-bind="$ctrl.configData.gridButton"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userEmails"
-                 ng-click="$ctrl.showUserEmails($index)">
+                 ng-click="$ctrl.showUserEmails($index)"
+                 md-colors="{background: '{{$ctrl.color}}'}">
         <span ng-bind="$ctrl.configData.userListButtons.userEmails"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userCharts"
-                 ng-click="$ctrl.showDialogCharts($index)">
+                 ng-click="$ctrl.showDialogCharts($index)"
+                 md-colors="{background: '{{$ctrl.color}}'}">
         <span ng-bind="$ctrl.configData.userListButtons.userCharts"></span>
       </md-button>
     </md-list-item>
@@ -40,7 +43,7 @@
     <div class="md-dialog-container"
          id="chart{{$index}}">
       <md-dialog >
-        <h2 ng-bind="(item.name) + ' ' + ($index + 1)"></h2>
+        <h1 ng-bind="'№' + ($index + 1) + ' ' + (item.name)"></h1>
         <md-dialog-content class="md-dialog-content">
         <span></span>
         <md-list-item>
@@ -68,7 +71,7 @@
     <div class="md-dialog-container"
          id="usersList">
       <md-dialog aria-label="List dialog">
-        <h2 ng-bind="($ctrl.user.listOfEmails.length) + ' ' + ($ctrl.user.login)"></h2>
+        <h1 ng-bind="'Emails: ' + ($ctrl.user.listOfEmails.length) + ' Login: ' + ($ctrl.user.login)"></h1>
         <md-dialog-content class="md-dialog-content">
           <md-list class="containerVertical">
             <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"  ng-click="null">
@@ -80,7 +83,7 @@
                 <br>
                 <span ng-bind="$ctrl.configData.dialogListOfEmails.content"></span>
                 <br>
-                <span md-colors="{color:'green'}" ng-bind="item.content"></span>
+                <span md-colors="{color: '{{$ctrl.color}}'}" ng-bind="item.content"></span>
               </p>
             </md-list-item>
           </md-list>
@@ -92,9 +95,7 @@
     <div class="md-dialog-container"
          id="usersListGrid">
       <md-dialog aria-label="Grid dialog">
-        <h1 ng-bind="$ctrl.user.name">
-          {{$ctrl.user.name}}
-        </h1>
+        <h1 ng-bind="$ctrl.user.name"></h1>
         <md-dialog-content class="md-dialog-content">
           <div id="gridUser" class="grid" ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
         </md-dialog-content>

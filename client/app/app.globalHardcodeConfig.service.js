@@ -1,6 +1,9 @@
 class GlobalHardcodeConfigService {
   constructor() {
     this.configs = {
+      translate: {
+        header: 'menu.statistics'
+      },
       buttons: {
         next: 'Next',
         prev: 'Prev'

@@ -6,6 +6,7 @@ class LineChartController {
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     ChartsFirebaseDataService.chartsDataBuild().then((res) => {
       this.usersList = res.firedbChartData.user;
+      this.color = res.userCabinetColor;
     });
     this.configData = GlobalHardcodeConfigService.configData();
   };
