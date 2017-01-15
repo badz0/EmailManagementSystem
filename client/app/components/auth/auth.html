@@ -1,0 +1,25 @@
+
+<div layout="column" layout-fill>
+    <appheader></appheader>
+    <div class="container" layout="row" flex>
+        <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
+            <appnav></appnav>
+        </md-sidenav>
+        <md-content flex flex-offset="5">
+            <md-content flex class="content">
+			<section>
+			  Auth0
+			</section>
+			<div class="jumbotron">
+			  <h2 class="text-center"><img src="https://cdn.auth0.com/styleguide/1.0.0/img/badge.svg"></h2>
+			  <div class="text-center" ng-if="!$ctrl.AuthService.isAuthenticated()">
+			    <p>You are not yet authenticated. <button class="btn btn-primary" ng-click="$ctrl.AuthService.login()">Log In</button></p>
+			  </div>
+			  <div class="text-center" ng-if="$ctrl.AuthService.isAuthenticated()">
+			    <p>Thank you for logging in! <a href="javascript:;" ng-click="$ctrl.AuthService.logout()">Log out.</a></p>
+			  </div>
+		  </div>
+	  </md-content>
+        </md-content>
+    </div>
+</div>
