@@ -6,7 +6,7 @@ class GridController {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
     this.data = $firebaseObject(ref);
     this.EmailDetailServiceSocial = EmailDetailService.getSocial();
-    this.EmailDetailServiceAdvertising = EmailDetailService.getAdvertising();
+    this.EmailDetailServiceAds = EmailDetailService.getAds();
   }
   $onInit() {
     this.mainPost = () => {
@@ -15,8 +15,8 @@ class GridController {
     this.social = () => {
       this.gridOptions.data = this.EmailDetailServiceSocial;
     };
-    this.advertising = () => {
-      this.gridOptions.data = this.EmailDetailServiceAdvertising;
+    this.ads = () => {
+      this.gridOptions.data = this.EmailDetailServiceAds;
     };
     this.gridOptions = {
       enableFiltering: true,

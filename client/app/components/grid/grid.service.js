@@ -15,15 +15,15 @@ class EmailDetailService {
         $log.error('Error:', error);
       });
   }
-  getAdvertising() {
+  getAds() {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    let advertisingWords = new RegExp('SALE|free');
-    let advertising = [];
-    this.advertisingEmails = advertising;
+    let adsWords = new RegExp('SALE|free');
+    let ads = [];
+    this.adsEmails = ads;
     ref.on('child_added', (snapshot) => {
-      (advertisingWords.test(snapshot.val().content) === true) ? advertising.push(snapshot.val()): 'error';
+      (adsWords.test(snapshot.val().content) === true) ? ads.push(snapshot.val()): 'error';
     });
-    return this.advertisingEmails;
+    return this.adsEmails;
   }
   getSocial() {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
