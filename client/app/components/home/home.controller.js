@@ -1,6 +1,6 @@
 import * as firebase from 'firebase';
 
-class AppnavController {
+class HomeController {
   constructor($firebaseObject, Firedbservice) {
     'ngInject';
     const ref = firebase.database().ref().child('user/9');
@@ -8,4 +8,4 @@ class AppnavController {
   }
 }
 
-export default AppnavController;
+export default HomeController;

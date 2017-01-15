@@ -11,25 +11,14 @@
 	<md-list-item>
 		<md-button class="md-raised" ui-sref="cabinet" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
 	</md-list-item>
-    <div hide-gt-sm layout="column">
-      <md-button class="md-raised" aria-label="Sign In" translate="header.signIn" ></md-button>
-      <md-button class="md-raised md-primary" aria-label="Sign Up" translate="header.signUp"></md-button>
-      <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
-  </div>
-  <md-button class="md-raised" ui-sref="firedb">firedb</md-button>
+  <md-list-item>
+    <md-button class="md-raised" ui-sref="charts"  translate="menu.statistic"></md-button>
   </md-list-item>
   <md-list-item>
-    <md-button class="md-raised" ui-sref="charts">charts</md-button>
-  </md-list-item>
-  <md-list-item>
-    <md-button class="md-raised" ui-sref="deledit">delEdit</md-button>
-  </md-list-item>
-  <md-list-item>
-    <md-button class="md-raised" ui-sref="grid">ui-grid</md-button>
+    <md-button class="md-raised" ui-sref="grid" translate="menu.emails"></md-button>
   </md-list-item>
     <div hide-gt-sm layout="column">
-      <md-button class="md-raised" aria-label="Sign In" translate="header.signIn" ></md-button>
-      <md-button class="md-raised md-primary" aria-label="Sign Up" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="header.signUp"></md-button>
+      <md-button class="md-raised md-primary" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="header.signIn"></md-button>
       <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
   </div>
 </md-list>

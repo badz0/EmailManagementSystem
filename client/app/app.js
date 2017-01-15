@@ -23,6 +23,7 @@ import angTransLocalSrotage from 'angular-translate-storage-local';
 import angTransCookieStorage from 'angular-translate-storage-cookie';
 import angTransHandlerLog from 'angular-translate-handler-log';
 import ngCookies from 'angular-cookies';
+import 'material-design-icons/iconfont/material-icons.css';
 import translationEn from './locale-en.json';
 import translationUa from './locale-ua.json';
 

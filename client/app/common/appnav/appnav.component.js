@@ -1,8 +1,9 @@
 import template from './appnav.html';
-import './appnav.scss';
+import controller from './appnav.controller';
 
 let appnavComponent = {
-  template
+  template,
+  controller
 };
 
 export default appnavComponent;
