@@ -2,13 +2,15 @@ import countries from './cabinet.countries.json';
 import * as firebase from 'firebase';
 
 class CabinetController {
-  constructor($firebaseObject,Firedbservice) {'ngInject';
+  constructor($firebaseObject,Firedbservice,$mdColorPalette,Сonstants) {'ngInject';
     const ref = firebase.database().ref().child('user/9');
     this.users = $firebaseObject(ref);
+    this.colors = Object.keys($mdColorPalette);
+    this.avatar=Сonstants.constant1;
   }
   $onInit () {
-    this.name = 'cabinet';
     this.countries=countries;
+    this.user={};
   }
   clearForm(){
     this.user={
@@ -26,8 +28,22 @@ class CabinetController {
     firebase.database().ref().child('user/9').update(this.user);
     this.clearForm();
   }
+  getFileName(){
+    let url=this.users.avatar;
+    url = url.split(/[%2F\?]/)[3];
+    return url;
+  }
   deleteAvatar(){
-    firebase.storage().ref().child('user9/9.jpg').delete();
+    firebase.storage().ref().child(`user9/${this.getFileName()}`).delete();
+    this.user.avatar=this.avatar;
+    firebase.database().ref().child('user/9').update(this.user);
+  }
+  clearCity(){
+    this.user.city = null;
+  }
+  selectTheme(color){
+    this.user.themeColor = color;
+    firebase.database().ref().child('user/9').update(this.user);
   }
 }
   
