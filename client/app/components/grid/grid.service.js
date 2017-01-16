@@ -15,25 +15,27 @@ class EmailDetailService {
         $log.error('Error:', error);
       });
   }
-  getAds() {
-    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    let adsWords = /SALE|free/i;
-    let ads = [];
-    this.adsEmails = ads;
-    ref.on('child_added', (snapshot) => {
-      (adsWords.test(snapshot.val().content) === true) ? ads.push(snapshot.val()): 'error';
-    });
-    return this.adsEmails;
-  }
   getSocial() {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
     let socialWords = /facebook|twitter|youtube|linkedin/i;
     let social = [];
-    this.socialEmails = social;
     ref.on('child_added', (snapshot) => {
-      (socialWords.test(snapshot.val().recipient) === true) ? social.push(snapshot.val()): 'error';
+      if (socialWords.test(snapshot.val().recipient)){
+        social.push(snapshot.val());
+      }
     });
-    return this.socialEmails;
+    return social;
+  }
+  getAds() {
+    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
+    let adsWords = /SALE|free/i;
+    let ads = [];
+    ref.on('child_added', (snapshot) => {
+      if (adsWords.test(snapshot.val().content)){
+        ads.push(snapshot.val());
+      } 
+    });
+    return ads;
   }
 }
 export default EmailDetailService;

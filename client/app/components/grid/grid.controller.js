@@ -27,10 +27,10 @@ class GridController {
     this.gridOptions.data = this.data;
   }
   socialEmails() {
-    this.gridOptions.data = this.EmailDetailServiceAds;
+    this.gridOptions.data = this.EmailDetailServiceSocial;
   }
   adsEmails() {
-    this.gridOptions.data = this.EmailDetailServiceSocial;
+    this.gridOptions.data = this.EmailDetailServiceAds;
   }
 }
 export default GridController;
