@@ -11,7 +11,8 @@
         <div>Content:<span ng-bind="$ctrl.currentData.content"><span></div>
         <div><img ng-src={{$ctrl.currentData.thumbnail}}></div>
       </div>
-      <md-button class="md-raised" ui-sref="grid"> Back </md-button>
+       <md-button class="md-raised md-green"  ui-sref="grid">Back</md-button>
+      <md-button class="md-raised md-warn" ng-click="$ctrl.deleteUser()" ui-sref="grid"> delete</md-button>
     </md-content>
     </div>
 </div>
