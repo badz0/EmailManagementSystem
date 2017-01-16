@@ -28,7 +28,6 @@ let gridModule = angular.module('grid', [
 .component('grid', gridComponent)
 .service('EmailDetailService', EmailDetailService)
 .component('emailDetail', emailDetailComponent)
-
 .name;
 
 export default gridModule;

@@ -13,18 +13,11 @@ class AppheaderController {
       this.profile = profile;
     });
   }
-
   $onInit() {
     this.lan = this.translate.use();
   }
-
   toggleMenu() {
     this.mdSidenav('menu').toggle();
-  }
-
-  changeLanguage(key) {
-    this.translate.use(key);
-    this.lan = key;
   }
 }
 

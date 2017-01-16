@@ -9,9 +9,6 @@ class AppnavController {
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
   }
-  $onInit() {
-    this.name = 'appnav';
-  }
 }
 
 export default AppnavController;
