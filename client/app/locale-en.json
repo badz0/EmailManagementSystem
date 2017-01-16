@@ -28,13 +28,13 @@
       "userCharts": "Charts"
     },
     "tags": {
-      "tagFirst": "Users SignUp statistics",
+      "tagFirst": "Dynamic emails amount change in specific time period for most active users",
       "tagSecond": "All received Emails sorted by Groups",
       "tagThird": "Sorted by received emails amout",
       "tagFourth": "Compare statistics for most active users",
       "tagFifth": "Most Active Users",
       "tagSix": "Amount of received Emails sorted by day income",
-      "labelOne": "SignUp Day & ID",
+      "labelOne": "Dynamic time period",
       "labelTwo": "avaliable Groups",
       "labelThree": "Emails per user",
       "labelFour": "Compare Statistics",

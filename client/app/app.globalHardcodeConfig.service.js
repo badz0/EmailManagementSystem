@@ -31,7 +31,7 @@ class GlobalHardcodeConfigService {
           status: true, value: 3},
         {name: 'statistics.tags.tagSix', id: 'dateEmailStat', label: 'statistics.tags.labelSix',
           status: true, value: 4},
-        {name: 'statistics.tags.tagFirst', id: 'signUpDayChart', label: 'statistics.tags.labelOne',
+        {name: 'statistics.tags.tagFirst', id: 'userDateStat', label: 'statistics.tags.labelOne',
           status: true, value: 5}
       ],
       userListButtons: {
@@ -135,59 +135,36 @@ class GlobalHardcodeConfigService {
             'position': 'top'
           }
         },
-        signUpDay: {
+        userEmailDateComapare: {
           'type': 'serial',
           'theme': 'light',
-          'autoMarginOffset': 20,
-          'dataDateFormat': 'YYYY-MM-DD',
-          'valueAxes': [{
-            'id': 'v1',
-            'axisAlpha': 0,
-            'position': 'left',
-            'ignoreAxisWidth':true
-          }],
-          'balloon': {
-            'borderThickness': 1,
-            'shadowAlpha': 0
+          'legend': {
+            'useGraphSettings': true
           },
-          'graphs': [{
-            'id': 'g1',
-            'balloon':{
-              'drop':true,
-              'adjustBorderColor':false,
-              'color':'#ffffff'
-            },
-            'bullet': 'round',
-            'bulletBorderAlpha': 1,
-            'bulletColor': '#FFFFFF',
-            'bulletSize': 2,
-            'hideBulletsCount': 50,
-            'lineThickness': 1,
-            'title': 'red line',
-            'useLineColorForBulletBorder': true,
-            'valueField': 'value',
-            'balloonText': '<span style=\'font-size:12px;\'>[[name]]</span>'
+          'dataProvider': [],
+          'valueAxes': [{
+            'integersOnly': true,
+            'axisAlpha': 0,
+            'dashLength': 5,
+            'gridCount': 10,
+            'position': 'left',
+            'title': 'Users statistic'
           }],
+          'startDuration': 0.5,
+          'graphs': [],
           'chartCursor': {
-            'pan': true,
-            'valueLineEnabled': true,
-            'valueLineBalloonEnabled': true,
-            'cursorAlpha':1,
-            'cursorColor':'#009688',
-            'limitToGraph':'g1',
-            'valueLineAlpha':0.2,
-            'valueZoomable':true
+            'cursorAlpha': 0,
+            'zoomable': false
           },
           'categoryField': 'date',
           'categoryAxis': {
-            'parseDates': true,
-            'dashLength': 1,
-            'minorGridEnabled': true
-          },
-          'export': {
-            'enabled': true
-          },
-          'dataProvider': []
+            'gridPosition': 'start',
+            'axisAlpha': 0,
+            'fillAlpha': 0.05,
+            'fillColor': '#000000',
+            'gridAlpha': 0,
+            'position': 'top'
+          }
         },
         emailsMaxLine: {
           'type': 'serial',

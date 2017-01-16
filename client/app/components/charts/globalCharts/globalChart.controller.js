@@ -27,7 +27,7 @@ class GlobalChartController {
       };
       AmCharts.makeChart('groupDataChart', this.configData.chartsData.groupData);
       AmCharts.makeChart('multiple', this.configData.chartsData.multipleUserComapare);
-      AmCharts.makeChart('signUpDayChart', this.configData.chartsData.signUpDay);
+      AmCharts.makeChart('userDateStat', this.configData.chartsData.userEmailDateComapare);
       AmCharts.makeChart('emailsMaxChart', this.configData.chartsData.emailsMaxLine);
       AmCharts.makeChart('chartsActive', this.configData.chartsData.singnUpTimes);
       AmCharts.makeChart('dateEmailStat', this.configData.chartsData.emailDateStat);
