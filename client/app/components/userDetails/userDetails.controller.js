@@ -1,8 +1,7 @@
 class userDetailsController {
   constructor() {
     this.state ='table';
-    
-    
+     
   }
   
 }

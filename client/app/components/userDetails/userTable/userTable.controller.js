@@ -13,29 +13,29 @@ class UserTableController {
   $onInit(){
     this.gridOptions = {
       enableFiltering: true,
-      exporterMenuCsv: false,
+      exporterMenuCsv: true,
       enableGridMenu: true,
       enableSorting: true,
-      enableColumnResizing: true,
-      enableRowSelection: true,
-      enableSelectAll: true,
+         
+      
       columnDefs: [
-          { name:'Id', enableSorting: true, enableFiltering:false, enablePinning:false, width:50, field: 'id'},
-          { name:'Name', enableSorting: true, pinnedRight:true, width:100, field: 'name'},
-          { name:'Surname', enableSorting: true, pinnedLeft:true, width:100, field: 'surname'},
-          { name:'Nickname', enableSorting: true, width:100, field: 'login'},
-          { name:'Birth Date', enableSorting: true, width:100, field: 'birthDate'},
-          { name:'Email', enableSorting: true, width:200, field: 'email'},
+          { name:'Id', enableSorting: true, enableFiltering:false, width:50,  field: 'id'},
+          { name:'Name', enableSorting: true, field: 'name'},
+          { name:'Surname', enableSorting: true, field: 'surname'},
+          { name:'Nickname', enableSorting: true,  field: 'login'},
+          { name:'Birth Date', enableSorting: true, field: 'birthDate'},
+          { name:'Email', enableSorting: true,  field: 'email'},
           { name:'Country', enableSorting: true, field: 'country'},
           { name:'City', enableSorting: true, field: 'city'},
           { name:'Registration date', enableSorting: true, width:150, field: 'signUpDate'},
-          { name:'Number of Inputs', enableSorting: true, width:150, field: 'logInCount'},
+          { name:'Number of Inputs', enableSorting: true, width:150,  field: 'logInCount'},
                     
 
       ],
       data: this.users
     };
   }
+
   showWindow($event) {
     this.mdDialog.show({
       template,

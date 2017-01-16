@@ -1,16 +1,11 @@
 class SwitcherController {
-  constructor() {
-    
-     
-  }
-  
-  setState(){
+   
+  setState(state){
     this.state = state;
     this.onStateChange({$event: {state: state}});
   };
 
   }
-
 
 export default SwitcherController;  
   

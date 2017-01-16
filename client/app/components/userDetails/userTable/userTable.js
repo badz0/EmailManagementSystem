@@ -8,11 +8,7 @@ let userTableModule = angular.module('userTable', [
   uiRouter,
   'ngMessages',
   'ui.grid',
-  'ui.grid.moveColumns',
-  'ui.grid.pinning',
-  'ui.grid.resizeColumns',
-  'ui.grid.selection',
-  'ui.grid.exporter'
+    
 ])
 
 .config(($stateProvider) => {

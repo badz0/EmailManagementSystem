@@ -4,7 +4,7 @@ import switcherComponent from './switcher.component';
 
 let switcherModule = angular.module('switcher', [
   uiRouter
-  ])
+])
 
 .config(($stateProvider) => {
   'ngInject';

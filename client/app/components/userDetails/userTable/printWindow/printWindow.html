@@ -10,7 +10,7 @@
   </md-toolbar>
   <md-dialog-content ng-cloak>
     <div class="md-dialog-content">
-      <form name="addEmailForm" ng-submit="$ctrl.submit(addEmailForm.$valid)" novalidate>
+      <form name="printWindow" ng-submit="$ctrl.export()">
         <md-input-container>
             <label>Columns</label>
             <md-select ng-model="export_column_type">
@@ -33,11 +33,6 @@
                 <md-option ng-value="pdf">PDF</md-option>
             </md-select>
         </md-input-container>
-          <md-button ng-click="export()">Export</md-button>
-          <div class="custom-csv-link-location">
-              <label>Your CSV will show below:</label>
-              <span class="ui-grid-exporter-csv-link">&nbsp</span>
-          </div>
         <md-dialog-actions>
           <md-button class="md-raised md-primary" type="submit" aria-label="Export">Export</md-button>
         </md-dialog-actions>

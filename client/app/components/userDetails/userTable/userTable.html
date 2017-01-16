@@ -1,17 +1,15 @@
 <div ng-if="$ctrl.state === 'table'">
-<md-content flex class="content" >
-    <md-switch ng-model="state" aria-label="Switch" class="md-block" >
-    Switch: {{state}}
-    </md-switch>
-    <section ng-if="state">
-        <div  ui-grid="$ctrl.gridOptions" ui-grid-resize-columns ui-grid-move-columns ui-grid-pinning ui-grid-selection ui.grid.exporter class="grid"></div>
-          <md-button class="md-primary md-raised" ng-click="$ctrl.showWindow($event)"  flex="100"  flex-gt-md="auto">
-          Export
-          </md-button>
-    </section>
-</md-content>
+    <md-content flex class="content" >
+        <section>
+            <div  ui-grid="$ctrl.gridOptions"  ui.grid.exporter class="grid">
+            </div>
+            <md-button class="md-primary md-raised" ng-click="$ctrl.showWindow($event)"  flex="100"  flex-gt-md="auto">
+            Export
+            </md-button>
+        </section>
+    </md-content>
 </div>
 <div ng-if="$ctrl.state === 'chart'">
-Hello i'm chart
+<p>Place for charts</p>
 </div>
 

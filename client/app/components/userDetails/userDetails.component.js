@@ -3,7 +3,6 @@ import controller from './userDetails.controller';
 import './userDetails.scss';
 
 let userDetailsComponent = {
-  bindings: {},
   template,
   controller
 };
