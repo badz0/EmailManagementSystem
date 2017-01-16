@@ -6,9 +6,9 @@
 		</md-sidenav>
 		<md-content flex>
 			<section>
-				<md-button md-colors="{background: '{{$ctrl.data.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.allEmails()">All</md-button>
-				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.socialEmails()">Social</md-button>
-				<md-button class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.adsEmails()">Ads</md-button>
+				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.allEmails()">All</md-button>
+				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.socialEmails()">Social</md-button>
+				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.adsEmails()">Ads</md-button>
 				<div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
 			</section>
 		</md-content>

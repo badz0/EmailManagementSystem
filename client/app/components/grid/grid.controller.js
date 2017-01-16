@@ -4,7 +4,9 @@ class GridController {
   constructor(Firedbservice, EmailDetailService, $firebaseObject) {
     'ngInject';
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
+    const refUser = firebase.database().ref().child('user/0');
     this.data = $firebaseObject(ref);
+    this.users = $firebaseObject(refUser);
     this.EmailDetailServiceSocial = EmailDetailService.getSocial();
     this.EmailDetailServiceAds = EmailDetailService.getAds();
   }
