@@ -11,7 +11,7 @@
         <div>Content:<span ng-bind="$ctrl.currentData.content"><span></div>
         <div><img ng-src={{$ctrl.currentData.thumbnail}}></div>
       </div>
-      <md-button class="md-primary md-raised" ui-sref="grid"> Back </md-button>
+      <md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" ui-sref="grid"> Back </md-button>
     </md-content>
     </div>
 </div>
