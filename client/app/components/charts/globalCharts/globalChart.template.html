@@ -1,0 +1,82 @@
+<md-toolbar layout="row"
+            class="md-toolbar-tools md-whiteframe-2dp"
+            layout-align="space-around center"
+            layout-align-xs="center center"
+            id='view-changer'
+            md-colors="{background: '{{$ctrl.color}}'}">
+  <h2>
+    <span translate="{{$ctrl.configData.navBarTitles.global}}"
+          ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
+    <span translate="{{$ctrl.configData.navBarTitles.perUser}}"
+          ng-if="!$ctrl.configData.navBarDisplay.globalChartsStats"></span>
+  </h2>
+  <div layout="row">
+    <md-button class="md-raised md-primary"
+               ng-click="$ctrl.chartServiceData()"
+               md-colors="{background: '{{$ctrl.color}}'}">
+      <span translate="{{$ctrl.configData.navBarButtons.globalChartsStats}}"></span>
+    </md-button>
+  </div>
+</md-toolbar>
+<section class="global-chart">
+  <md-tabs  md-dynamic-height
+            md-border-bottom
+            md-selected="$ctrl.configData.currentNavItem"
+            ng-show="$ctrl.configData.navBarDisplay.globalChartsStats">
+    <md-tab ng-repeat="chart in $ctrl.configData.tags"
+            aria-label="tab">
+      <md-tab-label>
+        <span md-colors="{color: '{{$ctrl.color}}'}"
+              translate="{{chart.label}}"></span>
+      </md-tab-label>
+      <md-tab-body>
+        <md-content class="md-padding">
+          <h1 translate="{{chart.name}}"></h1>
+          <section layout="row"
+                   layout-sm="column"
+                   layout-align="end center"
+                   layout-wrap>
+            <div layout="row"
+                 layout-align="start center"
+                 flex>
+              <md-button class="switchButtons"
+                         ng-click="$ctrl.previousItem()"
+                         translate="{{$ctrl.configData.buttons.prev}}"
+                         aria-label="buttonPrev"
+                         md-colors="{color: '{{$ctrl.color}}'}">
+              </md-button>
+              <span flex></span>
+              <div id="{{chart.id}}"
+                   class="charts-view-global">
+              </div>
+              <span flex></span>
+            </div>
+            <md-button class="switchButtons"
+                       ng-click="$ctrl.nextItem()"
+                       translate="{{$ctrl.configData.buttons.next}}"
+                       aria-label="buttonNext"
+                       md-colors="{color: '{{$ctrl.color}}'}">
+            </md-button>
+          </section>
+          <div id="{{chart.id}}"
+               class="charts-view-global" >
+          </div>
+        </md-content>
+      </md-tab-body>
+    </md-tab>
+  </md-tabs>
+  <section layout="row"
+           layout-align="center center"
+           class="top">
+    <md-radio-group ng-model="$ctrl.configData.currentNavItem"
+                    class="md-primary radio-container"
+                    md-colors="{background: '{{$ctrl.color}}'}">
+      <md-radio-button class="radio"
+                       ng-repeat="radio in $ctrl.configData.tags"
+                       ng-value="radio.value"
+                       aria-label="radio"
+                       md-colors="{color: '{{$ctrl.color}}'}">
+      </md-radio-button>
+    </md-radio-group>
+  </section>
+</section>
