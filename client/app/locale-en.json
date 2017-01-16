@@ -1,22 +1,4 @@
 {
-  "cabinet":{
-    "title":"My cabinet",
-    "name":"Name:&nbsp;",
-    "surname":"Surname:&nbsp;",
-    "adress":"Post:&nbsp;",
-    "incoming":"Incoming messages",
-    "blocklist":"Blacklist",
-    "safelist":"Safelist",
-    "upload":"Upload photo",
-    "delete":"Delete photo",
-    "login":"*nickname*",
-    "city":"City",
-    "country":"Country",
-    "birthdate":"Birth Date",
-    "submit":"Save changes",
-    "colorPicker":"Select theme color:",
-    "logOut":"Log Out"
-  },
   "header": {
     "title": "Email Management System",
     "signIn": "Sign In",
@@ -63,6 +45,8 @@
       "group": "Emails sorted by avaliable groups",
       "emailActivity": "Amount of received Emails sorted by day income",
       "recipient": "Number of emeils received from special recipient"
-    }
+    },
+  "emails": {
+    "title": "Emails"
   }
 }
