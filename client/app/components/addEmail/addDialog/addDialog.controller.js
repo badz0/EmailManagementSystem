@@ -1,7 +1,8 @@
 class AddDialogController {
-  constructor($mdDialog) {
+  constructor($mdDialog, ValidationService) {
     'ngInject';
     this.mdDialog = $mdDialog;
+    this.ValidationService = ValidationService;
   }
   $onInit() {
     this.formData = {
@@ -13,7 +14,8 @@ class AddDialogController {
   cancel() {
     this.mdDialog.cancel();
   }
-  submit(valid) {
+  submit(form) {
+    let valid = this.ValidationService.checkValidation(form);
     if(valid) {
       this.mdDialog.hide(this.formData);
     }
