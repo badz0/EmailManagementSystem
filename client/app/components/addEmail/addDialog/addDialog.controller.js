@@ -15,8 +15,9 @@ class AddDialogController {
     this.mdDialog.cancel();
   }
   submit(form) {
-    let valid = this.ValidationService.checkValidation(form);
-    if(valid) {
+    this.ValidationService.checkValidation(form);
+
+    if (form.$valid) {
       this.mdDialog.hide(this.formData);
     }
   }
