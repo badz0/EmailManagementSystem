@@ -9,9 +9,6 @@ class GridController {
     this.EmailDetailServiceAds = EmailDetailService.getAds();
   }
   $onInit() {
-    this.mainPost = () => {
-      this.gridOptions.data = this.data;
-    };
     this.social = () => {
       this.gridOptions.data = this.EmailDetailServiceSocial;
     };
@@ -29,6 +26,15 @@ class GridController {
       ],
       data: this.data
     };
+  }
+  allEmails() {
+    this.gridOptions.data = this.data;
+  }
+  socialEmails() {
+    this.gridOptions.data = this.EmailDetailServiceAds;
+  }
+  adsEmails() {
+    this.gridOptions.data = this.EmailDetailServiceSocial;
   }
 }
 export default GridController;

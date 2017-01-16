@@ -17,7 +17,7 @@ class EmailDetailService {
   }
   getAds() {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    let adsWords = new RegExp('SALE|free');
+    let adsWords = /SALE|free/i;
     let ads = [];
     this.adsEmails = ads;
     ref.on('child_added', (snapshot) => {
@@ -27,7 +27,7 @@ class EmailDetailService {
   }
   getSocial() {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    let socialWords = new RegExp('facebook|twitter|youtube|linkedin');
+    let socialWords = /facebook|twitter|youtube|linkedin/i;
     let social = [];
     this.socialEmails = social;
     ref.on('child_added', (snapshot) => {
