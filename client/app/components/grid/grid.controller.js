@@ -9,12 +9,6 @@ class GridController {
     this.EmailDetailServiceAds = EmailDetailService.getAds();
   }
   $onInit() {
-    this.social = () => {
-      this.gridOptions.data = this.EmailDetailServiceSocial;
-    };
-    this.ads = () => {
-      this.gridOptions.data = this.EmailDetailServiceAds;
-    };
     this.gridOptions = {
       enableFiltering: true,
       exporterMenuCsv: false,
