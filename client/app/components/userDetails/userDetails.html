@@ -5,10 +5,10 @@
             <appnav></appnav>
         </md-sidenav>
 
-        <md-content flex flex-offset="5">
-            <h1>{{ $ctrl.name }}</h1>
-       <switcher> </switcher>
-       <user-table> </user-table>
+        <md-content flex flex-offset="5" class="userDetails">
+            <h1>Users details</h1>
+            <switcher state="$ctrl.state" on-state-change="$ctrl.state = $event.state"> </switcher>
+            <user-table state="$ctrl.state"> </user-table>
        </md-content>
     </div>
 </div>

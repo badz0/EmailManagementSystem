@@ -1,3 +1,18 @@
-.userTable {
-  color: red;
+$gridColor: #607D8B;
+
+.grid {
+    color: $gridColor;
+    font-size: 15px;
 }
+
+.cell-template-ref {
+    text-decoration: none;
+    color: #607d8b;
+}
+.ui-grid-menu-button {
+  height: 31px;
+}
+.ui-grid-filter-container{
+	width: 60%;
+}
+

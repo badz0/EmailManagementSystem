@@ -3,7 +3,10 @@ import controller from './userTable.controller';
 import './userTable.scss';
 
 let userTableComponent = {
-  bindings: {},
+  bindings: {
+    state: '<'
+  
+  },
   template,
   controller
 };

@@ -3,7 +3,11 @@ import controller from './switcher.controller';
 import './switcher.scss';
 
 let switcherComponent = {
-  bindings: { },
+  bindings: {
+    state: '<',
+    onStateChange: '&'
+
+  },
   template,
   controller
 };

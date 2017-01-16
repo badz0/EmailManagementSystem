@@ -1,9 +1,10 @@
 class userDetailsController {
   constructor() {
-    this.name = 'userDetails';
-    this.showTable = true;
+    this.state ='table';
+    
     
   }
+  
 }
 
 export default userDetailsController;

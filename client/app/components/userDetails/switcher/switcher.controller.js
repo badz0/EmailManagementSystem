@@ -1,12 +1,12 @@
 class SwitcherController {
   constructor() {
-    this.name = 'switcher';
-    this.showTable = true;
- 
+    
+     
   }
   
-  toggleShowTable(){
-    this.showTable = !this.showTable;
+  setState(){
+    this.state = state;
+    this.onStateChange({$event: {state: state}});
   };
 
   }
