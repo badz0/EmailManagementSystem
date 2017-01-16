@@ -18,7 +18,7 @@
     <md-button class="md-raised" ng-if="$ctrl.AuthService.isAuthenticated()" ui-sref="grid" translate="menu.emails"></md-button>
   </md-list-item>
     <div hide-gt-sm layout="column">
-      <md-button class="md-raised md-primary" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" translate="header.signIn"></md-button>
-      <md-button class="md-raised md-warn" ng-if="false" aria-label="Log Out" ng-if="$ctrl.AuthService.isAuthenticated()"  ng-click="$ctrl.AuthService.logout()"translate="header.logOut"></md-button>
+      <md-button class="md-raised" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" translate="header.signIn"></md-button>
+      <md-button class="md-raised md-warn" aria-label="Log Out" ng-if="$ctrl.AuthService.isAuthenticated()"  ng-click="$ctrl.AuthService.logout()" translate="header.logOut"></md-button>
   </div>
 </md-list>
