@@ -1,6 +1,10 @@
+import * as firebase from 'firebase';
+
 class AppnavController {
-  $onInit() {
-    this.name = 'appnav';
+  constructor($firebaseObject, Firedbservice) {
+    'ngInject';
+    const ref = firebase.database().ref().child('user/9');
+    this.users = $firebaseObject(ref);
   }
 }
 

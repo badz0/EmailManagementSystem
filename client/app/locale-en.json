@@ -8,16 +8,46 @@
   "menu": {
     "title": "Menu",
     "home": "Home",
-    "about": "About",
-    "cabinet": "Cabinet"
+    "cabinet": "Cabinet",
+    "statistics": "Statistic"
   },
   "home": {
     "title": "Home page"
   },
-  "about": {
-    "title": "About us"
-  },
-  "cabinet": {
-    "title": "Cabinet"
+  "statistics": {
+    "header": {
+      "headerGlob": "Global Statistics",
+      "headerUser": "User List Statistic"
+    },
+    "buttons": {
+      "globalStat": "Global Statistics",
+      "next": "Next",
+      "prev": "Previous",
+      "emailGrid": "Table",
+      "emailsList": "List",
+      "userCharts": "Charts"
+    },
+    "tags": {
+      "tagFirst": "Dynamic emails amount change in specific time period for most active users",
+      "tagSecond": "All received Emails sorted by Groups",
+      "tagThird": "Sorted by received emails amout",
+      "tagFourth": "Compare statistics for most active users",
+      "tagFifth": "Most Active Users",
+      "tagSix": "Amount of received Emails sorted by day income",
+      "labelOne": "Dynamic time period",
+      "labelTwo": "avaliable Groups",
+      "labelThree": "Emails per user",
+      "labelFour": "Compare Statistics",
+      "labelFive": "Log In Activity",
+      "labelSix": "Emails By Day"
+    },
+    "dialog": {
+      "group": "Emails sorted by avaliable groups",
+      "emailActivity": "Amount of received Emails sorted by day income",
+      "recipient": "Number of emeils received from special recipient"
+    },
+  "emails": {
+    "title": "Emails"
+  }
   }
 }

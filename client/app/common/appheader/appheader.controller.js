@@ -1,22 +1,17 @@
-class AppheaderController {
-  constructor($mdSidenav, $translate) {
-    'ngInject';
-    this.mdSidenav = $mdSidenav;
-    this.translate = $translate;
-  }
+import * as firebase from 'firebase';
 
-  $onInit() {
-    this.lan = this.translate.use();
+class AppheaderController {
+  constructor($mdSidenav, $firebaseObject, Firedbservice) {
+    'ngInject';
+    const ref = firebase.database().ref().child('user/9');
+    this.users = $firebaseObject(ref);
+    this.mdSidenav = $mdSidenav;
   }
 
   toggleMenu() {
     this.mdSidenav('menu').toggle();
   }
 
-  changeLanguage(key) {
-    this.translate.use(key);
-    this.lan = key;
-  }
 }
 
 export default AppheaderController;

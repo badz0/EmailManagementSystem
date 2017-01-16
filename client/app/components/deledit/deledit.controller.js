@@ -31,7 +31,7 @@ class deleditController {
       'age' : this.age,
       'note' : this.note,
       'isSafe': 'true'
-  });
+    });
     this.clearForm();
   }
   showUser(user){
