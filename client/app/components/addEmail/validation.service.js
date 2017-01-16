@@ -1,31 +1,20 @@
+import Constants from './addEmail.constants';
+
 class ValidationService {
   checkValidation(form) {
-    this.checkItem(form.group);
-    this.checkItem(form.subject);
-    this.checkEmail(form.email);
+    for (let item in form) {
+      if (!item.includes('$')) this.checkItem(form[item]);
+    }
   }
   checkItem(item) {
-    if (item.$viewValue) {
-      item.$setValidity('required', true);
-      if (item.$viewValue.length < 20) {
-        item.$setValidity('tooLong', true);
-      }
-      else item.$setValidity('tooLong', false);
-    }
-    else item.$setValidity('required', false);
-  }
-  checkEmail(item) {
-    const pattern = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    if (item.$viewValue) {
-      item.$setValidity('required', true);
+    const isInput = !item.$isEmpty(item.$viewValue);
 
-      if(pattern.test(item.$viewValue)) {
-        item.$setValidity('email', true);
-      }
-      else item.$setValidity('email', false);
+    item.$setValidity('required', isInput);
+    if (isInput) {
+      if (item.$name === 'email') item.$setValidity('email', Constants.emailRegExp.test(item.$viewValue));
 
+      else item.$setValidity('tooLong', item.$viewValue.length <= Constants.maxLength);
     }
-    else item.$setValidity('required', false);
   }
 }
 
