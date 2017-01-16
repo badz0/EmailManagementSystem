@@ -1,9 +1,10 @@
 import * as firebase from 'firebase';
 
-class GlobalHardcodeConfigService {
-  constructor($firebaseObject, $log) {'ngInject';
+class ChartsFirebaseDataService {
+  constructor($firebaseObject, $log, GlobalHardcodeConfigService) {'ngInject';
     const ref = firebase.database().ref();
     this.data = $firebaseObject(ref);
+    this.globalChartsData = GlobalHardcodeConfigService.configData();
   };
 
   chartsDataBuild() {
@@ -11,13 +12,16 @@ class GlobalHardcodeConfigService {
       return {
         firedbChartData: res,
         userCabinetColor: res.user[9].themeColor,
+        uniqueUsersList: this.compileMultyData(res),
         signUpDay: this.sortChartData(res).signUpDay,
         emailsMaxLine: this.sortChartData(res).emailsMaxLine,
         singnUpTimes: this.sortChartData(res).signUp,
         groupData: this.chartsDataProvider('groupData', res, 'group'),
         emailDateStat: this.sortChartData(res).emailDateStat,
-        multipleDataComapare: this.multipleDataComapare(res)
+        multipleUserComapare: this.multipleUserComapare(res)
       };
+    }).catch((e) => {
+      console.log(e)
     });
   };
 
@@ -97,41 +101,61 @@ class GlobalHardcodeConfigService {
     });
   };
 
-  compileMultyData(res) {
-    let users = {};
-    this.searchUnicData('multy', res, 'name').forEach((val) => {
-      users[val] = val;
+  multipleChartsData(date, users) {
+    let data = {'date': date};
+    users.forEach((value, index) => {
+      data[value.name] = value.index;
     });
-    return users;
+    this.chartsGraphsData(users);
+    return data;
   };
+
+  chartsGraphsData(users) {
+    let data = [];
+    users.forEach((val) => {
+      let obj = {
+        'balloonText': '[[title]]: [[value]]',
+        'bullet': 'round',
+        'title': '',
+        'valueField': '',
+        'fillAlphas': 0
+      };
+      obj.title = val.name;
+      obj.valueField = val.name;
+      data.push(obj);
+    });
+    this.globalChartsData.chartsData.multipleUserComapare.graphs = data;
+  };
+
+  compileMultyData(res) {
+    return this.searchUnicData('multy', res, 'name').map((val) => {
+      return ({'name': val, 'index': 0});
+    });
+  };
+  // anotherData()
   multySortData(res) {
     return this.searchUnicData('multy',  res, 'date').sort((a, b) => {
       return new Date(a) - new Date(b);
     });
   };
 
-  multipleDataComapare(res) {
+  multipleUserComapare(res) {
     let finalData = [];
-    const users = this.compileMultyData(res);
     this.multySortData(res).forEach((val) => {
-      let [countA, countB, countC] = [0, 0, 0];
+      let users = this.compileMultyData(res);
       this.readResponseData(res).multy.forEach((value) => {
-        if (val === value.date) {
-          if(value.name === users.Ivanna) {
-            countA++;
-          }
-          if (value.name === users.Svitlana) {
-            countB++;
-          }
-          if (value.name === users.Dennis) {
-            countC++;
-          }
+        if(val === value.date) {
+          users.forEach((changes) => {
+            if(value.name === changes.name) {
+              changes.index += 1;
+            }
+          });
         }
       });
-      finalData.push({ 'date': val, [users.Ivanna]: countA, [users.Svitlana]: countB, [users.Dennis]: countC});
+      finalData.push(this.multipleChartsData(val, users));
     });
     return finalData;
   };
 };
 
-export default GlobalHardcodeConfigService;
+export default ChartsFirebaseDataService;

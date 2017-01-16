@@ -5,15 +5,12 @@ class LineChartController {
     this.translate = $translate;
     this.dialogDataService = DialogDataService;
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
-    ChartsFirebaseDataService.chartsDataBuild().then((res) => {
-      this.usersList = res.firedbChartData.user;
-      this.color = res.userCabinetColor;
-    });
     this.configData = GlobalHardcodeConfigService.configData();
   };
 
   $onInit() {
     this.gridOptions = this.configData.gridData;
+    this.defaultConstructBuilder();
   };
 
   showDialogCharts(index) {
@@ -50,6 +47,12 @@ class LineChartController {
     });
   };
 
+  defaultConstructBuilder() {
+    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+      this.usersList = res.firedbChartData.user;
+      this.color = res.userCabinetColor;
+    });
+  }
 };
 
 export default LineChartController;

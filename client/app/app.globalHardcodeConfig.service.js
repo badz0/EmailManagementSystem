@@ -60,7 +60,7 @@ class GlobalHardcodeConfigService {
         enableFiltering: true,
         exporterMenuCsv: false,
         paginationPageSizes: [10, 25, 50],
-        paginationPageSize: 20,
+        paginationPageSize: 17,
         enableGridMenu: true,
         columnDefs: [
           { name: 'recipient', field: 'recipient', width:200},
@@ -104,7 +104,7 @@ class GlobalHardcodeConfigService {
             'fixedPosition':true
           }
         },
-        multipleDataComapare: {
+        multipleUserComapare: {
           'type': 'serial',
           'theme': 'light',
           'legend': {
@@ -120,25 +120,7 @@ class GlobalHardcodeConfigService {
             'title': 'Users statistic'
           }],
           'startDuration': 0.5,
-          'graphs': [ {
-            'balloonText': '[[title]]: [[value]]',
-            'bullet': 'round',
-            'title': 'Ivanna',
-            'valueField': 'Ivanna',
-            'fillAlphas': 0
-          }, {
-            'balloonText': '[[title]]: [[value]]',
-            'bullet': 'round',
-            'title': 'Svitlana',
-            'valueField': 'Svitlana',
-            'fillAlphas': 0
-          }, {
-            'balloonText': '[[title]]: [[value]]',
-            'bullet': 'round',
-            'title': 'Dennis',
-            'valueField': 'Dennis',
-            'fillAlphas': 0
-          }],
+          'graphs': [],
           'chartCursor': {
             'cursorAlpha': 0,
             'zoomable': false
