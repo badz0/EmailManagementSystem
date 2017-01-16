@@ -1,22 +1,25 @@
 $gridColor: #607D8B;
-
 .grid {
-    color: $gridColor;
-    font-size: 15px;
+  color: $gridColor;
+  font-size: 15px;
 }
-.email-data{
-    padding: 5px;
-    color: $gridColor;
-    font-size: 15px;
-    text-decoration: none;
+
+.email-data {
+  padding: 5px;
+  color: $gridColor;
+  font-size: 15px;
+  text-decoration: none;
 }
+
 .cell-template-ref {
-    text-decoration: none;
-    color: #607d8b;
+  text-decoration: none;
+  color: #607d8b;
 }
+
 .ui-grid-menu-button {
   height: 31px;
 }
-.ui-grid-filter-container{
-	width: 60%;
+
+.ui-grid-filter-container {
+  width: 60%;
 }

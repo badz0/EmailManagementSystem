@@ -44,6 +44,7 @@ class CabinetController {
   selectTheme(color){
     this.user.themeColor = color;
     firebase.database().ref().child('user/9').update(this.user);
+    firebase.database().ref().child('user/0').update(this.user);
   }
 }
   

@@ -1,16 +1,17 @@
 <div layout="column" layout-fill>
-    <appheader></appheader>
-    <div class="container" layout="row" flex>
-        <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
-            <appnav></appnav>
-        </md-sidenav>
-        <md-content flex>
-           <div class="email-data">
-                <div> Email: <span ng-bind="$ctrl.currentData.recipient"></span> </div>
-                <div>Subject: <span ng-bind="$ctrl.currentData.subject"><span></div>
-                <div>Content:<span ng-bind="$ctrl.currentData.content"><span></div>
-            </div>
-            <md-button class="md-primary md-raised" ui-sref="grid"> Back </md-button>
-        </md-content>
+  <appheader></appheader>
+  <div class="container" layout="row" flex>
+    <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
+      <appnav></appnav>
+    </md-sidenav>
+    <md-content flex class="content">
+      <div class="email-data">
+        <div> Email: <span ng-bind="$ctrl.currentData.recipient"></span> </div>
+        <div>Subject: <span ng-bind="$ctrl.currentData.subject"><span></div>
+        <div>Content:<span ng-bind="$ctrl.currentData.content"><span></div>
+        <div><img ng-src={{$ctrl.currentData.thumbnail}}></div>
+      </div>
+      <md-button class="md-raised" ui-sref="grid"> Back </md-button>
+    </md-content>
     </div>
 </div>
