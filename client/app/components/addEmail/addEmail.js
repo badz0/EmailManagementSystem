@@ -12,7 +12,6 @@ let addEmailModule = angular.module('addEmail', [
 
 .service('ValidationService', ValidationService)
 
-
 .name;
 
 export default addEmailModule;
