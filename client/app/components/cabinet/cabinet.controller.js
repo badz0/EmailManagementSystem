@@ -13,21 +13,10 @@ class CabinetController {
     this.countries=countries;
     this.user={};
   }
-  clearForm(){
-    this.user={
-      name:'',
-      surname:'',
-      login:'',
-      city:'',
-      postadress:'',
-      birthDay:'',
-      country:''
-    };
-  }
   submitForm() {
     this.user.country=this.user.country.country||'';
     firebase.database().ref().child('user/9').update(this.user);
-    this.clearForm();
+    this.user={};
   }
   getFileName(){
     let url=this.users.avatar;
@@ -45,7 +34,6 @@ class CabinetController {
   selectTheme(color){
     this.user.themeColor = color;
     firebase.database().ref().child('user/9').update(this.user);
-    firebase.database().ref().child('user/0').update(this.user);
   }
 }
   

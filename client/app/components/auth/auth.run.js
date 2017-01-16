@@ -1,7 +1,6 @@
 class AuthRun {
   constructor(AuthService, lock,authManager){
-     "ngInject";
-    
+    'ngInject';
     AuthService.registerAuthenticationListener();
     authManager.checkAuthOnRefresh();
     lock.interceptHash();

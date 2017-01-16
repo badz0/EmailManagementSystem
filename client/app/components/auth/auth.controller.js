@@ -1,6 +1,6 @@
 class AuthController {
   constructor(AuthService,authManager) {
-  	"ngInject";
+  	'ngInject';
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
   }

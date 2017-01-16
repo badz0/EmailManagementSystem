@@ -14,24 +14,24 @@ let authModule = angular.module('auth', [
 ])
 
 .config(($stateProvider, lockProvider,$urlRouterProvider,jwtOptionsProvider) => {
-  "ngInject";
+  'ngInject';
   $stateProvider
     .state('auth', {
       url: '/auth',
       component: 'auth'
     });
 
-    lockProvider.init({
-      clientID: 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm',
-      domain: 'nerosman.eu.auth0.com'
-    });
+  lockProvider.init({
+    clientID: 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm',
+    domain: 'nerosman.eu.auth0.com'
+  });
     
-    jwtOptionsProvider.config({
-      tokenGetter: function () {
-        return window.localStorage.getItem('id_token');
-      }
-    });
-    $urlRouterProvider.otherwise('/auth');
+  jwtOptionsProvider.config({
+    tokenGetter: function () {
+      return window.localStorage.getItem('id_token');
+    }
+  });
+  $urlRouterProvider.otherwise('/auth');
 })
 
 .component('auth', authComponent)
