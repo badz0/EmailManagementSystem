@@ -9,10 +9,12 @@
     "title": "Меню",
     "home": "Головна",
     "cabinet": "Кабінет",
-    "statistics": "Статистика"
+    "statistics": "Статистика",
+    "emails": "Листи"
   },
   "home": {
-    "title": "Головна сторінка"
+    "title": "Головна сторінка",
+    "getStarted": "Розпочати"
   },
   "statistics": {
     "header": {
