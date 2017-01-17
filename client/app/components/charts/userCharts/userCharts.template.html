@@ -20,19 +20,19 @@
       <md-button class="md-primary md-raised"
                  aria-label="userGrid"
                  ng-click="$ctrl.showUIGrid($index)"
-                 md-colors="{background: '{{$ctrl.color}}'}">
+                 md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
         <span translate="{{$ctrl.configData.userListButtons.gridButton}}"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userEmails"
                  ng-click="$ctrl.showUserEmails($index)"
-                 md-colors="{background: '{{$ctrl.color}}'}">
+                 md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
         <span translate="{{$ctrl.configData.userListButtons.userEmails}}"></span>
       </md-button>
       <md-button class="md-primary md-raised"
                  aria-label="userCharts"
                  ng-click="$ctrl.showDialogCharts($index)"
-                 md-colors="{background: '{{$ctrl.color}}'}">
+                 md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
         <span translate="{{$ctrl.configData.userListButtons.userCharts}}"></span>
       </md-button>
     </md-list-item>

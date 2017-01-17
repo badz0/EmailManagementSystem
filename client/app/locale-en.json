@@ -14,6 +14,23 @@
   "home": {
     "title": "Home page"
   },
+    "cabinet":{
+    "title":"My cabinet",
+    "name":"Name:&nbsp;",
+    "surname":"Surname:&nbsp;",
+    "adress":"Post:&nbsp;",
+    "incoming":"Incoming messages",
+    "statistic":"Statistic",
+    "upload":"Upload photo",
+    "delete":"Delete photo",
+    "login":"*nickname*",
+    "city":"City",
+    "country":"Country",
+    "birthdate":"Birth Date",
+    "submit":"Save changes",
+    "colorPicker":"Select theme color:",
+    "logOut":"Log Out"
+  },
   "statistics": {
     "header": {
       "headerGlob": "Global Statistics",

@@ -1,5 +1,5 @@
 <md-list layout-align="center center" layout-gt-sm="column">
-<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center" md-colors="{background: '{{$ctrl.users.themeColor}}'}">
+<md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center" md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
   <h1 translate="menu.title"></h1>
 </md-toolbar>
 <md-list layout-align="center center" layout="column">
@@ -12,22 +12,22 @@
     <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
   </div>
 	<md-list-item>
-		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="home" aria-label="Home button" translate="menu.home"></md-button>
+		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="home" aria-label="Home button" translate="menu.home"></md-button>
 	</md-list-item>
 	<md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="cabinet" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
+		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="cabinet" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
 	</md-list-item>
   <div hide-gt-sm layout="column">
       <md-button class="md-raised" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" aria-label="Sign In" translate="header.signIn"></md-button>
       <md-button class="md-raised md-warn" ng-if="$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.logout()" aria-label="Log Out" translate="header.logOut"></md-button>
   </div>
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="charts" translate="menu.statistics"></md-button>
+    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="deledit">delEdit</md-button>
   </md-list-item>
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="deledit">delEdit</md-button>
+    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="grid">ui-grid</md-button>
   </md-list-item>
-  <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="grid">ui-grid</md-button>
+  <md-list-item ng-if="$ctrl.AuthService.isAuthenticated() && $ctrl.userData.isAdmin">
+    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="charts" translate="menu.statistics"></md-button>
   </md-list-item>
 </md-list>

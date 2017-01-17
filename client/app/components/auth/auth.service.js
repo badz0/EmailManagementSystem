@@ -1,11 +1,12 @@
 import * as firebase from 'firebase';
 
 class AuthService {
-  constructor($q, lock, authManager, Firedbservice, $firebaseArray){
+  constructor($q, lock, authManager, Firedbservice, $firebaseArray,$state){
     'ngInject';
     const ref = firebase.database().ref().child('user');
     this.data = $firebaseArray(ref);
     this.q = $q;
+    this.state=$state;
     this.lock=lock;
     this.authManager=authManager;
     this.deferredProfile = $q.defer();
@@ -22,7 +23,7 @@ class AuthService {
     }, function(error) {
       console.log(error);
     });
-    location.href='http://localhost:3000/';
+    this.state.go('home');
   }
   registerAuthenticationListener() {
     this.lock.on('authenticated', authResult => {

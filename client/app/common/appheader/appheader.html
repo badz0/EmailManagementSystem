@@ -1,11 +1,11 @@
-<md-toolbar layout="row" class="md-toolbar-tools md-whiteframe-2dp" layout-align="space-around center" layout-align-xs="center center" md-colors="{background: '{{$ctrl.users.themeColor}}'}">
+<md-toolbar layout="row" class="md-toolbar-tools md-whiteframe-2dp" layout-align="space-around center" layout-align-xs="center center" md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
   <md-button class="md-icon-button" ng-click="$ctrl.toggleMenu()">
     <md-icon class="material-icons">menu</md-icon>
   </md-button>
 
   <h1><a ui-sref="home" translate="header.title"></a></h1>
   <div layout="row">
-    <md-button hide-xs hide-sm class="md-raised md-primary" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="header.signIn"></md-button>
+    <md-button hide-xs hide-sm class="md-raised md-primary" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" aria-label="Sign In" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" translate="header.signIn"></md-button>
     <md-button hide-xs hide-sm class="md-raised md-warn" ng-if="$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.logout()" aria-label="Log Out" translate="header.logOut"></md-button>
     <language-change hide-xs></language-change>
   </div>
