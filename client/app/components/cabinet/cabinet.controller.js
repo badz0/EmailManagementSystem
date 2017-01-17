@@ -2,31 +2,21 @@ import countries from './cabinet.countries.json';
 import * as firebase from 'firebase';
 
 class CabinetController {
-  constructor($firebaseObject,Firedbservice,$mdColorPalette,Сonstants) {'ngInject';
+  constructor($firebaseObject,Firedbservice,$mdColorPalette,Сonstants,AuthService,authManager) {'ngInject';
     const ref = firebase.database().ref().child('user/9');
     this.users = $firebaseObject(ref);
     this.colors = Object.keys($mdColorPalette);
-    this.avatar=Сonstants.constant1;
+    this.avatar=Сonstants.avatarDefault.IMAGE_LINK;
+    this.AuthService = AuthService;
   }
   $onInit () {
     this.countries=countries;
     this.user={};
   }
-  clearForm(){
-    this.user={
-      name:'',
-      surname:'',
-      login:'',
-      city:'',
-      postadress:'',
-      birthDay:'',
-      country:''
-    };
-  }
   submitForm() {
     this.user.country=this.user.country.country||'';
     firebase.database().ref().child('user/9').update(this.user);
-    this.clearForm();
+    this.user={};
   }
   getFileName(){
     let url=this.users.avatar;
@@ -44,7 +34,6 @@ class CabinetController {
   selectTheme(color){
     this.user.themeColor = color;
     firebase.database().ref().child('user/9').update(this.user);
-    firebase.database().ref().child('user/0').update(this.user);
   }
 }
   

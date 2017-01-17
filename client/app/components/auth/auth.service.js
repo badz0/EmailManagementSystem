@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 class AuthService {
-  constructor($q, lock, authManager, Firedbservice, $firebaseArray){
+  constructor($q, lock, authManager, Firedbservice, $firebaseArray, $state){
     'ngInject';
     const ref = firebase.database().ref().child('user');
     this.data = $firebaseArray(ref);
@@ -9,6 +9,7 @@ class AuthService {
     this.lock=lock;
     this.authManager=authManager;
     this.deferredProfile = $q.defer();
+    this.state = $state;
   }
   login() {
     var lock = new Auth0Lock('YWiJP0aecm768DSElJl8YhqtIbAgx7gm', 'nerosman.eu.auth0.com');
@@ -22,7 +23,7 @@ class AuthService {
     }, function(error) {
       console.log(error);
     });
-    location.href='http://localhost:3000/';
+    this.state.go('home');
   }
   registerAuthenticationListener() {
     this.lock.on('authenticated', authResult => {
@@ -36,7 +37,7 @@ class AuthService {
           firebase.database().ref('stories').remove();
           firebase.database().ref('stories').push(profile);
         }
-        localStorage.setItem('profile', JSON.stringify(profile));
+        window.localStorage.setItem('profile', JSON.stringify(profile));
         this.deferredProfile.resolve(profile);
       });
     });
