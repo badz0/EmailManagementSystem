@@ -22,9 +22,6 @@
       <md-button class="md-raised md-warn" ng-if="$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.logout()" aria-label="Log Out" translate="header.logOut"></md-button>
   </div>
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-    <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="deledit">delEdit</md-button>
-  </md-list-item>
-  <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
     <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" ui-sref="grid">ui-grid</md-button>
   </md-list-item>
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated() && $ctrl.userData.isAdmin">

@@ -31,9 +31,9 @@ class DialogDataService {
   };
 
   chartsDataProvider(res, index, searchElem) {
-    return this.searchUnicData(res, index , searchElem).map((val) => {
+    return this.searchUnicData(res, index , searchElem).map(val => {
       let count = 0;
-      this.searchEmailsData(res)[index].letters.forEach((inElemVal) => {
+      this.searchEmailsData(res)[index].letters.forEach(inElemVal => {
         if(val === inElemVal[searchElem]) {
           count += 1;
         };
@@ -49,10 +49,10 @@ class DialogDataService {
   };
 
   chartSortRemoveMinData(res, index, searchElem) {
-    return this.chartsDataProvider(res, index, searchElem).filter((val) => {
+    return this.chartsDataProvider(res, index, searchElem).filter(val => {
       if(val.value > 1) return val;
     });
-  }
+  };
 };
 
 export default DialogDataService;

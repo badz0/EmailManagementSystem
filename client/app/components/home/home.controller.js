@@ -4,9 +4,9 @@ class HomeController {
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
     this.FiredbAutorisation = FiredbAutorisation;
+    this.color = 'red';
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
-      console.log(this.userData);
     })
   }
 }

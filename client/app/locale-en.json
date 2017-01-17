@@ -9,10 +9,11 @@
     "title": "Menu",
     "home": "Home",
     "cabinet": "Cabinet",
-    "statistics": "Statistic"
+    "statistics": "Admin panel"
   },
   "home": {
     "title": "Home page",
+    "hello": "Hello",
     "getStarted": "Get Started"
   },
     "cabinet":{
