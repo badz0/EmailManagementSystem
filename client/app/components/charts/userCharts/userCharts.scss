@@ -1,32 +1,35 @@
-.charts-view, .charts-view-global {
-  height: 550px;
-  min-width: 1200px;
-}
-.charts-dialog-view {
-  height: 390px;
-  width: 1500px;
-}
-.ui-grid-menu-button {
-  height: 31px;
-}
-.ui-grid-filter-container{
-  width: 60%;
-}
-.grid {
-  width: 1200px;
-  height: 630px;
-}
-.ui-grid {
-  color: rgb(0, 63, 89);
-}
-.ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: #c6e2ee;
-}
-.ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: #94c0d2;
-}
-.ui-grid-header-cell:last-child .ui-grid-vertical-bar {
-  right: -1px;
-  width: 1px;
-  background-color: #c6e2ee;
+  .charts-view, .charts-view-global {
+    height: 550px;
+    min-width: 1200px;
+  }
+  .charts-dialog-view {
+    height: 390px;
+    width: 1500px;
+  }
+  .grid {
+    width: 1180px;
+    height: 630px;
+  }
+.userList {
+  .ui-grid-menu-button {
+    height: 31px;
+  }
+  .ui-grid-filter-container{
+    width: 60%;
+  }
+
+  .ui-grid {
+    color: rgb(0, 63, 89);
+  }
+  .ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
+    background-color: #c6e2ee;
+  }
+  .ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
+    background-color: #94c0d2;
+  }
+  .ui-grid-header-cell:last-child .ui-grid-vertical-bar {
+    right: -1px;
+    width: 1px;
+    background-color: #c6e2ee;
+  }
 }

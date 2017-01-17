@@ -9,12 +9,13 @@
     "title": "Menu",
     "home": "Home",
     "cabinet": "Cabinet",
-    "statistics": "Statistic",
-    "emails":"Email"
+    "statistics": "Admin panel",
+    "emails": "Email"
   },
   "home": {
     "title": "Email Management System",
-    "getStarted": "Get started"
+    "hello": "Hello",
+    "getStarted": "Get Started"
   },
    "grid": {
     "All": "All",

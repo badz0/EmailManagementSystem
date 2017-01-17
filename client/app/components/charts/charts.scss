@@ -2,7 +2,6 @@
 $h2Color: #FAFAFA;
 $h1Color: #999999;
 
-
 .charts {
   .user-charts {
     padding-top: 50px;
@@ -47,7 +46,7 @@ $h1Color: #999999;
     visibility: hidden;
   }
   .user-list {
-     margin-top: 60px;
+     margin-top: 57px;
   }
   .list {
     border: 2px solid black;
@@ -55,8 +54,8 @@ $h1Color: #999999;
   }
   .ui-grid-menu-button {
   height: 31px;
-}
-.ui-grid-filter-container{
-  width: 60%;
-}
+  }
+  .ui-grid-filter-container{
+    width: 60%;
+  }
 }
