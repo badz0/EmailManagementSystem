@@ -7,7 +7,7 @@ class HomeController {
     this.color = 'red';
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
-    })
+    });
   }
 }
 

@@ -27,7 +27,7 @@ class GlobalChartController {
     });
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
-    })
+    });
   };
 
   chartServiceData() {
