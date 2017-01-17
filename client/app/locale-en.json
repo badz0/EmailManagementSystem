@@ -9,10 +9,41 @@
     "title": "Menu",
     "home": "Home",
     "cabinet": "Cabinet",
-    "statistics": "Statistic"
+    "statistics": "Admin panel",
+    "emails": "Email"
   },
   "home": {
-    "title": "Home page"
+    "title": "Email Management System",
+    "hello": "Hello",
+    "getStarted": "Get Started"
+  },
+   "grid": {
+    "All": "All",
+    "Emails": "Emails",
+    "Social": "Social",
+    "Ads": "Ads",
+    "Blocklist": "Blocklist",
+    "title": "Are you sure to delete the record?",
+    "titleBlock": "Do you want to move it into blocklist?",
+    "yes": "yes",
+    "no": "no"
+  },
+  "cabinet":{
+    "title":"My cabinet",
+    "name":"Name:&nbsp;",
+    "surname":"Surname:&nbsp;",
+    "adress":"Post:&nbsp;",
+    "incoming":"Incoming messages",
+    "statistic":"Statistic",
+    "upload":"Upload photo",
+    "delete":"Delete photo",
+    "login":"*nickname*",
+    "city":"City",
+    "country":"Country",
+    "birthdate":"Birth Date",
+    "submit":"Save changes",
+    "colorPicker":"Select theme color:",
+    "logOut":"Log Out"
   },
   "statistics": {
     "header": {
