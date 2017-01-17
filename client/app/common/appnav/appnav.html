@@ -1,4 +1,3 @@
-<md-list layout-align="center center" layout-gt-sm="column">
 <md-toolbar class="md-toolbar-tools md-whiteframe-2dp" layout-align="center center" md-colors="{background: '{{$ctrl.users.themeColor}}'}">
   <h1 translate="menu.title"></h1>
 </md-toolbar>
@@ -18,8 +17,11 @@
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
     <md-button class="md-raised but" ui-sref="grid" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="menu.emails"></md-button>
   </md-list-item>
-    <div hide-gt-sm layout="column">
+  <md-list-item hide-gt-sm>
       <md-button class="md-raised but" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" translate="header.signIn"></md-button>
+    </md-list-item>
+    <md-list-item hide-gt-sm>
       <md-button class="md-raised md-warn but" aria-label="Log Out" ng-if="$ctrl.AuthService.isAuthenticated()"  ng-click="$ctrl.AuthService.logout()" translate="header.logOut"></md-button>
-  </div>
+    </md-list-item>
+  
 </md-list>
