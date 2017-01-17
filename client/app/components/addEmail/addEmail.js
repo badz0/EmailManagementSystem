@@ -9,6 +9,14 @@ let addEmailModule = angular.module('addEmail', [
 ])
 
 .component('addEmail', addEmailComponent)
+.config(($stateProvider) => {
+  'ngInject';
+  $stateProvider
+    .state('addEmail', {
+      url: '/addEmail',
+      component: 'addEmail'
+    });
+})
 
 .service('ValidationService', ValidationService)
 

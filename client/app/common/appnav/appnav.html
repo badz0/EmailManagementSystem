@@ -9,7 +9,7 @@
 	<md-list-item>
 		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="home" aria-label="Home button" translate="menu.home"></md-button>
 	</md-list-item>
-	<md-list-item>
+	<md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
 		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="cabinet" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
   </md-list-item>
   <md-list-item>
@@ -19,9 +19,9 @@
     <md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="grid" translate="menu.emails"></md-button>
   </md-list-item>
   <md-list-item hide-gt-sm>
-    <md-button class="md-raised md-primary but" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="header.signIn"></md-button>
+    <md-button class="md-raised but" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" aria-label="Sign In" translate="header.signIn"></md-button>
   </md-list-item>
   <md-list-item hide-gt-sm>
-      <md-button class="md-raised md-warn but" ng-if="false" aria-label="Log Out" translate="header.logOut"></md-button>
-  </md-list-item>
+      <md-button class="md-raised md-warn but" ng-if="$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.logout()" aria-label="Log Out" translate="header.logOut"></md-button>
+	</md-list-item>
 </md-list>
