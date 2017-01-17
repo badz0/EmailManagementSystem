@@ -11,7 +11,6 @@ class CabinetController {
 
     this.FiredbAutorisation.responseData().then(res => {
       this.usersData = res.userData;
-      console.log(this.usersData)
       this.color = res.color;
     });
   }
@@ -21,7 +20,7 @@ class CabinetController {
     this.user={};
   }
 
-  submitForm() {
+   submitForm() {
     this.user.country=this.user.country.country||'';
     firebase.database().ref().child('user/9').update(this.user);
     this.user={};
@@ -40,32 +39,10 @@ class CabinetController {
     this.user.city = null;
   }
   selectTheme(color){
-    this.usersData.themeColor = color;
-    firebase.database().ref().child('user/9').update(this.usersData);
-    firebase.database().ref().child('user/0').update(this.usersData);
-    firebase.database().ref().child(`user/${this.usersData.index}`).update(this.usersData)
+    this.user.themeColor = color;
+    firebase.database().ref().child('user/9').update(this.user);
+    firebase.database().ref().child('user/0').update(this.user);
   }
 }
 
 export default CabinetController;
-
-
- //   console.log(res);
-    // })
-    //     res.$loaded().then(res => {
-    //     ref.on('value', snap => {
-
-    //       for (let keys in snap.val()) {
-    //       this.result = snap.val()[keys].userId;
-
-    //       if( this.result === res[0].id) {
-    //         alert("PIZDETS");
-    //         this.usersData = res[0];
-    //       }
-    //     }
-    //     })
-
-    // })
-    // })
-
-    //this.methodPizdets()
