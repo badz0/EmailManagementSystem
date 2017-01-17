@@ -9,7 +9,8 @@
     "title": "Menu",
     "home": "Home",
     "cabinet": "Cabinet",
-    "statistics": "Admin panel"
+    "statistics": "Admin panel",
+    "emails": "Emails"
   },
   "home": {
     "title": "Email Management System",
