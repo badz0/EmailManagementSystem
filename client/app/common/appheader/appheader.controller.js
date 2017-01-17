@@ -7,7 +7,6 @@ class AppheaderController {
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
-      console.log(this.userData);
     });
   }
 
