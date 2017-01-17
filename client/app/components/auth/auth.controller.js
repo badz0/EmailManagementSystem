@@ -3,7 +3,9 @@ class AuthController {
   	'ngInject';
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
+
   }
+
 }
 
 export default AuthController;

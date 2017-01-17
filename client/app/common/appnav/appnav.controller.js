@@ -1,12 +1,14 @@
-import * as firebase from 'firebase';
-
 class AppnavController {
-  constructor($firebaseObject, Firedbservice, AuthService, authManager) {
+  constructor(Firedbservice, AuthService, FiredbAutorisation, authManager) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/9');
-    this.users = $firebaseObject(ref);
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.usersData = res.userData;
+      this.color = res.userData.themeColor;
+    });
   }
 }
 

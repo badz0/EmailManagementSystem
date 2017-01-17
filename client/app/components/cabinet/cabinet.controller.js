@@ -2,31 +2,29 @@ import countries from './cabinet.countries.json';
 import * as firebase from 'firebase';
 
 class CabinetController {
-  constructor($firebaseObject,Firedbservice,$mdColorPalette,Сonstants) {'ngInject';
+  constructor($firebaseObject,Firedbservice, $mdColorPalette, FiredbAutorisation, Сonstants) {'ngInject';
     const ref = firebase.database().ref().child('user/9');
-    this.users = $firebaseObject(ref);
+    let res = $firebaseObject(ref);
+    this.FiredbAutorisation = FiredbAutorisation;
     this.colors = Object.keys($mdColorPalette);
     this.avatar=Сonstants.constant1;
+
+    this.FiredbAutorisation.responseData().then(res => {
+      this.usersData = res.userData;
+      console.log(this.usersData)
+      this.color = res.color;
+    });
   }
+
   $onInit () {
     this.countries=countries;
     this.user={};
   }
-  clearForm(){
-    this.user={
-      name:'',
-      surname:'',
-      login:'',
-      city:'',
-      postadress:'',
-      birthDay:'',
-      country:''
-    };
-  }
+
   submitForm() {
     this.user.country=this.user.country.country||'';
     firebase.database().ref().child('user/9').update(this.user);
-    this.clearForm();
+    this.user={};
   }
   getFileName(){
     let url=this.users.avatar;
@@ -42,10 +40,32 @@ class CabinetController {
     this.user.city = null;
   }
   selectTheme(color){
-    this.user.themeColor = color;
-    firebase.database().ref().child('user/9').update(this.user);
-    firebase.database().ref().child('user/0').update(this.user);
+    this.usersData.themeColor = color;
+    firebase.database().ref().child('user/9').update(this.usersData);
+    firebase.database().ref().child('user/0').update(this.usersData);
+    firebase.database().ref().child(`user/${this.usersData.index}`).update(this.usersData)
   }
 }
-  
+
 export default CabinetController;
+
+
+ //   console.log(res);
+    // })
+    //     res.$loaded().then(res => {
+    //     ref.on('value', snap => {
+
+    //       for (let keys in snap.val()) {
+    //       this.result = snap.val()[keys].userId;
+
+    //       if( this.result === res[0].id) {
+    //         alert("PIZDETS");
+    //         this.usersData = res[0];
+    //       }
+    //     }
+    //     })
+
+    // })
+    // })
+
+    //this.methodPizdets()

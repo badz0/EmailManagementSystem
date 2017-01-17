@@ -9,6 +9,7 @@ import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
 import cabinetUploader from './cabinet.uploader.directive';
 import Constants from './cabinet.constant';
+// import FiredbAutorisationService from '../../app.firedb.autentification.service.js';
 
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
@@ -27,10 +28,11 @@ let cabinetModule = angular.module('cabinet', [
       component: 'cabinet'
     });
   $compileProvider
-    .preAssignBindingsEnabled(true);  
+    .preAssignBindingsEnabled(true);
 })
 
 .component('cabinet', cabinetComponent)
+
 
 .directive('cabinetUploader',() => new cabinetUploader)
 

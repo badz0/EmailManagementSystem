@@ -1,16 +1,25 @@
-<appheader></appheader>
-<div class="container"
-     layout="row"
-     flex>
-  <md-sidenav md-component-id="menu"
-              class="md-whiteframe-4dp">
-    <appnav></appnav >
-  </md-sidenav>
-  <md-content flex class="content">
-    <section class="charts">
-      <global-chart></global-chart>
-      <user-charts ng-show="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
-    </section>
-  </md-content>
+<div layout="column" layout-fill>
+  <appheader></appheader>
+  <div class="container" layout="row" flex>
+    <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
+      <appnav></appnav>
+    </md-sidenav>
+    <md-content flex>
+       <section class="charts">
+          <h1>{{ $ctrl.name }}</h1>
+          <div class="input-list" ng-repeat="input in $ctrl.elemsStatus">
+            <md-button ng-click="$ctrl.hideElem($index)" class="md-raised md-primary">{{input.name}}</md-button>
+          </div>
+          <div class="column-chart">
+            <column-chart  ng-hide="$ctrl.elemsStatus[0].status"></column-chart>
+          </div>
+          <div class="line-chart">
+            <line-chart  ng-hide="$ctrl.elemsStatus[1].status"></line-chart>
+          </div>
+          <div class="pie-chart">
+            <pie-chart ng-hide="$ctrl.elemsStatus[2].status"></pie-chart>
+          </div>
+        </section>
+      </md-content>
+  </div>
 </div>
-
