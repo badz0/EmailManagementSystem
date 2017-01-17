@@ -26,10 +26,10 @@ let authModule = angular.module('auth', [
     clientID: 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm',
     domain: 'nerosman.eu.auth0.com'
   });
-
+    
   jwtOptionsProvider.config({
     tokenGetter: function () {
-      return localStorage.getItem('id_token');
+      return window.localStorage.getItem('id_token');
     }
   });
   $urlRouterProvider.otherwise('/auth');
