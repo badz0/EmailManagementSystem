@@ -10,7 +10,7 @@ class GlobalChartController {
 
   };
   $onInit() {
-    this.initialiseApp();
+    this.firebdAuthInit();
   };
 
   previousItem() {
@@ -21,7 +21,7 @@ class GlobalChartController {
     this.configData.currentNavItem = this.configData.currentNavItem >= this.configData.tags.length - 1 ?  0 : this.configData.currentNavItem += 1;
   };
 
-  initialiseApp() {
+  firebdAuthInit() {
     this.firedata.chartsDataBuild().then(res => {
       this.color = res.userCabinetColor;
     });
