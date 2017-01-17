@@ -22,7 +22,7 @@ class GridController {
       exporterMenuCsv: false,
       enableGridMenu: true,
       columnDefs: [{
-        name: 'ui-route',
+        name: 'email',
         enableFiltering: false,
         enableSorting: false,
         enableHiding: false,
