@@ -12,7 +12,8 @@
     "statistics": "Statistic"
   },
   "home": {
-    "title": "Home page"
+    "title": "Home page",
+    "getStarted": "Get Started"
   },
     "cabinet":{
     "title":"My cabinet",

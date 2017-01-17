@@ -7,18 +7,16 @@ class UserChartController {
     this.FiredbAutorisation = FiredbAutorisation;
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.configData = GlobalHardcodeConfigService.configData();
-    this.FiredbAutorisation.responseData().then(res => {
-      this.userData = res.userData;
-    })
   };
 
   $onInit() {
     this.gridOptions = this.configData.gridData;
     this.defaultConstructBuilder();
+    this.initialiseApp();
   };
 
   showDialogCharts(index) {
-    this.dialogDataService.dialogDataServiceData(index).then((res) => {
+    this.dialogDataService.dialogDataServiceData(index).then(res => {
       for (let key in this.configData.dialogChart) {
         this.configData.dialogChart[key].dataProvider = res[key];
       };
@@ -32,9 +30,15 @@ class UserChartController {
     });
   };
 
+  initialiseApp() {
+    this.FiredbAutorisation.responseData().then(res => {
+      this.userData = res.userData;
+    });
+  };
+
   showUIGrid(user) {
     this.user =  this.usersList[user];
-    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       this.gridOptions.data = this.user.listOfEmails;
     });
     this.dialog.show({
@@ -52,7 +56,7 @@ class UserChartController {
   };
 
   defaultConstructBuilder() {
-    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       this.usersList = res.firedbChartData.user;
       this.color = res.userCabinetColor;
     });

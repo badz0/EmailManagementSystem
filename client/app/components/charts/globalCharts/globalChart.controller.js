@@ -7,18 +7,27 @@ class GlobalChartController {
     this.AuthService.registerAuthenticationListener();
     this.FiredbAutorisation = FiredbAutorisation;
     this.configData = GlobalHardcodeConfigService.configData();
-    this.firedata.chartsDataBuild().then((res) => {
+
+  };
+  $onInit() {
+    this.initialiseApp();
+  };
+
+  previousItem() {
+    this.configData.currentNavItem = this.configData.currentNavItem === 0 ? this.configData.tags.length : this.configData.currentNavItem -= 1;
+  };
+
+  nextItem() {
+    this.configData.currentNavItem = this.configData.currentNavItem >= this.configData.tags.length - 1 ?  0 : this.configData.currentNavItem += 1;
+  };
+
+  initialiseApp() {
+    this.firedata.chartsDataBuild().then(res => {
       this.color = res.userCabinetColor;
     });
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
     })
-  };
-  previousItem() {
-    this.configData.currentNavItem = this.configData.currentNavItem === 0 ? this.configData.tags.length : this.configData.currentNavItem -= 1;
-  };
-  nextItem() {
-    this.configData.currentNavItem = this.configData.currentNavItem >= this.configData.tags.length - 1 ?  0 : this.configData.currentNavItem += 1;
   };
 
   chartServiceData() {
@@ -28,7 +37,7 @@ class GlobalChartController {
       return;
     }
     this.configData.navBarDisplay.globalChartsStats = true;
-    this.firedata.chartsDataBuild().then((res) => {
+    this.firedata.chartsDataBuild().then(res => {
       for (let key in this.configData.chartsData) {
         this.configData.chartsData[key].dataProvider = res[key];
       };

@@ -12,7 +12,8 @@
     "statistics": "Статистика"
   },
   "home": {
-    "title": "Головна сторінка"
+    "title": "Головна сторінка",
+    "getStarted": "Почнемо"
   },
   "statistics": {
     "header": {
