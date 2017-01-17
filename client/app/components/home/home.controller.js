@@ -1,12 +1,12 @@
-import * as firebase from 'firebase';
-
 class HomeController {
-  constructor($firebaseObject, Firedbservice,FiredbAutorisation) {
+  constructor(Firedbservice, AuthService, FiredbAutorisation, authManager) {
     'ngInject';
+    this.AuthService = AuthService;
+    this.AuthService.registerAuthenticationListener();
     this.FiredbAutorisation = FiredbAutorisation;
+    this.color = 'red';
     this.FiredbAutorisation.responseData().then(res => {
-      const ref = firebase.database().ref().child(`user/${res.userData.index}`);
-      this.users = $firebaseObject(ref);
+      this.userData = res.userData;
     });
   }
 }

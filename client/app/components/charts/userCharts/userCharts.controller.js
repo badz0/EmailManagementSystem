@@ -1,9 +1,10 @@
-class LineChartController {
-  constructor (Firedbservice, ChartsFirebaseDataService, dragularService, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
+class UserChartController {
+  constructor (Firedbservice, ChartsFirebaseDataService, dragularService, FiredbAutorisation, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
     dragularService('.containerVertical', { removeOnSpill: true });
     this.dialog = $mdDialog;
     this.translate = $translate;
     this.dialogDataService = DialogDataService;
+    this.FiredbAutorisation = FiredbAutorisation;
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.configData = GlobalHardcodeConfigService.configData();
   };
@@ -11,10 +12,11 @@ class LineChartController {
   $onInit() {
     this.gridOptions = this.configData.gridData;
     this.defaultConstructBuilder();
+    this.getUserData();
   };
 
   showDialogCharts(index) {
-    this.dialogDataService.dialogDataServiceData(index).then((res) => {
+    this.dialogDataService.dialogDataServiceData(index).then(res => {
       for (let key in this.configData.dialogChart) {
         this.configData.dialogChart[key].dataProvider = res[key];
       };
@@ -28,9 +30,15 @@ class LineChartController {
     });
   };
 
+  getUserData() {
+    this.FiredbAutorisation.responseData().then(res => {
+      this.userData = res.userData;
+    });
+  };
+
   showUIGrid(user) {
     this.user =  this.usersList[user];
-    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       this.gridOptions.data = this.user.listOfEmails;
     });
     this.dialog.show({
@@ -48,11 +56,11 @@ class LineChartController {
   };
 
   defaultConstructBuilder() {
-    this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       this.usersList = res.firedbChartData.user;
       this.color = res.userCabinetColor;
     });
   }
 };
 
-export default LineChartController;
+export default UserChartController;

@@ -2,24 +2,31 @@ $gridColor: #607D8B;
 .grid {
   color: $gridColor;
   font-size: 15px;
+  margin: auto;
+  height: auto;
 }
-
+.button-section {
+  margin: 2% 0 2% 5%;
+}
 .email-data {
   padding: 5px;
   color: $gridColor;
   font-size: 15px;
   text-decoration: none;
 }
-
+.button-section {
+  margin: 2% 0 2% 5%;
+}
 .cell-template-ref {
   text-decoration: none;
   color: #607d8b;
 }
-
 .ui-grid-menu-button {
   height: 31px;
 }
-
 .ui-grid-filter-container {
   width: 60%;
+}
+.delete {
+  margin: 4px;
 }

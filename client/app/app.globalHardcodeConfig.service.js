@@ -99,7 +99,7 @@ class GlobalHardcodeConfigService {
           'theme': 'light',
           'dataProvider': [],
           'valueField': 'value',
-          'titleField': 'Group',
+          'titleField': 'group',
           'balloon':{
             'fixedPosition':true
           }

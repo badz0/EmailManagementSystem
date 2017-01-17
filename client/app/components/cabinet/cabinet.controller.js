@@ -40,5 +40,5 @@ class CabinetController {
     firebase.database().ref().child(`user/${this.res}`).update(this.user);
   }
 }
-  
+
 export default CabinetController;

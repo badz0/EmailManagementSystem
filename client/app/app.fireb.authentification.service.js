@@ -1,11 +1,9 @@
 import * as firebase from 'firebase';
-
 class FiredbAutorisationService {
   constructor($firebaseObject,Firedbservice) {'ngInject';
     this.ref = firebase.database().ref();
     this.res = $firebaseObject(this.ref);
-  }
-
+  };
   responseData() {
     return this.res.$loaded().then(res => {
       return {
@@ -13,12 +11,10 @@ class FiredbAutorisationService {
         userData: this.userData(res)
       };
     });
-  }
-
+  };
   getColor(res) {
     return res.user[9].themeColor;
-  }
-
+  };
   userData(res) {
     let data = {};
     this.ref.on('value', snap => {
@@ -32,7 +28,6 @@ class FiredbAutorisationService {
       });
     });
     return data;
-  }
+  };
 }
-
 export default FiredbAutorisationService;

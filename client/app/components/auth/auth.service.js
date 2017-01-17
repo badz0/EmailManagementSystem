@@ -6,6 +6,7 @@ class AuthService {
     const ref = firebase.database().ref().child('user');
     this.data = $firebaseArray(ref);
     this.q = $q;
+    this.state=$state;
     this.lock=lock;
     this.authManager=authManager;
     this.deferredProfile = $q.defer();
