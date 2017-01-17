@@ -3,10 +3,10 @@ class ConfirmController {
     'ngInject';
     this.mdDialog = $mdDialog;
   }
-  no() {
+  confirmNo() {
     this.mdDialog.cancel();
   }
-  yes() {
+  confirmYes() {
     this.mdDialog.hide();
   }
 }

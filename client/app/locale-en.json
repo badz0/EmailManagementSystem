@@ -10,7 +10,7 @@
     "home": "Home",
     "cabinet": "Cabinet",
     "statistics": "Statistic",
-    "emails": "Emails"
+    "emails":"Email"
   },
   "home": {
     "title": "Email Management System",

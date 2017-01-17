@@ -10,7 +10,6 @@ class EmailController {
     this.state = $state;
   }
   $onInit() {
-    this.name = 'Hello dynamic routes';
     this.EmailDetailService.then((res) => {
       this.currentData = res.find((value) => {
         return value.id === this.idParam;
