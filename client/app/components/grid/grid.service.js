@@ -1,10 +1,14 @@
 import * as firebase from 'firebase';
 
 class EmailDetailService {
-  constructor(Firedbservice, $firebaseArray, $log) {
+  constructor(Firedbservice, $firebaseArray, $log,FiredbAutorisation) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    this.list = $firebaseArray(ref);
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
+      this.list = $firebaseArray(ref);
+      this.res=res.userData.index;
+    });
   }
   getList() {
     return this.list.$loaded(
@@ -16,7 +20,7 @@ class EmailDetailService {
       });
   }
   getSocial() {
-    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
+    const ref = firebase.database().ref().child(`user/${this.res}`).child('listOfEmails');
     let socialWords = /facebook|twitter|youtube|linkedin/i;
     let social = [];
     ref.on('child_added', (snapshot) => {
@@ -27,7 +31,7 @@ class EmailDetailService {
     return social;
   }
   getAds() {
-    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
+    const ref = firebase.database().ref().child(`user/${this.res}`).child('listOfEmails');
     let adsWords = /SALE|free/i;
     let ads = [];
     ref.on('child_added', (snapshot) => {

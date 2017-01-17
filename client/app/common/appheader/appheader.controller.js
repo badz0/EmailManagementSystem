@@ -1,10 +1,13 @@
 import * as firebase from 'firebase';
 
 class AppheaderController {
-  constructor($mdSidenav, $translate,$firebaseObject,Firedbservice,AuthService,authManager) {
+  constructor($mdSidenav, $translate,$firebaseObject,Firedbservice,AuthService,authManager,FiredbAutorisation) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/9');
-    this.users = $firebaseObject(ref);
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      const ref = firebase.database().ref().child(`user/${res.userData.index}`);
+      this.users = $firebaseObject(ref);
+    });
     this.mdSidenav = $mdSidenav;
     this.translate = $translate;
     this.AuthService = AuthService;

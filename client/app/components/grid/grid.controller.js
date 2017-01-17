@@ -1,14 +1,17 @@
 import * as firebase from 'firebase';
 
 class GridController {
-  constructor(Firedbservice, EmailDetailService, $firebaseObject) {
+  constructor(Firedbservice, EmailDetailService, $firebaseObject,FiredbAutorisation) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    const refUser = firebase.database().ref().child('user/0');
-    this.data = $firebaseObject(ref);
-    this.users = $firebaseObject(refUser);
-    this.EmailDetailServiceSocial = EmailDetailService.getSocial();
-    this.EmailDetailServiceAds = EmailDetailService.getAds();
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
+      const refUser = firebase.database().ref().child(`user/${res.userData.index}`);
+      this.data = $firebaseObject(ref);
+      this.users = $firebaseObject(refUser);
+      this.EmailDetailServiceSocial = EmailDetailService.getSocial();
+      this.EmailDetailServiceAds = EmailDetailService.getAds();
+    });
   }
   $onInit() {
     this.gridOptions = {
