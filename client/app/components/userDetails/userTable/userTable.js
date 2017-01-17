@@ -11,14 +11,6 @@ let userTableModule = angular.module('userTable', [
     
 ])
 
-.config(($stateProvider) => {
-  'ngInject';
-  $stateProvider
-    .state('userTable', {
-      url: '/userTable',
-      component: 'userTable'
-    });
-})
 
 .component('userTable', userTableComponent)
 
