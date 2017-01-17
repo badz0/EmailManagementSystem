@@ -2,15 +2,20 @@
 <div class="container"
      layout="row"
      flex>
-  <md-sidenav md-component-id="menu"
-              class="md-whiteframe-4dp">
-    <appnav></appnav >
-  </md-sidenav>
-  <md-content flex class="content">
-    <section class="charts">
-      <global-chart></global-chart>
-      <user-charts ng-show="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
-    </section>
-  </md-content>
+    <md-sidenav md-component-id="menu" class="md-whiteframe-4dp">
+        <appnav></appnav >
+    </md-sidenav>
+    <md-content flex class="content">
+        <switcher on-state-change="$ctrl.onStateChange(state)"> </switcher>
+        <div ng-if="$ctrl.viewState.table">
+            <user-table></user-table>
+        </div>
+        <div ng-if="$ctrl.viewState.charts">
+            <section class="charts">
+                <global-chart></global-chart>
+                <user-charts ng-show="$ctrl.configData.navBarDisplay.defaultPageShow"></user-charts>
+            </section>
+        </div>
+    </md-content>
 </div>
 

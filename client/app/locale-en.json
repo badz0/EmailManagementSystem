@@ -80,5 +80,12 @@
   "emails": {
     "title": "Emails"
   }
+  },
+  "userDetails":{
+    "title":"Users Details",
+    "buttonChart":"Charts",
+    "buttonTable":"Table",
+    "export":"Export",
+    "save":"Save table as"
   }
 }
