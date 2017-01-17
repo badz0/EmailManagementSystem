@@ -1,15 +1,12 @@
-<div ng-if="$ctrl.state === 'table'">
+<div>
     <md-content flex class="content" >
+        <h1 translate="userDetails.title"></h1>
         <section>
-            <div  ui-grid="$ctrl.gridOptions"  ui.grid.exporter class="grid">
+            <div  ui-grid="$ctrl.gridOptions"  ui.grid.exporter class="gridmy">
             </div>
-            <md-button class="md-primary md-raised" ng-click="$ctrl.showWindow($event)"  flex="100"  flex-gt-md="auto">
-            Export
-            </md-button>
         </section>
+        <md-button class="md-primary md-raised" ng-click="$ctrl.showWindow($event)"  flex="100"  flex-gt-md="auto" translate="userDetails.export" md-colors="{background: '{{$ctrl.user.themeColor}}'}"></md-button>
     </md-content>
 </div>
-<div ng-if="$ctrl.state === 'chart'">
-<p>Place for charts</p>
-</div>
+
 

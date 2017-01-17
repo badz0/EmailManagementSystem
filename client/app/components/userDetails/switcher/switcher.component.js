@@ -3,11 +3,7 @@ import controller from './switcher.controller';
 import './switcher.scss';
 
 let switcherComponent = {
-  require:{
-    controller:'^^userDetails'
-  },
   bindings: {
-    state: '<',
     onStateChange: '&'
   },
   template,

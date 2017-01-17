@@ -5,9 +5,9 @@ class AddDialogController {
   }
   $onInit() {
     this.formData = {
-      email: '',
-      group: '',
-      subject: ''
+      col: '',
+      row: '',
+      format: ''
     };
   }
   cancel() {

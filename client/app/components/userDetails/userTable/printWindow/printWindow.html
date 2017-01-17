@@ -1,9 +1,9 @@
 <md-dialog aria-label="Print Window Dialog">
-  <md-toolbar>
+  <md-toolbar md-colors="{background: '{{$ctrl.user.themeColor}}'}">
     <div class="md-toolbar-tools">
-      <h2>Save table as pdf</h2>
+      <h2 translate="userDetails.save"></h2>
       <span flex></span>
-      <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+      <md-button class="md-icon-button" ng-click="$ctrl.cancel()" md-colors="{background: '{{$ctrl.user.themeColor}}'}">
         <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
       </md-button>
     </div>
@@ -11,10 +11,10 @@
   <md-dialog-content ng-cloak>
     <div class="md-dialog-content">
       <form name="printWindow" ng-submit="$ctrl.export()">
-        <md-input-container>
+        <md-input-container >
             <label>Columns</label>
-            <md-select ng-model="export_column_type">
-                <md-option ng-value="all">All</md-option>
+            <md-select ng-model="export_column_type" >
+                <md-option ng-value="all" >All</md-option>
                 <md-option ng-value="visible">Visible</md-option>
            </md-select>
         </md-input-container>
@@ -34,7 +34,7 @@
             </md-select>
         </md-input-container>
         <md-dialog-actions>
-          <md-button class="md-raised md-primary" type="submit" aria-label="Export">Export</md-button>
+          <md-button class="md-raised md-primary" type="submit" aria-label="Export" md-colors="{background: '{{$ctrl.user.themeColor}}'}" translate="userDetails.export"></md-button>
         </md-dialog-actions>
       </form>
     </div>

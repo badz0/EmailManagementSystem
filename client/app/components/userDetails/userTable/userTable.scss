@@ -1,10 +1,16 @@
-$gridColor: #607D8B;
 
-.grid {
-    color: $gridColor;
+.gridmy {
     font-size: 15px;
+    padding: 20px;
+    border: 3px;
 }
 
+h1{
+  font-size: 24px;
+  text-align: center;
+  color: #006B53;
+  }
+  
 .cell-template-ref {
     text-decoration: none;
     color: #607d8b;
