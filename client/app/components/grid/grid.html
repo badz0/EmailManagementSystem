@@ -6,11 +6,13 @@
 		</md-sidenav>
 		<md-content flex>
 			<section>
-				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.allEmails()">All</md-button>
-				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.emailEmails()">Email</md-button>
-				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.socialEmails()">Social</md-button>
-				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.adsEmails()">Ads</md-button>
-				<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.blockEmails()">Blocklist</md-button>
+				<div>
+					<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.allEmails()" translate="grid.All"></md-button>
+					<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.emailEmails()" translate="grid.Emails"></md-button>
+					<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.socialEmails()" translate="grid.Social"></md-button>
+					<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.adsEmails()" translate="grid.Ads"></md-button>
+					<md-button md-colors="{background: '{{$ctrl.users.themeColor}}'}" class="md-primary md-raised" type="button" id="swapData" class="btn btn-success" ng-click="$ctrl.blockEmails()" translate="grid.Blocklist"></md-button>
+				</div>
 				<div id="grid1" class="grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
 			</section>
 		</md-content>

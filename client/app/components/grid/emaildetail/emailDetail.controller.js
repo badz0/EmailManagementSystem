@@ -1,10 +1,13 @@
 import * as firebase from 'firebase';
+import templateDelete from '../confirmDialog/confirm.template.del.html';
+import controller from '../confirmDialog/confirm.controller.js';
 class EmailController {
-  constructor(EmailDetailService, $stateParams, $log,  $mdDialog) {
+  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state) {
     'ngInject';
     this.idParam = parseInt($stateParams.id);
     this.EmailDetailService = EmailDetailService.getList();
     this.mdDialog = $mdDialog;
+    this.state = $state;
   }
   $onInit() {
     this.name = 'Hello dynamic routes';
@@ -17,13 +20,16 @@ class EmailController {
     });
   }
   deleteUser() {
-    let confirm = this.mdDialog.confirm()
-      .title('Are you sure to delete the record?')
-      .textContent('Record will be deleted permanently.')
-      .ok('Yes')
-      .cancel('No');
+    let template = templateDelete;
+    let confirm = this.mdDialog.confirm({
+      template,
+      controller,
+      controllerAs: '$ctrl', 
+      clickOutsideToClose:true
+    });
     this.mdDialog.show(confirm).then(() => {
       firebase.database().ref().child('user/0').child(`listOfEmails/${this.idParam-1}`).remove();
+      this.state.go('grid');
     });
   }
 }

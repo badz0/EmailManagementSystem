@@ -2,8 +2,11 @@ $gridColor: #607D8B;
 .grid {
   color: $gridColor;
   font-size: 15px;
+  margin: auto;
 }
-
+.button-section {
+  margin: 2% 0 2% 5%;
+}
 .email-data {
   padding: 5px;
   color: $gridColor;

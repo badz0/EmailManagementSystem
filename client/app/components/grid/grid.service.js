@@ -40,7 +40,7 @@ export class EmailDetailService {
     const ref = firebase.database().ref().child('user/0').child('listOfEmails');
     let block = [];
     ref.on('child_added', (snapshot) => {
-      if (snapshot.val().isSafe === false) {
+      if (!snapshot.val().isSafe) {
         block.push(snapshot.val());
       };
     });

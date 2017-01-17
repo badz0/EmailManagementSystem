@@ -16,6 +16,17 @@
     "title": "Email Management System",
     "getStarted": "Get started"
   },
+   "grid": {
+    "All": "All",
+    "Emails": "Emails",
+    "Social": "Social",
+    "Ads": "Ads",
+    "Blocklist": "Blocklist",
+    "title": "Are you sure to delete the record?",
+    "titleBlock": "Do you want to move it into blocklist?",
+    "yes": "yes",
+    "no": "no"
+  },
   "cabinet":{
     "title":"My cabinet",
     "name":"Name:&nbsp;",

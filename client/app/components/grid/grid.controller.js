@@ -1,5 +1,7 @@
 import * as firebase from 'firebase';
-
+import templateDelete from './confirmDialog/confirm.template.del.html';
+import templateBlock from './confirmDialog/confirm.template.block.html';
+import controller from './confirmDialog/confirm.controller.js';
 class GridController {
   constructor(Firedbservice, EmailDetailService, $firebaseObject, $mdDialog) {
     'ngInject';
@@ -57,31 +59,28 @@ class GridController {
     this.gridOptions.data = this.EmailDetailServiceAds;
   }
   deleteUser(row) {
-    let confirm = this.mdDialog.confirm()
-      .title('Are you sure to delete the record?')
-      .textContent('Record will be deleted permanently.')
-      .ok('Yes')
-      .cancel('No');
+    let template = templateDelete;
+    let confirm = this.mdDialog.confirm({
+      template,
+      controller,
+      controllerAs: '$ctrl',
+      clickOutsideToClose: true
+    });
     this.mdDialog.show(confirm).then(() => {
       firebase.database().ref().child('user/0').child(`listOfEmails/${row.entity.id-1}`).remove();
     });
   }
-
   safeOrBlock(row) {
-    let confirm = this.mdDialog.confirm()
-      .title('Are you sure to move the record to blocklist?')
-      .textContent('Record will be moved to blocklist.')
-      .ok('Yes')
-      .cancel('No');
+    let template = templateBlock;
+    let confirm = this.mdDialog.confirm({
+      template,
+      controller,
+      controllerAs: '$ctrl',
+      clickOutsideToClose: true
+    });
     this.mdDialog.show(confirm).then(() => {
-      if (row.entity.isSafe) {
-        row.entity.isSafe = false;
-        this.data.$save(row);
-      }
-      else {
-        row.entity.isSafe = true;
-        this.data.$save(row);
-      };
+      row.entity.isSafe = !row.entity.isSafe;
+      this.data.$save(row);
     });
   }
 }
