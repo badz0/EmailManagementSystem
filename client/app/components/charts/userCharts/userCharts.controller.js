@@ -12,7 +12,7 @@ class UserChartController {
   $onInit() {
     this.gridOptions = this.configData.gridData;
     this.defaultConstructBuilder();
-    this.firebaseDataAuthentificationserviceinItialize();
+    this.getUserData();
   };
 
   showDialogCharts(index) {
@@ -30,7 +30,7 @@ class UserChartController {
     });
   };
 
-  firebaseDataAuthentificationserviceinItialize() {
+  getUserData() {
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
     });
