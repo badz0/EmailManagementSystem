@@ -1,7 +1,8 @@
 class AppheaderController {
-  constructor($mdSidenav, Firedbservice, AuthService, FiredbAutorisation, authManager) {
+  constructor($mdSidenav, $translate,Firedbservice,AuthService,authManager, FiredbAutorisation) {
     'ngInject';
     this.mdSidenav = $mdSidenav;
+    this.translate = $translate;
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
     this.FiredbAutorisation = FiredbAutorisation;
@@ -9,11 +10,12 @@ class AppheaderController {
       this.userData = res.userData;
     });
   }
-
+  $onInit() {
+    this.lan = this.translate.use();
+  }
   toggleMenu() {
     this.mdSidenav('menu').toggle();
   }
-
 }
 
 export default AppheaderController;
