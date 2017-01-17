@@ -14,7 +14,7 @@ let componentModule = angular.module('app.components', [
   Cabinet,
   AddEmail,
   Grid,
-  auth
+  auth,
 ])
 
 .name;
