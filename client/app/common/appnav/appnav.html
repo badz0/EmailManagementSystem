@@ -6,25 +6,20 @@
   <md-list-item hide-gt-xs>
     <language-change></language-change>
   </md-list-item>
-  <div hide-gt-xs>
-    <md-button ng-class="{'md-accent':$ctrl.lan === 'en'}" ng-click="$ctrl.changeLanguage('en');" class="md-icon-button">EN</md-button>
-    <span>|</span>
-    <md-button ng-class="{'md-accent':$ctrl.lan === 'ua'}" ng-click="$ctrl.changeLanguage('ua');" class="md-icon-button">UA</md-button>
-  </div>
 	<md-list-item>
 		<md-button class="md-raised md-primary but" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ui-sref="home" aria-label="Home button" translate="menu.home"></md-button>
 	</md-list-item>
 	<md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-		<md-button class="md-raised" ui-sref="cabinet" md-colors="{background: '{{$ctrl.users.themeColor}}'}" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
+		<md-button class="md-raised but" ui-sref="cabinet" md-colors="{background: '{{$ctrl.users.themeColor}}'}" aria-label="Cabinet button" translate="menu.cabinet"></md-button>
 	</md-list-item>
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-    <md-button class="md-raised" ui-sref="charts" md-colors="{background: '{{$ctrl.users.themeColor}}'}"  translate="menu.statistic"></md-button>
+    <md-button class="md-raised but" ui-sref="charts" md-colors="{background: '{{$ctrl.users.themeColor}}'}"  translate="menu.statistics"></md-button>
   </md-list-item>
   <md-list-item ng-if="$ctrl.AuthService.isAuthenticated()">
-    <md-button class="md-raised" ui-sref="grid" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="menu.emails"></md-button>
+    <md-button class="md-raised but" ui-sref="grid" md-colors="{background: '{{$ctrl.users.themeColor}}'}" translate="menu.emails"></md-button>
   </md-list-item>
     <div hide-gt-sm layout="column">
-      <md-button class="md-raised" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" translate="header.signIn"></md-button>
-      <md-button class="md-raised md-warn" aria-label="Log Out" ng-if="$ctrl.AuthService.isAuthenticated()"  ng-click="$ctrl.AuthService.logout()" translate="header.logOut"></md-button>
+      <md-button class="md-raised but" aria-label="Sign In" md-colors="{background: '{{$ctrl.users.themeColor}}'}" ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" translate="header.signIn"></md-button>
+      <md-button class="md-raised md-warn but" aria-label="Log Out" ng-if="$ctrl.AuthService.isAuthenticated()"  ng-click="$ctrl.AuthService.logout()" translate="header.logOut"></md-button>
   </div>
 </md-list>
