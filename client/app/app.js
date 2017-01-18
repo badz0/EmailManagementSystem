@@ -36,6 +36,7 @@ import FiredbAutorisation from './app.fireb.authentification.service.js';
 angular.module('app', [
   uiRouter,
   'ui.grid',
+  'ui.grid.exporter',
   Common,
   Components,
   ngMaterial,

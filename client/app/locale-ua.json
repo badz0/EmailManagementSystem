@@ -80,5 +80,13 @@
   "emails": {
     "title": "Листи"
   }
+  },
+  "userDetails":{
+    "title":"Інформація про користувачів",
+    "buttonChart":"Діаграми",
+    "buttonTable":"Таблиця",
+    "export":"Експорт",
+    "save": "Експортувати як"
+
   }
 }
