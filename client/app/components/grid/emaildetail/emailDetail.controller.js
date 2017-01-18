@@ -6,7 +6,7 @@ class EmailController {
     'ngInject';
      this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
-      this.userData = res.userData;
+      this.res=res.userData.index;
     });
     this.idParam = parseInt($stateParams.id);
     this.EmailDetailService = EmailDetailService.getList();
