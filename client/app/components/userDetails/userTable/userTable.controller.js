@@ -3,14 +3,16 @@ import controller from './printWindow/printWindow.controller';
 import template from './printWindow/printWindow.html';
 
 class UserTableController {
-  constructor(Firedbservice, $firebaseObject,$mdDialog,$document) {
+  constructor(Firedbservice, $firebaseObject,$mdDialog,$document,FiredbAutorisation) {
     'ngInject';
     this.mdDialog = $mdDialog;
     this.document = $document;
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.userData = res.userData;
+    });
     const ref = firebase.database().ref().child('user');
     this.users = $firebaseObject(ref);   
-    const ref_color = firebase.database().ref().child('user/9');
-    this.user = $firebaseObject(ref_color);  
   }
   $onInit(){
     this.gridOptions = {
