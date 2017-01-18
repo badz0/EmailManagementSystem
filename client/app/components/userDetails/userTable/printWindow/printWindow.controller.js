@@ -1,10 +1,12 @@
 import * as firebase from 'firebase';
 class PrintWindowController {
-  constructor(Firedbservice, $firebaseObject,$mdDialog) {
+  constructor($mdDialog,FiredbAutorisation) {
     'ngInject';
     this.mdDialog = $mdDialog;
-    const ref_color = firebase.database().ref().child('user/9');
-    this.user = $firebaseObject(ref_color); 
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.userData = res.userData;
+    });
   }
   cancel() {
     this.mdDialog.cancel();
