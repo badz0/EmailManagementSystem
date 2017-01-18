@@ -1,16 +1,14 @@
-import * as firebase from 'firebase';
 class SwitcherController {
-  constructor($firebaseObject, Firedbservice) {
+  constructor(FiredbAutorisation) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/9');
-    this.user = $firebaseObject(ref);
-      
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.userData = res.userData;
+    });
   }
-
   setState(state){
     this.onStateChange({state: state});
-  };
-
+  }
   }
 
 export default SwitcherController;  

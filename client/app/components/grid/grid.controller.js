@@ -9,13 +9,13 @@ class GridController {
     this.FiredbAutorisation.responseData().then(res => {
       const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
       const refUser = firebase.database().ref().child(`user/${res.userData.index}`);
-    this.data = $firebaseObject(ref);
-    this.users = $firebaseObject(refUser);
-    this.mdDialog = $mdDialog;
-    this.EmailDetailServiceSocial = EmailDetailService.getSocial();
-    this.EmailDetailServiceAds = EmailDetailService.getAds();
-    this.EmailDetailServiceBlock = EmailDetailService.getBlock();
-    this.EmailDetailServiceEmail = EmailDetailService.getEmail();
+      this.data = $firebaseObject(ref);
+      this.users = $firebaseObject(refUser);
+      this.mdDialog = $mdDialog;
+      this.EmailDetailServiceSocial = EmailDetailService.getSocial();
+      this.EmailDetailServiceAds = EmailDetailService.getAds();
+      this.EmailDetailServiceBlock = EmailDetailService.getBlock();
+      this.EmailDetailServiceEmail = EmailDetailService.getEmail();
     });
   }
   $onInit() {

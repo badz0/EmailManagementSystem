@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 class cabinetUploader{
   constructor(){
     this.restrict='A';
-     this.controller = cabinetUploaderDirectiveController;
+    this.controller = cabinetUploaderDirectiveController;
     this.controllerAs = 'ctrl';
     this.bindToController = true;
   }
