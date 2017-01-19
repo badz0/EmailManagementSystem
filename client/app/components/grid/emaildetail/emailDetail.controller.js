@@ -2,12 +2,16 @@ import * as firebase from 'firebase';
 import templateDelete from '../confirmDialog/confirm.template.del.html';
 import controller from '../confirmDialog/confirm.controller.js';
 class EmailController {
-  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state) {
+  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state, FiredbAutorisation) {
     'ngInject';
     this.idParam = parseInt($stateParams.id);
     this.EmailDetailService = EmailDetailService.getList();
     this.mdDialog = $mdDialog;
     this.state = $state;
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.res=res.userData.index;
+    });
   }
   $onInit() {
     this.EmailDetailService.then((res) => {
@@ -27,7 +31,7 @@ class EmailController {
       clickOutsideToClose:true
     });
     this.mdDialog.show(confirm).then(() => {
-      firebase.database().ref().child('user/0').child(`listOfEmails/${this.idParam-1}`).remove();
+      firebase.database().ref().child(`user/${this.res}`).child(`listOfEmails/${this.idParam-1}`).remove();
       this.state.go('grid');
     });
   }

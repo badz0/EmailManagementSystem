@@ -11,6 +11,7 @@ class GridController {
       const refUser = firebase.database().ref().child(`user/${res.userData.index}`);
       this.data = $firebaseObject(ref);
       this.users = $firebaseObject(refUser);
+      this.res=res.userData.index;
       this.mdDialog = $mdDialog;
       this.EmailDetailServiceSocial = EmailDetailService.getSocial();
       this.EmailDetailServiceAds = EmailDetailService.getAds();
