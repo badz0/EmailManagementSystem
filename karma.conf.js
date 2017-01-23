@@ -15,28 +15,47 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
+      { pattern: 'spec.bundle.js', watched: false }
     ],
 
-
+ 
     // list of files to exclude
    exclude: [
     ],
     plugins: [
-      'karma-chrome-launcher',
-      'karma-jasmine',
+      require("karma-jasmine"),
+      require("karma-chrome-launcher"),
+      require("karma-mocha-reporter"),
+      require("karma-sourcemap-loader"),
+      require("karma-webpack")
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] 
+    },
+    devtool: 'inline-source-map',
+     webpack: {
+      devtool: 'inline-source-map',
+      module: {
+        loaders: [
+          { test: /\.js/, exclude: [/app\/lib/, /node_modules/], loader: 'babel' },
+          { test: /\.html$/, loader: 'raw' },
+          { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
+          { test: /\.css$/, loader: 'style!css' }
+        ]
+      }
+    },
+    webpackServer: {
+      noInfo: true // prevent console spamming when running in Karma!
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['mocha'],
 
 
     // web server port
@@ -68,5 +87,5 @@ module.exports = function(config) {
     // Concurrency level
     // how many browser should be started simultaneous
     concurrency: Infinity
-  });
-};
+  })
+}
