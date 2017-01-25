@@ -1,31 +1,24 @@
-import languageChangeModule from './languageChange'
 import languageChangeController from './languageChange.controller';
-import languageChangeComponent from './languageChange.component';
-import languageChangeTemplate from './languageChange.html';
 
 describe('Language Change', () => {
 
-  let lanChange;
+  describe('Controller', () => {
+    let controller, translate;
 
-  beforeEach(() => {
-    lanChange = new languageChangeController();
+    beforeEach(inject(($injector) => {
+      translate = jasmine.createSpyObj('$translate', ['use']);
+      controller = new languageChangeController(translate);
+    }));
 
-  });
+    it('Check if method change language is defined', ()=> {
+      expect(controller.changeLanguage).toBeDefined();
+    });
 
-  it('Set translation', () => {
-    lanChange.changeLanguage('ua');
-    expect(lanChange.lan).toEqual('ua');
-
-  });
-
-  describe('Component', () => {
-      // component/directive specs
-      let component = languageChangeComponent;
-      it('includes the intended template',() => {
-        expect(component.template).toEqual(languageChangeTemplate);
-      });
-      it('invokes the right controller', () => {
-        expect(component.controller).toEqual(languageChangeController);
-      });
+    it('Sets translation', () => {
+      controller.changeLanguage('ua');
+      expect(translate.use).toHaveBeenCalled();
+      expect(translate.use.calls.count()).toBe(1);
+      expect(controller.lan).toEqual('ua');
+    });
   });
 });
