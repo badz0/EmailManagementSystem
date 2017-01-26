@@ -1,5 +1,4 @@
 import addEmail from './addEmail';
-import validationSevice from './validation.service';
 
 describe('Add email component', () => {
 
@@ -34,16 +33,6 @@ describe('Add email component', () => {
     });
     it('Check if the parent function getData was called with right argument', () => {
       expect(getData).toHaveBeenCalledWith({data: 'Checking value'});
-    });
-
-  });
-
-  describe('Validation service', () => {
-    let form;
-    let service = new validationSevice();
-
-    beforeEach(() => {
-
     });
   });
 });
