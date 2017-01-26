@@ -3,10 +3,10 @@ import countries from './cabinet.countries.json';
 class CabinetController {
   constructor($firebaseObject,$mdColorPalette,Сonstants,FiredbAutorisation) {'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
-     this.FiredbAutorisation.responseData().then(res => {
-       this.res=res.userData.index;
-       this.users =this.FiredbAutorisation.getUserData(this.res);
-     });
+    this.FiredbAutorisation.responseData().then(res => {
+      this.res=res.userData.index;
+      this.users =this.FiredbAutorisation.getUserData(this.res);
+    });
     this.colors = Object.keys($mdColorPalette);
     this.avatar=Сonstants.avatarDefault.IMAGE_LINK;
   }
