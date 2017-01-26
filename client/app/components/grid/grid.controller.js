@@ -17,9 +17,9 @@ class GridController {
       this.EmailDetailServiceBlock = EmailDetailService.getBlock();
       this.EmailDetailServiceEmail = EmailDetailService.getEmail();
     });
+    console.log(FiredbAutorisation.responseData().this.data)
   }
   $onInit() {
-    this.name = 'grid';
     this.gridOptions = {
       enableFiltering: true,
       exporterMenuCsv: false,
