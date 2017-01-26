@@ -12,32 +12,32 @@
 
   <md-dialog-content ng-cloak>
     <div class="md-dialog-content">
-      <form name="addEmailForm" ng-submit="$ctrl.submit(addEmailForm.$valid)" novalidate>
+      <form name="addEmailForm" ng-submit="$ctrl.submit(addEmailForm)" novalidate>
 
         <md-input-container>
           <label>Email</label>
-          <input required type="email" name="email" ng-model="$ctrl.formData.email" ng-pattern="/^.+@.+\..+$/">
+          <input name="email" ng-model="$ctrl.formData.email">
           <div ng-messages="addEmailForm.email.$error" ng-show="addEmailForm.$submitted">
             <div ng-message="required">This is required</div>
-            <div ng-message="pattern">Invalid email</div>
+            <div ng-message="email">Invalid email</div>
           </div>
         </md-input-container>
 
         <md-input-container>
           <label>Group</label>
-          <input type="text" required name="group" ng-model="$ctrl.formData.group" md-maxlength="20">
+          <input type="text"  name="group" ng-model="$ctrl.formData.group" >
           <div ng-messages="addEmailForm.group.$error" ng-show="addEmailForm.$submitted">
             <div ng-message="required">This is required</div>
-            <div ng-message="md-maxlength">Max length 20</div>
+            <div ng-message="tooLong">Max length 20</div>
           </div>
         </md-input-container>
 
         <md-input-container>
           <label>Subject</label>
-          <input required name="subject" ng-model="$ctrl.formData.subject" md-maxlength="20">
+          <input  name="subject" ng-model="$ctrl.formData.subject" >
           <div ng-messages="addEmailForm.subject.$error" ng-show="addEmailForm.$submitted">
             <div ng-message="required">This is required</div>
-            <div ng-message="md-maxlength">Max length 20</div>
+            <div ng-message="tooLong">Max length 20</div>
           </div>
         </md-input-container>
 
