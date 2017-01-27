@@ -4,14 +4,15 @@ import userTableComponent from './userTable.component';
 import userTableTemplate from './userTable.html'; 
 
 describe('User Table', () => {
+  beforeEach(angular.mock.module(userTableModule));
 
   describe('User Table component', () => { 
     let component = userTableComponent; 
     it('expects the right userTable template',() => { 
-      expect(component.template).toEqual(userTableTemplate); 
+      expect(component.template).toBe(userTableTemplate); 
     }); 
     it('expects the right userTable controller', () => { 
-      expect(component.controller).toEqual(userTableController); 
+      expect(component.controller).toBe(userTableController); 
     }); 
   });
 
@@ -19,6 +20,7 @@ describe('User Table', () => {
     let scope, controller, Firedbservice,firebaseObject,data;
     let FiredbAutorisation = {};
     let mdDialog = {};
+    
 
     beforeEach(inject(($injector, $controller, $q,$document) => {
       

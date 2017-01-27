@@ -4,7 +4,8 @@ import switcherComponent from './switcher.component';
 import switcherTemplate from './switcher.html'; 
 
 describe('Switcher', () => {
-  
+
+  beforeEach(angular.mock.module(switcherModule));
 
   describe('Switcher component', () => { 
     let component = switcherComponent; 
@@ -58,7 +59,7 @@ describe('Switcher', () => {
       expect(FiredbAutorisation.responseData).toHaveBeenCalled();
     });
 
-    it('check userData initialization', () => {
+    it('expects that userData is correctly identified', () => {
       expect(controller.userData).toBe('userData');
     });
 
