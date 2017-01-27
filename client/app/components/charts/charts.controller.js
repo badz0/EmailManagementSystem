@@ -1,5 +1,5 @@
 class ChartsController {
-  constructor(Firedbservice, GlobalHardcodeConfigService, FiredbAutorisation, ChartsFirebaseDataService) {'ngInject';
+  constructor(GlobalHardcodeConfigService, ChartsFirebaseDataService) {'ngInject';
     this.configData = GlobalHardcodeConfigService.configData();
   };
 

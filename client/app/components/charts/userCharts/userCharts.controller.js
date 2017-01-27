@@ -1,6 +1,6 @@
 class UserChartController {
   constructor (Firedbservice, ChartsFirebaseDataService, dragularService, FiredbAutorisation, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
-    dragularService('.containerVertical', { removeOnSpill: true });
+    this.dragularService = dragularService;
     this.dialog = $mdDialog;
     this.translate = $translate;
     this.dialogDataService = DialogDataService;
@@ -13,6 +13,7 @@ class UserChartController {
     this.gridOptions = this.configData.gridData;
     this.defaultConstructBuilder();
     this.getUserData();
+    this.dragularService('.containerVertical', { removeOnSpill: true });
   };
 
   showDialogCharts(index) {
