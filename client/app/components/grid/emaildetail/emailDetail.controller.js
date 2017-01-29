@@ -5,12 +5,12 @@ class EmailController {
   constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state) {
     'ngInject';
     this.idParam = parseInt($stateParams.id);
-    this.EmailDetailService = EmailDetailService.getList();
+    this.EmailDetailService = EmailDetailService;//.getList();
     this.mdDialog = $mdDialog;
     this.state = $state;
   }
   $onInit() {
-    this.EmailDetailService.then((res) => {
+    this.EmailDetailService.getList().then((res) => {
       this.currentData = res.find((value) => {
         return value.id === this.idParam;
       });

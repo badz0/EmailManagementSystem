@@ -1,12 +1,16 @@
 import confirmController from './confirm.controller';
-import confirmTemplate from './confirm.template.del.html';
-  describe('Confirm', () => {
-    let confirm, $rootScope, $scope;
-    beforeEach(() => {
-      confirm = new confirmController();
-    });
-
-    it('confirm', () => { // erase if removing this.name from the controller
-      expect(2+2).toEqual(4);
-    });
+describe('Confirm controller', () => {
+  let controller;
+  beforeEach(() => {
+    controller = new confirmController();
   });
+
+  it('is Defined', () => {
+    expect(controller.confirmNo).toBeDefined();
+    expect(controller.confirmYes).toBeDefined();
+  });
+  it('is Function', () => {
+    expect(controller.confirmNo).toEqual(jasmine.any(Function));
+    expect(controller.confirmYes).toEqual(jasmine.any(Function));
+  });
+});
