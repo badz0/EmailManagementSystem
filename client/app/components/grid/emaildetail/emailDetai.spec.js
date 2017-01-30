@@ -2,15 +2,6 @@ import emailController from './emailDetail.controller';
 import emailComponent from './emailDetail.component';
 import emailDetail from './emailDetail.html';
 
-describe('Component', () => {
-  it('right template', () => {
-    expect(emailComponent.template).toEqual(emailDetail)
-  });
-  it('right controller', () => {
-    expect(emailComponent.controller).toEqual(emailController)
-  });
-});
-
 describe('Controller', () => {
   let controller, state, scope;
   let stateParams = {
@@ -87,5 +78,14 @@ describe('Controller', () => {
   it('mdDialog.show is called', () => {
     controller.deleteUser();
     expect(controller.mdDialog.show).toHaveBeenCalled();
+  });
+});
+
+describe('Component', () => {
+  it('right template', () => {
+    expect(emailComponent.template).toEqual(emailDetail)
+  });
+  it('right controller', () => {
+    expect(emailComponent.controller).toEqual(emailController)
   });
 });
