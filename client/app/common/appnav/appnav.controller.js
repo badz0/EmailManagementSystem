@@ -1,5 +1,5 @@
 class AppnavController {
-  constructor(AuthService, FiredbAutorisation) {
+  constructor(Firedbservice, AuthService, authManager, FiredbAutorisation) {
     'ngInject';
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
