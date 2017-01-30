@@ -29,6 +29,7 @@ class CabinetController {
     this.FiredbAutorisation.deleteUserAvatar(this.res,ava);
     this.user.avatar=this.avatar;
     this.FiredbAutorisation.updateUser(this.res,this.user);
+    this.user={};
   }
   clearCity(){
     this.user.city = null;

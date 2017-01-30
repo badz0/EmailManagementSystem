@@ -86,7 +86,6 @@ describe('Cabinet', ()=>{
 		controller.$onInit();
 		controller.deleteAvatar();
 		expect(controller.FiredbAutorisation.deleteUserAvatar).toHaveBeenCalled();
-		expect(controller.user.avatar).toEqual(jasmine.any(String));
 		expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
 	  });
 	});
