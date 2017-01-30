@@ -29,5 +29,9 @@ class FiredbAutorisationService {
     });
     return data;
   };
+
+  getUserDetails() {
+    return $firebaseObject(firebase.database().ref().child('user'));
+  }
 }
 export default FiredbAutorisationService;

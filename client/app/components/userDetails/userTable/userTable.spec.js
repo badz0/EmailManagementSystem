@@ -1,26 +1,25 @@
 import userTableModule from './userTable'; 
 import userTableController from './userTable.controller'; 
 import userTableComponent from './userTable.component'; 
-import userTableTemplate from './userTable.html'; 
+import userTableTemplate from './userTable.html';
+
 
 describe('User Table', () => {
-  beforeEach(angular.mock.module(userTableModule));
 
   describe('User Table component', () => { 
     let component = userTableComponent; 
     it('expects the right userTable template',() => { 
-      expect(component.template).toBe(userTableTemplate); 
+      expect(component.template).toEqual(userTableTemplate); 
     }); 
     it('expects the right userTable controller', () => { 
-      expect(component.controller).toBe(userTableController); 
+      expect(component.controller).toEqual(userTableController); 
     }); 
   });
 
   describe('UserTable Controller', () => {
-    let scope, controller, Firedbservice,firebaseObject,data;
+    let scope, controller, data;
     let FiredbAutorisation = {};
     let mdDialog = {};
-    
 
     beforeEach(inject(($injector, $controller, $q,$document) => {
       
@@ -32,15 +31,7 @@ describe('User Table', () => {
         return defer.promise;
       });
 
-
-      mdDialog.show = () => {};
-      spyOn(mdDialog, 'show').and.callFake(() => {
-        let defer = $q.defer();
-        defer.resolve('test');
-        return defer.promise;
-      });
-
-      let firebaseObject = (val) => { 
+      FiredbAutorisation.getUserDetails = (val) => { 
         return ([{
           'name': 'Ivanna',
           'birthDate': '1995-08-07',
@@ -61,19 +52,22 @@ describe('User Table', () => {
         }]);
       };
 
-      let users=firebaseObject;
-      
-      Firedbservice = jasmine.createSpyObj('Firedbservice', ['getDetails']);
-      
+
+      mdDialog.show = () => {};
+      spyOn(mdDialog, 'show').and.callFake(() => {
+        let defer = $q.defer();
+        defer.resolve('test');
+        return defer.promise;
+      });
+
+           
       scope = $injector.get('$rootScope').$new();
       controller = $controller(userTableController, {
         $scope: scope,
         FiredbAutorisation: FiredbAutorisation,
         $mdDialog: mdDialog,
-        Firedbservice: Firedbservice,
-        $firebaseObject: firebaseObject,
-        $document:$document,
-        data:users
+        $document:$document
+        
        
       });
       
