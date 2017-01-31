@@ -14,7 +14,7 @@ let authModule = angular.module('auth', [
   'angular-jwt'
 ])
 
-.config(($stateProvider, lockProvider,$urlRouterProvider,jwtOptionsProvider) => {
+.config(($stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) => {
   'ngInject';
   $stateProvider
     .state('auth', {

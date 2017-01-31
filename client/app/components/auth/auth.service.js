@@ -1,16 +1,15 @@
 import * as firebase from 'firebase';
 
 class AuthService {
-  constructor($q, lock, authManager, Firedbservice, $firebaseArray, $state){
+  constructor($q, lock, authManager, FiredbAutorisation, $state){
     'ngInject';
-    const ref = firebase.database().ref().child('user');
-    this.data = $firebaseArray(ref);
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.data = this.FiredbAutorisation.getUserDetailsArr();
     this.q = $q;
-    this.state=$state;
     this.lock=lock;
     this.authManager=authManager;
-    this.deferredProfile = $q.defer();
     this.state = $state;
+    this.deferredProfile = $q.defer();
   }
   login() {
     var lock = new Auth0Lock('YWiJP0aecm768DSElJl8YhqtIbAgx7gm', 'nerosman.eu.auth0.com');
