@@ -7,8 +7,7 @@ import specConfig from '../charts.specConfig';
 describe('userCharts Controller', () => {
 
   let scope, controller,  AuthService, translate, dragular, element, mdDialog;
-  let Firedbservice = {},
-    dialog = {},
+  let dialog = {},
     FiredbAutorisation = {},
     ChartsFirebaseDataService = {},
     GlobalHardcodeConfigService;
@@ -21,17 +20,12 @@ describe('userCharts Controller', () => {
     mdDialog = jasmine.createSpyObj('dialog', ['mdDialog', 'show']);
 
     FiredbAutorisation.responseData = () => {};
-    Firedbservice.responseData = () => {};
     ChartsFirebaseDataService.chartsDataBuild = () => {};
     dialog.show = () => {};
     dialogData.dialogDataServiceData = () => {};
 
     GlobalHardcodeConfigService = new GlobalHardcode();
     const res = specConfig;
-
-    spyOn(Firedbservice, 'responseData').and.returnValue( () => {
-      return res;
-    });
 
     spyOn(dialogData, 'dialogDataServiceData').and.callFake( () => {
       let defer = $q.defer();
@@ -53,7 +47,6 @@ describe('userCharts Controller', () => {
 
     scope = $injector.get('$rootScope').$new();
     controller = $controller(userChartsController, {
-      Firedbservice: Firedbservice,
       $scope: scope,
       $translate: translate,
       $element: element,

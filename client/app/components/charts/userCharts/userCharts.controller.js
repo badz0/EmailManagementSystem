@@ -1,5 +1,5 @@
 class UserChartController {
-  constructor (Firedbservice, ChartsFirebaseDataService, dragularService, FiredbAutorisation, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
+  constructor (ChartsFirebaseDataService, dragularService, FiredbAutorisation, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
     this.dragularService = dragularService;
     this.dialog = $mdDialog;
     this.translate = $translate;
