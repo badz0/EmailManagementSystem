@@ -10,14 +10,7 @@ describe('Dialog Service initialization', () => {
   const expected = expectedRes;
 
   beforeEach(inject(($injector, $controller, $q) => {
-    ChartsFirebaseDataService.responseData = () => {};
     ChartsFirebaseDataService.chartsDataBuild = () => {};
-
-    spyOn(ChartsFirebaseDataService, 'responseData').and.callFake( () => {
-      let defer = $q.defer();
-      defer.resolve( { responseData: res } );
-      return defer.promise;
-    });
 
     spyOn(ChartsFirebaseDataService, 'chartsDataBuild').and.callFake( () => {
       let defer = $q.defer();
