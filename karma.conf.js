@@ -1,29 +1,4 @@
 // Karma configuration
-<<<<<<< HEAD
-// Generated on Fri Jan 20 2017 11:23:34 GMT+0000 (UTC)
-
-module.exports = function(config) {
-  config.set({
-
-    // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '',
-
-
-    // frameworks to use
-    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
-
-
-    // list of files / patterns to load in the browser
-    files: [
-      { pattern: 'spec.bundle.js', watched: false }
-    ],
-
- 
-    // list of files to exclude
-   exclude: [
-    ],
-=======
 // Generated on Fri Jan 20 2017 11:15:02 GMT+0000 (UTC)
 
 module.exports = function(config) {
@@ -39,7 +14,6 @@ module.exports = function(config) {
     ],
     // files to exclude
     exclude: [],
->>>>>>> develop
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
