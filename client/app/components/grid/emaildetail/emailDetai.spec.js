@@ -9,9 +9,16 @@ describe('Controller', () => {
   };
   let EmailDetailService = {};
   let mdDialog = {};
+  let FiredbAutorisation = {};
+
   beforeEach(inject(($injector, $controller, $q, $log) => {
     state = jasmine.createSpyObj('$state', ['go']);
-
+  FiredbAutorisation.responseData = () => {};
+      spyOn(FiredbAutorisation, 'responseData').and.callFake( () => {
+        let defer = $q.defer();
+        defer.resolve({ userData: 'users'});
+        return defer.promise;
+      });    
     EmailDetailService.getList = () => {};
     spyOn(EmailDetailService, 'getList').and.callFake(() => {
       let defer = $q.defer();
@@ -55,6 +62,7 @@ describe('Controller', () => {
       EmailDetailService: EmailDetailService,
       $stateParams: stateParams,
       $state: state,
+      FiredbAutorisation: FiredbAutorisation,
     });
     scope.$digest();
   }));
