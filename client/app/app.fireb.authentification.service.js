@@ -9,7 +9,8 @@ class FiredbAutorisationService {
     return this.res.$loaded().then(res => {
       return {
         color: this.getColor(res),
-        userData: this.userData(res)
+        userData: this.userData(res),
+        fireDBResponseData: this.fireDBResponseData()
       };
     });
   }
@@ -29,6 +30,9 @@ class FiredbAutorisationService {
       });
     });
     return data;
+  }
+  fireDBResponseData() {
+    return this.res;
   }
   getUserData(a){
     return this.$firebaseObject(firebase.database().ref().child(`user/${a}`));

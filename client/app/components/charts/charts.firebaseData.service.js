@@ -1,14 +1,13 @@
 import * as firebase from 'firebase';
 
 class ChartsFirebaseDataService {
-  constructor($firebaseObject, $log, GlobalHardcodeConfigService) {'ngInject';
-    const ref = firebase.database().ref();
-    this.data = $firebaseObject(ref);
+  constructor($firebaseObject, $log, GlobalHardcodeConfigService, FiredbAutorisation) {'ngInject';
     this.globalChartsData = GlobalHardcodeConfigService.configData();
+    this.FiredbAutorisation = FiredbAutorisation;
   };
 
   chartsDataBuild() {
-    return this.data.$loaded().then(res => {
+    return this.FiredbAutorisation.fireDBResponseData().$loaded().then(res => {
       return {
         firedbChartData: res,
         userCabinetColor: res.user[9].themeColor,

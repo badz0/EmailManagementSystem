@@ -1,19 +1,26 @@
-/**
- * Created by stadnykk on 1/26/2017.
- */
 import userChartsController from './userCharts.controller';
 import GlobalHardcode from '../../../app.globalHardcodeConfig.service.js';
+import dialogData from '../charts.dialogBuild.service.spec.js';
+import chartsFirebaseData from '../charts.firebaseData.service.js';
 import specConfig from '../charts.specConfig';
 
+
+
+
+
 describe('userCharts Controller', () => {
-  "use strict";
+
+
+    console.log("HERE", dialogData)
+    console.log("HERE", chartsFirebaseData)
+
   let scope, controller,  AuthService, translate, dragular, element, mdDialog;
   let Firedbservice = {};
   let dialog = {};
   let FiredbAutorisation = {};
-  let DialogDataService = {};
+
   let ChartsFirebaseDataService = {};
-  let GlobalHardcodeConfigService;
+  let GlobalHardcodeConfigService, dialogDataService, chartsFirebaseDataService;
 
   beforeEach(inject(($injector, $controller, $q) => {
 
@@ -24,10 +31,11 @@ describe('userCharts Controller', () => {
     mdDialog = jasmine.createSpyObj('dialog', ['mdDialog', 'show']);
 
     FiredbAutorisation.responseData = () => {};
-    DialogDataService.responseData = () => {};
-    DialogDataService.dialogDataServiceData = () => {};
     Firedbservice.responseData = () => {};
     ChartsFirebaseDataService.chartsDataBuild = () => {};
+
+    // dialogDataService = new dialogData();
+    // chartsFirebaseDataService = new chartsFirebaseData();
     GlobalHardcodeConfigService = new GlobalHardcode();
 
     const res = specConfig;
@@ -39,18 +47,6 @@ describe('userCharts Controller', () => {
     spyOn(ChartsFirebaseDataService, 'chartsDataBuild').and.callFake( () => {
       let defer = $q.defer();
       defer.resolve([{}, {}, {}]);
-      return defer.promise;
-    });
-
-    spyOn(DialogDataService, 'responseData').and.returnValue( () => {
-      let defer = $q.defer();
-      defer.resolve({ dialogDataServiceData: res });
-      return defer.promise;
-    });
-
-    spyOn(DialogDataService, 'dialogDataServiceData').and.callFake( () => {
-      let defer = $q.defer();
-      defer.resolve({ responseData: res });
       return defer.promise;
     });
 
@@ -71,8 +67,8 @@ describe('userCharts Controller', () => {
       AuthService: AuthService,
       dragularService: dragular,
       FiredbAutorisation: FiredbAutorisation,
-      DialogDataService: DialogDataService,
-      ChartsFirebaseDataService: ChartsFirebaseDataService,
+      DialogDataService: dialogData,
+      ChartsFirebaseDataService: chartsFirebaseData,
       GlobalHardcodeConfigService: GlobalHardcodeConfigService
     });
     scope.$digest();
@@ -87,6 +83,7 @@ describe('userCharts Controller', () => {
   }));
 
   describe('Constructor values', () => {
+
     it('Constructor values should be defined', () => {
       expect(controller.dragularService).toBeDefined();
       expect(controller.dialog).toBeDefined();

@@ -13,6 +13,10 @@ class GlobalChartController {
     this.getUserData();
   };
 
+  $onDestroy() {
+    this.destroyCharts();
+  };
+
   previousItem() {
     this.configData.currentNavItem = this.configData.currentNavItem === 0 ? this.configData.tags.length : this.configData.currentNavItem -= 1;
   };
@@ -28,6 +32,11 @@ class GlobalChartController {
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
     });
+  };
+
+  destroyCharts() {
+    this.configData.navBarDisplay.globalChartsStats = false;
+    AmCharts.clear();
   };
 
   chartServiceData() {
