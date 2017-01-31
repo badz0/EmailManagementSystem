@@ -4,6 +4,10 @@ import controller from '../confirmDialog/confirm.controller.js';
 class EmailController {
   constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state, FiredbAutorisation) {
     'ngInject';
+     this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.res=res.userData.index;
+    });
     this.idParam = parseInt($stateParams.id);
     this.EmailDetailService = EmailDetailService.getList();
     this.mdDialog = $mdDialog;
