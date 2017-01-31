@@ -3,7 +3,7 @@
             layout-align="space-around center"
             layout-align-xs="center center"
             id='view-changer'
-            md-colors="{background: '{{$ctrl.color}}'}">
+            md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
   <h2>
     <span translate="{{$ctrl.configData.navBarTitles.global}}"
           ng-if="$ctrl.configData.navBarDisplay.globalChartsStats"></span>
@@ -13,7 +13,7 @@
   <div layout="row">
     <md-button class="md-raised md-primary"
                ng-click="$ctrl.chartServiceData()"
-               md-colors="{background: '{{$ctrl.color}}'}">
+               md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
       <span translate="{{$ctrl.configData.navBarButtons.globalChartsStats}}"></span>
     </md-button>
   </div>
@@ -26,7 +26,7 @@
     <md-tab ng-repeat="chart in $ctrl.configData.tags"
             aria-label="tab">
       <md-tab-label>
-        <span md-colors="{color: '{{$ctrl.color}}'}"
+        <span md-colors="{color: '{{$ctrl.userData.themeColor}}'}"
               translate="{{chart.label}}"></span>
       </md-tab-label>
       <md-tab-body>
@@ -43,7 +43,7 @@
                          ng-click="$ctrl.previousItem()"
                          translate="{{$ctrl.configData.buttons.prev}}"
                          aria-label="buttonPrev"
-                         md-colors="{color: '{{$ctrl.color}}'}">
+                         md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
               </md-button>
               <span flex></span>
               <div id="{{chart.id}}"
@@ -55,7 +55,7 @@
                        ng-click="$ctrl.nextItem()"
                        translate="{{$ctrl.configData.buttons.next}}"
                        aria-label="buttonNext"
-                       md-colors="{color: '{{$ctrl.color}}'}">
+                       md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
             </md-button>
           </section>
           <div id="{{chart.id}}"
@@ -70,12 +70,12 @@
            class="top">
     <md-radio-group ng-model="$ctrl.configData.currentNavItem"
                     class="md-primary radio-container"
-                    md-colors="{background: '{{$ctrl.color}}'}">
+                    md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
       <md-radio-button class="radio"
                        ng-repeat="radio in $ctrl.configData.tags"
                        ng-value="radio.value"
                        aria-label="radio"
-                       md-colors="{color: '{{$ctrl.color}}'}">
+                       md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
       </md-radio-button>
     </md-radio-group>
   </section>

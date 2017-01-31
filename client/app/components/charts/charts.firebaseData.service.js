@@ -8,7 +8,7 @@ class ChartsFirebaseDataService {
   };
 
   chartsDataBuild() {
-    return this.data.$loaded().then((res) => {
+    return this.data.$loaded().then(res => {
       return {
         firedbChartData: res,
         userCabinetColor: res.user[9].themeColor,
@@ -25,10 +25,10 @@ class ChartsFirebaseDataService {
 
   readResponseData(res) {
     return {
-      emailsMaxLine: res.user.map((val) => {
+      emailsMaxLine: res.user.map(val => {
         return {'provider': val.name, 'letters': val.listOfEmails.length};
       }),
-      signUp: res.user.map((val) => {
+      signUp: res.user.map(val => {
         return { 'Login': val.login, 'Activity': val.logInCount };
       }),
       groupData: this.groupData(res),
@@ -39,8 +39,8 @@ class ChartsFirebaseDataService {
 
   groupData(res) {
     let arr = [];
-    res.user.forEach((val) => {
-      val.listOfEmails.forEach((value) => {
+    res.user.forEach(val => {
+      val.listOfEmails.forEach(value => {
         arr.push({'name': val.name, 'group': value.group});
       });
     });
@@ -49,8 +49,8 @@ class ChartsFirebaseDataService {
 
   chartsArrayData(res, keyOne, keyTwo) {
     let arr = [];
-    res.user.forEach((val) => {
-      val.listOfEmails.forEach((value) => {
+    res.user.forEach(val => {
+      val.listOfEmails.forEach(value => {
         arr.push({[keyOne]: value[keyOne], [keyTwo]: val[keyTwo]});
       });
     });
@@ -82,9 +82,9 @@ class ChartsFirebaseDataService {
   };
 
   chartsDataProvider(type, res, key) {
-    return this.searchUnicData(type, res, key).map((val) => {
+    return this.searchUnicData(type, res, key).map(val => {
       let count = 0;
-      this.readResponseData(res)[type].forEach((inElemVal) => {
+      this.readResponseData(res)[type].forEach(inElemVal => {
         if(val === inElemVal[key]) {
           count += 1;
         };
@@ -105,7 +105,7 @@ class ChartsFirebaseDataService {
 
   chartsGraphsData(users, key) {
     let data = [];
-    users.forEach((val) => {
+    users.forEach(val => {
       let obj = {
         'balloonText': '[[title]]: [[value]]',
         'bullet': 'round',
@@ -121,7 +121,7 @@ class ChartsFirebaseDataService {
   };
 
   compileUserData(res) {
-    return this.searchUnicData('multy', res, 'name').map((val) => {
+    return this.searchUnicData('multy', res, 'name').map(val => {
       return ({'name': val, 'index': 0});
     });
   };
@@ -152,9 +152,9 @@ class ChartsFirebaseDataService {
 
   multipleUserComapare(res) {
     let finalData = [];
-    this.multySortData(res).forEach((val) => {
+    this.multySortData(res).forEach(val => {
       let users = this.searchApropriateUsers(res);
-      this.readResponseData(res).multy.forEach((value) => {
+      this.readResponseData(res).multy.forEach(value => {
         if(val === value.date) {
           users.forEach((changes) => {
             if(value.name === changes.name) {
@@ -171,8 +171,8 @@ class ChartsFirebaseDataService {
   userEmailDateComapare(res) {
     let result = [];
     let users = this.searchApropriateUsers(res);
-    this.multySortData(res).forEach((val) => {
-      this.readResponseData(res).multy.forEach((value) => {
+    this.multySortData(res).forEach(val => {
+      this.readResponseData(res).multy.forEach(value => {
         if(val === value.date) {
           users.forEach((changes) => {
             if(value.name === changes.name) {

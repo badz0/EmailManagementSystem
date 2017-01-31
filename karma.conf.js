@@ -1,27 +1,19 @@
 // Karma configuration
-// Generated on Fri Jan 20 2017 11:23:34 GMT+0000 (UTC)
+// Generated on Fri Jan 20 2017 11:15:02 GMT+0000 (UTC)
 
 module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
-
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
-
-
-    // list of files / patterns to load in the browser
-    files: [
-      { pattern: 'spec.bundle.js', watched: false }
+    // list of files/patterns to load in the browser
+    files: [{ pattern: 'spec.bundle.js', watched: false },
     ],
-
- 
-    // list of files to exclude
-   exclude: [
-    ],
+    // files to exclude
+    exclude: [],
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
@@ -38,7 +30,12 @@ module.exports = function(config) {
     },
     devtool: 'inline-source-map',
      webpack: {
-      devtool: 'inline-source-map',
+      require("karma-coverage")
+    ],
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
+    webpack: {
       module: {
         loaders: [
           { test: /\.js/, exclude: [/app\/lib/, /node_modules/], loader: 'babel' },
@@ -51,8 +48,6 @@ module.exports = function(config) {
     webpackServer: {
       noInfo: true // prevent console spamming when running in Karma!
     },
-
-
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
