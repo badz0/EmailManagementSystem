@@ -3,17 +3,22 @@ import templateDelete from './confirmDialog/confirm.template.del.html';
 import templateBlock from './confirmDialog/confirm.template.block.html';
 import controller from './confirmDialog/confirm.controller.js';
 class GridController {
-  constructor(Firedbservice, EmailDetailService, $firebaseObject, $mdDialog) {
+  constructor(Firedbservice, EmailDetailService, $firebaseObject,FiredbAutorisation,$mdDialog) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/0').child('listOfEmails');
-    const refUser = firebase.database().ref().child('user/0');
-    this.data = $firebaseObject(ref);
-    this.users = $firebaseObject(refUser);
-    this.mdDialog = $mdDialog;
-    this.EmailDetailServiceSocial = EmailDetailService.getSocial();
-    this.EmailDetailServiceAds = EmailDetailService.getAds();
-    this.EmailDetailServiceBlock = EmailDetailService.getBlock();
-    this.EmailDetailServiceEmail = EmailDetailService.getEmail();
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
+      const refUser = firebase.database().ref().child(`user/${res.userData.index}`);
+      this.data = $firebaseObject(ref);
+      this.users = $firebaseObject(refUser);
+      this.res=res.userData.index;
+      this.mdDialog = $mdDialog;
+      this.res=res.userData.index;
+      this.EmailDetailServiceSocial = EmailDetailService.getSocial();
+      this.EmailDetailServiceAds = EmailDetailService.getAds();
+      this.EmailDetailServiceBlock = EmailDetailService.getBlock();
+      this.EmailDetailServiceEmail = EmailDetailService.getEmail();
+    });
   }
   $onInit() {
     this.name = 'grid';
@@ -67,7 +72,7 @@ class GridController {
       clickOutsideToClose: true
     });
     this.mdDialog.show(confirm).then(() => {
-      firebase.database().ref().child('user/0').child(`listOfEmails/${row.entity.id-1}`).remove();
+      firebase.database().ref().child(`user/${this.res}`).child(`listOfEmails/${row.entity.id-1}`).remove();
     });
   }
   safeOrBlock(row) {

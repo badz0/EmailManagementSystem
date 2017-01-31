@@ -31,10 +31,12 @@ import translationUa from './locale-ua.json';
 import pdfMaker from 'pdfmake/build/pdfmake.min.js';
 import vfs_fonts from 'pdfmake/build/vfs_fonts.js';
 import csv from 'csv';
+import FiredbAutorisation from './app.fireb.authentification.service.js';
 
 angular.module('app', [
   uiRouter,
   'ui.grid',
+  'ui.grid.exporter',
   Common,
   Components,
   ngMaterial,
@@ -68,4 +70,5 @@ angular.module('app', [
   .useLocalStorage();
 })
 .component('app', AppComponent)
-.service('Firedbservice',Firedbservice);
+.service('Firedbservice',Firedbservice)
+.service('FiredbAutorisation', FiredbAutorisation);

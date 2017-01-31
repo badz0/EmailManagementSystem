@@ -9,7 +9,7 @@ import ngMessages from 'angular-messages';
 import 'angular-material/angular-material.css';
 import cabinetUploader from './cabinet.uploader.directive';
 import Constants from './cabinet.constant';
-import AuthService  from '../auth/auth.service';
+
 
 let cabinetModule = angular.module('cabinet', [
   uiRouter,
@@ -36,7 +36,7 @@ let cabinetModule = angular.module('cabinet', [
 .directive('cabinetUploader',() => new cabinetUploader)
 
 .constant('Сonstants',Constants)
-.service('AuthService', AuthService)
+
 .name;
 
 export default cabinetModule;
