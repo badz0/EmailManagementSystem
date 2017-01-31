@@ -3,7 +3,14 @@ import * as firebase from 'firebase';
 class cabinetUploader{
   constructor(){
     this.restrict='A';
-    this.controller = cabinetUploaderDirectiveController;
+    this.controller = class cabinetUploaderDirectiveController {
+      constructor (FiredbAutorisation) {'ngInject';
+        this.FiredbAutorisation = FiredbAutorisation;
+        this.FiredbAutorisation.responseData().then(res => {
+          this.res=res.userData.index;
+        });
+      }
+    };
     this.controllerAs = 'ctrl';
     this.bindToController = true;
   }
@@ -23,12 +30,3 @@ class cabinetUploader{
 }
 
 export default cabinetUploader;
-
-class cabinetUploaderDirectiveController {
-  constructor (FiredbAutorisation) {'ngInject';
-    this.FiredbAutorisation = FiredbAutorisation;
-    this.FiredbAutorisation.responseData().then(res => {
-      this.res=res.userData.index;
-    });
-  }
-}

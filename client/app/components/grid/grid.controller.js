@@ -12,6 +12,7 @@ class GridController {
       this.data = $firebaseObject(ref);
       this.users = $firebaseObject(refUser);
       this.mdDialog = $mdDialog;
+      this.res=res.userData.index;
       this.EmailDetailServiceSocial = EmailDetailService.getSocial();
       this.EmailDetailServiceAds = EmailDetailService.getAds();
       this.EmailDetailServiceBlock = EmailDetailService.getBlock();
