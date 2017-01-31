@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 import templateDelete from '../confirmDialog/confirm.template.del.html';
 import controller from '../confirmDialog/confirm.controller.js';
 class EmailController {
-  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state,FiredbAutorisation) {
+  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state, FiredbAutorisation) {
     'ngInject';
      this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
@@ -12,6 +12,10 @@ class EmailController {
     this.EmailDetailService = EmailDetailService;//.getList();
     this.mdDialog = $mdDialog;
     this.state = $state;
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.res=res.userData.index;
+    });
   }
   $onInit() {
     this.EmailDetailService.getList().then((res) => {

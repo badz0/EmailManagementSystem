@@ -29,7 +29,6 @@ module.exports = function(config) {
     preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] 
     },
     devtool: 'inline-source-map',
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
@@ -54,36 +53,27 @@ module.exports = function(config) {
       type : 'html',
       dir : 'coverage/'
     },
-
-
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    
+    coverageReporter: 
+    {
+      type : 'html',
+      dir : 'coverage/'
+    },
+  
     // web server port
     port: 8081,
-
-
-    // enable / disable colors in the output (reporters and logs)
+    // enable colors in the output
     colors: true,
-
-
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
     logLevel: config.LOG_INFO,
-
-
-    // enable / disable watching file and executing tests whenever any file changes
+    // toggle whether to watch files and rerun tests upon incurring changes
     autoWatch: true,
-
-
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['Chrome'],
-
-
-    // Continuous Integration mode
-    // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
-
-    // Concurrency level
-    // how many browser should be started simultaneous
-    concurrency: Infinity
-  })
-}
+    // if true, Karma runs tests once and exits
+    singleRun: false
+  });
+};
