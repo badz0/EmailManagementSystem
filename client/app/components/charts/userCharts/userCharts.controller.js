@@ -7,6 +7,8 @@ class UserChartController {
     this.FiredbAutorisation = FiredbAutorisation;
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.configData = GlobalHardcodeConfigService.configData();
+    this.usersList = [];
+    this.user = {};
   };
 
   $onInit() {
@@ -46,6 +48,7 @@ class UserChartController {
       contentElement: '#usersListGrid',
       clickOutsideToClose: true
     });
+
   };
 
   showUserEmails(user) {
@@ -61,7 +64,7 @@ class UserChartController {
       this.usersList = res.firedbChartData.user;
       this.color = res.userCabinetColor;
     });
-  }
+  };
 };
 
 export default UserChartController;

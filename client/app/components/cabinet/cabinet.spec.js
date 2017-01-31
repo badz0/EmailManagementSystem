@@ -23,99 +23,99 @@ describe('Cabinet', ()=>{
 	    return defer.promise;
       });
       spyOn(FiredbAutorisation,'getUserData').and.callFake( () => {
-        return {"avatar" : "https://firebasestorage.googleapis.com/v0/b/emailmanagementsystem-d4f11.appspot.com/o/user9%2F9.png?alt=media&token=cb537f71-6f8d-4300-b9f3-5f8b3c8d37b0"
+        return {'avatar' : 'https://firebasestorage.googleapis.com/v0/b/emailmanagementsystem-d4f11.appspot.com/o/user9%2F9.png?alt=media&token=cb537f71-6f8d-4300-b9f3-5f8b3c8d37b0'
         };
       });
       spyOn(FiredbAutorisation,'updateUser').and.callFake( () => {
-        return "executed"; 
+        return 'executed'; 
       });
       spyOn(FiredbAutorisation,'deleteUserAvatar').and.callFake( () => {
-        return "executed"; 
+        return 'executed'; 
       });
 	  scope = $injector.get('$rootScope').$new();
 	  controller = $controller(CabinetController, {
 	    $firebaseObject: $firebaseObject,
-        $scope: scope,
-        FiredbAutorisation: FiredbAutorisation,
-        $mdColorPalette:mdColorPalette,
-        Сonstants:Сonstants
-      });
+    $scope: scope,
+    FiredbAutorisation: FiredbAutorisation,
+    $mdColorPalette:mdColorPalette,
+    Сonstants:Сonstants
+  });
       scope.$digest();
     }));
     
-	it('constructor shoud be defined', ()=>{
+    it('constructor shoud be defined', ()=>{
 	  expect(controller.constructor).toBeDefined();
-	});
-	it('should get object with users data', ()=>{
+    });
+    it('should get object with users data', ()=>{
 	  expect(controller.users).toEqual(jasmine.any(Object));
-	});
-	it('all methods should be defined', ()=>{
+    });
+    it('all methods should be defined', ()=>{
 	  expect(controller.$onInit).toBeDefined();
 	  expect(controller.clearCity).toBeDefined();
 	  expect(controller.submitForm).toBeDefined();
 	  expect(controller.getFileName).toBeDefined();
 	  expect(controller.deleteAvatar).toBeDefined();
 	  expect(controller.selectTheme).toBeDefined();
-	});
-	it('should have a name property', ()=>{
+    });
+    it('should have a name property', ()=>{
 	  let controller = CabinetController;
 	  expect(controller.name).toEqual('CabinetController'); 
-	});
+    });
 	
-	describe('$onInit()',()=>{
+    describe('$onInit()',()=>{
 	  it('countries should be object',()=>{
 	    controller.$onInit();
 	    expect(controller.countries).toEqual(countries);
 	  });
 	  it('user should be object',()=>{
 	    controller.$onInit();
-		expect(controller.user).toEqual(jasmine.any(Object));
+    expect(controller.user).toEqual(jasmine.any(Object));
 	  });
-	});
+    });
 	
-	describe('clearCity()',()=>{
+    describe('clearCity()',()=>{
 	  it('called and executed properly',()=>{
-		controller.$onInit();
-		controller.clearCity();
-		expect(controller.user.city).toEqual(null);
+    controller.$onInit();
+    controller.clearCity();
+    expect(controller.user.city).toEqual(null);
 	  });
-	});
+    });
 	
-	describe('deleteAvatar()',()=>{
+    describe('deleteAvatar()',()=>{
 	  it('called and executed properly',()=>{
-		controller.$onInit();
-		controller.deleteAvatar();
-		expect(controller.FiredbAutorisation.deleteUserAvatar).toHaveBeenCalled();
-		expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
+    controller.$onInit();
+    controller.deleteAvatar();
+    expect(controller.FiredbAutorisation.deleteUserAvatar).toHaveBeenCalled();
+    expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
 	  });
-	});
+    });
 	
-	describe('getFileName()',()=>{
+    describe('getFileName()',()=>{
 	  it('called and executed properly ', () => {
-		controller.$onInit();
-		expect(controller.getFileName()).toEqual('9.png')
-      });
-	});
+    controller.$onInit();
+    expect(controller.getFileName()).toEqual('9.png');
+  });
+    });
 		
-	describe('submitForm()',()=>{
+    describe('submitForm()',()=>{
 	  it('called and executed properly',()=>{
-		controller.$onInit();
-		controller.user.country={'country':"USA"};
-		controller.submitForm();
-		expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
-		expect(controller.user).toEqual(jasmine.any(Object));
+    controller.$onInit();
+    controller.user.country={'country':'USA'};
+    controller.submitForm();
+    expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
+    expect(controller.user).toEqual(jasmine.any(Object));
 	  });
-	});
+    });
 		
-	describe('selectTheme(color)',()=>{
+    describe('selectTheme(color)',()=>{
 	  it('called and executed properly',()=>{
-		controller.$onInit();
-		let color='green';
-		controller.selectTheme(color);
-		expect(controller.user.themeColor).toEqual(jasmine.any(String));
-		expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
+    controller.$onInit();
+    let color='green';
+    controller.selectTheme(color);
+    expect(controller.user.themeColor).toEqual(jasmine.any(String));
+    expect(controller.FiredbAutorisation.updateUser).toHaveBeenCalled();
 	  });
-	});
+    });
   });
 	
   describe('Component', () => {

@@ -1,29 +1,19 @@
 import userChartsController from './userCharts.controller';
 import GlobalHardcode from '../../../app.globalHardcodeConfig.service.js';
-import dialogData from '../charts.dialogBuild.service.spec.js';
+import dialogData from '../charts.dialogBuild.service.js';
 import chartsFirebaseData from '../charts.firebaseData.service.js';
 import specConfig from '../charts.specConfig';
 
-
-
-
-
 describe('userCharts Controller', () => {
 
-
-    console.log("HERE", dialogData)
-    console.log("HERE", chartsFirebaseData)
-
   let scope, controller,  AuthService, translate, dragular, element, mdDialog;
-  let Firedbservice = {};
-  let dialog = {};
-  let FiredbAutorisation = {};
-
-  let ChartsFirebaseDataService = {};
-  let GlobalHardcodeConfigService, dialogDataService, chartsFirebaseDataService;
+  let Firedbservice = {},
+    dialog = {},
+    FiredbAutorisation = {},
+    ChartsFirebaseDataService = {},
+    GlobalHardcodeConfigService;
 
   beforeEach(inject(($injector, $controller, $q) => {
-
     element = jasmine.createSpyObj('$element', ['element']);
     translate = jasmine.createSpyObj('$translate', ['translate']);
     AuthService = jasmine.createSpyObj('AuthService', ['registerAuthenticationListener']);
@@ -33,20 +23,25 @@ describe('userCharts Controller', () => {
     FiredbAutorisation.responseData = () => {};
     Firedbservice.responseData = () => {};
     ChartsFirebaseDataService.chartsDataBuild = () => {};
+    dialog.show = () => {};
+    dialogData.dialogDataServiceData = () => {};
 
-    // dialogDataService = new dialogData();
-    // chartsFirebaseDataService = new chartsFirebaseData();
     GlobalHardcodeConfigService = new GlobalHardcode();
-
     const res = specConfig;
 
     spyOn(Firedbservice, 'responseData').and.returnValue( () => {
-      return 'Fake Data';
+      return res;
+    });
+
+    spyOn(dialogData, 'dialogDataServiceData').and.callFake( () => {
+      let defer = $q.defer();
+      defer.resolve(res);
+      return defer.promise;
     });
 
     spyOn(ChartsFirebaseDataService, 'chartsDataBuild').and.callFake( () => {
       let defer = $q.defer();
-      defer.resolve([{}, {}, {}]);
+      defer.resolve(res);
       return defer.promise;
     });
 
@@ -57,7 +52,6 @@ describe('userCharts Controller', () => {
     });
 
     scope = $injector.get('$rootScope').$new();
-
     controller = $controller(userChartsController, {
       Firedbservice: Firedbservice,
       $scope: scope,
@@ -83,7 +77,6 @@ describe('userCharts Controller', () => {
   }));
 
   describe('Constructor values', () => {
-
     it('Constructor values should be defined', () => {
       expect(controller.dragularService).toBeDefined();
       expect(controller.dialog).toBeDefined();
@@ -97,6 +90,7 @@ describe('userCharts Controller', () => {
 
   describe('Controller methods', () => {
     it('All Controller methods should be defined', () => {
+      controller.showDialogCharts(0);
       expect(controller.$onInit).toBeDefined();
       expect(controller.showDialogCharts).toBeDefined();
       expect(controller.getUserData).toBeDefined();
@@ -105,19 +99,30 @@ describe('userCharts Controller', () => {
       expect(controller.defaultConstructBuilder).toBeDefined();
     });
   });
-  describe('inside methods should be called', () => {
+
+  describe('$onInit()', () => {
     it('$onInit methods should be called', () => {
       controller.$onInit();
       expect(controller.getUserData).toHaveBeenCalled();
       expect(controller.dragularService).toHaveBeenCalled();
       expect(controller.defaultConstructBuilder).toHaveBeenCalled();
     });
-    describe('getUserData method', () => {
-      it('getUserData', () => {
+
+    describe('getUserData()', () => {
+      it('getUserData method should be called', () => {
         controller.getUserData();
         expect(FiredbAutorisation.responseData).toHaveBeenCalled();
       });
     });
-  });
 
+    describe('defaultConstructBuilder()', () => {
+      it('defaultConstructBuilder() method should work properly and userList be equal Array', () => {
+        controller.showDialogCharts(0);
+        controller.defaultConstructBuilder();
+        controller.showUserEmails(0);
+        expect(controller.defaultConstructBuilder).toHaveBeenCalled();
+        expect(controller.usersList).toEqual(jasmine.any(Array));
+      });
+    });
+  });
 });

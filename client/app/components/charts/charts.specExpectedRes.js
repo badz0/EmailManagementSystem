@@ -3,7 +3,7 @@
  */
 const expect = {
   name: 'Mister',
-  content: "SALE!SALE!SALE!",
+  content: 'SALE!SALE!SALE!',
   firstGroup: 'primary',
   firstDate: '2016-12-01',
   firstRecip: 'ivanna.sav08@gmail.com',
