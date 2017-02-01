@@ -8,11 +8,28 @@ import * as firebase from 'firebase'
 describe('Auth', () => {
 
   beforeEach(angular.mock.module(authModule));
+  let $rootScope, $state, $location;
+    beforeEach(inject(($injector) => {
+        $rootScope = $injector.get('$rootScope');
+        $state = $injector.get('$state');
+        $location = $injector.get('$location');
+  }));
+
+  describe('Module', () => {
+    it('default component should be auth', () => {
+      $location.url('/auth');
+      $rootScope.$digest();
+      expect($state.current.component).toEqual('auth');
+    });
+  });
 
   describe('Component', () => {
     let component = authComponent;
     it('SSSinvokes the right controller', () => {
       expect(component.controller).toEqual(AuthController);
+    });
+    it('constructor shoud be defined', ()=>{
+      expect(component.constructor).toBeDefined();
     });
   });
 
@@ -21,16 +38,25 @@ describe('Auth', () => {
     it('should have a name property', ()=>{
       expect(controller.name).toEqual('AuthController'); 
     });
+    it('constructor shoud be defined', ()=>{
+      expect(controller.constructor).toBeDefined();
+    });
   });
+
+  describe('Run', () => {
+    let run = AuthRun;
+    it('should have a name property', ()=>{
+      expect(run.name).toEqual('AuthRun'); 
+    });
+    it('constructor shoud be defined', ()=>{
+      expect(run.constructor).toBeDefined();
+    });
+  })
 
   describe('Service', () => {
     let aService, lock, authManager, FiredbAutorisation, localStorage, lockProvider;
     beforeEach(inject(($q, $state) => {
-      lock = jasmine.createSpyObj('lock', ['on', 'show', 'getUserInfo', 'interceptHash']);
-      authManager = jasmine.createSpyObj('authManager', ['unauthenticate', 'authenticate', 'isAuthenticated', 'checkAuthOnRefresh']);
       FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['getUserDetailsArr']);
-      localStorage = jasmine.createSpyObj('localStorage', ['removeItem', 'setItem']);
-      lockProvider = jasmine.createSpyObj('lockProvider', ['init']);
       aService = new AuthService($q, lock, authManager, FiredbAutorisation, $state);
     }));
     it('have 5 function', () => {
@@ -40,47 +66,14 @@ describe('Auth', () => {
       expect(aService.isAuthenticated).toBeDefined();
       expect(aService.getProfileDeferred).toBeDefined();
     });
-    it('Сheck if FiredbAutorisation was called', () => {
+    it('constructor shoud be defined', ()=>{
+      expect(aService.constructor).toBeDefined();
+    });
+    it('check if FiredbAutorisation was called', () => {
       expect(FiredbAutorisation.getUserDetailsArr).toHaveBeenCalled();
     });
-    it('Can get clientID and domain from Auth0 client', ()=> {
+    it('can get clientID and domain from Auth0 client', ()=> {
       expect(Auth0Lock).toBeDefined();
-    });
-    it('Can show plugin', () => {
-      expect(lock.show).toBeDefined();
-    });
-    it('Can authenficated', () => {
-      expect(lock.on).toBeDefined();
-    });
-    it('Can get users info', () => {
-      expect(lock.getUserInfo).toBeDefined();
-    });
-    it('Run function lock.interceptHash', () => {
-      expect(lock.interceptHash).toBeDefined();
-    });
-    it('isAuthenticated = true', () => {
-      authManager.isAuthenticated=true;
-      expect(authManager.isAuthenticated).toBeTruthy();
-    });
-    it('isAuthenticated = false', () => {
-      authManager.isAuthenticated=false;
-      expect(authManager.isAuthenticated).toBeFalsy();
-    });
-    it('isUnAuthenticated?', () => {
-      expect(authManager.unauthenticate).toBeDefined();
-    });
-    it('have Authenticated function?', () => {
-      expect(authManager.authenticate).toBeDefined();
-    });
-    it('can handle session on refresh', () => {
-      expect(authManager.checkAuthOnRefresh).toBeDefined();
-    });
-    it('can work with local storage', () => {
-      expect(localStorage.removeItem).toBeDefined();
-      expect(localStorage.setItem).toBeDefined();
-    });
-    it('can init', () => {
-      expect(lockProvider.init).toBeDefined();
     });
   });
 });
