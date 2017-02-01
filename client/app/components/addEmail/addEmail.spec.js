@@ -5,22 +5,34 @@ describe('Add email component', () => {
   describe('Controller', () => {
     let scope, controller, componentController, getData;
     let mdDialog = {};
+    let FiredbAutorisation = {
+      responseData: () => {}
+    };
+
     beforeEach(angular.mock.module('addEmail'));
     beforeEach(inject(($injector, $controller, $q, $document) => {
       componentController = $injector.get('$componentController');
-      mdDialog.show = () => {};
 
+      mdDialog.show = () => {};
       spyOn(mdDialog, 'show').and.callFake( () => {
         let defer = $q.defer();
         defer.resolve('Checking value');
         return defer.promise;
       });
+
+      spyOn(FiredbAutorisation, 'responseData').and.callFake( () => {
+        let defer = $q.defer();
+        defer.resolve({ userData: 'userData'});
+        return defer.promise;
+      });
+
       getData = jasmine.createSpy('getData')
       scope = $injector.get('$rootScope').$new();
       controller = componentController('addEmail', {
         $scope: scope,
         $mdDialog: mdDialog,
-        $document: $document
+        $document: $document,
+        FiredbAutorisation: FiredbAutorisation
       }, {
         returnData: getData
       });
@@ -31,6 +43,7 @@ describe('Add email component', () => {
     it('Check if the openDialog function was called', () => {
       expect(mdDialog.show).toHaveBeenCalled();
     });
+
     it('Check if the parent function getData was called with right argument', () => {
       expect(getData).toHaveBeenCalledWith({data: 'Checking value'});
     });

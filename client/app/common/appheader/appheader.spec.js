@@ -3,12 +3,12 @@ import appheaderController from './appheader.controller';
 describe('App Header', () => {
 
   describe('Controller', () => {
-    let scope, controller, mdSidenav, AuthService;
+    let scope, controller, AuthService;
     let FiredbAutorisation = {};
+    let toggle = { toggle: () => {} };
+    let mdSidenav = () => { return toggle };
 
     beforeEach(inject(($injector, $controller, $q) => {
-      mdSidenav = jasmine.createSpyObj('$mdSidenav', ['toggle']);
-
       AuthService = jasmine.createSpyObj('AuthService', ['registerAuthenticationListener']);
 
       FiredbAutorisation.responseData = () => {};
@@ -19,6 +19,7 @@ describe('App Header', () => {
         return defer.promise;
       });
 
+      spyOn(toggle, 'toggle');
       scope = $injector.get('$rootScope').$new();
       controller = $controller(appheaderController, {
         $scope: scope,
@@ -29,8 +30,9 @@ describe('App Header', () => {
       scope.$digest();
     }));
 
-    it('Check if method toggleMenu is defined', ()=> {
-      expect(controller.toggleMenu).toBeDefined();
+    it('Check if method toggleMenu was called', ()=> {
+      controller.toggleMenu();
+      expect(toggle.toggle).toHaveBeenCalled();
     });
 
     it('Сheck if authListener was called', () => {

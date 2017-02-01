@@ -40,15 +40,15 @@ module.exports = function(config) {
       noInfo: true // prevent console spamming when running in Karma!
     },
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    
-    coverageReporter: 
+
+    coverageReporter:
     {
       type : 'html',
       dir : 'coverage/'
     },
-  
-    
-    reporters: ['progress', 'coverage'],
+
+
+    reporters: ['mocha', 'coverage'],
     // web server port
     port: 8081,
     // enable colors in the output
