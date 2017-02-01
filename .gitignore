@@ -4,4 +4,7 @@
 node_modules
 .settings
 *.log
+.idea
+coverage
+generator
 dist/
