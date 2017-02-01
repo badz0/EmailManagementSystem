@@ -10,17 +10,19 @@ module.exports = function(config) {
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
     // list of files/patterns to load in the browser
-    files: [{ pattern: 'spec.bundle.js', watched: false },
+    files: [
+      { pattern: 'https://cdn.auth0.com/js/lock/10.9.1/lock.min.js', watched: false, served: false, included: true },
+      { pattern: 'spec.bundle.js', watched: false }
     ],
     // files to exclude
     exclude: [],
     plugins: [
       require("karma-jasmine"),
       require("karma-chrome-launcher"),
-      require("karma-mocha-reporter"),
       require("karma-sourcemap-loader"),
       require("karma-webpack"),
       require("karma-coverage")
+
     ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
@@ -40,14 +42,11 @@ module.exports = function(config) {
       noInfo: true // prevent console spamming when running in Karma!
     },
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-
     coverageReporter:
     {
       type : 'html',
       dir : 'coverage/'
     },
-
-
     reporters: ['mocha', 'coverage'],
     // web server port
     port: 8081,
