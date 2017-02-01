@@ -1,14 +1,11 @@
 class GlobalChartController {
-  constructor (Firedbservice, ChartsFirebaseDataService, GlobalHardcodeConfigService, FiredbAutorisation, $translate, AuthService, authManager) {'ngInject';
-    this.firedata = ChartsFirebaseDataService;
+  constructor (ChartsFirebaseDataService, GlobalHardcodeConfigService, FiredbAutorisation, $translate) {'ngInject';
+    this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.FiredbAutorisation = FiredbAutorisation;
     this.translate = $translate;
-    this.AuthService = AuthService;
-    this.AuthService.registerAuthenticationListener();
-    this.FiredbAutorisation = FiredbAutorisation;
     this.configData = GlobalHardcodeConfigService.configData();
-
   };
+
   $onInit() {
     this.getUserData();
   };
@@ -26,7 +23,7 @@ class GlobalChartController {
   };
 
   getUserData() {
-    this.firedata.chartsDataBuild().then(res => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       this.color = res.userCabinetColor;
     });
     this.FiredbAutorisation.responseData().then(res => {
@@ -37,16 +34,17 @@ class GlobalChartController {
   destroyCharts() {
     this.configData.navBarDisplay.globalChartsStats = false;
     AmCharts.clear();
+    return !!AmCharts.isReady;
   };
 
   chartServiceData() {
     if(this.configData.navBarDisplay.globalChartsStats) {
       this.configData.navBarDisplay.globalChartsStats = false;
       AmCharts.clear();
-      return;
+      return !!AmCharts.isReady;
     }
     this.configData.navBarDisplay.globalChartsStats = true;
-    this.firedata.chartsDataBuild().then(res => {
+    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       for (let key in this.configData.chartsData) {
         this.configData.chartsData[key].dataProvider = res[key];
       };
@@ -56,7 +54,9 @@ class GlobalChartController {
       AmCharts.makeChart('emailsMaxChart', this.configData.chartsData.emailsMaxLine);
       AmCharts.makeChart('chartsActive', this.configData.chartsData.singnUpTimes);
       AmCharts.makeChart('dateEmailStat', this.configData.chartsData.emailDateStat);
+      return !!AmCharts.isReady;
     });
+
   };
 };
 
