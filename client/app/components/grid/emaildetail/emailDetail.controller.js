@@ -9,13 +9,10 @@ class EmailController {
       this.res=res.userData.index;
     });
     this.idParam = parseInt($stateParams.id);
-    this.EmailDetailService = EmailDetailService;//.getList();
+    this.EmailDetailService = EmailDetailService;
     this.mdDialog = $mdDialog;
     this.state = $state;
     this.FiredbAutorisation = FiredbAutorisation;
-    this.FiredbAutorisation.responseData().then(res => {
-      this.res=res.userData.index;
-    });
   }
   $onInit() {
     this.EmailDetailService.getList().then((res) => {

@@ -2,7 +2,7 @@ import emailController from './emailDetail.controller';
 import emailComponent from './emailDetail.component';
 import emailDetail from './emailDetail.html';
 
-describe('Controller', () => {
+describe('Grid_Nadolskyi Controller', () => {
   let controller, state, scope;
   let stateParams = {
     id: 1
@@ -23,21 +23,9 @@ describe('Controller', () => {
     spyOn(EmailDetailService, 'getList').and.callFake(() => {
       let defer = $q.defer();
       defer.resolve([{
-        "content": "Hi!I'm a student.",
-        "date": "2016-12-01",
-        "group": "primary",
-        "id": 1,
-        "isSafe": false,
-        "recipient": "ivanna.sav08@gmail.com",
-        "subject": "Education"
+        "id": 1
       }, {
-        "content": "A little smile. A word of cheer. A bit of love from someone near.These make a Merry Christmas!",
-        "date": "2016-12-01",
-        "group": "social",
-        "id": 2,
-        "isSafe": true,
-        "recipient": "mail2.adress@gmail.com",
-        "subject": "Christmas greetings"
+        "id": 2
       }]);
       return defer.promise;
     });
@@ -89,7 +77,7 @@ describe('Controller', () => {
   });
 });
 
-describe('Component', () => {
+describe('Grid_Nadolskyi Component', () => {
   it('right template', () => {
     expect(emailComponent.template).toEqual(emailDetail)
   });
