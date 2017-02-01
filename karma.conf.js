@@ -1,32 +1,27 @@
-// Karma configuration
-// Generated on Sun Jan 22 2017 16:17:33 GMT+0200 (FLE Standard Time)
-
-module.exports = function(config) {
+module.exports = function (config) {
   config.set({
-
-    // base path that will be used to resolve all patterns (eg. files, exclude)
+    // base path used to resolve all patterns
     basePath: '',
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
     // list of files/patterns to load in the browser
-    files: [{ pattern: 'spec.bundle.js', watched: false },
+    files: [
+      { pattern: 'https://cdn.auth0.com/js/lock/10.9.1/lock.min.js', watched: false, served: false, included: true },
+      { pattern: 'spec.bundle.js', watched: false }
     ],
     // files to exclude
     exclude: [],
     plugins: [
-
-      require('karma-jasmine'),
-      require('karma-chrome-launcher'),
-      require('karma-mocha-reporter'),
-      require('karma-sourcemap-loader'),
-      require('karma-webpack')
+      require("karma-jasmine"),
+      require("karma-chrome-launcher"),
+      require("karma-sourcemap-loader"),
+      require("karma-webpack"),
+      require('karma-coverage')
     ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] },
-
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
     webpack: {
       devtool: 'inline-source-map',
       module: {
@@ -41,9 +36,8 @@ module.exports = function(config) {
     webpackServer: {
       noInfo: true // prevent console spamming when running in Karma!
     },
-
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['mocha'],
+    reporters: ['progress', 'coverage'],
     // web server port
     port: 9876,
     // enable colors in the output
@@ -58,6 +52,5 @@ module.exports = function(config) {
     browsers: ['Chrome'],
     // if true, Karma runs tests once and exits
     singleRun: false
-
   });
 };

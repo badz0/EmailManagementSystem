@@ -3,6 +3,7 @@ class FiredbAutorisationService {
   constructor($firebaseObject,Firedbservice) {'ngInject';
     this.ref = firebase.database().ref();
     this.res = $firebaseObject(this.ref);
+    this.$firebaseObject=$firebaseObject;
   };
   responseData() {
     return this.res.$loaded().then(res => {
@@ -31,7 +32,7 @@ class FiredbAutorisationService {
   };
 
   getUserDetails() {
-    return $firebaseObject(firebase.database().ref().child('user'));
+    return this.$firebaseObject(firebase.database().ref().child('user'));
   }
 }
 export default FiredbAutorisationService;
