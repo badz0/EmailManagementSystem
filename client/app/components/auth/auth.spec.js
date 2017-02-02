@@ -60,7 +60,7 @@ describe('Auth', () => {
   });
 
   describe('Service', () => {
-    let aService, lock, authManager, FiredbAutorisation, localStorage, lockProvider;
+    let aService, lock, authManager, FiredbAutorisation;
     beforeEach(inject(($q, $state) => {
       FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['getUserDetailsArr']);
       aService = new AuthService($q, lock, authManager, FiredbAutorisation, $state);
