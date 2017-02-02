@@ -1,5 +1,5 @@
 class AddDialogController {
-  constructor($mdDialog, ValidationService,FiredbAutorisation) {
+  constructor($mdDialog, ValidationService, FiredbAutorisation) {
     'ngInject';
     this.mdDialog = $mdDialog;
     this.ValidationService = ValidationService;
