@@ -9,6 +9,7 @@ describe('Auth', () => {
 
   beforeEach(angular.mock.module(authModule));
   let $rootScope, $state, $location;
+  let state = 'auth';
     beforeEach(inject(($injector) => {
         $rootScope = $injector.get('$rootScope');
         $state = $injector.get('$state');
@@ -21,11 +22,16 @@ describe('Auth', () => {
       $rootScope.$digest();
       expect($state.current.component).toEqual('auth');
     });
+    it('should activate the state', function() {
+      $state.go(state);
+      $rootScope.$digest();
+      expect($state.current.name).toBe(state);
+    });
   });
 
   describe('Component', () => {
     let component = authComponent;
-    it('SSSinvokes the right controller', () => {
+    it('invokes the right controller', () => {
       expect(component.controller).toEqual(AuthController);
     });
     it('constructor shoud be defined', ()=>{
@@ -51,7 +57,7 @@ describe('Auth', () => {
     it('constructor shoud be defined', ()=>{
       expect(run.constructor).toBeDefined();
     });
-  })
+  });
 
   describe('Service', () => {
     let aService, lock, authManager, FiredbAutorisation, localStorage, lockProvider;

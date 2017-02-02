@@ -12,7 +12,9 @@ class AuthService {
     this.deferredProfile = $q.defer();
   }
   login() {
-    var lock = new Auth0Lock('YWiJP0aecm768DSElJl8YhqtIbAgx7gm', 'nerosman.eu.auth0.com');
+    const clientID = 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm';
+    const clientDomain = 'nerosman.eu.auth0.com';
+    const lock = new Auth0Lock(clientID, clientDomain);
     lock.show();
   }
   logout() {
@@ -34,7 +36,6 @@ class AuthService {
           return console.log(error);
         }
         if(profile) {
-          firebase.database().ref('stories').remove();
           firebase.database().ref('stories').push(profile);
         }
         window.localStorage.setItem('profile', JSON.stringify(profile));
