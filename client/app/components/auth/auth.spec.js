@@ -65,21 +65,11 @@ describe('Auth', () => {
       FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['getUserDetailsArr']);
       aService = new AuthService($q, lock, authManager, FiredbAutorisation, $state);
     }));
-    it('have 5 function', () => {
-      expect(aService.login).toBeDefined();
-      expect(aService.logout).toBeDefined();
-      expect(aService.registerAuthenticationListener).toBeDefined();
-      expect(aService.isAuthenticated).toBeDefined();
-      expect(aService.getProfileDeferred).toBeDefined();
-    });
     it('constructor shoud be defined', ()=>{
       expect(aService.constructor).toBeDefined();
     });
     it('check if FiredbAutorisation was called', () => {
       expect(FiredbAutorisation.getUserDetailsArr).toHaveBeenCalled();
-    });
-    it('can get clientID and domain from Auth0 client', ()=> {
-      expect(Auth0Lock).toBeDefined();
     });
   });
 });
