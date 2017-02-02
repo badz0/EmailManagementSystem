@@ -16,16 +16,12 @@ class CabinetController {
   }
   getCountry(){
     if(this.user.country===undefined){
-      if(this.users.country===undefined){
-        return " ";
-      }else{
-        return this.users.country;
-      }
+      return this.users.country;
     }else{
       return this.user.country.country;
     }
   }
-  submitForm(){
+  submitForm() {
     this.user.country=this.getCountry();
     this.FiredbAutorisation.updateUser(this.res,this.user);
     this.user={};
