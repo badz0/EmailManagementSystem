@@ -2,7 +2,7 @@ import emailController from './emailDetail.controller';
 import emailComponent from './emailDetail.component';
 import emailDetail from './emailDetail.html';
 
-describe('Grid_Nadolskyi Controller', () => {
+describe('Grid Component emailDetail controller', () => {
   let controller, state, scope;
   let stateParams = {
     id: 1
@@ -77,7 +77,7 @@ describe('Grid_Nadolskyi Controller', () => {
   });
 });
 
-describe('Grid_Nadolskyi Component', () => {
+describe('Grid Component emailDetail component', () => {
   it('right template', () => {
     expect(emailComponent.template).toEqual(emailDetail)
   });

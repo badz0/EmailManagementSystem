@@ -1,5 +1,5 @@
 import confirmController from './confirm.controller';
-describe('Grid_Nadolskyi Confirm controller', () => {
+describe('Grid Cmponent confirmDialog controller', () => {
   let controller;
   beforeEach(() => {
     controller = new confirmController();
