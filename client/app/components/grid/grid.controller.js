@@ -17,7 +17,7 @@ class GridController {
     });
     this.gridOptions = {
       data: this.allEmailsData
-    }
+    };
   }
   $onInit() {
     this.gridOptions = {
