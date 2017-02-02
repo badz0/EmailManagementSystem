@@ -6,9 +6,7 @@ import ngMessages from 'angular-messages';
 
 let userTableModule = angular.module('userTable', [
   uiRouter,
-  'ngMessages',
-  'ui.grid',
-    
+      
 ])
 
 
