@@ -3,7 +3,7 @@ import templateDelete from './confirmDialog/confirm.template.del.html';
 import templateBlock from './confirmDialog/confirm.template.block.html';
 import controller from './confirmDialog/confirm.controller.js';
 class GridController {
-  constructor(Firedbservice, EmailDetailService, $firebaseObject,FiredbAutorisation,$mdDialog) {
+  constructor(Firedbservice, EmailDetailService, $firebaseObject, FiredbAutorisation, $mdDialog) {
     'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
@@ -13,10 +13,13 @@ class GridController {
       this.EmailDetailServiceAds = EmailDetailService.getAds();
       this.EmailDetailServiceBlock = EmailDetailService.getBlock();
       this.EmailDetailServiceEmail = EmailDetailService.getEmail();
+      this.gridOptions.data = this.allEmailsData;
     });
+    this.gridOptions = {
+      data: this.allEmailsData
+    }
   }
   $onInit() {
-    this.name = 'grid';
     this.gridOptions = {
       enableFiltering: true,
       exporterMenuCsv: false,
@@ -40,11 +43,10 @@ class GridController {
         enableFiltering: false,
         cellTemplate: '<button class="delete" ng-click="grid.appScope.$ctrl.deleteUser(row)">Delete</button><button class="btn primary" ng-click="grid.appScope.$ctrl.safeOrBlock(row)">Blocklist</button>'
       }, ],
-      data: this.data
     };
   }
   allEmails() {
-    this.gridOptions.data = this.data;
+    this.gridOptions.data = this.allEmailsData;
   }
   emailEmails() {
     this.gridOptions.data = this.EmailDetailServiceEmail;
@@ -80,7 +82,7 @@ class GridController {
     });
     this.mdDialog.show(confirm).then(() => {
       row.entity.isSafe = !row.entity.isSafe;
-      this.data.$save(row);
+      this.allEmailsData.$save(row);
     });
   }
 }

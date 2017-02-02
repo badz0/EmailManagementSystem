@@ -11,14 +11,14 @@ module.exports = function (config) {
     exclude: [],
     plugins: [
       require("karma-jasmine"),
+      require("karma-mocha-reporter"),
       require("karma-chrome-launcher"),
       require("karma-sourcemap-loader"),
-      require("karma-webpack"),
-      require('karma-coverage'),
+      require("karma-webpack")
     ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] },
     webpack: {
       devtool: 'inline-source-map',
       module: {
@@ -34,12 +34,8 @@ module.exports = function (config) {
       noInfo: true // prevent console spamming when running in Karma!
     },
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['mocha'],
 
-    coverageReporter: {
-      type : 'html',
-      dir : 'coverage/'
-    },
     // web server port
     port: 8081,
     // enable colors in the output
