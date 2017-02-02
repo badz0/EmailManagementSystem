@@ -14,15 +14,8 @@ class CabinetController {
     this.countries=countries;
     this.user={};
   }
-  getCountry(){
-    if(this.user.country===undefined){
-      return this.users.country;
-    }else{
-      return this.user.country.country;
-    }
-  }
   submitForm() {
-    this.user.country=this.getCountry();
+    this.user.country = this.user.country ? this.user.country.country : this.users.country;
     this.FiredbAutorisation.updateUser(this.res,this.user);
     this.user={};
   }
