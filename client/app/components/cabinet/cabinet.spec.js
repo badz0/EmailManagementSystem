@@ -11,36 +11,35 @@ describe('Cabinet', ()=>{
     let scope, controller,$firebaseObject,mdColorPalette,Сonstants;
     let FiredbAutorisation = {};
     beforeEach(inject(($injector, $controller, $q ) => {
-			FiredbAutorisation.responseData = () => {};
-			FiredbAutorisation.getUserData = () => {};
-			FiredbAutorisation.updateUser = () => {};
-			FiredbAutorisation.deleteUserAvatar = () => {};
-			mdColorPalette={'green':500};
-			Сonstants = cabinetConstant;
-      spyOn(FiredbAutorisation, 'responseData').and.callFake( () => {
-			let defer = $q.defer();
-			defer.resolve({ userData: {index:9}});
-			return defer.promise;
-      });
-      spyOn(FiredbAutorisation,'getUserData').and.callFake( () => {
-        return {"avatar" : "https://firebasestorage.googleapis.com/v0/b/emailmanagementsystem-d4f11.appspot.com/o/user9%2F9.png?alt=media&token=cb537f71-6f8d-4300-b9f3-5f8b3c8d37b0"
-        };
-      });
-      spyOn(FiredbAutorisation,'updateUser').and.callFake( () => {
-        return "executed"; 
-      });
-      spyOn(FiredbAutorisation,'deleteUserAvatar').and.callFake( () => {
-        return "executed"; 
-      });
-			scope = $injector.get('$rootScope').$new();
-			controller = $controller(CabinetController, {
-				$firebaseObject: $firebaseObject,
-        $scope: scope,
-        FiredbAutorisation: FiredbAutorisation,
-        $mdColorPalette:mdColorPalette,
-        Сonstants:Сonstants
-			});
-      scope.$digest();
+    	FiredbAutorisation.responseData = () => {};
+    	FiredbAutorisation.getUserData = () => {};
+    	FiredbAutorisation.updateUser = () => {};
+    	FiredbAutorisation.deleteUserAvatar = () => {};
+    	mdColorPalette={'green':500};
+    	Сonstants = cabinetConstant;
+    	spyOn(FiredbAutorisation, 'responseData').and.callFake( () => {
+    		let defer = $q.defer();
+    		defer.resolve({ userData: {index:9}});
+    		return defer.promise;
+    	});
+    	spyOn(FiredbAutorisation,'getUserData').and.callFake( () => {
+    		return {"avatar" : "https://firebasestorage.googleapis.com/v0/b/emailmanagementsystem-d4f11.appspot.com/o/user9%2F9.png?alt=media&token=cb537f71-6f8d-4300-b9f3-5f8b3c8d37b0"};
+    	});
+    	spyOn(FiredbAutorisation,'updateUser').and.callFake( () => {
+    		return "executed"; 
+    	});
+    	spyOn(FiredbAutorisation,'deleteUserAvatar').and.callFake( () => {
+    		return "executed"; 
+    	});
+    	scope = $injector.get('$rootScope').$new();
+    	controller = $controller(CabinetController, {
+    		$firebaseObject: $firebaseObject,
+    		$scope: scope,
+    		FiredbAutorisation: FiredbAutorisation,
+    		$mdColorPalette:mdColorPalette,
+    		Сonstants:Сonstants
+    	});
+    	scope.$digest();
     }));
     
 	it('constructor shoud be defined', ()=>{
