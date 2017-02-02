@@ -1,9 +1,8 @@
-import * as firebase from 'firebase';
 import controller from './printWindow/printWindow.controller';
 import template from './printWindow/printWindow.html';
 
 class UserTableController {
-  constructor(Firedbservice, $firebaseObject,$mdDialog,$document,FiredbAutorisation) {
+  constructor($mdDialog, $document, FiredbAutorisation) {
     'ngInject';
     this.mdDialog = $mdDialog;
     this.document = $document;
@@ -11,8 +10,8 @@ class UserTableController {
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
     });
-    const ref = firebase.database().ref().child('user');
-    this.users = $firebaseObject(ref);   
+    
+    this.users = this.FiredbAutorisation.getUserDetails(); 
   }
   $onInit(){
     this.gridOptions = {

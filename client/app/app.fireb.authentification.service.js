@@ -4,7 +4,8 @@ class FiredbAutorisationService {
     this.ref = firebase.database().ref();
     this.res = $firebaseObject(this.ref);
     this.$firebaseObject=$firebaseObject;
-  }
+  };
+
   responseData() {
     return this.res.$loaded().then(res => {
       return {
@@ -29,6 +30,11 @@ class FiredbAutorisationService {
       });
     });
     return data;
+  };
+
+  getUserDetails() {
+    return this.$firebaseObject(firebase.database().ref().child('user'));
+
   }
   getUserData(a){
     return this.$firebaseObject(firebase.database().ref().child(`user/${a}`));
@@ -38,6 +44,7 @@ class FiredbAutorisationService {
   }
   deleteUserAvatar(a,b){
     firebase.storage().ref().child(`user${a}/${b}`).delete();
+
   }
 }
 export default FiredbAutorisationService;
