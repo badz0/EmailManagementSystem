@@ -1,7 +1,7 @@
 import countries from './cabinet.countries.json';
 
 class CabinetController {
-  constructor($firebaseObject,$mdColorPalette,Сonstants,FiredbAutorisation) {'ngInject';
+  constructor($mdColorPalette,Сonstants,FiredbAutorisation) {'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
       this.res=res.userData.index;
@@ -14,8 +14,19 @@ class CabinetController {
     this.countries=countries;
     this.user={};
   }
-  submitForm() {
-    this.user.country=this.user.country.country||'';
+  getCountry(){
+    if(this.user.country===undefined){
+      if(this.users.country===undefined){
+        return " ";
+      }else{
+        return this.users.country;
+      }
+    }else{
+      return this.user.country.country;
+    }
+  }
+  submitForm(){
+    this.user.country=this.getCountry();
     this.FiredbAutorisation.updateUser(this.res,this.user);
     this.user={};
   }

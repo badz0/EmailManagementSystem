@@ -11,12 +11,12 @@ describe('Cabinet', ()=>{
     let scope, controller,$firebaseObject,mdColorPalette,Сonstants;
     let FiredbAutorisation = {};
     beforeEach(inject(($injector, $controller, $q ) => {
-	  FiredbAutorisation.responseData = () => {};
-	  FiredbAutorisation.getUserData = () => {};
-	  FiredbAutorisation.updateUser = () => {};
-	  FiredbAutorisation.deleteUserAvatar = () => {};
-	  mdColorPalette={'green':500};
-	  Сonstants = cabinetConstant;
+		  FiredbAutorisation.responseData = () => {};
+		  FiredbAutorisation.getUserData = () => {};
+		  FiredbAutorisation.updateUser = () => {};
+		  FiredbAutorisation.deleteUserAvatar = () => {};
+		  mdColorPalette={'green':500};
+		  Сonstants = cabinetConstant;
       spyOn(FiredbAutorisation, 'responseData').and.callFake( () => {
 	    let defer = $q.defer();
 	    defer.resolve({ userData: {index:9}});
@@ -32,14 +32,14 @@ describe('Cabinet', ()=>{
       spyOn(FiredbAutorisation,'deleteUserAvatar').and.callFake( () => {
         return "executed"; 
       });
-	  scope = $injector.get('$rootScope').$new();
-	  controller = $controller(CabinetController, {
-	    $firebaseObject: $firebaseObject,
+		  scope = $injector.get('$rootScope').$new();
+		  controller = $controller(CabinetController, {
+		    $firebaseObject: $firebaseObject,
         $scope: scope,
         FiredbAutorisation: FiredbAutorisation,
         $mdColorPalette:mdColorPalette,
         Сonstants:Сonstants
-      });
+	    });
       scope.$digest();
     }));
     

@@ -41,14 +41,19 @@ module.exports = function(config) {
     },
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     
-    coverageReporter: 
-    {
-      type : 'html',
-      dir : 'coverage/'
-    },
+    // coverageReporter: 
+    // {
+    //   type : 'html',
+    //   dir : 'coverage/'
+    // },
   
-    
-    reporters: ['progress', 'coverage'],
+    coverageReporter: {
+      reporters: [
+        { type: 'html', dir: 'coverage/' },
+        { type: 'text' }
+      ]
+    },
+    reporters: ['mocha','progress', 'coverage'],
     // web server port
     port: 8081,
     // enable colors in the output
