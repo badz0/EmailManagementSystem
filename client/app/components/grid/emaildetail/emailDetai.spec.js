@@ -10,7 +10,6 @@ describe('Grid Component emailDetail controller', () => {
   let EmailDetailService = {};
   let mdDialog = {};
   let FiredbAutorisation = {};
-
   beforeEach(inject(($injector, $controller, $q, $log) => {
     state = jasmine.createSpyObj('$state', ['go']);
   FiredbAutorisation.responseData = () => {};
@@ -35,7 +34,6 @@ describe('Grid Component emailDetail controller', () => {
       defer.resolve();
       return defer.promise;
     });
-
     mdDialog.show = () => {};
     spyOn(mdDialog, 'show').and.callFake(() => {
       let defer = $q.defer();
@@ -55,33 +53,33 @@ describe('Grid Component emailDetail controller', () => {
     scope.$digest();
   }));
 
-  it('find right user', () => {
+  it('emailDetail controller find right user', () => {
     controller.$onInit();
     scope.$digest();
     expect(controller.currentData.id).toEqual(stateParams.id);
   });
-  it('Servis is called', () => {
+  it('emailDetail controller servis is called', () => {
     controller.$onInit();
     expect(EmailDetailService.getList).toHaveBeenCalled();
   });
-  it('function deleteUser is define', () => {
+  it('emailDetail controller function deleteUser is define', () => {
     expect(controller.deleteUser).toBeDefined();
   });
-  it('mdDialog.confirm is called', () => {
+  it('emailDetail controller mdDialog.confirm is called', () => {
     controller.deleteUser();
     expect(controller.mdDialog.confirm).toHaveBeenCalled();
   });
-  it('mdDialog.show is called', () => {
+  it('emailDetail controller mdDialog.show is called', () => {
     controller.deleteUser();
     expect(controller.mdDialog.show).toHaveBeenCalled();
   });
 });
 
 describe('Grid Component emailDetail component', () => {
-  it('right template', () => {
+  it('emailDetail component right template', () => {
     expect(emailComponent.template).toEqual(emailDetail)
   });
-  it('right controller', () => {
+  it('emailDetail component right controller', () => {
     expect(emailComponent.controller).toEqual(emailController)
   });
 });

@@ -5,11 +5,11 @@ describe('Grid Cmponent confirmDialog controller', () => {
     controller = new confirmController();
   });
 
-  it('is Defined', () => {
+  it('confirmDialog controller confirm is Defined', () => {
     expect(controller.confirmNo).toBeDefined();
     expect(controller.confirmYes).toBeDefined();
   });
-  it('is Function', () => {
+  it('confirmDialog controller confirm is Function', () => {
     expect(controller.confirmNo).toEqual(jasmine.any(Function));
     expect(controller.confirmYes).toEqual(jasmine.any(Function));
   });
