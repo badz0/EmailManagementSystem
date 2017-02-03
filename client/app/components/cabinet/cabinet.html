@@ -34,7 +34,7 @@
               </md-card-title>
               <md-card-actions class="md-media-md card-media" layout="row" layout-align="center">
                 <md-button aria-label="incoming" class="imgbuttons small" ui-sref="grid" translate="cabinet.incoming"></md-button>
-                <md-button aria-label="blocklist" ng-if="$ctrl.users.isAdmin" class="imgbuttons small" ui-sref="charts" translate="cabinet.statistic"></md-button>
+                <md-button aria-label="statistic" ng-if="$ctrl.users.isAdmin" class="imgbuttons small" ui-sref="charts" translate="cabinet.statistic"></md-button>
                 <label class="md-button imgbuttons small"><span translate="cabinet.upload"></span>
                   <input cabinet-uploader class="ng-hide" type="file" accept="image/*"/>
                 </label>
