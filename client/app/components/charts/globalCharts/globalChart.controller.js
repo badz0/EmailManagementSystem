@@ -61,3 +61,5 @@ class GlobalChartController {
 };
 
 export default GlobalChartController;
+
+

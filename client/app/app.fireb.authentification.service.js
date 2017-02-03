@@ -4,7 +4,7 @@ class FiredbAutorisationService {
     this.ref = firebase.database().ref();
     this.res = $firebaseObject(this.ref);
     this.$firebaseObject=$firebaseObject;
-  }
+  };
   responseData() {
     return this.res.$loaded().then(res => {
       return {
@@ -13,10 +13,10 @@ class FiredbAutorisationService {
         fireDBResponseData: this.fireDBResponseData()
       };
     });
-  }
+  };
   getColor(res) {
     return res.user[9].themeColor;
-  }
+  };
   userData(res) {
     let data = {};
     this.ref.on('value', snap => {
@@ -30,18 +30,21 @@ class FiredbAutorisationService {
       });
     });
     return data;
-  }
+  };
   fireDBResponseData() {
     return this.res;
-  }
+  };
   getUserData(a){
     return this.$firebaseObject(firebase.database().ref().child(`user/${a}`));
-  }
+  };
   updateUser(a,b){
     firebase.database().ref().child(`user/${a}`).update(b);
-  }
+  };
   deleteUserAvatar(a,b){
     firebase.storage().ref().child(`user${a}/${b}`).delete();
-  }
+  };
+   getUserDetails() {
+    return this.$firebaseObject(firebase.database().ref().child('user'));
+  };
 }
 export default FiredbAutorisationService;

@@ -1,7 +1,5 @@
-import * as firebase from 'firebase';
-
 class ChartsFirebaseDataService {
-  constructor($firebaseObject, $log, GlobalHardcodeConfigService, FiredbAutorisation) {'ngInject';
+  constructor(GlobalHardcodeConfigService, FiredbAutorisation) {'ngInject';
     this.globalChartsData = GlobalHardcodeConfigService.configData();
     this.FiredbAutorisation = FiredbAutorisation;
   };

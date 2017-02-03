@@ -1,5 +1,5 @@
 class UserChartController {
-  constructor (ChartsFirebaseDataService, dragularService, FiredbAutorisation, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService) {'ngInject';
+  constructor (ChartsFirebaseDataService, dragularService, FiredbAutorisation, $translate, $element, $mdDialog, DialogDataService, GlobalHardcodeConfigService, $scope) {'ngInject';
     this.dragularService = dragularService;
     this.dialog = $mdDialog;
     this.translate = $translate;
@@ -8,7 +8,6 @@ class UserChartController {
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.configData = GlobalHardcodeConfigService.configData();
     this.usersList = [];
-    this.user = {};
   };
 
   $onInit() {
@@ -41,6 +40,7 @@ class UserChartController {
 
   showUIGrid(user) {
     this.user =  this.usersList[user];
+    this.user.index = user;
     this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
       this.gridOptions.data = this.user.listOfEmails;
     });
@@ -48,7 +48,6 @@ class UserChartController {
       contentElement: '#usersListGrid',
       clickOutsideToClose: true
     });
-
   };
 
   showUserEmails(user) {
