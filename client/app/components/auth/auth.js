@@ -28,11 +28,11 @@ let authModule = angular.module('auth', [
   });
     
   jwtOptionsProvider.config({
-    tokenGetter: function () {
+    tokenGetter: () => {
       return window.localStorage.getItem('id_token');
     }
   });
-  $urlRouterProvider.otherwise('/auth');
+  $urlRouterProvider.otherwise('/');
 })
 
 .component('auth', authComponent)
