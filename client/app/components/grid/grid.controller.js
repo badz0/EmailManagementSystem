@@ -5,6 +5,7 @@ import controller from './confirmDialog/confirm.controller.js';
 class GridController {
   constructor(Firedbservice, EmailDetailService, $firebaseObject, FiredbAutorisation, $mdDialog) {
     'ngInject';
+    this.mdDialog = $mdDialog;
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
       this.allEmailsData = res.userData.listOfEmails;
