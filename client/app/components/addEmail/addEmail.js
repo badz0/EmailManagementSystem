@@ -7,14 +7,6 @@ let addEmailModule = angular.module('addEmail', [
   uiRouter
 ])
 
-.config(($stateProvider) => {
-  'ngInject';
-  $stateProvider
-    .state('addEmail', {
-      url: '/addEmail',
-      component: 'addEmail'
-    });
-})
 .component('addEmail', addEmailComponent)
 
 .service('ValidationService', ValidationService)

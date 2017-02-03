@@ -116,4 +116,6 @@ describe('Grid', () => {
       expect(controller.gridOptions.data).toEqual('safeEmails');
     });
   });
+
 });
+
