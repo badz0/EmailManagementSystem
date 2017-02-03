@@ -29,5 +29,8 @@ class FiredbAutorisationService {
     });
     return data;
   };
+  getUserEmails() {
+    return this.$firebaseObject(firebase.database().ref().child('user').child('listOfEmails'));
+  }
 }
 export default FiredbAutorisationService;
