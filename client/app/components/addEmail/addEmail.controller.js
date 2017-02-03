@@ -3,7 +3,7 @@ import template from './addDialog/addDialog.html';
 
 
 class AddEmailController {
-  constructor($mdDialog, $document,FiredbAutorisation) {
+  constructor($mdDialog, $document, FiredbAutorisation) {
     'ngInject';
     this.mdDialog = $mdDialog;
     this.document = $document;

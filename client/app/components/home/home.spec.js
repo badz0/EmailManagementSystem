@@ -1,14 +1,14 @@
-import appheaderController from './appheader.controller';
+import homeController from './home.controller';
+import homeModule from './home';
 
-describe('App Header', () => {
+describe('Home', () => {
 
   describe('Controller', () => {
     let scope, controller, AuthService;
     let FiredbAutorisation = {};
-    let toggle = { toggle: () => {} };
-    let mdSidenav = () => { return toggle };
 
     beforeEach(inject(($injector, $controller, $q) => {
+
       AuthService = jasmine.createSpyObj('AuthService', ['registerAuthenticationListener']);
 
       FiredbAutorisation.responseData = () => {};
@@ -19,21 +19,15 @@ describe('App Header', () => {
         return defer.promise;
       });
 
-      spyOn(toggle, 'toggle');
       scope = $injector.get('$rootScope').$new();
-      controller = $controller(appheaderController, {
+      controller = $controller(homeController, {
         $scope: scope,
-        $mdSidenav: mdSidenav,
         AuthService: AuthService,
         FiredbAutorisation: FiredbAutorisation
       });
       scope.$digest();
     }));
 
-    it('Check if method toggleMenu was called', ()=> {
-      controller.toggleMenu();
-      expect(toggle.toggle).toHaveBeenCalled();
-    });
 
     it('Сheck if authListener was called', () => {
       expect(AuthService.registerAuthenticationListener).toHaveBeenCalled();
@@ -45,6 +39,24 @@ describe('App Header', () => {
 
     it('Check userData initialization', () => {
       expect(controller.userData).toBe('userData');
+    });
+  });
+
+  describe('Module', () => {
+    let $rootScope, $state, $location;
+
+    beforeEach(angular.mock.module(homeModule));
+
+    beforeEach(inject(($injector) => {
+        $rootScope = $injector.get('$rootScope');
+        $state = $injector.get('$state');
+        $location = $injector.get('$location');
+    }));
+
+    it('Default component should be home', () => {
+      $location.url('/');
+      $rootScope.$digest();
+      expect($state.current.component).toEqual('home');
     });
   });
 });
