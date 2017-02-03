@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
+
 class FiredbAutorisationService {
-  constructor($firebaseObject,Firedbservice) {'ngInject';
+  constructor($firebaseObject, Firedbservice) {'ngInject';
     this.ref = firebase.database().ref();
     this.res = $firebaseObject(this.ref);
     this.$firebaseObject=$firebaseObject;
@@ -43,7 +44,7 @@ class FiredbAutorisationService {
   deleteUserAvatar(a,b){
     firebase.storage().ref().child(`user${a}/${b}`).delete();
   };
-   getUserDetails() {
+  getUserDetails() {
     return this.$firebaseObject(firebase.database().ref().child('user'));
   };
 }
