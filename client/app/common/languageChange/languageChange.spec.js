@@ -7,14 +7,17 @@ describe('Language Change', () => {
 
     beforeEach(inject(($injector) => {
       translate = jasmine.createSpyObj('$translate', ['use']);
+      translate.use.and.returnValue('en');
       controller = new languageChangeController(translate);
     }));
 
-    it('Check if method change language is defined', ()=> {
-      expect(controller.changeLanguage).toBeDefined();
+    it('Check if onInit sets the language key', () => {
+      controller.$onInit();
+      expect(translate.use).toHaveBeenCalled();
+      expect(controller.lan).toBe('en');
     });
 
-    it('Sets translation', () => {
+    it('Check changing language', () => {
       controller.changeLanguage('ua');
       expect(translate.use).toHaveBeenCalled();
       expect(translate.use.calls.count()).toBe(1);

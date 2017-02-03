@@ -54,7 +54,6 @@ module.exports = function(config) {
       type : 'html',
       dir : 'coverage/'
     },
-    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     // web server port
     port: 8081,
     // enable colors in the output

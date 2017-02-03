@@ -1,5 +1,5 @@
 class HomeController {
-  constructor(Firedbservice, AuthService, FiredbAutorisation, authManager) {
+  constructor(AuthService, FiredbAutorisation) {
     'ngInject';
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();

@@ -1,14 +1,13 @@
-import appheaderController from './appheader.controller';
+import appnavController from './appnav.controller';
 
-describe('App Header', () => {
+describe('App Navigation', () => {
 
   describe('Controller', () => {
     let scope, controller, AuthService;
     let FiredbAutorisation = {};
-    let toggle = { toggle: () => {} };
-    let mdSidenav = () => { return toggle };
 
     beforeEach(inject(($injector, $controller, $q) => {
+
       AuthService = jasmine.createSpyObj('AuthService', ['registerAuthenticationListener']);
 
       FiredbAutorisation.responseData = () => {};
@@ -19,21 +18,15 @@ describe('App Header', () => {
         return defer.promise;
       });
 
-      spyOn(toggle, 'toggle');
       scope = $injector.get('$rootScope').$new();
-      controller = $controller(appheaderController, {
+      controller = $controller(appnavController, {
         $scope: scope,
-        $mdSidenav: mdSidenav,
         AuthService: AuthService,
         FiredbAutorisation: FiredbAutorisation
       });
       scope.$digest();
     }));
 
-    it('Check if method toggleMenu was called', ()=> {
-      controller.toggleMenu();
-      expect(toggle.toggle).toHaveBeenCalled();
-    });
 
     it('Сheck if authListener was called', () => {
       expect(AuthService.registerAuthenticationListener).toHaveBeenCalled();
