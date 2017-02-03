@@ -5,14 +5,12 @@ import gridTemplate from './grid.html';
 
 
 describe('Grid', () => {
-  let $rootScope, $state, $location, $componentController, $compile, component;
+  let $rootScope, $state, $location, component;
   beforeEach(angular.mock.module(GridModule));
   beforeEach(inject(($injector) => {
     $rootScope = $injector.get('$rootScope');
-    $componentController = $injector.get('$componentController');
     $state = $injector.get('$state');
     $location = $injector.get('$location');
-    $compile = $injector.get('$compile');
   }));
   describe('Module', () => {
     it('default component should be grid', () => {
@@ -29,41 +27,35 @@ describe('Grid', () => {
       expect(component.controller).toBe(gridController);
     });
   });
+
   describe('GridController', () => {
-    let scope, controller, firebaseObject, Firedbservice, mdDialog,
-      EmailDetailService = {},
-      FiredbAutorisation = {};
+    let scope, controller, mdDialog, EmailDetailService, FiredbAutorisation;
+
     beforeEach(inject(($injector, $controller, $q) => {
       EmailDetailService = jasmine.createSpyObj('EmailDetailService', ['getSocial', 'getAds', 'getBlock', 'getEmail']);
-      Firedbservice = jasmine.createSpyObj('Firedbservice', ['getEmail']);
-      firebaseObject = jasmine.createSpyObj('$firebaseObject', ['fbObject']);
-      FiredbAutorisation.responseData = () => {};
-      spyOn(FiredbAutorisation, 'responseData').and.callFake(() => {
+      EmailDetailService.getSocial.and.returnValue('social');
+      EmailDetailService.getAds.and.returnValue('ads');
+      EmailDetailService.getBlock.and.returnValue('block');
+      EmailDetailService.getEmail.and.returnValue('safeEmails');
+
+      FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['responseData', 'getUserEmails']);
+      FiredbAutorisation.getUserEmails.and.returnValue('mails');
+      FiredbAutorisation.responseData.and.callFake( () => {
         let defer = $q.defer();
-        defer.resolve({
-          userData: 'users'
-        });
+        defer.resolve({ userData: {index:0}});
         return defer.promise;
       });
+
       scope = $injector.get('$rootScope').$new();
       controller = $controller(gridController, {
         $scope: scope,
-        $firebaseObject: firebaseObject,
         $mdDialog: mdDialog,
         EmailDetailService: EmailDetailService,
-        Firedbservice: Firedbservice,
-        FiredbAutorisation: FiredbAutorisation
+        FiredbAutorisation: FiredbAutorisation,
       });
       scope.$digest();
-      spyOn(controller, 'allEmails');
-      spyOn(controller, 'emailEmails');
-      spyOn(controller, 'socialEmails');
-      spyOn(controller, 'blockEmails');
-      spyOn(controller, 'adsEmails');
     }));
-    it('Check users initialization', () => {
-      expect(controller.users).toBe('users');
-    });
+
     it('Check onInit initialization', () => {
       controller.$onInit();
       expect(controller.gridOptions.enableFiltering).toEqual(true);
@@ -89,26 +81,39 @@ describe('Grid', () => {
         cellTemplate: '<button class="delete" ng-click="grid.appScope.$ctrl.deleteUser(row)">Delete</button><button class="btn primary" ng-click="grid.appScope.$ctrl.safeOrBlock(row)">Blocklist</button>'
       }, ]);
     });
-    it('Check if method of allEmails have been called', () => {
+
+    it('Check data initialization', () => {
+       expect(controller.allEmailsData).toEqual('mails');
+    });
+
+    it('Check if onInit get current data', () => {
+      controller.$onInit();
+      expect(controller.gridOptions.data).toEqual(controller.allEmailsData);
+    });
+
+    it('Check if method allEmails have gridOptions with all data', () => {
       controller.allEmails();
-      expect(controller.allEmails).toHaveBeenCalled();
+      expect(controller.gridOptions.data).toEqual(controller.allEmailsData);
     });
-    it('Check if method of emailEmails have been called', () => {
-      controller.emailEmails();
-      expect(controller.emailEmails).toHaveBeenCalled();
-    });
-    it('Check if method of socialEmails have been called', () => {
+
+    it('Check if method socialEmails equal to social data', () => {
       controller.socialEmails();
-      expect(controller.socialEmails).toHaveBeenCalled();
+      expect(controller.gridOptions.data).toEqual('social');
     });
-    it('Check if method of blockEmails have been called', () => {
-      controller.blockEmails();
-      expect(controller.blockEmails).toHaveBeenCalled();
-    });
-    it('Check if method of adsEmails have been called', () => {
+
+    it('Check if method adsEmails equal to ads data', () => {
       controller.adsEmails();
-      expect(controller.adsEmails).toHaveBeenCalled();
+      expect(controller.gridOptions.data).toEqual('ads');
+    });
+
+    it('Check if method blockEmails equal to blocklist data', () => {
+      controller.blockEmails();
+      expect(controller.gridOptions.data).toEqual('block');
+    });
+
+    it('Check if method emailEmails equal to safelist data', () => {
+      controller.emailEmails();
+      expect(controller.gridOptions.data).toEqual('safeEmails');
     });
   });
-
 });

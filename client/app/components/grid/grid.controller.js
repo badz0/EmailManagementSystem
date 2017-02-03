@@ -3,13 +3,13 @@ import templateDelete from './confirmDialog/confirm.template.del.html';
 import templateBlock from './confirmDialog/confirm.template.block.html';
 import controller from './confirmDialog/confirm.controller.js';
 class GridController {
-  constructor(Firedbservice, EmailDetailService, $firebaseObject, FiredbAutorisation, $mdDialog) {
+  constructor(EmailDetailService, FiredbAutorisation, $mdDialog) {
     'ngInject';
     this.mdDialog = $mdDialog;
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
-      this.allEmailsData = res.userData.listOfEmails;
-      this.users = res.userData;
+      this.res=res.userData.index;
+      this.allEmailsData = this.FiredbAutorisation.getUserEmails(this.res);
       this.EmailDetailServiceSocial = EmailDetailService.getSocial();
       this.EmailDetailServiceAds = EmailDetailService.getAds();
       this.EmailDetailServiceBlock = EmailDetailService.getBlock();
@@ -44,6 +44,7 @@ class GridController {
         enableFiltering: false,
         cellTemplate: '<button class="delete" ng-click="grid.appScope.$ctrl.deleteUser(row)">Delete</button><button class="btn primary" ng-click="grid.appScope.$ctrl.safeOrBlock(row)">Blocklist</button>'
       }, ],
+      data: this.allEmailsData
     };
   }
   allEmails() {
