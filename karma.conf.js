@@ -27,7 +27,7 @@ module.exports = function(config) {
     ],
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] },
     webpack: {
       devtool: 'inline-source-map',
       module: {
@@ -43,12 +43,7 @@ module.exports = function(config) {
       noInfo: true // prevent console spamming when running in Karma!
     },
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    coverageReporter:
-    {
-      type : 'html',
-      dir : 'coverage/'
-    },
-    reporters: ['mocha', 'coverage'],
+    reporters: ['mocha'],
     // web server port
     port: 8081,
     // enable colors in the output

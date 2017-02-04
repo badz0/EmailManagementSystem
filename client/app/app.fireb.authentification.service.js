@@ -1,9 +1,10 @@
 import * as firebase from 'firebase';
 class FiredbAutorisationService {
-  constructor($firebaseObject,Firedbservice) {'ngInject';
+  constructor($firebaseObject, $firebaseArray, Firedbservice) {'ngInject';
     this.ref = firebase.database().ref();
     this.res = $firebaseObject(this.ref);
     this.$firebaseObject=$firebaseObject;
+    this.$firebaseArray=$firebaseArray;
   };
 
   responseData() {
@@ -32,7 +33,7 @@ class FiredbAutorisationService {
     return data;
   };
   getUserEmails(a){
-    return this.$firebaseObject(firebase.database().ref().child(`user/${a}`).child('listOfEmails'));
+    return this.$firebaseArray(firebase.database().ref().child(`user/${a}`).child('listOfEmails'));
   }
   getUserDetails() {
     return this.$firebaseObject(firebase.database().ref().child('user'));

@@ -2,7 +2,9 @@ import GridModule from './grid';
 import gridComponent from './grid.component';
 import gridController from './grid.controller';
 import gridTemplate from './grid.html';
-
+import confirmController from './confirmDialog/confirm.controller.js';
+import templateDelete from './confirmDialog/confirm.template.del.html';
+import templateBlock from './confirmDialog/confirm.template.block.html';
 
 describe('Grid', () => {
   let $rootScope, $state, $location, component;
@@ -43,6 +45,13 @@ describe('Grid', () => {
       FiredbAutorisation.responseData.and.callFake( () => {
         let defer = $q.defer();
         defer.resolve({ userData: {index:0}});
+        return defer.promise;
+      });
+      
+      mdDialog = jasmine.createSpyObj('$mdDialog', ['confirm', 'show']);
+      mdDialog.show.and.callFake( () => {
+        let defer = $q.defer();
+        defer.resolve();
         return defer.promise;
       });
 
@@ -86,7 +95,7 @@ describe('Grid', () => {
        expect(controller.allEmailsData).toEqual('mails');
     });
 
-    it('Check if onInit get current data', () => {
+    it('Check if all Emails init', () => {
       controller.$onInit();
       expect(controller.gridOptions.data).toEqual(controller.allEmailsData);
     });
@@ -115,7 +124,27 @@ describe('Grid', () => {
       controller.emailEmails();
       expect(controller.gridOptions.data).toEqual('safeEmails');
     });
-  });
+    
+    it('check deleteUser method is called with arguments', () => {
+      controller.deleteUser('row');
+      expect(mdDialog.confirm).toHaveBeenCalledWith({
+        template: templateDelete,
+        controller: confirmController,
+        controllerAs: '$ctrl',
+        clickOutsideToClose: true
+      });
+    });
 
+    it('check safeOrBlock method is called with arguments', () => {
+      controller.safeOrBlock('row');
+      expect(mdDialog.confirm).toHaveBeenCalledWith({
+        template: templateBlock,
+        controller: confirmController,
+        controllerAs: '$ctrl',
+        clickOutsideToClose: true
+      });
+    });
+    
+  });
 });
 
