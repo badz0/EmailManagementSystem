@@ -9,7 +9,7 @@ describe('GlobalCharts Controller', () => {
   let scope, controller, translate;
   let FiredbAutorisation = {};
   let ChartsFirebaseDataService = {};
-  let GlobalHardcodeConfigService;
+  let HardcodeConfigService;
 
   beforeEach(inject(($injector, $controller, $q) => {
 
@@ -18,13 +18,13 @@ describe('GlobalCharts Controller', () => {
     FiredbAutorisation.responseData = () => {};
     ChartsFirebaseDataService.chartsDataBuild = () => {};
 
-    GlobalHardcodeConfigService = new GlobalHardcode();
+    HardcodeConfigService = new GlobalHardcode();
 
     scope = $injector.get('$rootScope').$new();
     controller = $controller(GlobalChartController, {
       $scope: scope,
       ChartsFirebaseDataService: chartsFirebaseData,
-      GlobalHardcodeConfigService: GlobalHardcodeConfigService,
+      HardcodeConfigService: HardcodeConfigService,
       $translate: translate,
       FiredbAutorisation: FiredbAutorisation
     });

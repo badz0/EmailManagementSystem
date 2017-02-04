@@ -10,7 +10,7 @@ describe('userCharts Controller', () => {
   let dialog = {},
     FiredbAutorisation = {},
     ChartsFirebaseDataService = {},
-    GlobalHardcodeConfigService;
+    HardcodeConfigService;
 
   beforeEach(inject(($injector, $controller, $q) => {
     element = jasmine.createSpyObj('$element', ['element']);
@@ -22,12 +22,12 @@ describe('userCharts Controller', () => {
     FiredbAutorisation.responseData = () => {};
     ChartsFirebaseDataService.chartsDataBuild = () => {};
     dialog.show = () => {};
-    dialogData.dialogDataServiceData = () => {};
+    dialogData.dialogServiceData = () => {};
 
-    GlobalHardcodeConfigService = new GlobalHardcode();
+    HardcodeConfigService = new GlobalHardcode();
     const res = specConfig;
 
-    spyOn(dialogData, 'dialogDataServiceData').and.callFake( () => {
+    spyOn(dialogData, 'dialogServiceData').and.callFake( () => {
       let defer = $q.defer();
       defer.resolve(res);
       return defer.promise;
@@ -54,9 +54,9 @@ describe('userCharts Controller', () => {
       AuthService: AuthService,
       dragularService: dragular,
       FiredbAutorisation: FiredbAutorisation,
-      DialogDataService: dialogData,
+      DialogService: dialogData,
       ChartsFirebaseDataService: chartsFirebaseData,
-      GlobalHardcodeConfigService: GlobalHardcodeConfigService
+      HardcodeConfigService: HardcodeConfigService
     });
     scope.$digest();
 
@@ -74,7 +74,7 @@ describe('userCharts Controller', () => {
       expect(controller.dragularService).toBeDefined();
       expect(controller.dialog).toBeDefined();
       expect(controller.translate).toBeDefined();
-      expect(controller.dialogDataService).toBeDefined();
+      expect(controller.DialogService).toBeDefined();
       expect(controller.FiredbAutorisation).toBeDefined();
       expect(controller.ChartsFirebaseDataService).toBeDefined();
       expect(controller.configData).toBeDefined();

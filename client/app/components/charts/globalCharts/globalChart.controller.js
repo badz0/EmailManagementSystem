@@ -1,9 +1,9 @@
 class GlobalChartController {
-  constructor (ChartsFirebaseDataService, GlobalHardcodeConfigService, FiredbAutorisation, $translate) {'ngInject';
+  constructor (ChartsFirebaseDataService, HardcodeConfigService, FiredbAutorisation, $translate) {'ngInject';
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.FiredbAutorisation = FiredbAutorisation;
     this.translate = $translate;
-    this.configData = GlobalHardcodeConfigService.configData();
+    this.configData = HardcodeConfigService.configData();
   };
 
   $onInit() {
@@ -23,12 +23,10 @@ class GlobalChartController {
   };
 
   getUserData() {
-    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
-      this.color = res.userCabinetColor;
-    });
-    this.FiredbAutorisation.responseData().then(res => {
-      this.userData = res.userData;
-    });
+    this.FiredbAutorisation.responseData()
+      .then(res => {
+        this.userData = res.userData;
+      });
   };
 
   destroyCharts() {
@@ -44,19 +42,19 @@ class GlobalChartController {
       return !!AmCharts.isReady;
     }
     this.configData.navBarDisplay.globalChartsStats = true;
-    this.ChartsFirebaseDataService.chartsDataBuild().then(res => {
-      for (let key in this.configData.chartsData) {
-        this.configData.chartsData[key].dataProvider = res[key];
-      };
-      AmCharts.makeChart('groupDataChart', this.configData.chartsData.groupData);
-      AmCharts.makeChart('multiple', this.configData.chartsData.multipleUserComapare);
-      AmCharts.makeChart('userDateStat', this.configData.chartsData.userEmailDateComapare);
-      AmCharts.makeChart('emailsMaxChart', this.configData.chartsData.emailsMaxLine);
-      AmCharts.makeChart('chartsActive', this.configData.chartsData.singnUpTimes);
-      AmCharts.makeChart('dateEmailStat', this.configData.chartsData.emailDateStat);
-      return !!AmCharts.isReady;
-    });
-
+    this.ChartsFirebaseDataService.chartsDataBuild()
+      .then(res => {
+        for (let key in this.configData.chartsData) {
+          this.configData.chartsData[key].dataProvider = res[key];
+        };
+        AmCharts.makeChart('groupDataChart', this.configData.chartsData.groupData);
+        AmCharts.makeChart('multiple', this.configData.chartsData.multipleUserCompare);
+        AmCharts.makeChart('userDateStat', this.configData.chartsData.userEmailDateCompare);
+        AmCharts.makeChart('emailsMaxChart', this.configData.chartsData.emailsMaxLine);
+        AmCharts.makeChart('chartsActive', this.configData.chartsData.singnUpTimes);
+        AmCharts.makeChart('dateEmailStat', this.configData.chartsData.emailDateStat);
+        return !!AmCharts.isReady;
+      });
   };
 };
 

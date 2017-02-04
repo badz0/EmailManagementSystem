@@ -1,7 +1,7 @@
 import ChartsController from './charts.controller';
 import GlobalHardcode from '../../app.globalHardcodeConfig.service.js';
 
-describe('Controllers', () => {
+describe('Charts Controller', () => {
   let controller, service;
 
   beforeEach(() => {

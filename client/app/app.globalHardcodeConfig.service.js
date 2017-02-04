@@ -1,4 +1,4 @@
-class GlobalHardcodeConfigService {
+class HardcodeConfigService {
   constructor() {
     this.configs = {
       buttons: {
@@ -103,7 +103,7 @@ class GlobalHardcodeConfigService {
             'fixedPosition':true
           }
         },
-        multipleUserComapare: {
+        multipleUserCompare: {
           'type': 'serial',
           'theme': 'light',
           'legend': {
@@ -134,7 +134,7 @@ class GlobalHardcodeConfigService {
             'position': 'top'
           }
         },
-        userEmailDateComapare: {
+        userEmailDateCompare: {
           'type': 'serial',
           'theme': 'light',
           'legend': {
@@ -368,4 +368,4 @@ class GlobalHardcodeConfigService {
   }
 };
 
-export default GlobalHardcodeConfigService;
+export default HardcodeConfigService;

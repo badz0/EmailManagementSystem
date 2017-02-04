@@ -1,100 +1,102 @@
 class ChartsFirebaseDataService {
-  constructor(GlobalHardcodeConfigService, FiredbAutorisation) {'ngInject';
-    this.globalChartsData = GlobalHardcodeConfigService.configData();
+  constructor(HardcodeConfigService, FiredbAutorisation) {'ngInject';
+    this.globalChartsData = HardcodeConfigService.configData();
     this.FiredbAutorisation = FiredbAutorisation;
   };
 
   chartsDataBuild() {
-    return this.FiredbAutorisation.fireDBResponseData().$loaded().then(res => {
-      return {
-        firedbChartData: res,
-        userCabinetColor: res.user[9].themeColor,
-        uniqueUsersList: this.userEmailDateComapare(res),
-        emailsMaxLine: this.sortChartData(res).emailsMaxLine,
-        singnUpTimes: this.sortChartData(res).signUp,
-        groupData: this.chartsDataProvider('groupData', res, 'group'),
-        emailDateStat: this.sortChartData(res).emailDateStat,
-        userEmailDateComapare: this.userEmailDateComapare(res),
-        multipleUserComapare: this.multipleUserComapare(res)
-      };
-    });
+    return this.FiredbAutorisation.fireDBResponseData()
+      .$loaded()
+        .then(response => {
+          return {
+            firedbChartData: response,
+            emailsMaxLine: this.sortChartData(response).emailsMaxLine,
+            singnUpTimes: this.sortChartData(response).signUp,
+            groupData: this.chartsDataProvider('groupData', response, 'group'),
+            emailDateStat: this.sortChartData(response).emailDateStat,
+            userEmailDateCompare: this.userEmailDateCompare(response),
+            multipleUserCompare: this.multipleUserCompare(response)
+          };
+        });
   };
 
-  readResponseData(res) {
+  readResponseData(response) {
     return {
-      emailsMaxLine: res.user.map(val => {
-        return {'provider': val.name, 'letters': val.listOfEmails.length};
-      }),
-      signUp: res.user.map(val => {
-        return { 'Login': val.login, 'Activity': val.logInCount };
-      }),
-      groupData: this.groupData(res),
-      emailDateStat: this.chartsArrayData(res, 'date', 'name'),
-      multy: this.chartsArrayData(res, 'date', 'name')
+      emailsMaxLine:
+        response.user.map(user => {
+          return {'provider': user.name, 'letters': user.listOfEmails.length};
+        }),
+      signUp:
+        response.user.map(user => {
+          return { 'Login': user.login, 'Activity': user.logInCount };
+        }),
+      groupData: this.groupData(response),
+      emailDateStat: this.chartsArrayData(response, 'date', 'name'),
+      multyCompareStat: this.chartsArrayData(response, 'date', 'name')
     };
   };
 
-  groupData(res) {
+  groupData(response) {
     let arr = [];
-    res.user.forEach(val => {
-      val.listOfEmails.forEach(value => {
-        arr.push({'name': val.name, 'group': value.group});
+    response.user.forEach(eachUser => {
+      eachUser.listOfEmails.forEach(letters => {
+        arr.push({'name': eachUser.name, 'group': letters.group});
       });
     });
     return arr;
   };
 
-  chartsArrayData(res, keyOne, keyTwo) {
+  chartsArrayData(response, keyOne, keyTwo) {
     let arr = [];
-    res.user.forEach(val => {
-      val.listOfEmails.forEach(value => {
-        arr.push({[keyOne]: value[keyOne], [keyTwo]: val[keyTwo]});
+    response.user.forEach(user => {
+      user.listOfEmails.forEach(letter => {
+        arr.push({[keyOne]: letter[keyOne], [keyTwo]: user[keyTwo]});
       });
     });
     return arr;
   }
 
-  sortChartData(res, type) {
+  sortChartData(response) {
     return {
-      emailsMaxLine: this.readResponseData(res).emailsMaxLine.sort((a, b) => {
+      emailsMaxLine: this.readResponseData(response).emailsMaxLine.sort((a, b) => {
         return b.letters - a.letters;
       }),
-      signUp: this.readResponseData(res).signUp.sort((a, b) => {
+      signUp: this.readResponseData(response).signUp.sort((a, b) => {
         return b.Activity - a.Activity;
       }).splice(0, 5),
-      emailDateStat: this.chartsDataProvider('emailDateStat', res, 'date').sort((a, b) => {
+      emailDateStat: this.chartsDataProvider('emailDateStat', response, 'date').sort((a, b) => {
         return new Date(a.date) - new Date(b.date);
       })
     };
   };
 
-  searchUnicData(type, res, key) {
+  searchUnicData(type, response, key) {
     let arr = [];
-    this.readResponseData(res)[type].forEach((val, i) => {
-      if (arr.indexOf(val[key]) === -1) {
-        arr.push(val[key]);
-      };
+    this.readResponseData(response)[type].forEach((unicValue, i) => {
+      if (arr.indexOf(unicValue[key]) === -1) {
+        arr.push(unicValue[key]);
+      }
     });
     return arr;
   };
 
-  chartsDataProvider(type, res, key) {
-    return this.searchUnicData(type, res, key).map(val => {
+  chartsDataProvider(type, response, key) {
+    return this.searchUnicData(type, response, key).map(unicElem => {
       let count = 0;
-      this.readResponseData(res)[type].forEach(inElemVal => {
-        if(val === inElemVal[key]) {
+      this.readResponseData(response)[type].forEach(inElemVal => {
+        if(unicElem === inElemVal[key]) {
           count += 1;
-        };
+        }
       });
-      return {[key]: val, value: count};
+      return {[key]: unicElem, value: count};
     });
   };
 
 
   multipleChartsData(date, users, key) {
     let data = {'date': date};
-    users.forEach((value, index) => {
-      data[value.name] = value.index;
+    users.forEach(user => {
+      data[user.name] = user.index;
     });
     this.chartsGraphsData(users, key);
     return data;
@@ -102,7 +104,7 @@ class ChartsFirebaseDataService {
 
   chartsGraphsData(users, key) {
     let data = [];
-    users.forEach(val => {
+    users.forEach(eachUser => {
       let obj = {
         'balloonText': '[[title]]: [[value]]',
         'bullet': 'round',
@@ -110,75 +112,75 @@ class ChartsFirebaseDataService {
         'valueField': '',
         'fillAlphas': 0
       };
-      obj.title = val.name;
-      obj.valueField = val.name;
+      obj.title = eachUser.name;
+      obj.valueField = eachUser.name;
       data.push(obj);
     });
     this.globalChartsData.chartsData[key].graphs = data;
   };
 
-  compileUserData(res) {
-    return this.searchUnicData('multy', res, 'name').map(val => {
-      return ({'name': val, 'index': 0});
+  compileUserData(response) {
+    return this.searchUnicData('multyCompareStat', response, 'name').map(user => {
+      return ({'name': user, 'index': 0});
     });
   };
 
-  searchApropriateUsers(res) {
-    return this.compileUserData(res).filter(val => {
+  searchApropriateUsers(response) {
+    return this.compileUserData(response).filter(unicUser => {
       let bool = false;
-      this.readResponseData(res).multy.forEach(value => {
-        if(value.name === val.name) {
-          val.index += 1;
-          if(val.index > 10) {
+      this.readResponseData(response).multyCompareStat.forEach(user => {
+        if(user.name === unicUser.name) {
+          unicUser.index += 1;
+          if(unicUser.index > 10) {
             bool = true;
-          };
+          }
         }
       });
       if(bool) {
-        val.index = 0;
-        return val;
+        unicUser.index = 0;
+        return unicUser;
       }
     });
   };
 
-  multySortData(res) {
-    return this.searchUnicData('multy',  res, 'date').sort((a, b) => {
+  multySortData(response) {
+    return this.searchUnicData('multyCompareStat',  response, 'date').sort((a, b) => {
       return new Date(a) - new Date(b);
     });
   };
 
-  multipleUserComapare(res) {
-    let finalData = [];
-    this.multySortData(res).forEach(val => {
-      let users = this.searchApropriateUsers(res);
-      this.readResponseData(res).multy.forEach(value => {
-        if(val === value.date) {
-          users.forEach((changes) => {
-            if(value.name === changes.name) {
-              changes.index += 1;
+  multipleUserCompare(response) {
+    let result = [];
+    this.multySortData(response).forEach(unicDate => {
+      let users = this.searchApropriateUsers(response);
+      this.readResponseData(response).multyCompareStat.forEach(allFireData => {
+        if(unicDate === allFireData.date) {
+          users.forEach(unicUser => {
+            if(allFireData.name === unicUser.name) {
+              unicUser.index += 1;
             }
           });
         }
       });
-      finalData.push(this.multipleChartsData(val, users, 'multipleUserComapare'));
+      result.push(this.multipleChartsData(unicDate, users, 'multipleUserCompare'));
     });
-    return finalData;
+    return result;
   };
 
-  userEmailDateComapare(res) {
+  userEmailDateCompare(response) {
     let result = [];
-    let users = this.searchApropriateUsers(res);
-    this.multySortData(res).forEach(val => {
-      this.readResponseData(res).multy.forEach(value => {
-        if(val === value.date) {
-          users.forEach((changes) => {
-            if(value.name === changes.name) {
-              changes.index += 1;
+    let users = this.searchApropriateUsers(response);
+    this.multySortData(response).forEach(unicDate => {
+      this.readResponseData(response).multyCompareStat.forEach(allFireData => {
+        if(unicDate === allFireData.date) {
+          users.forEach((unicUser) => {
+            if(allFireData.name === unicUser.name) {
+              unicUser.index += 1;
             }
           });
         }
       });
-      result.push(this.multipleChartsData(val, users, 'userEmailDateComapare'));
+      result.push(this.multipleChartsData(unicDate, users, 'userEmailDateCompare'));
     });
     return result;
   };

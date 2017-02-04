@@ -21,14 +21,14 @@ describe('Dialog Service initialization', () => {
     service = new GlobalHardcode();
     controller = $controller(dialogBuild, {
       ChartsFirebaseDataService: ChartsFirebaseDataService,
-      GlobalHardcodeConfigService: service,
+      HardcodeConfigService: service,
     });
   }));
 
   describe('Dialog Service methods verification', () => {
     describe('DialogDataService methods', () => {
       it('Expect all DialogDataService methods to be defined', () => {
-        expect(controller.dialogDataServiceData).toBeDefined();
+        expect(controller.dialogServiceData).toBeDefined();
         expect(controller.searchEmailsData).toBeDefined();
         expect(controller.searchUnicData).toBeDefined();
         expect(controller.chartsDataProvider).toBeDefined();
@@ -39,9 +39,9 @@ describe('Dialog Service initialization', () => {
 
     describe('GlobalHardcodeHonfig service', () => {
       it('Globalhardcodeconfig data should have it`s properties', () => {
-        expect(controller.GlobalHardcodeConfigService).toBeDefined();
-        expect(controller.GlobalHardcodeConfigService.currentNavItem).toBeLessThan(1);
-        expect(controller.GlobalHardcodeConfigService.navBarDisplay.usersLists).toBeTruthy();
+        expect(controller.HardcodeConfigService).toBeDefined();
+        expect(controller.HardcodeConfigService.currentNavItem).toBeLessThan(1);
+        expect(controller.HardcodeConfigService.navBarDisplay.usersLists).toBeTruthy();
       });
     });
 

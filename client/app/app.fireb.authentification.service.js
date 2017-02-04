@@ -7,25 +7,23 @@ class FiredbAutorisationService {
     this.$firebaseObject=$firebaseObject;
   };
   responseData() {
-    return this.res.$loaded().then(res => {
-      return {
-        color: this.getColor(res),
-        userData: this.userData(res),
-        fireDBResponseData: this.fireDBResponseData()
-      };
-    });
+    return this.res
+      .$loaded()
+        .then(response => {
+          return {
+            userData: this.userData(response),
+            fireDBResponseData: this.fireDBResponseData()
+          };
+        });
   };
-  getColor(res) {
-    return res.user[9].themeColor;
-  };
-  userData(res) {
+  userData(response) {
     let data = {};
     this.ref.on('value', snap => {
-      snap.val().user.filter((val, index) => {
+      snap.val().user.forEach((eachUser, index) => {
         for(let key in snap.val().stories) {
-          if(snap.val().stories[key].userId === val.id) {
-            val.index = index;
-            Object.assign(data, val);
+          if(snap.val().stories[key].userId === eachUser.id) {
+            eachUser.index = index;
+            Object.assign(data, eachUser);
           }
         }
       });
