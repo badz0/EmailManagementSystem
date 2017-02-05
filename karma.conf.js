@@ -1,15 +1,17 @@
-module.exports = function (config) {
+// Karma configuration
+// Generated on Fri Jan 20 2017 11:15:02 GMT+0000 (UTC)
+module.exports = function(config) {
   config.set({
-    // base path used to resolve all patterns
+    // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
     // list of files/patterns to load in the browser
     files: [
-  		{ pattern: 'https://cdn.auth0.com/js/lock/10.9.1/lock.min.js', watched: false, served: false, included: true },
-  		{ pattern: 'spec.bundle.js', watched: false }
-		],
+      { pattern: 'https://cdn.auth0.com/js/lock/10.9.1/lock.min.js', watched: false, served: false, included: true },
+      { pattern: 'spec.bundle.js', watched: false }
+    ],
     // files to exclude
     exclude: [],
     plugins: [
@@ -17,13 +19,17 @@ module.exports = function (config) {
       require("karma-chrome-launcher"),
       require("karma-sourcemap-loader"),
       require("karma-webpack"),
-      require('karma-coverage')
+      require("karma-coverage")
     ],
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] 
+    },
+    devtool: 'inline-source-map',
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
     webpack: {
-      devtool: 'inline-source-map',
       module: {
         loaders: [
           { test: /\.js/, exclude: [/app\/lib/, /node_modules/], loader: 'babel' },
@@ -36,10 +42,16 @@ module.exports = function (config) {
     webpackServer: {
       noInfo: true // prevent console spamming when running in Karma!
     },
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
     reporters: ['progress', 'coverage'],
+    coverageReporter: {
+      type : 'html',
+      dir : 'coverage/'
+    },
     // web server port
-    port: 9876,
+    port: 8081,
     // enable colors in the output
     colors: true,
     // level of logging
