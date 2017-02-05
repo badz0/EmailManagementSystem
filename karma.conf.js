@@ -22,13 +22,18 @@ module.exports = function(config) {
       require("karma-sourcemap-loader"),
       require("karma-webpack"),
       require("karma-coverage")
-
     ],
+
+
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] 
+    },
+    devtool: 'inline-source-map',
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
     webpack: {
-      devtool: 'inline-source-map',
       module: {
         loaders: [
           { test: /\.js/, exclude: [/app\/lib/, /node_modules/], loader: 'babel' },
@@ -41,13 +46,14 @@ module.exports = function(config) {
     webpackServer: {
       noInfo: true // prevent console spamming when running in Karma!
     },
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    coverageReporter:
-    {
+    reporters: ['progress', 'coverage'],
+    coverageReporter: {
       type : 'html',
       dir : 'coverage/'
     },
-    reporters: ['mocha', 'coverage'],
     // web server port
     port: 8081,
     // enable colors in the output
