@@ -2,19 +2,20 @@ import * as firebase from 'firebase';
 import templateDelete from '../confirmDialog/confirm.template.del.html';
 import controller from '../confirmDialog/confirm.controller.js';
 class EmailController {
-  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state,FiredbAutorisation) {
+  constructor(EmailDetailService, $stateParams, $log,  $mdDialog, $state, FiredbAutorisation) {
     'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
       this.res=res.userData.index;
     });
     this.idParam = parseInt($stateParams.id);
-    this.EmailDetailService = EmailDetailService.getList();
+    this.EmailDetailService = EmailDetailService;
     this.mdDialog = $mdDialog;
     this.state = $state;
+    this.FiredbAutorisation = FiredbAutorisation;
   }
   $onInit() {
-    this.EmailDetailService.then((res) => {
+    this.EmailDetailService.getList().then((res) => {
       this.currentData = res.find((value) => {
         return value.id === this.idParam;
       });
