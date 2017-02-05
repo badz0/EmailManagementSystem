@@ -7,14 +7,13 @@ class FiredbAutorisationService {
     this.$firebaseObject=$firebaseObject;
   };
   responseData() {
-    return this.res
-      .$loaded()
-        .then(response => {
-          return {
-            userData: this.userData(response),
-            fireDBResponseData: this.fireDBResponseData()
-          };
-        });
+    return this.res.$loaded()
+      .then(response => {
+        return {
+          userData: this.userData(response),
+          fireDBResponseData: this.fireDBResponseData()
+        };
+      });
   };
   userData(response) {
     let data = {};

@@ -8,6 +8,7 @@ class UserChartController {
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
     this.configData = HardcodeConfigService.configData();
     this.usersList = [];
+    this.color = 'red';
   };
 
   $onInit() {

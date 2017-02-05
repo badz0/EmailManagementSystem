@@ -5,19 +5,18 @@ class ChartsFirebaseDataService {
   };
 
   chartsDataBuild() {
-    return this.FiredbAutorisation.fireDBResponseData()
-      .$loaded()
-        .then(response => {
-          return {
-            firedbChartData: response,
-            emailsMaxLine: this.sortChartData(response).emailsMaxLine,
-            singnUpTimes: this.sortChartData(response).signUp,
-            groupData: this.chartsDataProvider('groupData', response, 'group'),
-            emailDateStat: this.sortChartData(response).emailDateStat,
-            userEmailDateCompare: this.userEmailDateCompare(response),
-            multipleUserCompare: this.multipleUserCompare(response)
-          };
-        });
+    return this.FiredbAutorisation.fireDBResponseData().$loaded()
+      .then(response => {
+        return {
+          firedbChartData: response,
+          emailsMaxLine: this.sortChartData(response).emailsMaxLine,
+          singnUpTimes: this.sortChartData(response).signUp,
+          groupData: this.chartsDataProvider('groupData', response, 'group'),
+          emailDateStat: this.sortChartData(response).emailDateStat,
+          userEmailDateCompare: this.userEmailDateCompare(response),
+          multipleUserCompare: this.multipleUserCompare(response)
+        };
+      });
   };
 
   readResponseData(response) {
@@ -48,9 +47,9 @@ class ChartsFirebaseDataService {
 
   chartsArrayData(response, keyOne, keyTwo) {
     let arr = [];
-    response.user.forEach(user => {
-      user.listOfEmails.forEach(letter => {
-        arr.push({[keyOne]: letter[keyOne], [keyTwo]: user[keyTwo]});
+    response.user.forEach(users => {
+      users.listOfEmails.forEach(letter => {
+        arr.push({[keyOne]: letter[keyOne], [keyTwo]: users[keyTwo]});
       });
     });
     return arr;

@@ -60,7 +60,7 @@ class HardcodeConfigService {
         enableFiltering: true,
         exporterMenuCsv: false,
         paginationPageSizes: [10, 25, 50],
-        paginationPageSize: 13,
+        paginationPageSize: 12,
         enableGridMenu: true,
         columnDefs: [
           { name: 'recipient', field: 'recipient', width:200, enableFiltering: false},
