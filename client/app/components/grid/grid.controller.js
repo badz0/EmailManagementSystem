@@ -84,7 +84,12 @@ class GridController {
     });
     this.mdDialog.show(confirm).then(() => {
       row.entity.isSafe = !row.entity.isSafe;
-      this.allEmailsData.$save(row);
+      this.FiredbAutorisation.responseData().then(res => {
+        const ref = firebase.database().ref().child(`user/${res.userData.index}`).child(`listOfEmails/${row.entity.id-1}`);
+        ref.update({
+          isSafe: row.entity.isSafe
+        });
+      });
     });
   }
 }

@@ -1,7 +1,7 @@
 import countries from './cabinet.countries.json';
 
 class CabinetController {
-  constructor($firebaseObject,$mdColorPalette,Сonstants,FiredbAutorisation) {'ngInject';
+  constructor($mdColorPalette,Сonstants,FiredbAutorisation) {'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
       this.res=res.userData.index;
@@ -15,7 +15,7 @@ class CabinetController {
     this.user={};
   }
   submitForm() {
-    this.user.country=this.user.country.country||'';
+    this.user.country = this.user.country ? this.user.country.country : this.users.country;
     this.FiredbAutorisation.updateUser(this.res,this.user);
     this.user={};
   }

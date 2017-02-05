@@ -41,7 +41,9 @@ describe('Grid', () => {
       EmailDetailService.getEmail.and.returnValue('safeEmails');
 
       FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['responseData', 'getUserEmails']);
-      FiredbAutorisation.getUserEmails.and.returnValue('mails');
+      FiredbAutorisation.getUserEmails.and.returnValue({
+        mails: 'mails'
+      });
       FiredbAutorisation.responseData.and.callFake( () => {
         let defer = $q.defer();
         defer.resolve({ userData: {index:0}});
@@ -92,7 +94,7 @@ describe('Grid', () => {
     });
 
     it('Check data initialization', () => {
-       expect(controller.allEmailsData).toEqual('mails');
+       expect(controller.allEmailsData.mails).toEqual('mails');
     });
 
     it('Check if all Emails init', () => {
