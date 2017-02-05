@@ -3,7 +3,6 @@ import uiRouter from 'angular-ui-router';
 import authComponent from './auth.component';
 import AuthService  from './auth.service';
 import AuthRun from './auth.run';
-import 'auth0-lock';
 import 'angular-lock';
 import 'angular-jwt';
 import Firedbservice from '../../firedb.service.js';
@@ -14,7 +13,7 @@ let authModule = angular.module('auth', [
   'angular-jwt'
 ])
 
-.config(($stateProvider, lockProvider,$urlRouterProvider,jwtOptionsProvider) => {
+.config(($stateProvider, lockProvider, $urlRouterProvider, jwtOptionsProvider) => {
   'ngInject';
   $stateProvider
     .state('auth', {
