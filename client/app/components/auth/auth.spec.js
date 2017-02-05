@@ -15,7 +15,7 @@ describe('Auth', () => {
       $state = $injector.get('$state');
       $location = $injector.get('$location');
   }));
-  
+
   describe('Module', () => {
     it('default component should be auth', () => {
       $location.url('/auth');
@@ -42,7 +42,7 @@ describe('Auth', () => {
   describe('Controller', () => {
     let scope, AuthService, controller;
     beforeEach(inject(($injector, $controller, $q) => {
-      
+
       AuthService = jasmine.createSpyObj('AuthService', ['registerAuthenticationListener', 'getProfileDeferred']);
 
       AuthService.getProfileDeferred = () => {};
@@ -66,7 +66,7 @@ describe('Auth', () => {
   describe('Run', () => {
     let run = AuthRun;
     it('should have a name property', ()=>{
-      expect(run.name).toEqual('AuthRun'); 
+      expect(run.name).toEqual('AuthRun');
     });
     it('constructor shoud be defined', ()=>{
       expect(run.constructor).toBeDefined();

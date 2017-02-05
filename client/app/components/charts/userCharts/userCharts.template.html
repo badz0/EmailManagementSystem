@@ -10,12 +10,12 @@
            class="md-avatar"
            alt="{{item.name}}"
            title="{{item.name}}"/>
-      <div class="md-list-item-text "
+      <div class="md-list-item-text"
            layout="column">
         <h3 ng-bind="(item.name) + ' ' + ( item.surname)"></h3>
         <h4 ng-bind="item.email"></h4>
-        <h4 ng-bind="item.birthDate"></h4>
-        <p ng-bind="(item.city) + ' ' + (item.country)"></p>
+        <h4 ng-bind="item.birthDate | date:'fullDate'"></h4>
+        <p ng-bind="(item.city) + ' ' + (item.country | uppercase)"></p>
       </div>
       <md-button class="md-primary md-raised"
                  aria-label="userGrid"
@@ -77,16 +77,33 @@
         </h1>
         <md-dialog-content class="md-dialog-content">
           <md-list class="containerVertical">
-            <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"  ng-click="null">
-              <p class="list"><span ng-bind="($index + 1)"></span>
-                <span ng-bind="$ctrl.configData.dialogListOfEmails.date"></span><span ng-bind="item.date"></span>
-                <span ng-bind="$ctrl.configData.dialogListOfEmails.group"></span><span ng-bind="item.group"></span>
-                <span ng-bind="$ctrl.configData.dialogListOfEmails.sender"></span><span ng-bind="item.recipient"></span>
-                <span ng-bind="$ctrl.configData.dialogListOfEmails.subject"></span><span ng-bind="item.subject"></span>
-                <br>
-                <span ng-bind="$ctrl.configData.dialogListOfEmails.content"></span>
-                <br>
-                <span md-colors="{color: '{{$ctrl.userData.themeColor}}'}" ng-bind="item.content"></span>
+            <md-list-item  ng-repeat="item in $ctrl.user.listOfEmails"
+                           ng-click="null"
+                           ng-class="{even: !$even, odd: !$odd}">
+              <p class="list">
+                <span class="bold"
+                      ng-bind="($index + 1)">
+                </span>
+                <span class="bold"
+                      ng-bind="$ctrl.configData.dialogListOfEmails.date | uppercase"
+                      md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
+                </span><span class="bold" ng-bind="item.date | date:'fullDate'"></span>
+                <span class="bold"
+                      ng-bind="$ctrl.configData.dialogListOfEmails.group | uppercase"
+                      md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
+                </span><span class="bold" ng-bind="item.group"></span>
+                <span class="bold"
+                      ng-bind="$ctrl.configData.dialogListOfEmails.sender | uppercase"
+                      md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
+                </span><span class="bold" ng-bind="item.recipient"></span>
+                <span class="bold"
+                      ng-bind="$ctrl.configData.dialogListOfEmails.subject | uppercase"
+                      md-colors="{color: '{{$ctrl.userData.themeColor}}'}">
+                </span><span class="bold" ng-bind="item.subject"></span>
+                  <br>
+                <span class="emails-text"
+                      md-colors="{color: '{{$ctrl.userData.themeColor}}'}"
+                      ng-bind="item.content"></span>
               </p>
             </md-list-item>
           </md-list>
@@ -98,10 +115,15 @@
   <div class="dialog">
     <div class="md-dialog-container"
          id="usersListGrid">
-      <md-dialog aria-label="Grid dialog">
-        <h1 ng-bind="$ctrl.user.name"></h1>
+      <md-dialog aria-label="Grid dialog" class="gridDialog">
+        <h1 ng-bind="'№' + ($ctrl.user.index + 1) + ' ' + ($ctrl.user.name)"></h1>
         <md-dialog-content class="md-dialog-content">
-          <div id="gridUser" class="grid" ui-grid-exporter ui-grid-pagination ui-grid-selection ui-grid="$ctrl.gridOptions"></div>
+          <div id="gridUser"
+               class="grid"
+               ui-grid-exporter
+               ui-grid-pagination
+               ui-grid-selection
+               ui-grid="$ctrl.gridOptions"></div>
         </md-dialog-content>
       </md-dialog>
     </div>
