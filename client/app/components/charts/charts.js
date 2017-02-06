@@ -6,8 +6,8 @@ import angularAria from 'angular-aria';
 import 'angular-material/angular-material.css';
 import chartsComponent from './charts.component';
 
-import GlobalHardcodeConfigService from '../../app.globalHardcodeConfig.service';
-import DialogDataService from './charts.dialogBuild.service';
+import HardcodeConfigService from '../../app.globalHardcodeConfig.service';
+import DialogService from './charts.dialogBuild.service';
 import ChartsFirebaseDataService from './charts.firebaseData.service';
 
 import dragularModule from 'dragular/src/dragularModule';
@@ -42,9 +42,9 @@ let ChartsModule = angular.module('charts', [
 .component('userCharts', userCharts)
 .component('globalChart', globalChart)
 
-.service('GlobalHardcodeConfigService', GlobalHardcodeConfigService)
+.service('HardcodeConfigService', HardcodeConfigService)
 .service('ChartsFirebaseDataService', ChartsFirebaseDataService)
-.service('DialogDataService', DialogDataService)
+.service('DialogService', DialogService)
 
 .name;
 

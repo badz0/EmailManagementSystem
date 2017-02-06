@@ -4,8 +4,6 @@ import CabinetTemplate from './cabinet.html';
 import cabinetConstant from './cabinet.constant';
 import cabinetDirective from './cabinet.uploader.directive';
 import countries from './cabinet.countries.json';
-
-
 describe('Cabinet', ()=>{
   describe('Controller', ()=>{
     let scope, controller,$firebaseObject,mdColorPalette,Сonstants;
@@ -26,10 +24,10 @@ describe('Cabinet', ()=>{
         return {"avatar" : "https://firebasestorage.googleapis.com/v0/b/emailmanagementsystem-d4f11.appspot.com/o/user9%2F9.png?alt=media&token=cb537f71-6f8d-4300-b9f3-5f8b3c8d37b0"};
       });
       spyOn(FiredbAutorisation,'updateUser').and.callFake( () => {
-        return "executed"; 
+        return "executed";
       });
       spyOn(FiredbAutorisation,'deleteUserAvatar').and.callFake( () => {
-        return "executed"; 
+        return "executed";
       });
       scope = $injector.get('$rootScope').$new();
       controller = $controller(CabinetController, {
@@ -57,7 +55,7 @@ describe('Cabinet', ()=>{
     });
     it('should have a name property', ()=>{
       let controller = CabinetController;
-      expect(controller.name).toEqual('CabinetController'); 
+      expect(controller.name).toEqual('CabinetController');
     });
     describe('$onInit()',()=>{
       it('countries should be object',()=>{
@@ -109,7 +107,7 @@ describe('Cabinet', ()=>{
       });
     });
   });
-  
+
   describe('Component', () => {
     let component = CabinetComponent;
     it('includes the intended template',() => {
@@ -126,7 +124,7 @@ describe('Cabinet', ()=>{
       expect(image).toEqual(jasmine.any(String));
     });
   });
-  
+
   describe('Directive', () => {
     let directive=new cabinetDirective();
     it('should have correct properties',() => {
