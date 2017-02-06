@@ -31,11 +31,12 @@ class FiredbAutorisationService {
     });
     return data;
   };
-
+  getUserEmails(a){
+    return this.$firebaseArray(firebase.database().ref().child(`user/${a}`).child('listOfEmails'));
+  }
   fireDBResponseData() {
     return this.res;
   };
-
   getUserDetails() {
     return this.$firebaseObject(firebase.database().ref().child('user'));
   };

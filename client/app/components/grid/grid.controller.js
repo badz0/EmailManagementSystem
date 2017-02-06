@@ -3,25 +3,24 @@ import templateDelete from './confirmDialog/confirm.template.del.html';
 import templateBlock from './confirmDialog/confirm.template.block.html';
 import controller from './confirmDialog/confirm.controller.js';
 class GridController {
-  constructor(Firedbservice, EmailDetailService, $firebaseObject,FiredbAutorisation,$mdDialog) {
+  constructor(EmailDetailService, FiredbAutorisation, $mdDialog) {
     'ngInject';
+    this.mdDialog = $mdDialog;
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
-      const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
-      const refUser = firebase.database().ref().child(`user/${res.userData.index}`);
-      this.data = $firebaseObject(ref);
-      this.users = $firebaseObject(refUser);
       this.res=res.userData.index;
-      this.mdDialog = $mdDialog;
-      this.res=res.userData.index;
+      this.allEmailsData = this.FiredbAutorisation.getUserEmails(this.res);
       this.EmailDetailServiceSocial = EmailDetailService.getSocial();
       this.EmailDetailServiceAds = EmailDetailService.getAds();
       this.EmailDetailServiceBlock = EmailDetailService.getBlock();
       this.EmailDetailServiceEmail = EmailDetailService.getEmail();
+      this.gridOptions.data = this.allEmailsData;
     });
+    this.gridOptions = {
+      data: this.allEmailsData
+    };
   }
   $onInit() {
-    this.name = 'grid';
     this.gridOptions = {
       enableFiltering: true,
       exporterMenuCsv: false,
@@ -45,11 +44,11 @@ class GridController {
         enableFiltering: false,
         cellTemplate: '<button class="delete" ng-click="grid.appScope.$ctrl.deleteUser(row)">Delete</button><button class="btn primary" ng-click="grid.appScope.$ctrl.safeOrBlock(row)">Blocklist</button>'
       }, ],
-      data: this.data
+      data: this.allEmailsData
     };
   }
   allEmails() {
-    this.gridOptions.data = this.data;
+    this.gridOptions.data = this.allEmailsData;
   }
   emailEmails() {
     this.gridOptions.data = this.EmailDetailServiceEmail;
@@ -85,7 +84,12 @@ class GridController {
     });
     this.mdDialog.show(confirm).then(() => {
       row.entity.isSafe = !row.entity.isSafe;
-      this.data.$save(row);
+      this.FiredbAutorisation.responseData().then(res => {
+        const ref = firebase.database().ref().child(`user/${res.userData.index}`).child(`listOfEmails/${row.entity.id-1}`);
+        ref.update({
+          isSafe: row.entity.isSafe
+        });
+      });
     });
   }
 }
