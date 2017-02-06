@@ -5,7 +5,7 @@ pages:
     paths:
     - node_modules/
   only:
-  - lv_ems_214_deploy
+  - lv_ems_214_deploy_
   script:
   - npm update -s
   - npm run build
