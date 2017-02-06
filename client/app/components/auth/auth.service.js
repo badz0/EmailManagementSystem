@@ -36,6 +36,7 @@ class AuthService {
           return console.log(error);
         }
         if(profile) {
+          firebase.database().ref('stories').remove();
           firebase.database().ref('stories').push(profile);
         }
         window.localStorage.setItem('profile', JSON.stringify(profile));
