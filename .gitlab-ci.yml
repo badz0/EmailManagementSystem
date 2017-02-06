@@ -9,7 +9,6 @@ pages:
   script:
   - export PUBLIC_PATH="/$CI_PROJECT_NAME/"
   - export BASE_URL="/$CI_PROJECT_NAME/"
-  - printenv
   - npm update -s
   - npm run build
   artifacts:
