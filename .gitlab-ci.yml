@@ -5,12 +5,13 @@ pages:
     paths:
     - node_modules/
   only:
-  - lv_ems_214_deploy_
+  - lv_ems_214_deploy
   script:
   - export PUBLIC_PATH='/EmailManagementSystem/'
   - export BASE_URL='/EmailManagementSystem/'
-  - npm update -s
-  - npm run build
+  - printenv
+ # - npm update -s
+ # - npm run build
   artifacts:
     paths:
     - public
