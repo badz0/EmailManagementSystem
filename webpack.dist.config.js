@@ -4,7 +4,7 @@ var config  = require('./webpack.config');
 
 config.output = {
   filename: '[name].bundle.js',
-  publicPath: process.env.project_path || '',
+  publicPath: process.env.project_path || '/',
   path: path.resolve(__dirname, 'public')
 };
 
