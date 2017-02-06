@@ -58,17 +58,20 @@ describe('Auth', () => {
     it('Сheck if authListener was called', () => {
       expect(AuthService.registerAuthenticationListener).toHaveBeenCalled();
     });
-    it('constructor shoud be defined', ()=>{
+    it('Сheck if authListener was called only one time', () => {
+      expect(AuthService.registerAuthenticationListener.calls.count()).toBe(1);
+    });
+    it('constructor shoud be defined', () => {
       expect(controller.constructor).toBeDefined();
     });
   });
 
   describe('Run', () => {
     let run = AuthRun;
-    it('should have a name property', ()=>{
-      expect(run.name).toEqual('AuthRun');
+    it('should have a name property', () => {
+      expect(run.name).toEqual('AuthRun');  
     });
-    it('constructor shoud be defined', ()=>{
+    it('constructor shoud be defined', () => {
       expect(run.constructor).toBeDefined();
     });
   });
@@ -79,11 +82,14 @@ describe('Auth', () => {
       FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['getUserDetailsArr']);
       aService = new AuthService($q, lock, authManager, FiredbAutorisation, $state, authResult);
     }));
-    it('constructor shoud be defined', ()=>{
+    it('constructor shoud be defined', () => {
       expect(aService.constructor).toBeDefined();
     });
     it('check if FiredbAutorisation was called', () => {
       expect(FiredbAutorisation.getUserDetailsArr).toHaveBeenCalled();
+    });
+    it('check if FiredbAutorisation was called only one time', () => {
+      expect(FiredbAutorisation.getUserDetailsArr.calls.count()).toBe(1);
     });
   });
 
