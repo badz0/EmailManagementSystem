@@ -34,7 +34,7 @@ module.exports = {
     // with cache purging during deployment.
     new HtmlWebpackPlugin({
       template: 'client/index.html',
-      baseURL: '' || '/',
+      baseURL: process.env.BASE_URL || '/',
       inject: 'body',
       hash: true
     }),
