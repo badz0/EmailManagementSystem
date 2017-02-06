@@ -20,9 +20,9 @@ class AuthService {
   logout() {
     window.localStorage.removeItem('id_token');
     this.authManager.unauthenticate();
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(() => {
       firebase.database().ref('stories').remove();
-    }, function(error) {
+    }, error => {
       console.log(error);
     });
     this.state.go('home');
@@ -31,7 +31,7 @@ class AuthService {
     this.lock.on('authenticated', authResult => {
       window.localStorage.setItem('id_token', authResult.idToken);
       this.authManager.authenticate();
-      this.lock.getUserInfo(authResult.accessToken ,(error, profile)=> {
+      this.lock.getUserInfo(authResult.accessToken ,(error, profile) => {
         if (error) {
           return console.log(error);
         }
