@@ -22,7 +22,6 @@ class GridController {
     };
   }
   $onInit() {
-    this.name = 'grid';
     this.gridOptions = {
       enableFiltering: true,
       exporterMenuCsv: false,
