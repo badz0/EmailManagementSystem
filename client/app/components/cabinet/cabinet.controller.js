@@ -1,21 +1,22 @@
 import countries from './cabinet.countries.json';
-import * as firebase from 'firebase';
 
 class CabinetController {
-  constructor($firebaseObject,Firedbservice,$mdColorPalette,Сonstants,AuthService,authManager) {'ngInject';
-    const ref = firebase.database().ref().child('user/9');
-    this.users = $firebaseObject(ref);
+  constructor($mdColorPalette,Сonstants,FiredbAutorisation) {'ngInject';
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.res=res.userData.index;
+      this.users =this.FiredbAutorisation.getUserData(this.res);
+    });
     this.colors = Object.keys($mdColorPalette);
     this.avatar=Сonstants.avatarDefault.IMAGE_LINK;
-    this.AuthService = AuthService;
   }
   $onInit () {
     this.countries=countries;
     this.user={};
   }
   submitForm() {
-    this.user.country=this.user.country.country||'';
-    firebase.database().ref().child('user/9').update(this.user);
+    this.user.country = this.user.country ? this.user.country.country : this.users.country;
+    this.FiredbAutorisation.updateUser(this.res,this.user);
     this.user={};
   }
   getFileName(){
@@ -24,17 +25,19 @@ class CabinetController {
     return url;
   }
   deleteAvatar(){
-    firebase.storage().ref().child(`user9/${this.getFileName()}`).delete();
+    let ava=this.getFileName();
+    this.FiredbAutorisation.deleteUserAvatar(this.res,ava);
     this.user.avatar=this.avatar;
-    firebase.database().ref().child('user/9').update(this.user);
+    this.FiredbAutorisation.updateUser(this.res,this.user);
+    this.user={};
   }
   clearCity(){
     this.user.city = null;
   }
   selectTheme(color){
     this.user.themeColor = color;
-    firebase.database().ref().child('user/9').update(this.user);
+    this.FiredbAutorisation.updateUser(this.res,this.user);
   }
 }
-  
+
 export default CabinetController;

@@ -1,26 +1,28 @@
 import * as firebase from 'firebase';
 
 class AuthService {
-  constructor($q, lock, authManager, Firedbservice, $firebaseArray, $state){
+  constructor($q, lock, authManager, FiredbAutorisation, $state){
     'ngInject';
-    const ref = firebase.database().ref().child('user');
-    this.data = $firebaseArray(ref);
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.data = this.FiredbAutorisation.getUserDetailsArr();
     this.q = $q;
     this.lock=lock;
     this.authManager=authManager;
-    this.deferredProfile = $q.defer();
     this.state = $state;
+    this.deferredProfile = $q.defer();
   }
   login() {
-    var lock = new Auth0Lock('YWiJP0aecm768DSElJl8YhqtIbAgx7gm', 'nerosman.eu.auth0.com');
+    const clientID = 'YWiJP0aecm768DSElJl8YhqtIbAgx7gm';
+    const clientDomain = 'nerosman.eu.auth0.com';
+    const lock = new Auth0Lock(clientID, clientDomain);
     lock.show();
   }
   logout() {
     window.localStorage.removeItem('id_token');
     this.authManager.unauthenticate();
-    firebase.auth().signOut().then(function() {
+    firebase.auth().signOut().then(() => {
       firebase.database().ref('stories').remove();
-    }, function(error) {
+    }, error => {
       console.log(error);
     });
     this.state.go('home');
@@ -29,7 +31,7 @@ class AuthService {
     this.lock.on('authenticated', authResult => {
       window.localStorage.setItem('id_token', authResult.idToken);
       this.authManager.authenticate();
-      this.lock.getUserInfo(authResult.accessToken ,(error, profile)=> {
+      this.lock.getUserInfo(authResult.accessToken ,(error, profile) => {
         if (error) {
           return console.log(error);
         }

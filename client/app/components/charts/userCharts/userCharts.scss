@@ -1,32 +1,47 @@
-.charts-view, .charts-view-global {
-  height: 550px;
-  min-width: 1200px;
+  .charts-view, .charts-view-global {
+    height: 550px;
+    min-width: 1180px;
+  }
+  .charts-dialog-view {
+    height: 390px;
+    width: 1500px;
+  }
+.userList {
+  .grid {
+    width: 1180px;
+    height: 570px;
+  }
 }
-.charts-dialog-view {
-  height: 390px;
-  width: 1500px;
+.bold {
+  font-weight: 600;
 }
-.ui-grid-menu-button {
-  height: 31px;
+.emails-text {
+  padding-left: 25px;
 }
-.ui-grid-filter-container{
-  width: 60%;
-}
-.grid {
-  width: 1200px;
-  height: 630px;
-}
-.ui-grid {
-  color: rgb(0, 63, 89);
-}
-.ui-grid-header-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: #c6e2ee;
-}
-.ui-grid-cell:not(:last-child) .ui-grid-vertical-bar {
-  background-color: #94c0d2;
-}
-.ui-grid-header-cell:last-child .ui-grid-vertical-bar {
-  right: -1px;
-  width: 1px;
-  background-color: #c6e2ee;
+#gridUser {
+  .ui-grid-row:nth-child(odd) .ui-grid-cell {
+    background-color: rgba(162, 246, 249, .5);
+    padding-top: 3px;
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .ui-grid-row:nth-child(even) .ui-grid-cell {
+    padding-top: 3px;
+    background-color: rgba(128, 247, 176, .5);
+    height: 40px;
+    text-align: center;
+    vertical-align: middle;
+  }
+  .ui-grid-footer {
+    margin-bottom: 20px;
+  }
+  .ui-grid-top-panel {
+    font-weight: bold;
+    background: rgba(128, 247, 176, .5);
+    text-align: center;
+  }
+  .ui-grid-pager-max-pages-number {
+    padding-left: 20px;
+  }
 }

@@ -8,8 +8,7 @@ import emailDetailController from './emaildetail/emailDetail.controller.js';
 import emailDetailTemplate from './emaildetail/emailDetail.html';
 
 let gridModule = angular.module('grid', [
-  uiRouter,
-  'ui.grid.moveColumns'
+  uiRouter
 ])
 
 .config(($stateProvider) => {

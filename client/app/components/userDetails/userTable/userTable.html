@@ -1,0 +1,12 @@
+<div >
+    <md-content flex class="content" >
+        <h1 translate="userDetails.title"></h1>
+        <section>
+            <div  id="grid2" ui-grid="$ctrl.gridOptions"  ui-grid-exporter ui-grid-selection  class="grid">
+            </div>
+        </section>
+        <export-table on-set-param='$ctrl.export(exportData)'> </export-table>
+    </md-content>
+        
+</div>
+

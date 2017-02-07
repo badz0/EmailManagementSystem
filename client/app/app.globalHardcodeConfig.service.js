@@ -1,4 +1,4 @@
-class GlobalHardcodeConfigService {
+class HardcodeConfigService {
   constructor() {
     this.configs = {
       buttons: {
@@ -60,26 +60,25 @@ class GlobalHardcodeConfigService {
         enableFiltering: true,
         exporterMenuCsv: false,
         paginationPageSizes: [10, 25, 50],
-        paginationPageSize: 17,
+        paginationPageSize: 12,
         enableGridMenu: true,
         columnDefs: [
-          { name: 'recipient', field: 'recipient', width:200},
+          { name: 'recipient', field: 'recipient', width:200, enableFiltering: false},
           { name:'subject', field: 'subject', width:200, enableFiltering: false},
           { name:'date', field: 'date', width:100, enableFiltering: false},
           { name: 'group', enableCellEdit: true, field: 'group', width:100, enableFiltering: false},
-          { name: 'content', field: 'content'}
+          { name: 'content', field: 'content', width: 524, enableFiltering: false}
         ],
         enableGridMenu: true,
         enableSelectAll: true,
-        exporterOlderExcelCompatibility: true,
+        exporterOlderExcelCompatibility: false,
         exporterCsvFilename: 'myFile.csv',
+        exporterMenuCsv: true,
+        exporterPdfFilename: 'grid.pdf',
         exporterPdfDefaultStyle: {fontSize: 9},
-        exporterPdfTableStyle: {margin: [30, 30, 30, 30]},
-        exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'red'},
-        exporterPdfHeader: { text: 'My Header', style: 'headerStyle' },
-        exporterPdfFooter: function ( currentPage, pageCount ) {
-          return { text: currentPage.toString() + ' of ' + pageCount.toString(), style: 'footerStyle' };
-        },
+        exporterPdfTableStyle: {margin: [0, 10, 0, 10]},
+        exporterPdfTableHeaderStyle: {fontSize: 10, bold: true, italics: true, color: 'black'},
+        exporterPdfHeader: { text: 'List Of Emails', style: 'headerStyle' },
         exporterPdfCustomFormatter: function ( docDefinition ) {
           docDefinition.styles.headerStyle = { fontSize: 22, bold: true };
           docDefinition.styles.footerStyle = { fontSize: 10, bold: true };
@@ -99,12 +98,12 @@ class GlobalHardcodeConfigService {
           'theme': 'light',
           'dataProvider': [],
           'valueField': 'value',
-          'titleField': 'Group',
+          'titleField': 'group',
           'balloon':{
             'fixedPosition':true
           }
         },
-        multipleUserComapare: {
+        multipleUserCompare: {
           'type': 'serial',
           'theme': 'light',
           'legend': {
@@ -135,7 +134,7 @@ class GlobalHardcodeConfigService {
             'position': 'top'
           }
         },
-        userEmailDateComapare: {
+        userEmailDateCompare: {
           'type': 'serial',
           'theme': 'light',
           'legend': {
@@ -369,4 +368,4 @@ class GlobalHardcodeConfigService {
   }
 };
 
-export default GlobalHardcodeConfigService;
+export default HardcodeConfigService;

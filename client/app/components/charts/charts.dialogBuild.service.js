@@ -1,58 +1,58 @@
-class DialogDataService {
-  constructor(ChartsFirebaseDataService, GlobalHardcodeConfigService) {'ngInject';
+class DialogService {
+  constructor(ChartsFirebaseDataService, HardcodeConfigService) {'ngInject';
     this.ChartsFirebaseDataService = ChartsFirebaseDataService;
-    this.GlobalHardcodeConfigService = GlobalHardcodeConfigService.configData();
+    this.HardcodeConfigService = HardcodeConfigService.configData();
   };
 
-  dialogDataServiceData(index) {
-    return this.ChartsFirebaseDataService.chartsDataBuild().then((res) => {
+  dialogServiceData(index) {
+    return this.ChartsFirebaseDataService.chartsDataBuild().then((response) => {
       return {
-        dialogGroupStat: this.chartsDataProvider(res.firedbChartData, index, 'group'),
-        dialogEmailDayStat: this.chartsDataProvider(res.firedbChartData, index, 'date'),
-        dialogRecepientChart: this.chartSortMaxDataProvider(res.firedbChartData, index, 'recipient')
+        dialogGroupStat: this.chartsDataProvider(response.firedbChartData, index, 'group'),
+        dialogEmailDayStat: this.chartsDataProvider(response.firedbChartData, index, 'date'),
+        dialogRecepientChart: this.chartSortMaxDataProvider(response.firedbChartData, index, 'recipient')
       };
     });
   }
 
-  searchEmailsData(res) {
-    return res.user.map((val) => {
-      return {'letters': val.listOfEmails};
+  searchEmailsData(response) {
+    return response.user.map((user) => {
+      return {'letters': user.listOfEmails};
     });
   };
 
-  searchUnicData(res, index , key) {
+  searchUnicData(response, index , key) {
     let arr = [];
-    this.searchEmailsData(res)[index].letters.forEach((val, i) => {
-      if (arr.indexOf(val[key]) === -1) {
-        arr.push(val[key]);
+    this.searchEmailsData(response)[index].letters.forEach((letter, i) => {
+      if (arr.indexOf(letter[key]) === -1) {
+        arr.push(letter[key]);
       };
     });
     return arr;
   };
 
-  chartsDataProvider(res, index, searchElem) {
-    return this.searchUnicData(res, index , searchElem).map((val) => {
+  chartsDataProvider(response, index, searchElem) {
+    return this.searchUnicData(response, index , searchElem).map(unicElem => {
       let count = 0;
-      this.searchEmailsData(res)[index].letters.forEach((inElemVal) => {
-        if(val === inElemVal[searchElem]) {
+      this.searchEmailsData(response)[index].letters.forEach(inElemVal => {
+        if(unicElem === inElemVal[searchElem]) {
           count += 1;
         };
       });
-      return {[searchElem]: val, value: count};
+      return {[searchElem]: unicElem, value: count};
     });
   };
 
-  chartSortMaxDataProvider(res, index, searchElem) {
-    return this.chartSortRemoveMinData(res, index, searchElem).sort((a, b) => {
+  chartSortMaxDataProvider(response, index, searchElem) {
+    return this.chartSortRemoveMinData(response, index, searchElem).sort((a, b) => {
       return b.value - a.value;
     });
   };
 
-  chartSortRemoveMinData(res, index, searchElem) {
-    return this.chartsDataProvider(res, index, searchElem).filter((val) => {
-      if(val.value > 1) return val;
+  chartSortRemoveMinData(response, index, searchElem) {
+    return this.chartsDataProvider(response, index, searchElem).filter(letters => {
+      if(letters.value > 1) return letters;
     });
-  }
+  };
 };
 
-export default DialogDataService;
+export default DialogService;

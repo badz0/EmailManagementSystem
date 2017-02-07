@@ -1,20 +1,13 @@
-import * as firebase from 'firebase';
-
 class AppheaderController {
-  constructor($mdSidenav, $translate,$firebaseObject,Firedbservice,AuthService,authManager) {
+  constructor($mdSidenav, AuthService, FiredbAutorisation) {
     'ngInject';
-    const ref = firebase.database().ref().child('user/9');
-    this.users = $firebaseObject(ref);
     this.mdSidenav = $mdSidenav;
-    this.translate = $translate;
     this.AuthService = AuthService;
     this.AuthService.registerAuthenticationListener();
-    AuthService.getProfileDeferred().then((profile)=> {
-      this.profile = profile;
+    this.FiredbAutorisation = FiredbAutorisation;
+    this.FiredbAutorisation.responseData().then(res => {
+      this.userData = res.userData;
     });
-  }
-  $onInit() {
-    this.lan = this.translate.use();
   }
   toggleMenu() {
     this.mdSidenav('menu').toggle();

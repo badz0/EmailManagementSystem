@@ -15,7 +15,17 @@ module.exports = {
        { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
        { test: /\.css$/, loader: 'style!css' },
        { test: /\.json$/, loader: 'json' },
-       { test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/, loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]' }
+       { test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/, loader: 'url-loader?limit=30000&name=[name]-[hash].[ext]' },
+       { test: /\.js$/, exclude: /node_modules/, loader: "babel-loader" },
+       {
+    test: /\.js$/,
+    loader: 'babel-loader',
+    include: [
+        path.join(__dirname, 'app'),
+        path.join(__dirname, 'test')
+    ],
+    exclude: path.join(__dirname, 'node_modules')
+},
     ]
   },
   plugins: [

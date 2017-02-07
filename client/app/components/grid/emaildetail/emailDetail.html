@@ -6,12 +6,15 @@
     </md-sidenav>
     <md-content flex class="content">
       <div class="email-data">
-        <div> Email: <span ng-bind="$ctrl.currentData.recipient"></span> </div>
-        <div>Subject: <span ng-bind="$ctrl.currentData.subject"><span></div>
-        <div>Content:<span ng-bind="$ctrl.currentData.content"><span></div>
+        <div class="email-data-detail">
+          <span class="email-data-detail-subject" ng-bind="$ctrl.currentData.subject"></span>
+          <span class="email-data-detail-recipient" ng-bind="$ctrl.currentData.recipient"></span>
+        </div>
+        <div class="email-data-content"><span ng-bind="$ctrl.currentData.content"><span></div>
         <div><img ng-src={{$ctrl.currentData.thumbnail}}></div>
+        <md-button class="md-primary" ui-sref="grid"><i class="material-icons email-data-icon">reply</i>Back</md-button>
+        <md-button class="md-primary" ng-click="$ctrl.deleteUser()"><i class="material-icons email-data-icon">delete_forever</i>Delete</md-button>
       </div>
-      <md-button class="md-raised" ui-sref="grid"> Back </md-button>
     </md-content>
     </div>
 </div>
