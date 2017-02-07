@@ -11,7 +11,7 @@ module.exports = {
     ],
     loaders: [
        { test: /\.js$/, exclude: [/app\/lib/, /node_modules/], loader: 'ng-annotate!babel' },
-       { test: /\.html$/, loader: 'raw' },
+       { test: /\.html$/, loader: 'raw', exclude: /client\/index.html/},
        { test: /\.(scss|sass)$/, loader: 'style!css!sass' },
        { test: /\.css$/, loader: 'style!css' },
        { test: /\.json$/, loader: 'json' },
@@ -34,6 +34,7 @@ module.exports = {
     // with cache purging during deployment.
     new HtmlWebpackPlugin({
       template: 'client/index.html',
+      baseURL: process.env.BASE_URL || '/',
       inject: 'body',
       hash: true
     }),

@@ -7,6 +7,8 @@ pages:
   only:
   - lv_ems_214_deploy
   script:
+  - export PUBLIC_PATH="/$CI_PROJECT_NAME/"
+  - export BASE_URL="/$CI_PROJECT_NAME/"
   - npm update -s
   - npm run build
   artifacts:
