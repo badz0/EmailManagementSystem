@@ -1,13 +1,12 @@
 import * as firebase from 'firebase';
 
 class EmailDetailService {
-  constructor(Firedbservice, $firebaseArray, $log,FiredbAutorisation) {
+  constructor(FiredbAutorisation) {
     'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
-      const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
-      this.list = $firebaseArray(ref);
       this.res=res.userData.index;
+      this.list = this.FiredbAutorisation.getUserEmails(this.res);
     });
   }
   getList() {
@@ -16,7 +15,7 @@ class EmailDetailService {
         return list;
       },
       (error) => {
-        angular.$log('Error:', error);
+        console.log('Error:', error);
       });
   }
   getSocial() {

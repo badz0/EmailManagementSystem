@@ -1,9 +1,7 @@
 // Karma configuration
 // Generated on Fri Jan 20 2017 11:15:02 GMT+0000 (UTC)
-
 module.exports = function(config) {
   config.set({
-
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
     // frameworks to use
@@ -18,21 +16,18 @@ module.exports = function(config) {
     exclude: [],
     plugins: [
       require("karma-jasmine"),
+      require("karma-mocha-reporter"),
       require("karma-chrome-launcher"),
       require("karma-sourcemap-loader"),
       require("karma-webpack"),
       require("karma-coverage")
     ],
-
-
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] 
-    },
+    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap'] },
     devtool: 'inline-source-map',
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: { 'spec.bundle.js': ['webpack', 'sourcemap', 'coverage'] },
     webpack: {
       module: {
         loaders: [
