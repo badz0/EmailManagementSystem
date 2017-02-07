@@ -3,14 +3,14 @@ import templateDelete from './confirmDialog/confirm.template.del.html';
 import templateBlock from './confirmDialog/confirm.template.block.html';
 import controller from './confirmDialog/confirm.controller.js';
 class GridController {
-  constructor(Firedbservice, EmailDetailService, $firebaseObject,FiredbAutorisation,$mdDialog) {
+  constructor(EmailDetailService, FiredbAutorisation, $mdDialog) {
     'ngInject';
+    this.mdDialog = $mdDialog;
     this.FiredbAutorisation = FiredbAutorisation;
     this.mdDialog = $mdDialog;
     this.FiredbAutorisation.responseData().then(res => {
       this.res=res.userData.index;
       this.allEmailsData = this.FiredbAutorisation.getUserEmails(this.res);
-      this.res=res.userData.index;
       this.EmailDetailServiceSocial = EmailDetailService.getSocial();
       this.EmailDetailServiceAds = EmailDetailService.getAds();
       this.EmailDetailServiceBlock = EmailDetailService.getBlock();

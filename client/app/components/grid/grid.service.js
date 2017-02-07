@@ -1,7 +1,7 @@
 import * as firebase from 'firebase';
 
 class EmailDetailService {
-  constructor(Firedbservice, $firebaseArray, $log,FiredbAutorisation) {
+  constructor(FiredbAutorisation) {
     'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
@@ -15,7 +15,7 @@ class EmailDetailService {
         return list;
       },
       (error) => {
-        angular.$log('Error:', error);
+        console.log('Error:', error);
       });
   }
   getSocial() {

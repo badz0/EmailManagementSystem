@@ -1,101 +1,152 @@
-import GridModule from './grid'
-import gridController from './grid.controller'
-import EmailDetailService from './grid.service'
-
-
+import GridModule from './grid';
+import gridComponent from './grid.component';
+import gridController from './grid.controller';
+import gridTemplate from './grid.html';
+import confirmController from './confirmDialog/confirm.controller.js';
+import templateDelete from './confirmDialog/confirm.template.del.html';
+import templateBlock from './confirmDialog/confirm.template.block.html';
 
 describe('Grid', () => {
-    let $rootScope, $httpBackend, $state, $location, $controller, $componentController, $compile;
-    beforeEach(angular.mock.module(GridModule));
-    beforeEach(inject(($injector) => {
-        $rootScope = $injector.get('$rootScope');
-        $componentController = $injector.get('$componentController');
-        $state = $injector.get('$state');
-        $location = $injector.get('$location');
-        $compile = $injector.get('$compile');
-    }));
-    describe('Module', () => {
-        it('default component should be grid', () => {
-            $location.url('/grid');
-            $rootScope.$digest();
-            expect($state.current.component).toEqual('grid');
-        });
+  let $rootScope, $state, $location, component;
+  beforeEach(angular.mock.module(GridModule));
+  beforeEach(inject(($injector) => {
+    $rootScope = $injector.get('$rootScope');
+    $state = $injector.get('$state');
+    $location = $injector.get('$location');
+  }));
+  describe('Module', () => {
+    it('default component should be grid', () => {
+      $location.url('/grid');
+      $rootScope.$digest();
+      expect($state.current.component).toEqual('grid');
     });
+    it('default template should be grid.html', () => {
+      component = gridComponent;
+      expect(component.template).toBe(gridTemplate);
+    });
+    it('default controller should be GridController', () => {
+      component = gridComponent;
+      expect(component.controller).toBe(gridController);
+    });
+  });
 
-    describe('Controller', () => {
-    let scope, controller, firebaseObject, mdDialog, Firedbservice;
-    let EmailDetailService = {};
-    let FiredbAutorisation = {};
-    let myEmails = [{
-     "content": "Hi!I'm a student.",
-     "date": "2016-12-01",
-     "group": "primary",
-     "id": 1,
-     "isSafe": false,
-     "recipient": "ivanna.sav08@gmail.com",
-     "subject": "Education"
- }, {
-     "content": "A little smile. A word of cheer. A bit of love from someone near. A little gift from one held dear. Best wishes for the coming year. These make a Merry Christmas!",
-     "date": "2016-12-01",
-     "group": "social",
-     "id": 2,
-     "isSafe": true,
-     "recipient": "mail2.adress@gmail.com",
-     "subject": "Christmas greetings"
- }, {
-     "content": "Aenean efficitur nunc a arcu venenatis fermentum. Donec et fringilla ligula, vel maximus dui. Integer dignissim ante vel erat vehicula, eget mattis neque semper. Nunc vestibulum, nisl non aliquam egestas, ex diam vehicula sem, non congue tellus sapien id dolor. Donec convallis nisi in purus vulputate tristique. Proin laoreet ex tortor, vitae imperdiet libero imperdiet eget.",
-     "date": "2016-12-02",
-     "group": "primary",
-     "id": 4,
-     "isSafe": false,
-     "recipient": "ivanna.sav08@gmail.com",
-     "subject": "About angular 1.6"
- }, {
-     "content": "ABC Bags almost for free 50% off leather laptop bags through 3/31/12. Show this message to store manager to get half off. Find a store: www.someWeb.com/locations.",
-     "date": "2016-12-13",
-     "group": "spam",
-     "id": 19,
-     "isSafe": true,
-     "recipient": "bagsAreAwesome@gmail.com",
-     "subject": "Open this email!"
- }, {
-     "content": "Dear facebook user, Update your  In an effort to make your online experience safer and more enjoyable, Facebmk account  Facebook will be implementing a new login system that will affect all  Facebook users. These changes will offer new features and increased account security.  Before you are able to use the new login system, you will be required to  update your account. Click here to update your account online now.  If you haye any questions, reference our New User Guide.  Thanks, The Facebook Team",
-     "date": "2016-12-21",
-     "group": "social",
-     "id": 34,
-     "isSafe": true,
-     "recipient": "facebook@fb.com",
-     "subject": "Facebook",
-     "thumbnail": "http://icons.iconarchive.com/icons/icontexto/social-inside/128/social-inside-facebook-icon.png"
- }]
+  describe('GridController', () => {
+    let scope, controller, mdDialog, EmailDetailService, FiredbAutorisation;
+
     beforeEach(inject(($injector, $controller, $q) => {
       EmailDetailService = jasmine.createSpyObj('EmailDetailService', ['getSocial', 'getAds', 'getBlock', 'getEmail']);
-      Firedbservice = jasmine.createSpyObj('Firedbservice', ['getEmail']);
-      firebaseObject = jasmine.createSpyObj('$firebaseObject', ['fbObject']);
-      mdDialog = jasmine.createSpyObj('$mdDialog', ['mdDialog']);
-      FiredbAutorisation.responseData = () => {};
-      spyOn(FiredbAutorisation, 'responseData').and.callFake( () => {
+      EmailDetailService.getSocial.and.returnValue('social');
+      EmailDetailService.getAds.and.returnValue('ads');
+      EmailDetailService.getBlock.and.returnValue('block');
+      EmailDetailService.getEmail.and.returnValue('safeEmails');
+
+      FiredbAutorisation = jasmine.createSpyObj('FiredbAutorisation', ['responseData', 'getUserEmails']);
+      FiredbAutorisation.getUserEmails.and.returnValue({
+        mails: 'mails'
+      });
+      FiredbAutorisation.responseData.and.callFake( () => {
         let defer = $q.defer();
-        defer.resolve({ userData: 'users'});
+        defer.resolve({ userData: {index:0}});
         return defer.promise;
       });
+      
+      mdDialog = jasmine.createSpyObj('$mdDialog', ['confirm', 'show']);
+      mdDialog.show.and.callFake( () => {
+        let defer = $q.defer();
+        defer.resolve();
+        return defer.promise;
+      });
+
       scope = $injector.get('$rootScope').$new();
       controller = $controller(gridController, {
         $scope: scope,
-        $firebaseObject: firebaseObject,
         $mdDialog: mdDialog,
         EmailDetailService: EmailDetailService,
-        Firedbservice: Firedbservice,
-        FiredbAutorisation: FiredbAutorisation
+        FiredbAutorisation: FiredbAutorisation,
       });
       scope.$digest();
-      }));
-      it('Check allEmails initialization', () => {
-        expect(controller.users).toBe('users');
-      });
-      it('Check if method allEmails defined', () => {
-        expect(controller.allEmails).toBeDefined();;
-      });
-  });
+    }));
 
+    it('Check onInit initialization', () => {
+      controller.$onInit();
+      expect(controller.gridOptions.enableFiltering).toEqual(true);
+      expect(controller.gridOptions.exporterMenuCsv).toEqual(false);
+      expect(controller.gridOptions.enableGridMenu).toEqual(true);
+      expect(controller.gridOptions.columnDefs).toEqual([{
+        name: 'email',
+        enableFiltering: false,
+        enableSorting: false,
+        enableHiding: false,
+        cellTemplate: '<a class="cell-template-ref" ui-sref="email({ id: row.entity.id })">{{row.entity.recipient}}</a>'
+      }, {
+        name: 'subject',
+        enableSorting: true,
+        field: 'subject'
+      }, {
+        name: 'date',
+        enableSorting: true,
+        field: 'date'
+      }, {
+        name: 'action',
+        enableFiltering: false,
+        cellTemplate: '<button class="delete" ng-click="grid.appScope.$ctrl.deleteUser(row)">Delete</button><button class="btn primary" ng-click="grid.appScope.$ctrl.safeOrBlock(row)">Blocklist</button>'
+      }, ]);
+    });
+
+    it('Check data initialization', () => {
+       expect(controller.allEmailsData.mails).toEqual('mails');
+    });
+
+    it('Check if all Emails init', () => {
+      controller.$onInit();
+      expect(controller.gridOptions.data).toEqual(controller.allEmailsData);
+    });
+
+    it('Check if method allEmails have gridOptions with all data', () => {
+      controller.allEmails();
+      expect(controller.gridOptions.data).toEqual(controller.allEmailsData);
+    });
+
+    it('Check if method socialEmails equal to social data', () => {
+      controller.socialEmails();
+      expect(controller.gridOptions.data).toEqual('social');
+    });
+
+    it('Check if method adsEmails equal to ads data', () => {
+      controller.adsEmails();
+      expect(controller.gridOptions.data).toEqual('ads');
+    });
+
+    it('Check if method blockEmails equal to blocklist data', () => {
+      controller.blockEmails();
+      expect(controller.gridOptions.data).toEqual('block');
+    });
+
+    it('Check if method emailEmails equal to safelist data', () => {
+      controller.emailEmails();
+      expect(controller.gridOptions.data).toEqual('safeEmails');
+    });
+    
+    it('check deleteUser method is called with arguments', () => {
+      controller.deleteUser('row');
+      expect(mdDialog.confirm).toHaveBeenCalledWith({
+        template: templateDelete,
+        controller: confirmController,
+        controllerAs: '$ctrl',
+        clickOutsideToClose: true
+      });
+    });
+
+    it('check safeOrBlock method is called with arguments', () => {
+      controller.safeOrBlock('row');
+      expect(mdDialog.confirm).toHaveBeenCalledWith({
+        template: templateBlock,
+        controller: confirmController,
+        controllerAs: '$ctrl',
+        clickOutsideToClose: true
+      });
+    });
+    
+  });
 });
+

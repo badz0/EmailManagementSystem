@@ -1,12 +1,12 @@
-<div>
+<div >
     <md-content flex class="content" >
         <h1 translate="userDetails.title"></h1>
         <section>
-            <div  ui-grid="$ctrl.gridOptions"  ui.grid.exporter class="grid">
+            <div  id="grid2" ui-grid="$ctrl.gridOptions"  ui-grid-exporter ui-grid-selection  class="grid">
             </div>
         </section>
-        <md-button class="md-primary md-raised" ng-click="$ctrl.showWindow($event)"  flex="100"  flex-gt-md="auto" translate="userDetails.export" md-colors="{background: '{{$ctrl.userData.themeColor}}'}"></md-button>
+        <export-table on-set-param='$ctrl.export(exportData)'> </export-table>
     </md-content>
+        
 </div>
-
 
