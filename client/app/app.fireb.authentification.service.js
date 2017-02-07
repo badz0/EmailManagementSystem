@@ -47,7 +47,11 @@ class FiredbAutorisationService {
   getUserData(a){
     return this.$firebaseObject(firebase.database().ref().child(`user/${a}`));
   };
-
+  
+  getUserEmails(a){
+    return this.$firebaseArray(firebase.database().ref().child(`user/${a}`).child('listOfEmails'));
+  };
+  
   updateUser(a,b){
     firebase.database().ref().child(`user/${a}`).update(b);
   };

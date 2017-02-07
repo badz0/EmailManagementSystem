@@ -1,13 +1,9 @@
 $gridColor: #607D8B;
-.email-grid {
-
-.grid {
-  color: $gridColor;
-  font-size: 15px;
-  margin: auto;
+#grid1{
+  color: #607d8b;
   height: auto;
-  width: 87.4%;
-}
+  width: 87.5%;
+  padding-left: 0;
 }
 
 .button-section {
@@ -21,6 +17,18 @@ $gridColor: #607D8B;
 }
 .button-section {
   margin: 2% 0 2% 5%;
+  #swapData:after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0%;
+    border-bottom: 2px solid #666;
+    transition: 0.4s;
+  }
+  #swapData:hover:after {
+    width: 100%;
+  }
 }
 .cell-template-ref {
   text-decoration: none;

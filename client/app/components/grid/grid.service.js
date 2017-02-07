@@ -5,9 +5,8 @@ class EmailDetailService {
     'ngInject';
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
-      const ref = firebase.database().ref().child(`user/${res.userData.index}`).child('listOfEmails');
-      this.list = $firebaseArray(ref);
       this.res=res.userData.index;
+      this.list = this.FiredbAutorisation.getUserEmails(this.res);
     });
   }
   getList() {
