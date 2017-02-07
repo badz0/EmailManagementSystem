@@ -15,8 +15,9 @@
 				</div>
 				<div class="button-section">
 					<div id="grid1" class="grid email-grid" ui-grid="$ctrl.gridOptions" ui-grid-move-columns></div>
-					<add-email></add-email>
+					<add-email return-data="$ctrl.addEmail(data);"></add-email>
 				</div>
+				<p ng-bind="$ctrl.email"></p>
 			</section>
 		</md-content>
 	</div>

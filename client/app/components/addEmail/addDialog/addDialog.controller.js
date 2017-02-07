@@ -1,18 +1,19 @@
 class AddDialogController {
-  constructor($mdDialog, ValidationService, FiredbAutorisation) {
+  constructor($mdDialog, ValidationService, FiredbAutorisation, $filter) {
     'ngInject';
     this.mdDialog = $mdDialog;
+    this.filter = $filter;
     this.ValidationService = ValidationService;
     this.FiredbAutorisation = FiredbAutorisation;
     this.FiredbAutorisation.responseData().then(res => {
       this.userData = res.userData;
     });
-  }
-  $onInit() {
     this.formData = {
-      email: '',
+      recipient: '',
       group: '',
-      subject: ''
+      subject: '',
+      isSafe: true,
+      date: ''
     };
   }
   cancel() {
@@ -22,6 +23,7 @@ class AddDialogController {
     this.ValidationService.checkValidation(form);
 
     if (form.$valid) {
+      this.formData.date = this.filter('date')(new Date(), 'yyyy-MM-dd');
       this.mdDialog.hide(this.formData);
     }
   }

@@ -25,7 +25,6 @@ describe('Add email dialog', () => {
         FiredbAutorisation: FiredbAutorisation
       });
       scope.$digest();
-      controller.$onInit();
     }));
 
     it('Сheck if FiredbAutorisation was called', () => {
@@ -38,9 +37,11 @@ describe('Add email dialog', () => {
 
     it('Initialization formData', () => {
       expect(controller.formData).toEqual({
-        email: '',
+        recipient: '',
         group: '',
-        subject: ''
+        subject: '',
+        isSafe: true,
+        date: ''
       });
     });
 
@@ -52,11 +53,7 @@ describe('Add email dialog', () => {
     it('Check the submit method with valid form', () => {
       controller.submit({ $valid: true });
       expect(ValidationService.checkValidation).toHaveBeenCalledWith({ $valid: true });
-      expect(mdDialog.hide).toHaveBeenCalledWith({
-        email: '',
-        group: '',
-        subject: ''
-      });
+      expect(mdDialog.hide).toHaveBeenCalled();
     });
 
     it('Check the submit method with invalid form', () => {

@@ -16,7 +16,7 @@
 
         <md-input-container>
           <label>Email</label>
-          <input name="email" ng-model="$ctrl.formData.email">
+          <input name="email" ng-model="$ctrl.formData.recipient">
           <div ng-messages="addEmailForm.email.$error" ng-show="addEmailForm.$submitted">
             <div ng-message="required">Required</div>
             <div ng-message="email">Invalid email</div>

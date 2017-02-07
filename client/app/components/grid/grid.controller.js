@@ -93,5 +93,8 @@ class GridController {
       });
     });
   }
+  addEmail(data) {
+    firebase.database().ref().child(`user/${this.res}/listOfEmails`).push(data);
+  }
 }
 export default GridController;
