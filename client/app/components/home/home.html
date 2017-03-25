@@ -8,6 +8,7 @@
     <div flex layout="column" layout-align="center center" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" id="home">
 	      <span class="md-display-3" translate="home.title"></span>
         <h2 ng-if="$ctrl.AuthService.isAuthenticated()"> <span translate="home.hello "></span> <span ng-bind="$ctrl.userData.login"></span></h2>
+        <h2 ng-if="!$ctrl.AuthService.isAuthenticated()"> <span>Test User - account: ems@admin/or ems</span> <span>password: Aa123456</span></h2>
         <md-button ng-if="!$ctrl.AuthService.isAuthenticated()" ng-click="$ctrl.AuthService.login()" md-colors="{background: '{{$ctrl.userData.themeColor}}-400'}" translate="home.getStarted"></md-button>
 	  </div>
     </md-content>
