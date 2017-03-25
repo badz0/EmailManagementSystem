@@ -1,0 +1,42 @@
+<md-dialog aria-label="Print Window Dialog">
+  <md-toolbar md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
+    <div class="md-toolbar-tools">
+      <h2 translate="userDetails.save"></h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="$ctrl.cancel()" md-colors="{background: '{{$ctrl.userData.themeColor}}'}">
+        <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+  <md-dialog-content ng-cloak>
+    <div class="md-dialog-content">
+      <form name="exportTableForm" ng-submit="$ctrl.submit()">
+        <md-input-container >
+           <label>Columns</label>
+            <md-select ng-model="$ctrl.exportData.column" >
+              <md-option value="all" >All</md-option>
+              <md-option value="visible">Visible</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Rows</label>
+            <md-select ng-model="$ctrl.exportData.raw">
+                <md-option value="all">All</md-option>
+                <md-option value="visible">Visible</md-option>
+                <md-option value="selected">Selected</md-option>
+            </md-select>
+        </md-input-container>
+        <md-input-container>
+            <label>Format</label>
+            <md-select ng-model="$ctrl.exportData.format">
+                <md-option value="csv">CSV</md-option>
+                <md-option value="pdf">PDF</md-option>
+            </md-select>
+        </md-input-container>
+        <md-dialog-actions>
+            <md-button class="md-raised md-primary" aria-label="Export" md-colors="{background: '{{$ctrl.userData.themeColor}}'}" translate="userDetails.export" type="submit"></md-button>
+        </md-dialog-actions>
+      </form>
+    </div>
+  </md-dialog-content>
+</md-dialog>

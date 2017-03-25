@@ -1,0 +1,61 @@
+@import '../../app';
+$h2Color: #FAFAFA;
+$h1Color: #999999;
+
+.charts {
+  .user-charts {
+    padding-top: 50px;
+    margin-top: 50px;
+  }
+  #multiple, #userDateStat {
+    width: 50%
+  }
+  .charts-view-global, .user-list {
+    width: 75%;
+    margin: 0 auto;
+  }
+  .charts-dialog-view {
+    height: 390px;
+    width: 1500px;
+  }
+  .top {
+    margin-top: -530px;
+  }
+  h1, h2 {
+    text-align: center;
+    color: $h1Color;
+   }
+  h2 {
+    color: $h2Color;
+  }
+  .charts-view, .charts-view-global {
+    height: 550px;
+    min-width: 1200px;
+  }
+  .switchButtons {
+    height: 500px;
+    width: 200px;
+    &:hover {
+      background-color: #DDDDDD;
+    }
+  }
+  .radio {
+    display: inline-block;
+  }
+  .dialog {
+    visibility: hidden;
+  }
+  .user-list {
+     margin-top: 57px;
+  }
+  .list {
+    border: 2px solid black;
+    color: red;
+  }
+  .ui-grid-menu-button {
+  height: 31px;
+  }
+  .ui-grid-filter-container{
+    width: 60%;
+  }
+}

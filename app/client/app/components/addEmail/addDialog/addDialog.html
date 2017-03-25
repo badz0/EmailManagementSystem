@@ -1,0 +1,51 @@
+<md-dialog aria-label="Add Email Dialog">
+
+  <md-toolbar>
+    <div md-colors="{background: '{{$ctrl.userData.themeColor}}'}" class="md-toolbar-tools">
+      <h2>Add Email</h2>
+      <span flex></span>
+      <md-button class="md-icon-button" ng-click="$ctrl.cancel()">
+        <md-icon class="material-icons" aria-label="Close dialog">close</md-icon>
+      </md-button>
+    </div>
+  </md-toolbar>
+
+  <md-dialog-content ng-cloak>
+    <div class="md-dialog-content">
+      <form name="addEmailForm" ng-submit="$ctrl.submit(addEmailForm)" novalidate>
+
+        <md-input-container>
+          <label>Email</label>
+          <input name="email" ng-model="$ctrl.formData.email">
+          <div ng-messages="addEmailForm.email.$error" ng-show="addEmailForm.$submitted">
+            <div ng-message="required">Required</div>
+            <div ng-message="email">Invalid email</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Group</label>
+          <input type="text" name="group" ng-model="$ctrl.formData.group">
+          <div ng-messages="addEmailForm.group.$error" ng-show="addEmailForm.$submitted">
+            <div ng-message="required">Required</div>
+            <div ng-message="tooLong">Max 20 chars</div>
+          </div>
+        </md-input-container>
+
+        <md-input-container>
+          <label>Subject</label>
+          <input type="text" name="subject" ng-model="$ctrl.formData.subject">
+          <div ng-messages="addEmailForm.subject.$error" ng-show="addEmailForm.$submitted">
+            <div ng-message="required">Required</div>
+            <div ng-message="tooLong">Max 20 chars</div>
+          </div>
+        </md-input-container>
+
+        <md-dialog-actions>
+          <md-button md-colors="{background: '{{$ctrl.userData.themeColor}}'}" class="md-raised md-primary" type="submit" aria-label="Add">Add</md-button>
+        </md-dialog-actions>
+
+      </form>
+    </div>
+  </md-dialog-content>
+</md-dialog>
